@@ -69,6 +69,8 @@ Claude reads this before every task and adds to it as it goes (see
   Drive "Pricing rules" screenshots with `read_file_content` (it reads the
   text in PNG files).
 
+- Two Google Drive connectors are installed. The small-business plugin one
+  fails to sign in; use the other Drive connector for search and read.
 - The Google Drive connector can't delete files. Use Chrome: the "⋮" menu
   on the file row, then "Move to trash". A raw Delete keypress gets blocked.
 - Video files are ignored by git (`.gitignore`), so they never get pushed.
