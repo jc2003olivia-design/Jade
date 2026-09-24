@@ -28,15 +28,15 @@ Any logo file that isn't in `logos/` yet shows as a typed placeholder tile. The 
 No filters and no beauty mode. Stand near a big window with daylight hitting your face, or shoot outside in shade/golden hour. Leave room above your head: the text sits at the **top** on mc-a and at the **bottom** on the others.
 
 **Premium Activewear**, in a matching set (Alo or Lululemon read best):
-1. Mid-thigh up, smiling at the camera, one hand holding a folded item or a hanger. *(aw-a)*
-2. Full body, mid-step or walking toward the camera, relaxed and not posed. *(aw-a)*
-3. Seated on a bench/step, laughing, with a rack of activewear behind you. *(aw-b)*
-4. Holding up one hero piece (Alo jacket, Lulu Define) next to your face. *(aw-b)*
+1. Mid-thigh up, smiling at the camera, one hand holding a folded item or a hanger.
+2. Full body, mid-step or walking toward the camera, relaxed and not posed.
+3. Seated on a bench/step, laughing, with a rack of activewear behind you.
+4. Holding up one hero piece (Alo jacket, Lulu Define) next to your face.
 
 **Modern Contemporary**, in a Free People/Aritzia/Skims outfit:
-5. Waist up, soft smile, warm-toned wall or plants behind you. *(mc-a)*
-6. By the clothing rack, flipping through hangers and looking over your shoulder at the camera. *(mc-b)*
-7. Full body with a coffee or tote, a relaxed "outfit of the day" shot. *(mc-a/mc-b)*
+5. Waist up, soft smile, warm-toned wall or plants behind you.
+6. By the clothing rack, flipping through hangers and looking over your shoulder at the camera.
+7. Full body with a coffee or tote, a relaxed "outfit of the day" shot.
 
 Plain backgrounds (white wall, rack, outdoors) beat busy rooms.
 
