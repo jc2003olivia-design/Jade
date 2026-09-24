@@ -20,6 +20,9 @@ Claude reads this before every task and adds to it as it goes (see
 - Keep pricing rules, offer settings and fees private. They live in the Drive
   folder "Pricing rules", never in this public repo.
 - In Nifty set only the Depop price; titles and descriptions get notes, not edits.
+- After each listing batch, send a PDF of 4×4" thermal SKU labels: bold SKU
+  on top, then title, then listing date (`06-label-printer/make_labels.py`).
+  Listing date = Nifty `createdAt`.
 
 ## Listings and product research
 

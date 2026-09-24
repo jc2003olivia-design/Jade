@@ -1,6 +1,6 @@
 ---
 name: listing-workflow
-description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow", "price the to be listed items", or adds photos to 08-to-be-listed/. Researches sold comps, sets the Depop price in Nifty, checks titles and measurements, and reports per item.
+description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow", "price the to be listed items", or adds photos to 08-to-be-listed/. Researches sold comps, sets the Depop price in Nifty, checks titles and measurements, reports per item, and sends a PDF of 4x4 SKU labels.
 ---
 
 # Listing workflow
@@ -104,7 +104,20 @@ Write `08-to-be-listed/<number>/report.md` and send Jade a short message:
 - Title notes and measurement notes. (Don't list shipping fields; Jade
   handles those.)
 
-At the end, give a one-line-per-item summary and commit the reports.
+## 7. SKU labels (after every item is done)
+Make one PDF of 4×4" thermal labels for the batch and send it to Jade.
+- For each item with a SKU in Nifty, take `sku`, the current Nifty `title`
+  (as it is, even if you noted fixes) and `createdAt` (the listing date).
+  Skip items not in Nifty yet and say so.
+- Write them to a JSON list in the scratchpad
+  (`[{"sku": ..., "title": ..., "listed": ...}]`) and run
+  `python3 06-label-printer/make_labels.py <json> -o 06-label-printer/labels/sku-labels-<YYYY-MM-DD>.pdf`
+  (`pip install reportlab` if it's missing).
+- Look at one page (render it to PNG) to check nothing is cut off, then
+  send the PDF with `SendUserFile`.
+
+At the end, give a one-line-per-item summary and commit the reports and
+the labels PDF.
 
 ## Pricing settings (private — kept in Google Drive, not in this repo)
 Jade's Nifty price rules and automated offers are screenshots in her Google
