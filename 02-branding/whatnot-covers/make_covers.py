@@ -28,8 +28,9 @@ SHOWS = {
         photo=HERE / "photos" / "contemporary-fall.jpg", crop=(215, 440, 865, 1270), brand_font=F + "liberation/LiberationSans-Bold.ttf",
     ),
     "premium-activewear": dict(
-        bg="#1F3FD1", ink="#FFFFFF", accent="#D4FF3A", badge_ink="#1F3FD1",
-        photo_bg="#1A35B1", figure="#6278DF",
+        # bright poolside blue + hot pink
+        bg="#12B5EA", ink="#FFFFFF", accent="#FF3D8B", badge_ink="#FFFFFF", logo="#FFFFFF",
+        photo_bg="#0F9CCB", figure="#6FD3F3",
         head_font=SANS_B, head_scale=0.78, top="PREMIUM", main="ACTIVEWEAR",
         brands=["FREE PEOPLE MOVEMENT", "LULULEMON", "NIKE"], brand_font=SANS_B,
         photo=HERE / "photos" / "activewear.jpg", crop=(110, 560, 1010, 1610),
@@ -88,7 +89,7 @@ def logo_img(path, height, fill):
 
 # some logos read smaller/larger than others at the same height
 LOGO_SCALE = {"free-people-movement": 1.2, "lululemon": 1.15, "nike": 0.75,
-              "free-people": 0.9, "polo-ralph-lauren": 1.6}
+              "free-people": 0.9, "polo-ralph-lauren": 1.6}  # noqa
 
 
 def brand_img(brand, height, s, fill=None):
@@ -97,28 +98,40 @@ def brand_img(brand, height, s, fill=None):
     if f:
         return logo_img(f, int(height * LOGO_SCALE.get(f.stem, 1.0)), fill)
     # no logo file: bold wordmark sized to sit level with the logos
-    return text_img(brand, s["brand_font"], int(height * 0.62), fill, spacing=4)
+    return text_img(brand, s["brand_font"], int(height * 0.5), fill, spacing=4)
 
 
-def runner(c, s, y0, y1, shift=0.0):
-    """The show's brand logos repeating edge to edge between y0 and y1.
+BAND = 140  # runner height
+# nudge individual logos up (-) or down (+) inside the runner
+RUNNER_NUDGE = {"free-people": -10, "polo-ralph-lauren": 8}
 
-    Sits in the empty strip above/below the safe zone. shift offsets the
-    sequence so the top and bottom runners don't mirror each other.
+
+def runner(c, s, y, shift=0.0, start=0):
+    """Edge-to-edge ticker band of the show's brands, repeating.
+
+    The band runs off both sides on purpose; Whatnot's side crop only
+    trims repeats. shift offsets the sequence so the two bands differ.
     """
-    fill = s["ink"]
+    fill = s["badge_ink"]
     d = ImageDraw.Draw(c)
-    room = y1 - y0 - 12
-    items = [brand_img(b, 110, s, fill) for b in s["brands"]]
-    items = [i if i.height <= room else
-             i.resize((int(i.width * room / i.height), room), Image.LANCZOS) for i in items]
-    gap, dot = 40, 6
-    period = sum(i.width for i in items) + len(items) * (2 * gap + 2 * dot)
-    x = -int(period * shift)
-    cy = (y0 + y1) // 2
+    d.rectangle((0, y, W, y + BAND), fill=s["accent"])
+    room = BAND - 16
+    items = []
+    for br in s["brands"]:
+        i = brand_img(br, 88, s, fill)
+        if i.height > room:
+            i = i.resize((int(i.width * room / i.height), room), Image.LANCZOS)
+        f = logo_file(br)
+        items.append((i, RUNNER_NUDGE.get(f.stem if f else "", 0)))
+    items = items[start:] + items[:start]
+    gap, dot = 44, 7
+    period = sum(i.width for i, _ in items) + len(items) * (2 * gap + 2 * dot)
+    x = 24 - int(period * shift)
+    cy = y + BAND // 2
     while x < W:
-        for i in items:
-            iy = cy - i.height // 2
+        for i, nudge in items:
+            iy = y + (BAND - i.height) // 2 + nudge
+            iy = max(y + 2, min(iy, y + BAND - i.height - 2))
             if x + i.width > 0 and x < W:
                 if x >= 0:
                     c.alpha_composite(i, (x, iy))
@@ -202,9 +215,9 @@ def build(name, s, out=None):
     c = Image.new("RGBA", (W, H), s["bg"])
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40
-    runner(c, s, 0, sy0)
-    runner(c, s, sy1, H, shift=0.5)
-    y = sy0 + 40
+    runner(c, s, sy0)
+    runner(c, s, sy1 - BAND, start=1)
+    y = sy0 + BAND + 34
     y = paste_center(c, text_img("KENNY SHOP", SANS_B, 38, s.get("logo", s["accent"]), spacing=10), y) + 34
     y = paste_center(c, text_img(s["top"], s["head_font"], 60, s["ink"], s["head_scale"], spacing=18), y) + 20
     y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
@@ -212,11 +225,11 @@ def build(name, s, out=None):
     if s.get("footer"):
         footer = text_img(s["footer"], SANS_B, 40, s["accent"], spacing=12)
     footer_h = footer.height + 52 if footer else 0
-    photo_box = (sx0 + 40, y, sx1 - 40, sy1 - 20 - footer_h)
+    photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)
     draw_photo(c, s, photo_box)
     badge(c, s, photo_box[2] - 175, photo_box[1] + 185, 145)
     if footer:
-        fy = photo_box[3] + (sy1 - photo_box[3] - footer.height) // 2
+        fy = photo_box[3] + (sy1 - BAND - photo_box[3] - footer.height) // 2
         c.alpha_composite(footer, ((W - footer.width) // 2, fy))
     if out is None:
         final = s.get("photo") and Path(s["photo"]).exists()
