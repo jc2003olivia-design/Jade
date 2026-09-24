@@ -34,18 +34,18 @@ Top to bottom, all inside the safe zone:
 5. A thin accent line, then 2–3 brand names in caps
 
 ### Premium Contemporary: "quiet luxury"
-- Background: cream/ivory wall or backdrop, soft window light
-- Colors: cream `#F3EDE4` · black `#111111` · camel `#B08A5B` (badge + logo)
+- Background: denim blue, soft window light. Shoot against a plain light wall and put the denim color behind you in Canva, or use a denim-blue backdrop.
+- Colors: denim blue `#3E5F86` · white `#FFFFFF` (all text, logo, and the badge, which has denim text)
 - Fonts: elegant serif headline (Canva: Playfair Display or Bodoni), clean bold sans for brands
 - Text: `PREMIUM CONTEMPORARY` · `$1 STARTS` · `ARITZIA · FREE PEOPLE · REFORMATION`
 - Outfit: one elevated piece, like a knit set, slip dress, or blazer + tailored trousers
 
 ### Premium Activewear: bold and high-energy
-- Background: black, a solid bold color, or a blurred gym/mirror setting, bright even light
-- Colors: black `#111111` · white · lime `#C6FF3D` (badge + logo). Hot pink `#FF3D8B` is the backup.
+- Background: poolside blue, bright even light
+- Colors: poolside blue `#1C94D2` · white `#FFFFFF` (all text, logo, and the badge, which has blue text)
 - Fonts: heavy condensed sans (Canva: Anton, Bebas Neue, or League Gothic)
 - Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · `LULULEMON · ALO · VUORI` (add `NWT` if new with tags)
-- Outfit: a matching set (Align, Define, Alo) in a color that pops against the background
+- Outfit: a matching set (Align, Define, Alo) in a color that pops against blue (white, black, coral, neon)
 
 ## Templates
 - Main cover photo: `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
