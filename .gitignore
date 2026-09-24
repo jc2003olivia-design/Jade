@@ -9,3 +9,8 @@
 *.mp3
 07-videos/**/edit/
 .env
+__pycache__/
+
+# Personal photos and the covers made from them (repo is public)
+02-branding/whatnot-covers/photos/
+02-branding/whatnot-covers/final/
