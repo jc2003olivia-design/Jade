@@ -12,7 +12,7 @@
   SKU in big bold type at the top, then the item title (no date; the SKU
   has it). Say "make labels" after listing a batch; Claude pulls the
   current titles from Nifty and runs `make_labels.py`. PDFs are saved in
-  `labels/`.
+  `labels/`. Then Claude empties `08-to-be-listed/` for the next batch.
 
 ## Setup notes
 - Make labels by hand:
