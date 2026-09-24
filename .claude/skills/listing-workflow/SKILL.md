@@ -19,20 +19,36 @@ starting the next. Read `LESSONS.md` first.
   say so. Never guess.
 
 ## 2. Research pricing comps
-- Goal: **priced to sell within ~30 days.** Price off *sold* listings, not
-  active asking prices.
-- Search sold comps on eBay (sold/completed), Poshmark (sold), Depop (sold),
-  Mercari (sold), and anything else useful (Whatnot, Google Shopping for
-  retail price). If WebFetch on a marketplace is blocked by the network
-  policy, tell Jade which host was blocked and fall back to WebSearch
-  snippets, labelled as asking prices. Match brand + item type + style, then size/condition.
-- No exact match? Widen step by step: same brand + similar item, then
-  similar brands at the same tier. Say which level the price came from and
-  tell Jade how she could pin it down better (style number search, Google
-  Lens on the tag photo, checking the brand's retail site, etc.).
-- Account for Jade's automated offers (see "Pricing settings" below): the
-  price after a typical offer should still land near the sold-comp median
-  and clear the $20 profit rule.
+Goal: **priced to sell within ~30 days**, based on what actually *sold*.
+Marketplace sites block automated reading, so don't scrape them or try to
+get around their bot protection. Use these sources, best first:
+
+1. **eBay sold data via SerpApi** (only if `SERPAPI_KEY` is set in the
+   environment): call `https://serpapi.com/search.json?engine=ebay` with
+   `_nkw=<brand + item + key detail>` and `show_only=Sold`. Take the last
+   90 days, match brand, item type and era; size and condition come second.
+2. **Jade's own sales** (always): `search_orders` for the same brand or
+   category (e.g. "sweatshirt", "Free People"). Her real sale prices show
+   what *her* buyers pay. Compare them with her listing prices on
+   `get_inventory_item` to see how much offers took off.
+3. **Terapeak / sold screenshots Jade drops in the item folder** (any file
+   named `comps*` in `08-to-be-listed/<n>/`, or the Drive folder
+   "Sold comps"). Read the sold prices off them.
+4. **WebSearch snippets** (fallback): eBay and Poshmark results sometimes
+   show "Sold" prices. Label anything else as an asking price.
+
+**Picking the price:**
+- Build a comps table: source, title, price, date, sold or asking.
+- Start from the **median sold price** of close matches. If there are no
+  sold comps, use about 70–80% of the median asking price, since asking
+  prices run higher than sales.
+- Adjust for condition (flaws, stains or missing tags → lower half of the
+  range) and season (sweatshirts up in fall, swim down).
+- Check the $20-profit rule (see "Pricing settings").
+- Give a **confidence rating** in the report:
+  - **High:** 3+ sold comps of a close match in the last 90 days
+  - **Medium:** 1–2 sold comps, or good matches that are only asking prices
+  - **Low:** no close matches. Tell Jade to pull Terapeak before listing.
 
 ## 3. Update Nifty — Depop price only
 - Find the item in Nifty (`search_inventory`, filterType `all`): by SKU if
