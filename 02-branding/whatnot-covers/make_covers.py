@@ -14,10 +14,12 @@ W, H = 1080, 1920
 # Keep everything important inside this box: Whatnot crops the edges.
 SAFE = (86, 192, 994, 1728)
 
-F = "/usr/share/fonts/truetype/"
-SERIF_B = F + "liberation/LiberationSerif-Bold.ttf"
-SANS_B = F + "dejavu/DejaVuSans-Bold.ttf"
-SANS = F + "liberation/LiberationSans-Regular.ttf"
+# Google fonts (SIL Open Font License, see fonts/OFL-*.txt)
+FONTS = HERE / "fonts"
+SERIF_B = str(FONTS / "PlayfairDisplay-Bold.ttf")
+DISPLAY = str(FONTS / "Anton-Regular.ttf")
+SANS_B = str(FONTS / "Montserrat-ExtraBold.ttf")
+SANS = str(FONTS / "Montserrat-Medium.ttf")
 
 SHOWS = {
     "premium-contemporary": dict(
@@ -25,15 +27,15 @@ SHOWS = {
         photo_bg="#1A273F", figure="#62718A",
         head_font=SERIF_B, head_scale=1.0, top="PREMIUM", main="CONTEMPORARY",
         brands=["FREE PEOPLE", "POLO RALPH LAUREN", "PREMIUM DENIM"], footer="FALL THEMED",
-        photo=HERE / "photos" / "contemporary-fall.jpg", crop=(215, 440, 865, 1270), brand_font=F + "liberation/LiberationSans-Bold.ttf",
+        photo=HERE / "photos" / "contemporary-fall.jpg", crop=(215, 440, 865, 1270), brand_font=SANS_B,
     ),
     "premium-activewear": dict(
         # bright poolside blue + hot pink
         bg="#12B5EA", ink="#FFFFFF", accent="#FF3D8B", badge_ink="#FFFFFF", logo="#FFFFFF",
         photo_bg="#0F9CCB", figure="#6FD3F3",
-        head_font=SANS_B, head_scale=0.78, top="PREMIUM", main="ACTIVEWEAR",
+        head_font=DISPLAY, head_scale=1.0, badge_font=DISPLAY, top="PREMIUM", main="ACTIVEWEAR",
         brands=["FREE PEOPLE MOVEMENT", "LULULEMON", "NIKE"], brand_font=SANS_B,
-        photo=HERE / "photos" / "activewear.jpg", crop=(110, 560, 1010, 1610),
+        photo=HERE / "photos" / "activewear-2.webp", crop=(200, 0, 1110, 1052),
     ),
 }
 # Second Premium Contemporary cover: same look, new photo and brands, no fall line.
@@ -209,7 +211,7 @@ def badge(canvas, s, cx, cy, r):
     d = ImageDraw.Draw(canvas)
     d.ellipse((cx - r - 8, cy - r - 8, cx + r + 8, cy + r + 8), fill=s["bg"])
     d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=s["accent"])
-    big = text_img("$1", SANS_B, 150, s["badge_ink"])
+    big = text_img("$1", s.get("badge_font", SANS_B), 150, s["badge_ink"])
     small = text_img("STARTS", SANS_B, 44, s["badge_ink"], spacing=6)
     total = big.height + 18 + small.height
     y = cy - total // 2

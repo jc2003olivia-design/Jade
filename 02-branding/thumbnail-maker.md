@@ -42,14 +42,14 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 ### Premium Contemporary
 - Background: navy, soft window light
 - Colors: navy `#1F2E4A` · white `#FFFFFF` (headline) · butter yellow `#F6D776` (runners, Kenny Shop, $1 badge, "FALL THEMED"); logos in the runners are navy
-- Fonts: elegant serif headline (Canva: Playfair Display or Bodoni), clean bold sans for brands
+- Fonts: Playfair Display Bold headline, Montserrat ExtraBold for Kenny Shop, badge and brand text
 - Text: `PREMIUM CONTEMPORARY` · `$1 STARTS` · `FALL THEMED` · runners: Free People logo · Polo Ralph Lauren logo · `PREMIUM DENIM`
 - Outfit: one elevated piece, like a knit set, slip dress, or blazer + tailored trousers
 
 ### Premium Activewear: bright and poolside
 - Background: bright poolside blue, bright even light
 - Colors: poolside blue `#12B5EA` · hot pink `#FF3D8B` (runners, $1 badge) · white `#FFFFFF` (headline, Kenny Shop, runner logos, badge text)
-- Fonts: heavy condensed sans (Canva: Anton, Bebas Neue, or League Gothic)
+- Fonts: Anton for the headline and $1, Montserrat ExtraBold for Kenny Shop and "STARTS"
 - Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · runners: Free People Movement · Lululemon · Nike logos
 - Outfit: a matching set (Align, Define, Alo) in a color that pops against bright blue (orange, black, white, lime). Avoid blue sets.
 
@@ -87,6 +87,8 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - [ ] Track viewers per show. Test one change at a time (photo, color, brand line).
 
 ## Tools used
+- Fonts: Playfair Display, Anton and Montserrat (free Google fonts, in `whatnot-covers/fonts/`).
+  The same fonts are in Canva if you rebuild a cover there.
 - Canva (free): rebuild the layout from the mockups with the fonts above
 - `whatnot-covers/make_covers.py`: regenerates the covers. Put a photo in `photos/` and set its
   `photo` + `crop` on the show in `SHOWS`.
