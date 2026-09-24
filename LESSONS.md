@@ -48,9 +48,16 @@ Claude reads this before every task and adds to it as it goes (see
   blank shipping fields for Jade to fill in the Nifty app.
 - SKU format is `MMDD-NN` (date + that day's item number, e.g. `0924-02`). Set it in Nifty for every item.
 - Marketplace sites (eBay, Depop, Mercari, Grailed) block automated requests
-  with bot protection even when the network allows them. Don't try to get
-  around it. Use WebSearch snippets (labelled asking prices) or sold data
-  Jade provides.
+  from cloud sessions with bot protection. Don't try to get around it. Use
+  WebSearch snippets (labelled asking prices) or sold data Jade provides.
+  Claude in Chrome on Jade's computer gets through fine (`sold-comps` skill).
+- Poshmark sold search: add `&sort_by=added_desc`, or relevance shows sales
+  from years ago. Sold dates aren't shown; a listing ID's first 8 hex digits
+  are the date it was listed (Unix time), and it sold after that.
+- Depop search has no Sold filter (only "On sale", which means discounted), so
+  sold comps can't come from Depop.
+- WebSearch for "sold" marketplace listings mostly returns active asking
+  prices. Don't count them as sold comps.
 - Items in 08-to-be-listed may not be in Nifty yet. Price them anyway and
   do the Nifty steps once Jade adds them.
 - Nifty's AI can misread handwritten measurement cards (it read sleeve 21"
