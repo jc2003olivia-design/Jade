@@ -11,7 +11,7 @@ Show thumbnails for Kurated by Kenny. Every cover shows **$1 STARTS**.
 - **Size:** portrait 3:4, 1080 × 1440. Keep the text away from the very bottom and the edges, and check the crop in Whatnot's preview before going live. (A page banner is 750 × 424 if you ever need one.)
 
 ## Current style: "sticker story" (based on Jade's own past covers)
-A full-bleed, real photo, with brand logos as white sticker tiles down the left side and rounded "pill" text stickers. One font (Fredoka) and one pill style, so the covers look like a set.
+A full-bleed, real photo, with brand logos as white sticker tiles scattered around the photo at slight tilts (6 max, never over the face or outfit) and rounded "pill" text stickers. One font (Fredoka) and one pill style, so the covers look like a set.
 
 - **Top-right:** **$1 STARTS** (biggest, pink) and **10 SEC SUDDEN DEATH**, placed over open background so they never cover the outfit.
 - **Bottom-right:** category, KURATEDBYKENNY, and LIVE day/time.

@@ -9,15 +9,17 @@ body{background:#222}
 .photo{position:absolute;inset:0;background-size:cover;background-position:var(--pos,center)}
 .photo{background-image:var(--p);background-size:var(--zoom,cover)}
 
-/* logo sticker column (left) */
-.logos{position:absolute;left:36px;top:56px;display:flex;flex-direction:column;gap:24px;width:260px}
-.tile{background:#fff;border-radius:22px;height:104px;display:flex;align-items:center;justify-content:center;padding:14px 20px;box-shadow:0 6px 18px rgba(0,0,0,.18);overflow:hidden}
+/* logo stickers: scattered by hand around her, per photo (inline left/top/width/rotate) */
+.logos{position:absolute;inset:0;pointer-events:none}
+.logos .tile{position:absolute}
+.tile{background:#fff;border-radius:22px;height:104px;width:260px;display:flex;align-items:center;justify-content:center;padding:14px 20px;box-shadow:0 6px 18px rgba(0,0,0,.18);overflow:hidden}
 .tile img{max-width:100%;max-height:100%;object-fit:contain}
 .tile .ph{color:#111;text-align:center;line-height:1}
 /* placeholder wordmark styles (used only until real logos arrive) */
 .serif{font:500 34px "Cormorant Garamond";letter-spacing:1px}
 .caps{font:600 21px Inter;letter-spacing:3px}
 .bold{font:900 40px Archivo;letter-spacing:-1px}
+.tile.round{width:190px;height:190px;border-radius:50%}
 .tile.dark{background:#111}.tile.dark .ph{color:#fff}
 
 /* headline pills (top-right, over open sky/background) */
@@ -25,7 +27,7 @@ body{background:#222}
 /* pill stack (bottom-right) */
 .pills{position:absolute;right:36px;bottom:120px;display:flex;flex-direction:column;align-items:flex-end;gap:18px}
 .pill{background:#fff;color:#111;border-radius:999px;padding:12px 30px 10px;font-weight:700;font-size:42px;line-height:1.05;box-shadow:0 6px 18px rgba(0,0,0,.18);white-space:nowrap}
-.pill.price{font-size:112px;padding:14px 50px 10px;color:#ff2d6f;letter-spacing:1px}
+.pill.price{transform:rotate(-2deg);font-size:112px;padding:14px 50px 10px;color:#ff2d6f;letter-spacing:1px}
 .pill.pink{background:#ff2d6f;color:#fff}
 .pill.cat{font-size:54px;padding:14px 36px 12px}
 .pill.small{font-size:32px;padding:10px 26px 8px}
@@ -36,12 +38,12 @@ body{background:#222}
 <div class="cover" id="contemporary" style="--p:url(PHOTO_1);--zoom:118%;--pos:52% 62%">
   <div class="photo"></div>
   <div class="logos">
-    <div class="tile"><img src="logos/anthropologie.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>ANTHROPOLOGIE</span>'"></div>
-    <div class="tile"><img src="logos/free-people.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Free People</span>'"></div>
-    <div class="tile"><img src="logos/revolve.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>REVOLVE</span>'"></div>
-    <div class="tile dark"><img src="logos/aritzia.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>ARITZIA</span>'"></div>
-    <div class="tile"><img src="logos/skims.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>SKIMS</span>'"></div>
-    <div class="tile"><img src="logos/polo.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Polo Ralph Lauren</span>'"></div>
+    <div class="tile" style="left:40px;top:64px;width:290px;transform:rotate(-4deg)"><img src="logos/anthropologie.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>ANTHROPOLOGIE</span>'"></div>
+    <div class="tile round" style="left:80px;top:236px;transform:rotate(5deg)"><img src="logos/free-people.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Free People</span>'"></div>
+    <div class="tile" style="left:800px;top:330px;width:240px;transform:rotate(6deg)"><img src="logos/revolve.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>REVOLVE</span>'"></div>
+    <div class="tile dark" style="left:30px;top:480px;width:250px;transform:rotate(-2deg)"><img src="logos/aritzia.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>ARITZIA</span>'"></div>
+    <div class="tile" style="left:820px;top:560px;width:220px;transform:rotate(-5deg)"><img src="logos/skims.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>SKIMS</span>'"></div>
+    <div class="tile" style="left:56px;top:700px;width:270px;transform:rotate(4deg)"><img src="logos/polo.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Polo Ralph Lauren</span>'"></div>
   </div>
   <div class="head">
     <div class="pill price">$1 STARTS</div>
@@ -58,12 +60,12 @@ body{background:#222}
 <div class="cover" id="activewear" style="--p:url(PHOTO_2);--pos:center 30%">
   <div class="photo"></div>
   <div class="logos">
-    <div class="tile"><img src="logos/alo.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>alo</span>'"></div>
-    <div class="tile"><img src="logos/lululemon.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>LULULEMON</span>'"></div>
-    <div class="tile"><img src="logos/fp-movement.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>FP MOVEMENT</span>'"></div>
-    <div class="tile dark"><img src="logos/nike.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>NIKE</span>'"></div>
-    <div class="tile"><img src="logos/white-fox.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>WHITE FOX</span>'"></div>
-    <div class="tile"><img src="logos/patagonia.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>patagonia</span>'"></div>
+    <div class="tile" style="left:40px;top:64px;width:240px;transform:rotate(-4deg)"><img src="logos/alo.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>alo</span>'"></div>
+    <div class="tile round" style="left:80px;top:236px;transform:rotate(5deg)"><img src="logos/lululemon.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>LULULEMON</span>'"></div>
+    <div class="tile" style="left:30px;top:480px;width:280px;transform:rotate(-2deg)"><img src="logos/fp-movement.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>FP MOVEMENT</span>'"></div>
+    <div class="tile dark" style="left:820px;top:560px;width:220px;transform:rotate(-5deg)"><img src="logos/nike.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>NIKE</span>'"></div>
+    <div class="tile" style="left:800px;top:330px;width:240px;transform:rotate(6deg)"><img src="logos/white-fox.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>WHITE FOX</span>'"></div>
+    <div class="tile" style="left:56px;top:700px;width:270px;transform:rotate(4deg)"><img src="logos/patagonia.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>patagonia</span>'"></div>
   </div>
   <div class="head">
     <div class="pill price">$1 STARTS</div>
