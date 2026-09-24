@@ -62,7 +62,9 @@ Top to bottom, all inside the safe zone:
 - PNG with a transparent background works best. A plain white background is OK too.
   Logos are recolored to the cover's text color automatically.
 - If a brand has no logo file, its name shows as big bold text instead (like "DENIM").
-- Have so far: Nike (from the Simple Icons set).
+- Have so far: Nike (Simple Icons), Lululemon (circle mark only; the wordmark is too small at cover size),
+  Free People Movement (the file sent was cut off after "MOVEME", so the "NT" was redrawn to match).
+  Still need: Free People, Polo Ralph Lauren.
 
 ## Photo shoot checklist
 - [ ] Phone at chest height, vertical, back camera, wipe the lens

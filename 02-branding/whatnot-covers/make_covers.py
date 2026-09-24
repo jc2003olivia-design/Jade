@@ -78,8 +78,8 @@ def logo_img(path, height, fill):
         im = Image.open(path).convert("RGBA")
     alpha = im.getchannel("A")
     if alpha.getextrema() == (255, 255):
-        # no transparency: treat dark pixels as the logo
-        alpha = im.convert("L").point(lambda v: 255 - v)
+        # no transparency: anything darker than the white background is logo
+        alpha = im.convert("L").point(lambda v: 0 if v > 235 else min(255, (235 - v) * 4))
     im = im.crop(alpha.getbbox())
     alpha = alpha.crop(alpha.getbbox())
     flat = Image.new("RGBA", im.size, fill)
@@ -87,15 +87,19 @@ def logo_img(path, height, fill):
     return flat.resize((max(1, int(flat.width * height / flat.height)), height), Image.LANCZOS)
 
 
+# some logos read smaller/larger than others at the same height
+LOGO_SCALE = {"free-people-movement": 1.2, "lululemon": 1.15, "nike": 0.75}
+
+
 def brand_img(brand, height, s):
     f = logo_file(brand)
     if f:
-        return logo_img(f, height, s["ink"])
+        return logo_img(f, int(height * LOGO_SCALE.get(f.stem, 1.0)), s["ink"])
     # no logo file yet: bold wordmark sized to sit level with the logos
     return text_img(brand, s["brand_font"], int(height * 0.62), s["ink"], spacing=4)
 
 
-def brand_rows(s, max_w, height=96, gap=90):
+def brand_rows(s, max_w, height=110, gap=64):
     """Brands in rows, well spaced; wraps to a second row when needed."""
     imgs = [brand_img(b, height, s) for b in s["brands"]]
     rows, row = [], []
