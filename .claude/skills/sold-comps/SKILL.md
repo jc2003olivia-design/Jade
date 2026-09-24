@@ -75,8 +75,15 @@ Write only comps, no pricing decision. The listing-workflow sets the price
 using Jade's private pricing rules.
 
 ## 5. Save and hand off
-- Commit the `comps.md` files and push to the branch the repo is on, so the
-  cloud listing-workflow can see them.
+- **If this folder is a git clone of the Jade repo** (`git remote -v` shows
+  `jc2003olivia-design/Jade`): commit the `comps.md` files and push to
+  `main`, so the cloud listing-workflow can see them.
+- **If it isn't a clone, or the push fails:** save each item's comps to
+  Google Drive instead, as a Google Doc in the folder **"Sold comps"**
+  (create the folder if it's missing) named `comps <folder #> - <item>`,
+  e.g. `comps 2 - Nutmeg Tennessee crewneck`. Use the Drive connector's
+  `create_file` with `contentMimeType: "text/plain"`. Then tell Jade the
+  comps are in Drive.
 - Tell Jade in one line per item: number of comps, median, range.
 - Then she says **"start listing workflow"** (in the cloud or here), and it
   prices from these comps.
