@@ -49,7 +49,7 @@ SHOWS["premium-contemporary-2"] = dict(
 SHOWS["premium-contemporary-3"] = dict(
     SHOWS["premium-contemporary"], footer=None,
     brands=["QUINCE", "FREE PEOPLE", "ANTHROPOLOGIE"],
-    photo=HERE / "photos" / "contemporary-3.jpg", crop=None,
+    photo=HERE / "photos" / "contemporary-3.jpg", crop=(70, 170, 705, 900),
 )
 
 
@@ -105,7 +105,8 @@ def logo_img(path, height, fill):
 # some logos read smaller/larger than others at the same height
 LOGO_SCALE = {"free-people-movement": 1.2, "lululemon": 1.15, "nike": 0.75,
               "free-people": 0.9, "polo-ralph-lauren": 1.6,
-              "anthropologie": 0.4, "skims": 0.75, "ralph-lauren": 0.9}  # noqa
+              "anthropologie": 0.4, "skims": 0.75, "ralph-lauren": 0.9,
+              "quince": 0.8}  # noqa
 
 
 def brand_img(brand, height, s, fill=None):

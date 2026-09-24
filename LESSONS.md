@@ -17,7 +17,9 @@ Claude reads this before every task and adds to it as it goes (see
 ## Branding and covers
 
 - New cover = new entry in `SHOWS` in `make_covers.py`, then run it. Don't hand-edit the PNGs.
-- Quince has no logo file yet. It shows as bold "QUINCE" text until `logos/quince.png` is added.
+- Logo files Jade sends are often small or cut off. If so, redraw the wordmark in a matching
+  font from `fonts/` (Quince and Anthropologie are Playfair Display) instead of enlarging it.
+- Covers made from Jade's photos land in `final/`, which is kept out of git. Send her the file directly.
 
 ## Customer support
 

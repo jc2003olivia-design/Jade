@@ -56,8 +56,8 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
 - Third Contemporary cover: `whatnot-covers/premium-contemporary-3.png`, with Quince · Free People · Anthropologie
-  in the runners and no fall line. Put the photo at `whatnot-covers/photos/contemporary-3.jpg` and rerun
-  `make_covers.py` to get the finished cover in `final/`.
+  in the runners and no fall line. Its photo is `whatnot-covers/photos/contemporary-3.jpg` (grey knit tank,
+  light jeans, red bag) and the finished cover is `final/premium-contemporary-3.png`.
 - Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
   `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
@@ -72,12 +72,14 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
   Logos are recolored to the runner's logo color automatically.
 - If a brand has no logo file, its name shows as big bold text instead (like "DENIM").
 - Have so far (see `whatnot-covers/logos-preview.png`): Free People, Free People Movement,
-  Anthropologie, Polo Ralph Lauren, Ralph Lauren, Skims, Lululemon, Nike.
+  Anthropologie, Quince, Polo Ralph Lauren, Ralph Lauren, Skims, Lululemon, Nike.
   - Lululemon: circle mark only (the wordmark is too small at cover size).
   - Free People Movement: the file sent was cut off after "MOVEME", so the "NT" was redrawn to match.
   - Anthropologie: the file sent was too small (16 px tall) to enlarge cleanly, so the wordmark is
     redrawn in Playfair Display with the same spaced capitals.
-- Still need: Aritzia, Quince (they show as bold text until then; save the logo as `logos/quince.png`).
+  - Quince: the file sent was small and cut off at both edges, so the wordmark is redrawn in
+    Playfair Display Regular, which is a close match.
+- Still need: Aritzia (shows as bold text until then).
 
 ## Photo shoot checklist
 - [ ] Phone at chest height, vertical, back camera, wipe the lens
