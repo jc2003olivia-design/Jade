@@ -25,7 +25,7 @@ A full-bleed, real photo, with brand logos as white sticker tiles down the left 
 Any logo file that isn't in `logos/` yet shows as a typed placeholder tile. The LIVE pill still needs the real day and time.
 
 ## Shot list (take these on your phone, vertical)
-No filters and no beauty mode. Stand near a big window with daylight hitting your face, or shoot outside in shade/golden hour. Leave room above your head: the text sits at the **top** on mc-a and at the **bottom** on the others.
+No filters and no beauty mode. Stand near a big window with daylight hitting your face, or shoot outside in shade/golden hour. Leave open space (sky, wall) on the upper right: that is where $1 STARTS goes.
 
 **Premium Activewear**, in a matching set (Alo or Lululemon read best):
 1. Mid-thigh up, smiling at the camera, one hand holding a folded item or a hanger.
