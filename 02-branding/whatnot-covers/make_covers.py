@@ -36,6 +36,11 @@ SHOWS = {
         photo=HERE / "photos" / "activewear.jpg", crop=(110, 560, 1010, 1610),
     ),
 }
+# Second Premium Contemporary cover: same look and brands, new photo, no fall line.
+SHOWS["premium-contemporary-2"] = dict(
+    SHOWS["premium-contemporary"], footer=None, template=False,
+    photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
+)
 
 
 def text_img(text, font_path, size, fill, x_scale=1.0, spacing=0):
@@ -261,7 +266,7 @@ def preview(covers, out="preview-feed-size.png"):
 
 
 if __name__ == "__main__":
-    templates = {n: build(n, dict(s, photo=None)) for n, s in SHOWS.items()}
+    templates = {n: build(n, dict(s, photo=None)) for n, s in SHOWS.items() if s.get("template", True)}
     preview(templates)
     finals = {n: build(n, s) for n, s in SHOWS.items() if s.get("photo") and Path(s["photo"]).exists()}
     if finals:
