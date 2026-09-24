@@ -21,14 +21,14 @@ SANS = F + "liberation/LiberationSans-Regular.ttf"
 
 SHOWS = {
     "premium-contemporary": dict(
-        bg="#3E5F86", ink="#FFFFFF", accent="#FFFFFF", badge_ink="#3E5F86",
-        photo_bg="#34507A", figure="#5A7AA3",
+        bg="#1F2E4A", ink="#FFFFFF", accent="#F6D776", badge_ink="#1F2E4A",
+        photo_bg="#1A273F", figure="#62718A",
         head_font=SERIF_B, head_scale=1.0, top="PREMIUM", main="CONTEMPORARY",
         brands="ARITZIA · FREE PEOPLE · REFORMATION", brand_font=F + "liberation/LiberationSans-Bold.ttf",
     ),
     "premium-activewear": dict(
-        bg="#1C94D2", ink="#FFFFFF", accent="#FFFFFF", badge_ink="#1C94D2",
-        photo_bg="#1782BA", figure="#4FB0E2",
+        bg="#1F3FD1", ink="#FFFFFF", accent="#D4FF3A", badge_ink="#1F3FD1",
+        photo_bg="#1A35B1", figure="#6278DF",
         head_font=SANS_B, head_scale=0.78, top="PREMIUM", main="ACTIVEWEAR",
         brands="LULULEMON · ALO · VUORI", brand_font=SANS_B,
     ),
