@@ -11,6 +11,7 @@ Jade
 ├── 02-branding/                 Look and feel of the shop
 │   ├── brand-ideas-planning.md
 │   ├── thumbnail-maker.md
+│   ├── whatnot-covers/          Whatnot show cover mockups
 │   └── titles.md
 ├── 03-customer-support/         Messages, returns, problem orders
 │   └── customer-support.md
