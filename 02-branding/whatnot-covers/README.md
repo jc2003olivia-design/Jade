@@ -33,7 +33,7 @@ No filters and no beauty mode. Stand near a big window with daylight hitting you
 3. Seated on a bench/step, laughing, with a rack of activewear behind you.
 4. Holding up one hero piece (Alo jacket, Lulu Define) next to your face.
 
-**Modern Contemporary**, in a Free People/Aritzia/Skims outfit:
+**Premium Contemporary**, in a Free People/Aritzia/Skims outfit:
 5. Waist up, soft smile, warm-toned wall or plants behind you.
 6. By the clothing rack, flipping through hangers and looking over your shoulder at the camera.
 7. Full body with a coffee or tote, a relaxed "outfit of the day" shot.
