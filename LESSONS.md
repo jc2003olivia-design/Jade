@@ -58,6 +58,9 @@ Claude reads this before every task and adds to it as it goes (see
   sold comps can't come from Depop.
 - WebSearch for "sold" marketplace listings mostly returns active asking
   prices. Don't count them as sold comps.
+- On Jade's Mac, `git push` from the terminal has no GitHub login. Commit
+  locally, then have Jade click "Push origin" in GitHub Desktop (the Jade
+  folder is added there). Never ask her to paste tokens.
 - Items in 08-to-be-listed may not be in Nifty yet. Price them anyway and
   do the Nifty steps once Jade adds them.
 - Nifty's AI can misread handwritten measurement cards (it read sleeve 21"
