@@ -19,8 +19,8 @@ A full-bleed, real photo, with brand logos as white sticker tiles scattered arou
 
 | Cover | Photo | Logos (`logos/<name>.png`) |
 |---|---|---|
-| `out/contemporary.png` (Premium Contemporary, live Fri 7 PM EST) | `photos/contemporary-orange-mirror.jpg` | anthropologie, free-people, aritzia, skims, polo (Ralph Lauren) ✓ · revolve still needed |
-| `out/activewear.png` | *needed: an activewear photo* | alo, lululemon, fp-movement, nike, white-fox, patagonia |
+| `out/contemporary.png` (Premium Contemporary, live Fri 7 PM EST) | `photos/contemporary-denim-dress.jpg` | anthropologie, free-people, aritzia, skims, polo (Ralph Lauren) ✓ · revolve still needed |
+| `out/activewear.png` | `photos/activewear-orange-mirror.jpg` | alo, lululemon, fp-movement, nike, white-fox, patagonia |
 
 Any logo file that isn't in `logos/` yet shows as a typed placeholder tile. The activewear LIVE pill still needs its day and time.
 
@@ -43,5 +43,5 @@ Plain backgrounds (white wall, rack, outdoors) beat busy rooms.
 ## How to make the final PNGs
 Put the photos in `photos/`, then run:
 ```
-node render.mjs photos/contemporary-denim-dress.jpg photos/<activewear-photo>.jpg
+node render.mjs photos/contemporary-denim-dress.jpg photos/activewear-orange-mirror.jpg
 ``` The PNGs go to `out/`. This needs `playwright-core` installed (`npm i playwright-core`).
