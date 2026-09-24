@@ -10,15 +10,19 @@ Show thumbnails for Kurated by Kenny. Every cover shows **$1 STARTS**.
 - **It has to read at phone size.** In the feed the card is about 180px wide, so only the category name and $1 are big. The brand list is small print for people who look closer.
 - **Size:** portrait 3:4, 1080 × 1440. Keep the text away from the very bottom and the edges, and check the crop in Whatnot's preview before going live. (A page banner is 750 × 424 if you ever need one.)
 
-## The 4 designs (`preview-all-4.png`)
-| File | Category | Look |
-|---|---|---|
-| `aw-a` | Premium Activewear | Full-bleed photo, dark fade, lime $1 tag. Sporty, stands out most. |
-| `aw-b` | Premium Activewear | Photo in a rounded frame, forest-green $1 sticker. Softer, "Alo" feel. |
-| `mc-a` | Modern Contemporary | Magazine cover: serif title up top, burgundy $1 tag. |
-| `mc-b` | Modern Contemporary | Photo over a cream band, burgundy $1 circle. Aritzia/Anthro feel. |
+## Current style: "sticker story" (based on Jade's own past covers)
+A full-bleed, real photo, with brand logos as white sticker tiles down the left side and rounded "pill" text stickers. One font (Fredoka) and one pill style, so the covers look like a set.
 
-Colors: activewear = charcoal + lime (or forest green); contemporary = cream + burgundy + warm brown.
+- **Top-right:** **$1 STARTS** (biggest, pink) and **10 SEC SUDDEN DEATH**, placed over open background so they never cover the outfit.
+- **Bottom-right:** category, KURATEDBYKENNY, and LIVE day/time.
+- **6 logos per cover, max.** More than that turns to noise at feed size.
+
+| Cover | Photo | Logos (`logos/<name>.png`) |
+|---|---|---|
+| `out/contemporary.png` | `photos/contemporary-denim-dress.jpg` | anthropologie, free-people, revolve, aritzia, skims, polo |
+| `out/activewear.png` | *needed: an activewear photo* | alo, lululemon, fp-movement, nike, white-fox, patagonia |
+
+Any logo file that isn't in `logos/` yet shows as a typed placeholder tile. The LIVE pill still needs the real day and time.
 
 ## Shot list (take these on your phone, vertical)
 No filters and no beauty mode. Stand near a big window with daylight hitting your face, or shoot outside in shade/golden hour. Leave room above your head: the text sits at the **top** on mc-a and at the **bottom** on the others.
@@ -39,6 +43,5 @@ Plain backgrounds (white wall, rack, outdoors) beat busy rooms.
 ## How to make the final PNGs
 Put the photos in `photos/`, then run:
 ```
-node render.mjs photos/1.jpg photos/3.jpg photos/5.jpg photos/6.jpg
-```
-The order is aw-a, aw-b, mc-a, mc-b. The PNGs go to `out/`. This needs `playwright-core` installed (`npm i playwright-core`).
+node render.mjs photos/contemporary-denim-dress.jpg photos/<activewear-photo>.jpg
+``` The PNGs go to `out/`. This needs `playwright-core` installed (`npm i playwright-core`).

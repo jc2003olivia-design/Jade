@@ -2,93 +2,77 @@
 <html><head><meta charset="utf-8">
 <link href="fonts/fonts.css" rel="stylesheet">
 <style>
-/* Swap PHOTO paths below once Jade's photos are in ./photos/ */
-:root{--shop:"KURATED BY KENNY";}
+/* Sticker-story covers. Logos: drop PNGs in logos/<slug>.png; missing ones show a typed placeholder tile. */
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#222}
-.cover{width:1080px;height:1440px;position:relative;overflow:hidden;font-family:Inter,sans-serif}
-.photo{position:absolute;inset:0;background-size:cover;background-position:center 20%}
+.cover{width:1080px;height:1440px;position:relative;overflow:hidden;font-family:Fredoka,sans-serif}
+.photo{position:absolute;inset:0;background-size:cover;background-position:var(--pos,center)}
+.photo{background-image:var(--p);background-size:var(--zoom,cover)}
 
-/* ---------- ACTIVEWEAR A: "Clean Sport" ---------- */
-.aw-a .photo{background-image:var(--p)}
-.aw-a .fade{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(to top,rgba(18,22,20,.92) 0%,rgba(18,22,20,.75) 45%,rgba(18,22,20,0) 100%)}
-.aw-a .shop{position:absolute;top:48px;left:48px;background:#fff;color:#141816;font:700 30px Archivo;letter-spacing:4px;padding:14px 24px;border-radius:999px}
-.aw-a .price{position:absolute;top:44px;right:44px;background:#d7ff3a;color:#111;font:900 92px/0.9 Archivo;padding:26px 30px 22px;border-radius:26px;text-align:center;transform:rotate(3deg);box-shadow:0 10px 30px rgba(0,0,0,.25)}
-.aw-a .price small{display:block;font:800 40px Archivo;letter-spacing:3px;margin-top:6px}
-.aw-a .text{position:absolute;left:56px;right:56px;bottom:64px;color:#fff}
-.aw-a h1{font:900 132px/0.88 Archivo;letter-spacing:-2px;text-transform:uppercase}
-.aw-a h1 span{color:#d7ff3a}
-.aw-a .brands{margin-top:30px;font:600 31px/1.45 Inter;letter-spacing:1px;color:#e9ece8}
+/* logo sticker column (left) */
+.logos{position:absolute;left:36px;top:56px;display:flex;flex-direction:column;gap:24px;width:260px}
+.tile{background:#fff;border-radius:22px;height:104px;display:flex;align-items:center;justify-content:center;padding:14px 20px;box-shadow:0 6px 18px rgba(0,0,0,.18);overflow:hidden}
+.tile img{max-width:100%;max-height:100%;object-fit:contain}
+.tile .ph{color:#111;text-align:center;line-height:1}
+/* placeholder wordmark styles (used only until real logos arrive) */
+.serif{font:500 34px "Cormorant Garamond";letter-spacing:1px}
+.caps{font:600 21px Inter;letter-spacing:3px}
+.bold{font:900 40px Archivo;letter-spacing:-1px}
+.tile.dark{background:#111}.tile.dark .ph{color:#fff}
 
-/* ---------- ACTIVEWEAR B: "Film Frame" ---------- */
-.aw-b{background:#f4f2ee}
-.aw-b .frame{position:absolute;left:40px;right:40px;top:40px;height:1040px;border-radius:28px;overflow:hidden}
-.aw-b .frame .photo{background-image:var(--p)}
-.aw-b .shop{position:absolute;top:72px;left:72px;background:#fff;color:#161816;font:700 26px Archivo;letter-spacing:4px;padding:12px 22px;border-radius:999px}
-.aw-b .sticker{position:absolute;right:56px;top:880px;width:300px;height:300px;border-radius:50%;background:#1f4d3a;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-8deg);box-shadow:0 12px 30px rgba(0,0,0,.25);border:8px solid #f4f2ee}
-.aw-b .sticker b{font:900 150px/0.85 Archivo}
-.aw-b .sticker i{font:800 44px Archivo;font-style:normal;letter-spacing:4px}
-.aw-b .text{position:absolute;left:64px;right:360px;top:1116px}
-.aw-b h1{font:900 84px/0.95 Archivo;color:#161816;text-transform:uppercase;letter-spacing:-1px}
-.aw-b .brands{position:absolute;left:64px;right:64px;bottom:44px;font:600 29px/1.4 Inter;color:#4a4f4b;letter-spacing:.5px}
-
-/* ---------- CONTEMPORARY A: "Editorial Cover" ---------- */
-.mc-a .photo{background-image:var(--p)}
-.mc-a .top{position:absolute;left:0;right:0;top:0;height:40%;background:linear-gradient(to bottom,rgba(40,28,22,.55),rgba(40,28,22,0))}
-.mc-a .bot{position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(to top,rgba(40,28,22,.85),rgba(40,28,22,0))}
-.mc-a .shop{position:absolute;top:52px;left:0;right:0;text-align:center;color:#fff;font:600 30px Inter;letter-spacing:12px}
-.mc-a h1{position:absolute;top:100px;left:0;right:0;text-align:center;color:#fff;font:500 128px/0.95 "Cormorant Garamond";letter-spacing:-1px}
-.mc-a h1 em{font-style:italic}
-.mc-a .price{position:absolute;left:56px;bottom:230px;background:#fbf6ee;color:#6b1f2a;padding:22px 40px 18px;font:800 130px/1 Archivo;letter-spacing:-1px}
-.mc-a .price small{font:800 56px Archivo;letter-spacing:3px;margin-left:8px;vertical-align:middle}
-.mc-a .brands{position:absolute;left:56px;right:56px;bottom:64px;color:#fbf6ee;font:500 44px/1.25 "Cormorant Garamond";font-style:italic}
-
-/* ---------- CONTEMPORARY B: "Cream Band" ---------- */
-.mc-b{background:#f3ece1}
-.mc-b .frame{position:absolute;left:0;right:0;top:0;height:1030px;overflow:hidden}
-.mc-b .frame .photo{background-image:var(--p)}
-.mc-b .shop{position:absolute;top:48px;left:52px;background:rgba(243,236,225,.92);color:#3a2a22;font:600 26px Inter;letter-spacing:6px;padding:12px 20px}
-.mc-b .price{position:absolute;right:52px;top:880px;background:#6b1f2a;color:#fbf6ee;width:290px;height:290px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:8px solid #f3ece1}
-.mc-b .price b{font:800 140px/0.85 Archivo;letter-spacing:-3px}
-.mc-b .price i{font:700 40px Archivo;font-style:normal;letter-spacing:4px}
-.mc-b h1{position:absolute;left:56px;top:1066px;right:360px;font:600 104px/0.9 "Cormorant Garamond";color:#2b1f1a}
-.mc-b h1 em{font-style:italic;font-weight:500}
-.mc-b .brands{position:absolute;left:56px;right:56px;bottom:46px;font:600 27px/1.45 Inter;color:#5a463b;letter-spacing:3px;text-transform:uppercase}
+/* headline pills (top-right, over open sky/background) */
+.head{position:absolute;right:36px;top:56px;display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+/* pill stack (bottom-right) */
+.pills{position:absolute;right:36px;bottom:120px;display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+.pill{background:#fff;color:#111;border-radius:999px;padding:12px 30px 10px;font-weight:700;font-size:42px;line-height:1.05;box-shadow:0 6px 18px rgba(0,0,0,.18);white-space:nowrap}
+.pill.price{font-size:112px;padding:14px 50px 10px;color:#ff2d6f;letter-spacing:1px}
+.pill.pink{background:#ffe3ec}
+.pill.small{font-size:34px}
 </style></head>
 <body>
 
-<div class="cover aw-a" id="aw-a" style="--p:url(PHOTO_AW_A)">
-  <div class="photo"></div><div class="fade"></div>
-  <div class="shop">KURATED BY KENNY</div>
-  <div class="price">$1<small>STARTS</small></div>
-  <div class="text">
-    <h1>Premium<br><span>Activewear</span></h1>
-    <div class="brands">Alo · Lululemon · Free People Movement · Nike · White Fox · Patagonia · AS Revival</div>
+<!-- MODERN CONTEMPORARY -->
+<div class="cover" id="contemporary" style="--p:url(PHOTO_1);--zoom:118%;--pos:52% 62%">
+  <div class="photo"></div>
+  <div class="logos">
+    <div class="tile"><img src="logos/anthropologie.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>ANTHROPOLOGIE</span>'"></div>
+    <div class="tile"><img src="logos/free-people.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Free People</span>'"></div>
+    <div class="tile"><img src="logos/revolve.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>REVOLVE</span>'"></div>
+    <div class="tile dark"><img src="logos/aritzia.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>ARITZIA</span>'"></div>
+    <div class="tile"><img src="logos/skims.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>SKIMS</span>'"></div>
+    <div class="tile"><img src="logos/polo.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Polo Ralph Lauren</span>'"></div>
+  </div>
+  <div class="head">
+    <div class="pill price">$1 STARTS</div>
+    <div class="pill pink">10 SEC SUDDEN DEATH</div>
+  </div>
+  <div class="pills">
+    <div class="pill">MODERN CONTEMPORARY</div>
+    <div class="pill">KURATEDBYKENNY</div>
+    <div class="pill small">LIVE [DAY] AT [TIME] EST</div>
   </div>
 </div>
 
-<div class="cover aw-b" id="aw-b" style="--p:url(PHOTO_AW_B)">
-  <div class="frame"><div class="photo"></div></div>
-  <div class="shop">KURATED BY KENNY</div>
-  <div class="sticker"><b>$1</b><i>STARTS</i></div>
-  <div class="text"><h1>Premium<br>Activewear</h1></div>
-  <div class="brands">Alo · Lululemon · FP Movement · Nike · White Fox · Patagonia · AS Revival</div>
-</div>
-
-<div class="cover mc-a" id="mc-a" style="--p:url(PHOTO_MC_A)">
-  <div class="photo"></div><div class="top"></div><div class="bot"></div>
-  <div class="shop">KURATED BY KENNY</div>
-  <h1>Modern<br><em>Contemporary</em></h1>
-  <div class="price">$1<small>STARTS</small></div>
-  <div class="brands">Anthropologie · Free People · Revolve · Aritzia · Skims · Polo Ralph Lauren</div>
-</div>
-
-<div class="cover mc-b" id="mc-b" style="--p:url(PHOTO_MC_B)">
-  <div class="frame"><div class="photo"></div></div>
-  <div class="shop">KURATED BY KENNY</div>
-  <div class="price"><b>$1</b><i>STARTS</i></div>
-  <h1>Modern <em>Contemporary</em></h1>
-  <div class="brands">Anthropologie · Free People · Revolve · Aritzia · Skims · Polo</div>
+<!-- PREMIUM ACTIVEWEAR -->
+<div class="cover" id="activewear" style="--p:url(PHOTO_2);--pos:center 30%">
+  <div class="photo"></div>
+  <div class="logos">
+    <div class="tile"><img src="logos/alo.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>alo</span>'"></div>
+    <div class="tile"><img src="logos/lululemon.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>LULULEMON</span>'"></div>
+    <div class="tile"><img src="logos/fp-movement.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>FP MOVEMENT</span>'"></div>
+    <div class="tile dark"><img src="logos/nike.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>NIKE</span>'"></div>
+    <div class="tile"><img src="logos/white-fox.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>WHITE FOX</span>'"></div>
+    <div class="tile"><img src="logos/patagonia.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>patagonia</span>'"></div>
+  </div>
+  <div class="head">
+    <div class="pill price">$1 STARTS</div>
+    <div class="pill pink">10 SEC SUDDEN DEATH</div>
+  </div>
+  <div class="pills">
+    <div class="pill">PREMIUM ACTIVEWEAR</div>
+    <div class="pill">KURATEDBYKENNY</div>
+    <div class="pill small">LIVE [DAY] AT [TIME] EST</div>
+  </div>
 </div>
 
 </body></html>
