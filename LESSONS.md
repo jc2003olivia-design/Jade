@@ -11,6 +11,9 @@ Claude reads this before every task and adds to it as it goes (see
 - Always check brand, category and NWT-vs-used against the photos, not old
   notes. Earlier passes called underwear a "nightgown" and a one-piece
   romper a "2-piece set".
+- Sizing swimsuits from flat measurements: double pit-to-pit and waist for
+  the relaxed circumference; stretch fabric fits bodies ~2–4" bigger. 16"
+  pit-to-pit + 11–13" waist + 22" neckline-to-crotch = Small (US 6–8).
 
 ## Pricing
 
