@@ -1,6 +1,6 @@
 ---
 name: listing-workflow
-description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow", "price the to be listed items", or adds photos to 08-to-be-listed/. Researches sold comps, sets the Depop price in Nifty, checks titles and measurements, and reports per item. Also use when Jade says "make labels" after listing: sends a PDF of 4x4 SKU labels.
+description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow", "price the to be listed items", or adds photos to 08-to-be-listed/. Researches sold comps, sets the Depop price in Nifty, checks titles and measurements, and reports per item. Also use when Jade says "make labels" after listing: sends a PDF of 4x4 SKU labels, then clears the batch folders for new photos.
 ---
 
 # Listing workflow
@@ -119,6 +119,24 @@ thermal labels for the batch and send it to her.
   (`pip install reportlab` if it's missing).
 - Look at one page (render it to PNG) to check nothing is cut off, then
   send the PDF with `SendUserFile`, and commit it.
+- Then clear the batch (next section) right away. Don't wait to be asked.
+
+## Clear the batch (right after the labels are sent)
+Empty the folders so Jade can drop in the next batch's photos. Git keeps
+the history, so nothing is lost.
+- In `08-to-be-listed/`, for every item that got a label, delete everything
+  in its folder: photos, `comps*`, `report.md`, and any other files. Keep
+  the numbered folder and its `.gitkeep`. If the folder name has a SKU
+  (`1 - 0924-01`), rename it back to just the number.
+- Leave any folder whose item was skipped for labels (no SKU / not in
+  Nifty yet) as it is, and tell Jade which ones are still there.
+- Delete this batch's Google Docs in the Drive folder "Sold comps"
+  (`comps <folder #> - ...`) with the Drive connector's `trash_file`. If
+  that isn't available, trash them in Chrome (see `LESSONS.md`), or list
+  them for Jade to delete.
+- Keep the label PDF in `06-label-printer/labels/`. Don't touch Nifty.
+- Commit and push ("Clear listed batch <YYYY-MM-DD>"), then tell Jade the
+  folders are empty and ready for new photos.
 
 ## Pricing settings (private — kept in Google Drive, not in this repo)
 Jade's Nifty price rules and automated offers are screenshots in her Google

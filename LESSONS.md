@@ -23,6 +23,8 @@ Claude reads this before every task and adds to it as it goes (see
 - SKU labels: 4×4" thermal PDF, bold SKU on top, title under it, no date
   (the SKU has it). Make them only when Jade says "make labels" after she
   lists, using the current Nifty titles (`06-label-printer/make_labels.py`).
+- After the labels are sent, clear that batch: empty the `08-to-be-listed/`
+  folders (keep the numbered folders) and trash its "Sold comps" Drive docs.
 
 ## Listings and product research
 
@@ -72,7 +74,8 @@ Claude reads this before every task and adds to it as it goes (see
   Drive "Pricing rules" screenshots with `read_file_content` (it reads the
   text in PNG files).
 
-- The Google Drive connector can't delete files. Use Chrome: the "⋮" menu
-  on the file row, then "Move to trash". A raw Delete keypress gets blocked.
+- To delete Drive files, try the Drive connector's `trash_file` first. If
+  it's missing, use Chrome: the "⋮" menu on the file row, then "Move to
+  trash". A raw Delete keypress gets blocked.
 - Video files are ignored by git (`.gitignore`), so they never get pushed.
   Keep them in Drive or on the computer.
