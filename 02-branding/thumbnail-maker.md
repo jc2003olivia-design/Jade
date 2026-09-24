@@ -31,7 +31,7 @@ Top to bottom, all inside the safe zone:
 2. `PREMIUM` + show name: the big headline
 3. Your photo: waist-up, wearing the hero piece, smiling at the camera (~60% of the frame)
 4. `$1 STARTS`: a round badge by your shoulder
-5. A thin accent line, then 2–3 brand names in caps
+5. A thin accent line, then 2–3 brand logos, large and well spaced (wraps to 2 rows if needed)
 
 ### Premium Contemporary: fall
 - Background: chocolate brown, with a warm amber tone on the photo so it reads as fall
@@ -55,6 +55,14 @@ Top to bottom, all inside the safe zone:
 - Other color options considered: `whatnot-covers/options-contemporary.png`, `whatnot-covers/options-activewear.png`
 - Bundle / lot photo:
 - Sale / promo photo:
+
+## Brand logos
+- Logo files go in `whatnot-covers/logos/`, named after the brand: `nike.svg`,
+  `lululemon.png`, `free-people.png`, `free-people-movement.png`, `polo-ralph-lauren.png`.
+- PNG with a transparent background works best. A plain white background is OK too.
+  Logos are recolored to the cover's text color automatically.
+- If a brand has no logo file, its name shows as big bold text instead (like "DENIM").
+- Have so far: Nike (from the Simple Icons set).
 
 ## Photo shoot checklist
 - [ ] Phone at chest height, vertical, back camera, wipe the lens

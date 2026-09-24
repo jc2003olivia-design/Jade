@@ -25,14 +25,14 @@ SHOWS = {
         bg="#3B2418", ink="#FFF3E0", accent="#E07A2E", badge_ink="#3B2418",
         photo_bg="#321F15", figure="#6E5446",
         head_font=SERIF_B, head_scale=1.0, top="PREMIUM FALL", main="CONTEMPORARY",
-        brands="FREE PEOPLE · POLO RALPH LAUREN · DENIM",
+        brands=["FREE PEOPLE", "POLO RALPH LAUREN", "DENIM"],
         photo=HERE / "photos" / "contemporary-fall.jpg", crop=(215, 440, 865, 1270), warm=0.22, brand_font=F + "liberation/LiberationSans-Bold.ttf",
     ),
     "premium-activewear": dict(
         bg="#1F3FD1", ink="#FFFFFF", accent="#D4FF3A", badge_ink="#1F3FD1",
         photo_bg="#1A35B1", figure="#6278DF",
         head_font=SANS_B, head_scale=0.78, top="PREMIUM", main="ACTIVEWEAR",
-        brands="FREE PEOPLE MOVEMENT · LULULEMON · NIKE", brand_font=SANS_B,
+        brands=["FREE PEOPLE MOVEMENT", "LULULEMON", "NIKE"], brand_font=SANS_B,
         photo=HERE / "photos" / "activewear.jpg", crop=(110, 560, 1010, 1610),
     ),
 }
@@ -55,6 +55,64 @@ def text_img(text, font_path, size, fill, x_scale=1.0, spacing=0):
     if x_scale != 1.0:
         im = im.resize((max(1, int(im.width * x_scale)), im.height), Image.LANCZOS)
     return im
+
+
+def logo_file(brand):
+    """logos/<brand-slug>.png or .svg, e.g. logos/polo-ralph-lauren.png"""
+    slug = brand.lower().replace(" ", "-")
+    for ext in ("png", "svg"):
+        f = HERE / "logos" / f"{slug}.{ext}"
+        if f.exists():
+            return f
+    return None
+
+
+def logo_img(path, height, fill):
+    """Load a logo, trim it, recolor it to one flat color, scale to height."""
+    if path.suffix == ".svg":
+        import io
+        import cairosvg
+        png = cairosvg.svg2png(url=str(path), output_height=height * 6)
+        im = Image.open(io.BytesIO(png)).convert("RGBA")
+    else:
+        im = Image.open(path).convert("RGBA")
+    alpha = im.getchannel("A")
+    if alpha.getextrema() == (255, 255):
+        # no transparency: treat dark pixels as the logo
+        alpha = im.convert("L").point(lambda v: 255 - v)
+    im = im.crop(alpha.getbbox())
+    alpha = alpha.crop(alpha.getbbox())
+    flat = Image.new("RGBA", im.size, fill)
+    flat.putalpha(alpha)
+    return flat.resize((max(1, int(flat.width * height / flat.height)), height), Image.LANCZOS)
+
+
+def brand_img(brand, height, s):
+    f = logo_file(brand)
+    if f:
+        return logo_img(f, height, s["ink"])
+    # no logo file yet: bold wordmark sized to sit level with the logos
+    return text_img(brand, s["brand_font"], int(height * 0.62), s["ink"], spacing=4)
+
+
+def brand_rows(s, max_w, height=96, gap=90):
+    """Brands in rows, well spaced; wraps to a second row when needed."""
+    imgs = [brand_img(b, height, s) for b in s["brands"]]
+    rows, row = [], []
+    for im in imgs:
+        w = sum(i.width for i in row + [im]) + gap * len(row)
+        if row and w > max_w:
+            rows.append(row)
+            row = []
+        row.append(im)
+    rows.append(row)
+    out = []
+    for row in rows:
+        w = sum(i.width for i in row) + gap * (len(row) - 1)
+        k = min(1.0, max_w / w)
+        out.append([i.resize((int(i.width * k), int(i.height * k)), Image.LANCZOS) for i in row]
+                   if k < 1 else row)
+    return out, int(gap)
 
 
 def fit_text(text, font_path, max_w, start, fill, x_scale=1.0, spacing=0):
@@ -134,13 +192,24 @@ def build(name, s, out=None):
     y = paste_center(c, text_img("KURATED BY KENNY", SANS_B, 34, s.get("logo", s["accent"]), spacing=10), y) + 40
     y = paste_center(c, text_img(s["top"], s["head_font"], 64, s["ink"], s["head_scale"], spacing=18), y) + 22
     y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 180, s["ink"], s["head_scale"]), y) + 50
-    photo_box = (sx0 + 40, y, sx1 - 40, sy1 - 190)
+    photo_box = (sx0 + 40, y, sx1 - 40, sy1 - 300)
     draw_photo(c, s, photo_box)
     badge(c, s, photo_box[2] - 175, photo_box[1] + 185, 145)
     d = ImageDraw.Draw(c)
-    ly = sy1 - 150
+    ly = photo_box[3] + 36
     d.line((sx0 + 160, ly, sx1 - 160, ly), fill=s["accent"], width=4)
-    paste_center(c, fit_text(s["brands"], s["brand_font"], inner, 52, s["ink"], spacing=3), ly + 36)
+    rows, gap = brand_rows(s, inner)
+    row_h = [max(i.height for i in r) for r in rows]
+    area_top, area_bot = ly + 4, sy1
+    row_gap = 34
+    by = area_top + (area_bot - area_top - sum(row_h) - row_gap * (len(rows) - 1)) // 2
+    for r, rh in zip(rows, row_h):
+        w = sum(i.width for i in r) + gap * (len(r) - 1)
+        bx = (W - w) // 2
+        for i in r:
+            c.alpha_composite(i, (bx, by + (rh - i.height) // 2))
+            bx += i.width + gap
+        by += rh + row_gap
     if out is None:
         final = s.get("photo") and Path(s["photo"]).exists()
         out = HERE / "final" / f"{name}.png" if final else HERE / f"{name}.png"
