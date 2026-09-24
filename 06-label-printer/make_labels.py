@@ -1,27 +1,21 @@
 """Make 4x4" thermal SKU labels as one PDF, one label per page.
 
-Each label: SKU in big bold type at the top, the item title under it,
-then the date the item was first listed.
+Each label: SKU in big bold type at the top, the item title under it.
+(The SKU already carries the date, MMDD-NN.)
 
 Usage:
     python3 06-label-printer/make_labels.py items.json -o labels.pdf
 
 items.json is a list like:
     [{"sku": "0924-02",
-      "title": "Nutmeg Tennessee Vols Crewneck Sweatshirt Seal Gray XL 90s",
-      "listed": "2026-09-24T22:41:04.511Z"}]
-
-"listed" can be a plain date (2026-09-24) or Nifty's createdAt timestamp,
-which is converted to US Eastern time before the date is printed.
+      "title": "Nutmeg Tennessee Vols Crewneck Sweatshirt Seal Gray XL 90s"}]
 
 Needs reportlab (pip install reportlab).
 """
 
 import argparse
 import json
-from datetime import date, datetime
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 from reportlab.lib.units import inch
 from reportlab.pdfbase.pdfmetrics import registerFont, stringWidth
@@ -35,15 +29,6 @@ registerFont(TTFont("Medium", FONTS / "Montserrat-Medium.ttf"))
 SIZE = 4 * inch
 MARGIN = 0.25 * inch
 WIDTH = SIZE - 2 * MARGIN
-TZ = ZoneInfo("America/New_York")
-
-
-def listed_date(value):
-    if len(value) == 10:
-        d = date.fromisoformat(value)
-    else:
-        d = datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(TZ).date()
-    return f"{d.month}/{d.day}/{d.year}"
 
 
 def fit_size(text, font, largest, smallest=8):
@@ -79,14 +64,9 @@ def draw_label(c, item):
     c.setLineWidth(3)
     c.line(MARGIN, y, SIZE - MARGIN, y)
 
-    # Listing date sits at the bottom; the title fills the space between.
-    date_size = 18
-    date_y = MARGIN
-    c.setFont("Medium", date_size)
-    c.drawCentredString(SIZE / 2, date_y, f"Listed {listed_date(item['listed'])}")
-
-    room = y - 0.2 * inch - (date_y + date_size + 0.2 * inch)
-    for size in range(26, 9, -1):
+    # Title fills the rest of the label, as large as it fits.
+    room = y - 0.2 * inch - MARGIN
+    for size in range(28, 9, -1):
         lines = wrap(item["title"], "Medium", size)
         leading = size * 1.25
         if len(lines) * leading <= room:
@@ -100,7 +80,7 @@ def draw_label(c, item):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("items", help="JSON file with sku, title, listed")
+    parser.add_argument("items", help="JSON file with sku and title")
     parser.add_argument("-o", "--out", required=True, help="PDF to write")
     args = parser.parse_args()
 
