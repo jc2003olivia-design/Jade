@@ -23,8 +23,10 @@ Goal: **priced to sell within ~30 days**, based on what actually *sold*.
 Marketplace sites block automated reading, so don't scrape them or try to
 get around their bot protection.
 
-**Best source: `comps.md` in the item folder.** It holds real sold comps,
-pulled on Jade's computer by the `sold-comps` skill (Claude in Chrome). If
+**Best source: sold comps from the `sold-comps` skill** (Claude in Chrome
+on Jade's computer). Look in two places: `comps.md` in the item folder, and
+the Google Drive folder **"Sold comps"** (Docs named `comps <folder #> - ...`;
+find them with `search_files`, read them with `read_file_content`). If
 it's there, price from it first; with 3+ close sold matches, confidence is
 **High**. If there's no `comps.md` and the item may be worth $40+ (or you'd
 rate it Low), tell Jade to run "pull sold comps" on her computer.
