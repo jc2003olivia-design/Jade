@@ -55,7 +55,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
-- Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
+- Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added) and `premium-activewear-3.png`, an Activewear cover with the mauve ribbed Free People Movement set, same Free People Movement · Lululemon · Nike runners). These and the photos in
   `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
 - Other color options considered: `whatnot-covers/options-contemporary.png`, `whatnot-covers/options-activewear.png`
@@ -95,7 +95,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
   The same fonts are in Canva if you rebuild a cover there.
 - Canva (free): rebuild the layout from the mockups with the fonts above
 - `whatnot-covers/make_covers.py`: regenerates the covers. Put a photo in `photos/` and set its
-  `photo` + `crop` on the show in `SHOWS`.
+  `photo` + `crop` on the show in `SHOWS`. If the photo is too narrow for the slot, the plain backdrop at its sides is stretched out to fill it, so the whole set still fits.
 
 ## Sources
 - [Atlas: Whatnot Thumbnail Design Guide](https://www.atlasmktg.us/blog/whatnot-thumbnail-design-guide)

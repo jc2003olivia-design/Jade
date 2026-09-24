@@ -38,6 +38,11 @@ SHOWS = {
         photo=HERE / "photos" / "activewear-2.webp", crop=(200, 0, 1110, 1052),
     ),
 }
+# Third Premium Activewear cover: same look, new photo (mauve ribbed set).
+SHOWS["premium-activewear-3"] = dict(
+    SHOWS["premium-activewear"], template=False,
+    photo=HERE / "photos" / "activewear-3.webp", crop=(150, 20, 798, 1160),
+)
 # Second Premium Contemporary cover: same look, new photo and brands, no fall line.
 SHOWS["premium-contemporary-2"] = dict(
     SHOWS["premium-contemporary"], footer=None, template=False,
@@ -181,6 +186,16 @@ def draw_photo(canvas, s, box):
             else:
                 cw = chh * bw / bh
             mx, my = (cx0 + cx1) / 2, (cy0 + cy1) / 2
+            pad = int(max(0, cw / 2 - mx, mx + cw / 2 - ph.width))
+            if pad:
+                # crop is wider than the photo: stretch the edge columns of
+                # the plain backdrop out to the sides so the whole outfit fits
+                wide = Image.new("RGBA", (ph.width + 2 * pad, ph.height))
+                wide.paste(ph.crop((0, 0, 4, ph.height)).resize((pad, ph.height)), (0, 0))
+                wide.paste(ph.crop((ph.width - 4, 0, ph.width, ph.height))
+                           .resize((pad, ph.height)), (pad + ph.width, 0))
+                wide.paste(ph, (pad, 0))
+                ph, mx = wide, mx + pad
             ph = ph.crop((int(mx - cw / 2), int(my - chh / 2),
                           int(mx + cw / 2), int(my + chh / 2)))
         r = max(bw / ph.width, bh / ph.height)

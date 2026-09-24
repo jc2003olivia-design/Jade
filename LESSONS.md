@@ -22,6 +22,10 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Tools and gotchas
 
+- `make_covers.py` needs `pip install cairosvg` first (for the Nike SVG) in a fresh session.
+- Cover photos in `whatnot-covers/photos/` don't survive between sessions (gitignored).
+  Save the photo Jade sends there before running the script.
+
 - The Google Drive connector can't delete files. Use Chrome: the "⋮" menu
   on the file row, then "Move to trash". A raw Delete keypress gets blocked.
 - Video files are ignored by git (`.gitignore`), so they never get pushed.
