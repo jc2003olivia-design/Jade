@@ -25,6 +25,8 @@ Jade
 │   └── label-printer.md
 ├── 07-videos/                   All videos, one folder per video
 │   └── 01 video
+├── 08-to-be-listed/             Product photos waiting to be priced/listed
+│                                (one numbered folder per item)
 ├── CLAUDE.md                    Rules Claude follows in this workspace
 ├── LESSONS.md                   What Claude has learned; grows as it works
 ├── .gitignore                   Tells git to skip video files
