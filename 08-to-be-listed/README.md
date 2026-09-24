@@ -17,6 +17,10 @@ Drop product photos here, one folder per clothing piece, named by number:
 - This repo is public, so only put product photos here: no faces, addresses
   or order info.
 
+Optional but best: on your computer (Claude desktop app with Claude in
+Chrome), say **"pull sold comps"**. It saves real sold prices to each
+folder as `comps.md`.
+
 Then tell Claude **"start listing workflow"**. For each numbered folder,
 Claude writes a `report.md` next to the photos with the comps, price,
 title notes and measurement check. Once an item is listed, the photos can

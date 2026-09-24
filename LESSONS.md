@@ -6,6 +6,9 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Jade's preferences
 
+- Sold comps come from Claude in Chrome on Jade's computer (`sold-comps` skill,
+  saves `comps.md` per item). Cloud sessions can't read the marketplaces.
+
 - Listing workflow lives in `.claude/skills/listing-workflow/`; photos go in
   `08-to-be-listed/<number>/`, last photo = measurements.
 - Price to sell within ~30 days, off sold comps, allowing for her offers.
