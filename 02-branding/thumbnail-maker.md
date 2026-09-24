@@ -27,24 +27,27 @@ Whatnot show covers for the two $1-start series: **Premium Contemporary** and
 
 ### Shared layout (both shows)
 Top to bottom, all inside the safe zone:
-1. `KENNY SHOP`: small, spaced-out letters in the accent color
-2. `PREMIUM` + show name: the big headline
-3. Your photo: waist-up, wearing the hero piece, smiling at the camera (~60% of the frame)
-4. `$1 STARTS`: a round badge by your shoulder
-5. A thin accent line, then 2–3 brand logos, large and well spaced (wraps to 2 rows if needed)
+1. **Logo runner**: an edge-to-edge band in the accent color with the show's brand logos
+   repeating, separated by dots (like a ticker). It runs off both sides on purpose.
+2. `KENNY SHOP`: small, spaced-out letters in the accent color
+3. `PREMIUM` + show name: the big headline
+4. Your photo: wearing the hero piece, smiling at the camera, filling most of the frame
+5. `$1 STARTS`: a round badge by your shoulder
+6. (Contemporary) `FALL THEMED` in the accent color
+7. **Logo runner** again at the bottom, shifted so it doesn't mirror the top one
 
 ### Premium Contemporary
 - Background: navy, soft window light
-- Colors: navy `#1F2E4A` · white `#FFFFFF` (headline, logos) · butter yellow `#F6D776` (Kenny Shop, $1 badge, "FALL THEMED")
+- Colors: navy `#1F2E4A` · white `#FFFFFF` (headline) · butter yellow `#F6D776` (runners, Kenny Shop, $1 badge, "FALL THEMED"); logos in the runners are navy
 - Fonts: elegant serif headline (Canva: Playfair Display or Bodoni), clean bold sans for brands
-- Text: `PREMIUM CONTEMPORARY` · `$1 STARTS` · Free People + Polo Ralph Lauren logos · `PREMIUM DENIM` · `FALL THEMED` at the very bottom
+- Text: `PREMIUM CONTEMPORARY` · `$1 STARTS` · `FALL THEMED` · runners: Free People logo · Polo Ralph Lauren logo · `PREMIUM DENIM`
 - Outfit: one elevated piece, like a knit set, slip dress, or blazer + tailored trousers
 
 ### Premium Activewear: bold and high-energy
 - Background: cobalt blue, bright even light
-- Colors: cobalt `#1F3FD1` · white `#FFFFFF` (headline, brands) · neon lime `#D4FF3A` (logo + $1 badge, with cobalt text)
+- Colors: cobalt `#1F3FD1` · white `#FFFFFF` (headline) · neon lime `#D4FF3A` (runners, Kenny Shop, $1 badge); logos in the runners are cobalt
 - Fonts: heavy condensed sans (Canva: Anton, Bebas Neue, or League Gothic)
-- Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · `FREE PEOPLE MOVEMENT · LULULEMON · NIKE` (add `NWT` if new with tags)
+- Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · runners: Free People Movement · Lululemon · Nike logos
 - Outfit: a matching set (Align, Define, Alo) in a color that pops against cobalt (white, black, pink, lime). Avoid blue sets.
 
 ## Templates
@@ -60,7 +63,7 @@ Top to bottom, all inside the safe zone:
 - Logo files go in `whatnot-covers/logos/`, named after the brand: `nike.svg`,
   `lululemon.png`, `free-people.png`, `free-people-movement.png`, `polo-ralph-lauren.png`.
 - PNG with a transparent background works best. A plain white background is OK too.
-  Logos are recolored to the cover's text color automatically.
+  Logos are recolored to the runner's logo color automatically.
 - If a brand has no logo file, its name shows as big bold text instead (like "DENIM").
 - Have so far: Nike (Simple Icons), Lululemon (circle mark only; the wordmark is too small at cover size),
   Free People Movement (the file sent was cut off after "MOVEME", so the "NT" was redrawn to match),
