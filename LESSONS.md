@@ -6,6 +6,9 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Jade's preferences
 
+- Never use the "&" symbol in anything written for Jade (titles, covers,
+  thumbnails, listings, descriptions, docs). Write "and" instead.
+
 ## Listings and product research
 
 - Always check brand, category and NWT-vs-used against the photos, not old

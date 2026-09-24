@@ -19,7 +19,7 @@ Whatnot show covers for the two $1-start series: **Premium Contemporary** and
 3. **3–6 words, bold, high contrast.** If it takes more than a glance to read, it's too much.
 4. **No plain white backdrop.** It blends in and gets scrolled past.
 5. **Say the category and brands.** The top $1 activewear shows lead with brand names
-   ("$1 NWT LULULEMON, ALO & MORE").
+   ("$1 NWT LULULEMON, ALO AND MORE").
 6. **Same template every week.** Only swap the photo and the brand line, so repeat
    buyers recognize you in the feed.
 
