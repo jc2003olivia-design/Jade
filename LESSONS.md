@@ -40,7 +40,7 @@ Claude reads this before every task and adds to it as it goes (see
 - Nifty connector can't edit shipping, category, brand/size/color or photos.
   Only title, description, condition, SKU, cost, quantity and price. List
   blank shipping fields for Jade to fill in the Nifty app.
-- Nifty SKUs look like `0914-18` (MMDD-NN).
+- SKU format is `MMDD-NN` (date + that day's item number, e.g. `0924-02`). Set it in Nifty for every item.
 - eBay, Poshmark and Grailed pages are blocked from cloud sessions, so use
   WebSearch snippets for comps and label them asking prices, not sold.
 - Items in 08-to-be-listed may not be in Nifty yet. Price them anyway and

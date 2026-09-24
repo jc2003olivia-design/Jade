@@ -23,7 +23,9 @@ starting the next. Read `LESSONS.md` first.
   active asking prices.
 - Search sold comps on eBay (sold/completed), Poshmark (sold), Depop (sold),
   Mercari (sold), and anything else useful (Whatnot, Google Shopping for
-  retail price). Match brand + item type + style, then size/condition.
+  retail price). If WebFetch on a marketplace is blocked by the network
+  policy, tell Jade which host was blocked and fall back to WebSearch
+  snippets, labelled as asking prices. Match brand + item type + style, then size/condition.
 - No exact match? Widen step by step: same brand + similar item, then
   similar brands at the same tier. Say which level the price came from and
   tell Jade how she could pin it down better (style number search, Google
@@ -37,6 +39,11 @@ starting the next. Read `LESSONS.md` first.
   the folder name has one, else by brand/type/color, then confirm by
   comparing the listing photo (`pictureUrl`) with the folder photos.
   If there's no match or more than one, stop on that item and ask Jade.
+- **SKU:** set `sku` to `MMDD-NN`: the date it's processed plus a 2-digit
+  item number for that day, where NN is the folder number (folder `2` on
+  Sep 24 → `0924-02`). Before using it, search Nifty SKUs for that `MMDD`
+  so you don't reuse a number. If the day already has items, continue from
+  the highest one.
 - Depop is the source marketplace. Set only `price` (the Depop price) with
   `edit_item`, then `apply_item_edits_action`. Nifty's price rules set
   eBay and Poshmark from it. Never set those by hand.
