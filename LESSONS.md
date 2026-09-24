@@ -17,6 +17,9 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Listings and product research
 
+- Measurement cards have a "check description" box. If it's ticked, flaws
+  must be written in the description.
+
 - Always check brand, category and NWT-vs-used against the photos, not old
   notes. Earlier passes called underwear a "nightgown" and a one-piece
   romper a "2-piece set".
@@ -38,6 +41,12 @@ Claude reads this before every task and adds to it as it goes (see
   Only title, description, condition, SKU, cost, quantity and price. List
   blank shipping fields for Jade to fill in the Nifty app.
 - Nifty SKUs look like `0914-18` (MMDD-NN).
+- eBay, Poshmark and Grailed pages are blocked from cloud sessions, so use
+  WebSearch snippets for comps and label them asking prices, not sold.
+- Items in 08-to-be-listed may not be in Nifty yet. Price them anyway and
+  do the Nifty steps once Jade adds them.
+- Nifty's AI can misread handwritten measurement cards (it read sleeve 21"
+  as 27"). Always compare the card to the description.
 - The Nifty connector can't read the automated-offer settings. Read the
   Drive "Pricing rules" screenshots with `read_file_content` (it reads the
   text in PNG files).
