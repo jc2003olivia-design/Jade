@@ -41,8 +41,8 @@ you can. If a link doesn't land on sold results, use the site's own
 | Platform | Sold search |
 |---|---|
 | eBay | `https://www.ebay.com/sch/i.html?_nkw=QUERY&LH_Sold=1&LH_Complete=1&_sop=13` |
-| Poshmark | `https://poshmark.com/search?query=QUERY&availability=sold_out` |
-| Depop | `https://www.depop.com/search/?q=QUERY`, then turn on the **Sold items** filter |
+| Poshmark | `https://poshmark.com/search?query=QUERY&availability=sold_out&sort_by=added_desc` (sold date isn't shown; see LESSONS for reading the listing date from the link) |
+| Depop | No sold filter in search (checked 2026-09-24). Skip, and write "no Depop data" in the notes. |
 | Terapeak (optional, if Jade is logged in to eBay) | `https://www.ebay.com/sh/research?marketplace=EBAY-US&keywords=QUERY&dayRange=90&tabName=SOLD` |
 
 On each results page, read (screenshot and zoom if needed) up to **10 of
@@ -75,8 +75,10 @@ using Jade's private pricing rules.
 
 ## 5. Save and hand off
 - **If this folder is a git clone of the Jade repo** (`git remote -v` shows
-  `jc2003olivia-design/Jade`): commit the `comps.md` files and push to
-  `main`, so the cloud listing-workflow can see them.
+  `jc2003olivia-design/Jade`): commit the `comps.md` files to `main`, then
+  try `git push`. On Jade's Mac the terminal has no GitHub login, so if the
+  push asks for a username, cancel it and have Jade click **Push origin**
+  in GitHub Desktop. Never ask her for a token.
 - **If it isn't a clone, or the push fails:** save each item's comps to
   Google Drive instead, as a Google Doc in the folder **"Sold comps"**
   (create the folder if it's missing) named `comps <folder #> - <item>`,
