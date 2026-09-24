@@ -55,7 +55,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
-- Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line). These and the photos in
+- Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
   `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
 - Other color options considered: `whatnot-covers/options-contemporary.png`, `whatnot-covers/options-activewear.png`
@@ -70,7 +70,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - If a brand has no logo file, its name shows as big bold text instead (like "DENIM").
 - Have so far: Nike (Simple Icons), Lululemon (circle mark only; the wordmark is too small at cover size),
   Free People Movement (the file sent was cut off after "MOVEME", so the "NT" was redrawn to match),
-  Free People, Polo Ralph Lauren.
+  Free People, Polo Ralph Lauren. Still need: Anthropologie, Aritzia.
 
 ## Photo shoot checklist
 - [ ] Phone at chest height, vertical, back camera, wipe the lens

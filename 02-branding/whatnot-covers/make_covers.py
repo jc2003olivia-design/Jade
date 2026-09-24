@@ -36,9 +36,10 @@ SHOWS = {
         photo=HERE / "photos" / "activewear.jpg", crop=(110, 560, 1010, 1610),
     ),
 }
-# Second Premium Contemporary cover: same look and brands, new photo, no fall line.
+# Second Premium Contemporary cover: same look, new photo and brands, no fall line.
 SHOWS["premium-contemporary-2"] = dict(
     SHOWS["premium-contemporary"], footer=None, template=False,
+    brands=["FREE PEOPLE", "ANTHROPOLOGIE", "ARITZIA"],
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
 )
 
