@@ -8,5 +8,12 @@
 - **eBay** (80 characters max):
 - **Poshmark:**
 
+## Whatnot show titles
+Match the cover: price, then format, then category, then top brands.
+- `$1 STARTS · 10 SEC SUDDEN DEATH · Premium Activewear: Lululemon, Alo, Nike, FP Movement`
+- `$1 STARTS · 10 SEC SUDDEN DEATH · Modern Contemporary: Aritzia, Free People, Skims, Anthropologie`
+
+Only name brands that are really in the show.
+
 ## Keywords that work
 -
