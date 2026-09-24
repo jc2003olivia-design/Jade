@@ -14,7 +14,7 @@
 |  |  |  |  |  |
 
 ## Sourcing
-- Where I source (thrift stores, bins, estate sales, wholesale):
+- Where I source (thrift stores, bins, estate sales, wholesale): Goodwill bins
 - Best days / times:
 - Sourcing budget:
-- Store notes:
+- Store notes: Everything at the Goodwill bins is $1.89
