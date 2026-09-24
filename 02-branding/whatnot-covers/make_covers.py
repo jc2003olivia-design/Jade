@@ -97,7 +97,8 @@ def logo_img(path, height, fill):
 
 # some logos read smaller/larger than others at the same height
 LOGO_SCALE = {"free-people-movement": 1.2, "lululemon": 1.15, "nike": 0.75,
-              "free-people": 0.9, "polo-ralph-lauren": 1.6}  # noqa
+              "free-people": 0.9, "polo-ralph-lauren": 1.6,
+              "anthropologie": 0.4, "skims": 0.75, "ralph-lauren": 0.9}  # noqa
 
 
 def brand_img(brand, height, s, fill=None):

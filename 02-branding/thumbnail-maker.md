@@ -68,9 +68,13 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - PNG with a transparent background works best. A plain white background is OK too.
   Logos are recolored to the runner's logo color automatically.
 - If a brand has no logo file, its name shows as big bold text instead (like "DENIM").
-- Have so far: Nike (Simple Icons), Lululemon (circle mark only; the wordmark is too small at cover size),
-  Free People Movement (the file sent was cut off after "MOVEME", so the "NT" was redrawn to match),
-  Free People, Polo Ralph Lauren. Still need: Anthropologie, Aritzia.
+- Have so far (see `whatnot-covers/logos-preview.png`): Free People, Free People Movement,
+  Anthropologie, Polo Ralph Lauren, Ralph Lauren, Skims, Lululemon, Nike.
+  - Lululemon: circle mark only (the wordmark is too small at cover size).
+  - Free People Movement: the file sent was cut off after "MOVEME", so the "NT" was redrawn to match.
+  - Anthropologie: the file sent was too small (16 px tall) to enlarge cleanly, so the wordmark is
+    redrawn in Playfair Display with the same spaced capitals.
+- Still need: Aritzia (shows as bold text until then).
 
 ## Photo shoot checklist
 - [ ] Phone at chest height, vertical, back camera, wipe the lens
