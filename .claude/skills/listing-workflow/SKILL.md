@@ -21,21 +21,28 @@ starting the next. Read `LESSONS.md` first.
 ## 2. Research pricing comps
 Goal: **priced to sell within ~30 days**, based on what actually *sold*.
 Marketplace sites block automated reading, so don't scrape them or try to
-get around their bot protection. Use these sources, best first:
+get around their bot protection.
 
-1. **eBay sold data via SerpApi** (only if `SERPAPI_KEY` is set in the
-   environment): call `https://serpapi.com/search.json?engine=ebay` with
-   `_nkw=<brand + item + key detail>` and `show_only=Sold`. Take the last
-   90 days, match brand, item type and era; size and condition come second.
-2. **Jade's own sales** (always): `search_orders` for the same brand or
-   category (e.g. "sweatshirt", "Free People"). Her real sale prices show
-   what *her* buyers pay. Compare them with her listing prices on
-   `get_inventory_item` to see how much offers took off.
-3. **Terapeak / sold screenshots Jade drops in the item folder** (any file
-   named `comps*` in `08-to-be-listed/<n>/`, or the Drive folder
-   "Sold comps"). Read the sold prices off them.
-4. **WebSearch snippets** (fallback): eBay and Poshmark results sometimes
-   show "Sold" prices. Label anything else as an asking price.
+**Main method: WebSearch across every platform.** For each item, run one
+search per platform (in parallel):
+- `<brand> <item> <key detail> site:ebay.com` (also try adding "sold")
+- `... site:poshmark.com`
+- `... site:depop.com`
+- `... site:mercari.com OR site:grailed.com OR site:etsy.com`
+- one broad search without `site:` (vintage shops and retail price)
+
+Try a second wording if the first is thin: drop the brand and keep the style
+("90s Tennessee seal crewneck"), or add the size. Collect every price you
+can see: platform, title, size, price, and whether it's **sold** or
+**asking**.
+
+**Extra sources when available:**
+- **Jade's own sales** (always check): `search_orders` for the same brand or
+  category shows what her buyers actually pay.
+- **Sold screenshots** Jade drops in the item folder (files named `comps*`),
+  e.g. Terapeak or the "sold" filter on Depop or Poshmark.
+- **SerpApi eBay sold data**, only if `SERPAPI_KEY` is set:
+  `https://serpapi.com/search.json?engine=ebay&_nkw=<query>&show_only=Sold`.
 
 **Picking the price:**
 - Build a comps table: source, title, price, date, sold or asking.
