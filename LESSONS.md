@@ -41,8 +41,10 @@ Claude reads this before every task and adds to it as it goes (see
   Only title, description, condition, SKU, cost, quantity and price. List
   blank shipping fields for Jade to fill in the Nifty app.
 - SKU format is `MMDD-NN` (date + that day's item number, e.g. `0924-02`). Set it in Nifty for every item.
-- eBay, Poshmark and Grailed pages are blocked from cloud sessions, so use
-  WebSearch snippets for comps and label them asking prices, not sold.
+- Marketplace sites (eBay, Depop, Mercari, Grailed) block automated requests
+  with bot protection even when the network allows them. Don't try to get
+  around it. Use WebSearch snippets (labelled asking prices) or sold data
+  Jade provides.
 - Items in 08-to-be-listed may not be in Nifty yet. Price them anyway and
   do the Nifty steps once Jade adds them.
 - Nifty's AI can misread handwritten measurement cards (it read sleeve 21"
