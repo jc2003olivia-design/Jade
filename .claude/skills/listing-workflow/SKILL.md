@@ -36,7 +36,7 @@ search per platform (in parallel):
 - `<brand> <item> <key detail> site:ebay.com` (also try adding "sold")
 - `... site:poshmark.com`
 - `... site:depop.com`
-- `... site:mercari.com OR site:grailed.com OR site:etsy.com`
+- `... site:grailed.com OR site:etsy.com`
 - one broad search without `site:` (vintage shops and retail price)
 
 Try a second wording if the first is thin: drop the brand and keep the style
@@ -44,9 +44,8 @@ Try a second wording if the first is thin: drop the brand and keep the style
 can see: platform, title, size, price, and whether it's **sold** or
 **asking**.
 
-**Extra sources when available:**
-- **Jade's own sales** (always check): `search_orders` for the same brand or
-  category shows what her buyers actually pay.
+**Extra sources when available** (web facts only. Don't use Jade's own
+Nifty sales history for pricing):
 - **Sold screenshots** Jade drops in the item folder (files named `comps*`),
   e.g. Terapeak or the "sold" filter on Depop or Poshmark.
 - **SerpApi eBay sold data**, only if `SERPAPI_KEY` is set:
@@ -79,11 +78,8 @@ can see: platform, title, size, price, and whether it's **sold** or
   `edit_item`, then `apply_item_edits_action`. Nifty's price rules set
   eBay and Poshmark from it. Never set those by hand.
 - If the item is live (LISTED), applying republishes it; that's expected.
-- Shipping: fill any blank shipping fields. The Nifty connector **cannot
-  edit shipping fields**, so list the blank ones in the report for Jade
-  to fill in the Nifty app, with suggested values from past listings
-  (Depop: "Depop shipping", parcel size by weight; Poshmark: discounted
-  shipping option; eBay: package weight + "Standard" shipping policy).
+- Shipping: the connector can't edit it, and Jade handles it in the app.
+  Don't mention it in reports.
 
 ## 4. Title check — note only, do not change
 - Compare the Nifty title with what the photos show and with the title
@@ -105,7 +101,8 @@ Write `08-to-be-listed/<number>/report.md` and send Jade a short message:
   how the price was picked, how it plays with offers/discounts.
 - Profit math per platform (see "$20 profit rule"). **FLAG** any item that
   won't clear $20 profit after a typical offer.
-- Title notes, measurement notes, shipping fields Jade must fill.
+- Title notes and measurement notes. (Don't list shipping fields; Jade
+  handles those.)
 
 At the end, give a one-line-per-item summary and commit the reports.
 

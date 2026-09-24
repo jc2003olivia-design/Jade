@@ -1,6 +1,6 @@
 ---
 name: sold-comps
-description: Pull real SOLD comps for Jade's to-be-listed items using Claude in Chrome on her computer (eBay, Poshmark, Depop, Mercari, optionally Terapeak), and save them to each item's folder for the listing-workflow to price from. Use when Jade says "pull sold comps", "get comps", or "run the comps step".
+description: Pull real SOLD comps for Jade's to-be-listed items using Claude in Chrome on her computer (eBay, Poshmark, Depop, optionally Terapeak), and save them to each item's folder for the listing-workflow to price from. Use when Jade says "pull sold comps", "get comps", or "run the comps step".
 ---
 
 # Sold comps (runs on Jade's computer with Claude in Chrome)
@@ -43,7 +43,6 @@ you can. If a link doesn't land on sold results, use the site's own
 | eBay | `https://www.ebay.com/sch/i.html?_nkw=QUERY&LH_Sold=1&LH_Complete=1&_sop=13` |
 | Poshmark | `https://poshmark.com/search?query=QUERY&availability=sold_out` |
 | Depop | `https://www.depop.com/search/?q=QUERY`, then turn on the **Sold items** filter |
-| Mercari | `https://www.mercari.com/search/?keyword=QUERY`, then set **Status → Sold** |
 | Terapeak (optional, if Jade is logged in to eBay) | `https://www.ebay.com/sh/research?marketplace=EBAY-US&keywords=QUERY&dayRange=90&tabName=SOLD` |
 
 On each results page, read (screenshot and zoom if needed) up to **10 of

@@ -12,6 +12,8 @@ Claude reads this before every task and adds to it as it goes (see
 
 - Listing workflow lives in `.claude/skills/listing-workflow/`; photos go in
   `08-to-be-listed/<number>/`, last photo = measurements.
+- Price only from web facts (sold/asking comps online), never from Jade's own
+  sales history. Skip Mercari. Don't list shipping fields in reports.
 - Price to sell within ~30 days, off sold comps, allowing for her offers.
 - Every piece should clear $20 profit after fees + typical offer; flag any
   that don't.
