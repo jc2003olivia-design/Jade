@@ -24,6 +24,7 @@ Jade
 │   └── label-printer.md
 ├── 07-videos/                   All videos, one folder per video
 │   └── 01 video
+├── .gitignore                   Tells git to skip video files
 └── .claude/                     Behind the scenes: Claude's tools
     └── skills/video-use/        The video editing tool
 ```
