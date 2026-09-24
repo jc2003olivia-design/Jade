@@ -11,7 +11,7 @@ if ! command -v ffmpeg >/dev/null 2>&1; then
   DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ffmpeg >/dev/null
 fi
 
-pip install -q --root-user-action=ignore requests librosa matplotlib pillow numpy
+pip install -q --root-user-action=ignore requests librosa matplotlib pillow numpy reportlab
 
 # The environment proxy injects the real ElevenLabs key on api.elevenlabs.io.
 # transcribe.py only needs the variable to be non-empty.
