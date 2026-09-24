@@ -97,35 +97,34 @@ def brand_img(brand, height, s, fill=None):
     if f:
         return logo_img(f, int(height * LOGO_SCALE.get(f.stem, 1.0)), fill)
     # no logo file: bold wordmark sized to sit level with the logos
-    return text_img(brand, s["brand_font"], int(height * 0.5), fill, spacing=4)
+    return text_img(brand, s["brand_font"], int(height * 0.62), fill, spacing=4)
 
 
-BAND = 104  # runner height
+def runner(c, s, y0, y1, shift=0.0):
+    """The show's brand logos repeating edge to edge between y0 and y1.
 
-
-def runner(c, s, y, shift=0.0):
-    """Edge-to-edge ticker band of the show's brands, repeating.
-
-    The band runs off both sides on purpose; Whatnot's side crop only
-    trims repeats. shift offsets the sequence so the two bands differ.
+    Sits in the empty strip above/below the safe zone. shift offsets the
+    sequence so the top and bottom runners don't mirror each other.
     """
-    fill = s["badge_ink"]
+    fill = s["ink"]
     d = ImageDraw.Draw(c)
-    d.rectangle((0, y, W, y + BAND), fill=s["accent"])
-    items = [brand_img(b, 64, s, fill) for b in s["brands"]]
-    items = [i if i.height <= BAND - 22 else
-             i.resize((int(i.width * (BAND - 22) / i.height), BAND - 22), Image.LANCZOS)
-             for i in items]
-    gap, dot = 44, 7
+    room = y1 - y0 - 12
+    items = [brand_img(b, 110, s, fill) for b in s["brands"]]
+    items = [i if i.height <= room else
+             i.resize((int(i.width * room / i.height), room), Image.LANCZOS) for i in items]
+    gap, dot = 40, 6
     period = sum(i.width for i in items) + len(items) * (2 * gap + 2 * dot)
     x = -int(period * shift)
+    cy = (y0 + y1) // 2
     while x < W:
         for i in items:
+            iy = cy - i.height // 2
             if x + i.width > 0 and x < W:
-                c.alpha_composite(i, (x, y + (BAND - i.height) // 2)) if x >= 0 else \
-                    c.alpha_composite(i.crop((-x, 0, i.width, i.height)), (0, y + (BAND - i.height) // 2))
+                if x >= 0:
+                    c.alpha_composite(i, (x, iy))
+                else:
+                    c.alpha_composite(i.crop((-x, 0, i.width, i.height)), (0, iy))
             x += i.width + gap
-            cy = y + BAND // 2
             d.ellipse((x, cy - dot, x + 2 * dot, cy + dot), fill=fill)
             x += 2 * dot + gap
 
@@ -203,9 +202,9 @@ def build(name, s, out=None):
     c = Image.new("RGBA", (W, H), s["bg"])
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40
-    runner(c, s, sy0)
-    runner(c, s, sy1 - BAND, shift=0.5)
-    y = sy0 + BAND + 34
+    runner(c, s, 0, sy0)
+    runner(c, s, sy1, H, shift=0.5)
+    y = sy0 + 40
     y = paste_center(c, text_img("KENNY SHOP", SANS_B, 38, s.get("logo", s["accent"]), spacing=10), y) + 34
     y = paste_center(c, text_img(s["top"], s["head_font"], 60, s["ink"], s["head_scale"], spacing=18), y) + 20
     y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
@@ -213,11 +212,11 @@ def build(name, s, out=None):
     if s.get("footer"):
         footer = text_img(s["footer"], SANS_B, 40, s["accent"], spacing=12)
     footer_h = footer.height + 52 if footer else 0
-    photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)
+    photo_box = (sx0 + 40, y, sx1 - 40, sy1 - 20 - footer_h)
     draw_photo(c, s, photo_box)
     badge(c, s, photo_box[2] - 175, photo_box[1] + 185, 145)
     if footer:
-        fy = photo_box[3] + (sy1 - BAND - photo_box[3] - footer.height) // 2
+        fy = photo_box[3] + (sy1 - photo_box[3] - footer.height) // 2
         c.alpha_composite(footer, ((W - footer.width) // 2, fy))
     if out is None:
         final = s.get("photo") and Path(s["photo"]).exists()
