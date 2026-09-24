@@ -1,0 +1,11 @@
+# Raw footage and rendered videos are too big for git
+*.mp4
+*.mov
+*.m4v
+*.avi
+*.mkv
+*.webm
+*.wav
+*.mp3
+07-videos/**/edit/
+.env

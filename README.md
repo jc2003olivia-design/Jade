@@ -10,3 +10,4 @@ Business workspace, organized by area.
 | `04-online-selling/` | Depop, eBay, and Poshmark |
 | `05-pop-up-markets/` | Pop-up market planning (will grow — add files freely) |
 | `06-label-printer/` | Label printer / label maker setup and templates |
+| `07-videos/` | Video editing with the video-use skill (listing videos, TikToks, recaps) |
