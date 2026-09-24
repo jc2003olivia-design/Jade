@@ -6,12 +6,12 @@ Whatnot covers live in `whatnot-covers/`. The research behind them is in `whatno
 - Background: a real, natural photo of me filling the whole cover (daylight, clean background, face clear)
 - Lighting: daylight or golden hour, no filters or beauty mode
 - Fonts / colors: Fredoka (rounded bold); hot pink `#ff2d6f`, white, black
-- Logo placement: brand logos as white sticker tiles scattered around me with slight tilts, like hand-placed story stickers (6 max, never over my face or outfit). $1 STARTS top-right. Category, KENNYSHOP and live time bottom-right.
+- Logo placement: 3 big brand logo stickers in a zigzag (top-left, middle-right, lower-left) with slight tilts. $1 STARTS + 100+ ITEMS top-right. Category, KENNYSHOP and live time bottom-right.
 
 ## Templates
-- Main cover photo: `whatnot-covers/covers.html` (Premium Contemporary, Premium Activewear), 1080 × 1440
+- Main cover photo: `whatnot-covers/template.html`, made with `make-cover.mjs` (photo + category + 3 brands), 1080 × 1440
 - Bundle / lot photo:
 - Sale / promo photo:
 
 ## Tools used
-- `whatnot-covers/render.mjs` turns the template + photo into a PNG
+- `whatnot-covers/make-cover.mjs` turns a photo + 3 brands into a finished cover

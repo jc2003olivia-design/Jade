@@ -20,8 +20,8 @@ Covers: Premium Activewear and Premium Contemporary. Researched Sept 2026.
 - **The first minutes matter.** Whatnot pushes shows that pass viewer milestones (10/25/50/100).
 
 ## How the KennyShop covers apply this
-- A real photo of you fills the cover, with 6 brand logos on the left (no more).
-- **$1 STARTS** is the biggest thing, top-right, in hot pink. **10 SEC SD** (sudden death) is solid hot pink under it.
+- A real photo of you fills the cover, with 3 big brand logos around it.
+- **$1 STARTS** is the biggest thing, top-right, in hot pink. **100+ ITEMS** is solid hot pink under it.
 - The **category** is the second-biggest text. KENNYSHOP and the live time are small.
 - Brand kit: hot pink `#ff2d6f`, white, black, Fredoka font.
 

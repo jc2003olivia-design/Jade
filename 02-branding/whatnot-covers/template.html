@@ -1,0 +1,84 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+/* KennyShop Whatnot cover template. Filled in by make-cover.mjs via window.CFG. */
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#222}
+.cover{width:1080px;height:1440px;position:relative;overflow:hidden;font-family:Fredoka,sans-serif;background:#eee}
+.photo{position:absolute;inset:0;background-repeat:no-repeat}
+/* "whole item" mode: photo fits the width and fades into its own background color above/below */
+.photo.whole{inset:auto;left:0;width:1080px;background-size:100% 100%;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%)}
+
+/* 3 big brand stickers in zigzag slots */
+.tile{position:absolute;width:380px;background:#fff;border-radius:26px;padding:26px 30px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.2)}
+.tile.dark{background:#000}
+.tile img{display:block;width:100%;max-height:200px;object-fit:contain}
+.tile .ph{color:#111;font:700 58px Fredoka;letter-spacing:1px;text-align:center;line-height:1}
+.tile.dark .ph{color:#fff}
+
+/* fixed pills */
+.head{position:absolute;right:36px;top:56px;display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+.pills{position:absolute;right:36px;bottom:120px;display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+.pill{background:#fff;color:#111;border-radius:999px;padding:12px 30px 10px;font-weight:700;font-size:42px;line-height:1.05;box-shadow:0 6px 18px rgba(0,0,0,.18);white-space:nowrap}
+.pill.price{font-size:112px;padding:14px 50px 10px;color:#ff2d6f;letter-spacing:1px;transform:rotate(-2deg)}
+.pill.pink{background:#ff2d6f;color:#fff;font-size:50px}
+.pill.cat{font-size:54px;padding:14px 36px 12px}
+.pill.small{font-size:32px;padding:10px 26px 8px}
+</style></head>
+<body>
+<div class="cover" id="cover">
+  <div class="photo" id="photo"></div>
+  <div id="tiles"></div>
+  <div class="head">
+    <div class="pill price">$1 STARTS</div>
+    <div class="pill pink">100+ ITEMS</div>
+  </div>
+  <div class="pills">
+    <div class="pill cat" id="cat"></div>
+    <div class="pill small">KENNYSHOP</div>
+    <div class="pill small" id="live"></div>
+  </div>
+</div>
+<script>
+const W=1080,H=1440;
+// Slot positions: A top-left, B middle-right, C lower-left
+const SLOTS={A:{x:36,y:70,r:-4},B:{x:664,y:560,r:5},C:{x:40,y:880,r:-3}};
+const load=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src});
+function rowColor(img,top){ // average color of the photo's top or bottom strip
+  const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;
+  const x=c.getContext('2d');x.drawImage(img,0,0);
+  const h=Math.max(2,Math.round(c.height/60)),d=x.getImageData(0,top?0:c.height-h,c.width,h).data;
+  let r=0,g=0,b=0,n=0;for(let i=0;i<d.length;i+=16){r+=d[i];g+=d[i+1];b+=d[i+2];n++}
+  return `rgb(${r/n|0},${g/n|0},${b/n|0})`;
+}
+function isDark(img){
+  const c=document.createElement('canvas');c.width=4;c.height=4;const x=c.getContext('2d');
+  x.drawImage(img,0,0,4,4,0,0,4,4);const d=x.getImageData(0,0,1,1).data;return d[0]+d[1]+d[2]<150;
+}
+(async()=>{
+  const C=window.CFG;
+  document.getElementById('cat').textContent=C.category;
+  document.getElementById('live').textContent=C.live;
+  const ph=document.getElementById('photo'), img=await load(C.photo);
+  const fit=C.fit==='auto'?(img.naturalWidth/img.naturalHeight>W/H+0.02?'whole':'fill'):C.fit;
+  ph.style.backgroundImage=`url("${C.photo}")`;
+  if(fit==='whole'){
+    document.getElementById('cover').style.background=`linear-gradient(${rowColor(img,true)},${rowColor(img,false)})`;
+    const h=Math.round(W*img.naturalHeight/img.naturalWidth), f=parseFloat(C.pos||'55')/100;
+    ph.classList.add('whole');ph.style.height=h+'px';ph.style.top=Math.round((H-h)*f)+'px';
+  }else{ph.style.backgroundSize=C.zoom||'cover';ph.style.backgroundPosition=C.pos||'center 35%';}
+  const tiles=document.getElementById('tiles');
+  for(const [i,b] of C.brands.entries()){
+    const k='ABC'[i], s=SLOTS[k], n=(C.nudge||{})[k]||[0,0];
+    const t=document.createElement('div');t.className='tile';
+    t.style.left=(s.x+n[0])+'px';t.style.top=(s.y+n[1])+'px';t.style.transform=`rotate(${s.r}deg)`;
+    try{const l=await load('logos/'+b.slug+'.png');if(isDark(l))t.classList.add('dark');t.appendChild(l);}
+    catch(e){t.innerHTML=`<span class="ph">${b.name}</span>`}
+    tiles.appendChild(t);
+  }
+  await document.fonts.ready; window.READY=fit;
+})();
+</script>
+</body></html>
