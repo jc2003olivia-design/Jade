@@ -44,6 +44,13 @@ SHOWS["premium-contemporary-2"] = dict(
     brands=["FREE PEOPLE", "ANTHROPOLOGIE", "ARITZIA"],
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
 )
+# Third Premium Contemporary cover: Quince, Free People, Anthropologie.
+# Drop a photo at photos/contemporary-3.jpg (add a crop if needed) for the final.
+SHOWS["premium-contemporary-3"] = dict(
+    SHOWS["premium-contemporary"], footer=None,
+    brands=["QUINCE", "FREE PEOPLE", "ANTHROPOLOGIE"],
+    photo=HERE / "photos" / "contemporary-3.jpg", crop=None,
+)
 
 
 def text_img(text, font_path, size, fill, x_scale=1.0, spacing=0):
@@ -224,8 +231,6 @@ def build(name, s, out=None):
     c = Image.new("RGBA", (W, H), s["bg"])
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40
-    runner(c, s, sy0)
-    runner(c, s, sy1 - BAND, start=1)
     y = sy0 + BAND + 34
     y = paste_center(c, text_img("KENNY SHOP", SANS_B, 38, s.get("logo", s["accent"]), spacing=10), y) + 34
     y = paste_center(c, text_img(s["top"], s["head_font"], 60, s["ink"], s["head_scale"], spacing=18), y) + 20
@@ -237,6 +242,9 @@ def build(name, s, out=None):
     photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)
     draw_photo(c, s, photo_box)
     badge(c, s, photo_box[2] - 175, photo_box[1] + 185, 145)
+    # runners last so nothing from the photo slot spills over them
+    runner(c, s, sy0)
+    runner(c, s, sy1 - BAND, start=1)
     if footer:
         fy = photo_box[3] + (sy1 - BAND - photo_box[3] - footer.height) // 2
         c.alpha_composite(footer, ((W - footer.width) // 2, fy))
@@ -251,7 +259,7 @@ def build(name, s, out=None):
 def preview(covers, out="preview-feed-size.png"):
     """Both covers at feed-card size (270x480) with the safe zone dashed."""
     tw, th, pad = 270, 480, 40
-    sheet = Image.new("RGB", (pad * 3 + tw * 2, th + pad * 2 + 50), "#FFFFFF")
+    sheet = Image.new("RGB", (pad * (len(covers) + 1) + tw * len(covers), th + pad * 2 + 50), "#FFFFFF")
     d = ImageDraw.Draw(sheet)
     k = tw / W
     for i, (name, c) in enumerate(covers.items()):

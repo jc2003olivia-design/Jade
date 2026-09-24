@@ -16,11 +16,18 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Branding and covers
 
+- New cover = new entry in `SHOWS` in `make_covers.py`, then run it. Don't hand-edit the PNGs.
+- Quince has no logo file yet. It shows as bold "QUINCE" text until `logos/quince.png` is added.
+
 ## Customer support
 
 ## Videos
 
 ## Tools and gotchas
+
+- `make_covers.py` needs `pip install cairosvg` for the Nike SVG logo.
+- Brand websites (e.g. quince.com) are blocked from the cloud container, so logos can't be
+  downloaded there. Ask Jade for the logo file instead.
 
 - The Google Drive connector can't delete files. Use Chrome: the "⋮" menu
   on the file row, then "Move to trash". A raw Delete keypress gets blocked.
