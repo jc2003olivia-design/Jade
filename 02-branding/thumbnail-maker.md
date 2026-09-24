@@ -27,17 +27,17 @@ Whatnot show covers for the two $1-start series: **Premium Contemporary** and
 
 ### Shared layout (both shows)
 Top to bottom, all inside the safe zone:
-1. `KURATED BY KENNY`: small, spaced-out letters in the accent color
+1. `KENNY SHOP`: small, spaced-out letters in the accent color
 2. `PREMIUM` + show name: the big headline
 3. Your photo: waist-up, wearing the hero piece, smiling at the camera (~60% of the frame)
 4. `$1 STARTS`: a round badge by your shoulder
 5. A thin accent line, then 2–3 brand logos, large and well spaced (wraps to 2 rows if needed)
 
-### Premium Contemporary: fall
-- Background: chocolate brown, with a warm amber tone on the photo so it reads as fall
-- Colors: chocolate `#3B2418` · cream `#FFF3E0` (headline, brands) · pumpkin `#E07A2E` (logo + $1 badge, with chocolate text)
+### Premium Contemporary
+- Background: navy, soft window light
+- Colors: navy `#1F2E4A` · white `#FFFFFF` (headline, logos) · butter yellow `#F6D776` (Kenny Shop, $1 badge, "FALL THEMED")
 - Fonts: elegant serif headline (Canva: Playfair Display or Bodoni), clean bold sans for brands
-- Text: `PREMIUM FALL CONTEMPORARY` · `$1 STARTS` · `FREE PEOPLE · POLO RALPH LAUREN · DENIM`
+- Text: `PREMIUM CONTEMPORARY` · `$1 STARTS` · Free People + Polo Ralph Lauren logos · `PREMIUM DENIM` · `FALL THEMED` at the very bottom
 - Outfit: one elevated piece, like a knit set, slip dress, or blazer + tailored trousers
 
 ### Premium Activewear: bold and high-energy
@@ -63,8 +63,8 @@ Top to bottom, all inside the safe zone:
   Logos are recolored to the cover's text color automatically.
 - If a brand has no logo file, its name shows as big bold text instead (like "DENIM").
 - Have so far: Nike (Simple Icons), Lululemon (circle mark only; the wordmark is too small at cover size),
-  Free People Movement (the file sent was cut off after "MOVEME", so the "NT" was redrawn to match).
-  Still need: Free People, Polo Ralph Lauren.
+  Free People Movement (the file sent was cut off after "MOVEME", so the "NT" was redrawn to match),
+  Free People, Polo Ralph Lauren.
 
 ## Photo shoot checklist
 - [ ] Phone at chest height, vertical, back camera, wipe the lens

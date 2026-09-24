@@ -21,12 +21,11 @@ SANS = F + "liberation/LiberationSans-Regular.ttf"
 
 SHOWS = {
     "premium-contemporary": dict(
-        # fall: chocolate + cream + pumpkin
-        bg="#3B2418", ink="#FFF3E0", accent="#E07A2E", badge_ink="#3B2418",
-        photo_bg="#321F15", figure="#6E5446",
-        head_font=SERIF_B, head_scale=1.0, top="PREMIUM FALL", main="CONTEMPORARY",
-        brands=["FREE PEOPLE", "POLO RALPH LAUREN", "DENIM"],
-        photo=HERE / "photos" / "contemporary-fall.jpg", crop=(215, 440, 865, 1270), warm=0.22, brand_font=F + "liberation/LiberationSans-Bold.ttf",
+        bg="#1F2E4A", ink="#FFFFFF", accent="#F6D776", badge_ink="#1F2E4A",
+        photo_bg="#1A273F", figure="#62718A",
+        head_font=SERIF_B, head_scale=1.0, top="PREMIUM", main="CONTEMPORARY",
+        brands=["FREE PEOPLE", "POLO RALPH LAUREN", "PREMIUM DENIM"], footer="FALL THEMED",
+        photo=HERE / "photos" / "contemporary-fall.jpg", crop=(215, 440, 865, 1270), brand_font=F + "liberation/LiberationSans-Bold.ttf",
     ),
     "premium-activewear": dict(
         bg="#1F3FD1", ink="#FFFFFF", accent="#D4FF3A", badge_ink="#1F3FD1",
@@ -88,7 +87,8 @@ def logo_img(path, height, fill):
 
 
 # some logos read smaller/larger than others at the same height
-LOGO_SCALE = {"free-people-movement": 1.2, "lululemon": 1.15, "nike": 0.75}
+LOGO_SCALE = {"free-people-movement": 1.2, "lululemon": 1.15, "nike": 0.75,
+              "free-people": 0.9, "polo-ralph-lauren": 1.6}
 
 
 def brand_img(brand, height, s):
@@ -193,19 +193,27 @@ def build(name, s, out=None):
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40
     y = sy0 + 40
-    y = paste_center(c, text_img("KURATED BY KENNY", SANS_B, 34, s.get("logo", s["accent"]), spacing=10), y) + 40
+    y = paste_center(c, text_img("KENNY SHOP", SANS_B, 38, s.get("logo", s["accent"]), spacing=10), y) + 40
     y = paste_center(c, text_img(s["top"], s["head_font"], 64, s["ink"], s["head_scale"], spacing=18), y) + 22
     y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 180, s["ink"], s["head_scale"]), y) + 50
-    photo_box = (sx0 + 40, y, sx1 - 40, sy1 - 300)
+    rows, gap = brand_rows(s, inner)
+    row_h = [max(i.height for i in r) for r in rows]
+    row_gap = 34
+    brands_h = sum(row_h) + row_gap * (len(rows) - 1)
+    footer = None
+    if s.get("footer"):
+        footer = text_img(s["footer"], SANS_B, 40, s["accent"], spacing=12)
+    footer_h = footer.height + 36 if footer else 0
+    bottom_h = 36 + 30 + brands_h + 24 + footer_h
+    photo_box = (sx0 + 40, y, sx1 - 40, min(sy1 - 300, sy1 - bottom_h))
     draw_photo(c, s, photo_box)
     badge(c, s, photo_box[2] - 175, photo_box[1] + 185, 145)
     d = ImageDraw.Draw(c)
     ly = photo_box[3] + 36
     d.line((sx0 + 160, ly, sx1 - 160, ly), fill=s["accent"], width=4)
-    rows, gap = brand_rows(s, inner)
-    row_h = [max(i.height for i in r) for r in rows]
-    area_top, area_bot = ly + 4, sy1
-    row_gap = 34
+    area_top, area_bot = ly + 4, sy1 - footer_h
+    if footer:
+        c.alpha_composite(footer, ((W - footer.width) // 2, sy1 - footer.height))
     by = area_top + (area_bot - area_top - sum(row_h) - row_gap * (len(rows) - 1)) // 2
     for r, rh in zip(rows, row_h):
         w = sum(i.width for i in r) + gap * (len(r) - 1)
