@@ -24,6 +24,8 @@ Jade
 │   └── label-printer.md
 ├── 07-videos/                   All videos, one folder per video
 │   └── 01 video
+├── CLAUDE.md                    Rules Claude follows in this workspace
+├── LESSONS.md                   What Claude has learned; grows as it works
 ├── .gitignore                   Tells git to skip video files
 └── .claude/                     Behind the scenes: Claude's tools
     └── skills/video-use/        The video editing tool
