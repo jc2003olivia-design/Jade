@@ -1,0 +1,1 @@
+Vendored from https://github.com/browser-use/video-use @ 9575612f066aa517354790a645fd90f9f95a743b (MIT). To update, re-copy from upstream.

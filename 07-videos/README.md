@@ -15,11 +15,10 @@ Video files are not committed to git (too big), see `.gitignore`. Finished
 videos get sent to you directly or uploaded to Google Drive.
 
 ## Setup each new cloud session
-Cloud sessions start fresh, so Claude needs to install these first:
-- `apt-get install -y ffmpeg`
-- `pip install requests librosa matplotlib pillow numpy`
-- `ELEVENLABS_API_KEY` must be non-empty (any value works in the cloud: the
-  environment proxy puts the real key on requests to api.elevenlabs.io)
+Automatic: `.claude/hooks/session-start.sh` installs ffmpeg and the Python
+packages when a cloud session starts, and sets `ELEVENLABS_API_KEY` to a
+placeholder (the environment proxy supplies the real key on requests to
+api.elevenlabs.io).
 
 ## Ideas
 - Depop / Poshmark listing videos
