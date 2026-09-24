@@ -22,7 +22,9 @@ Jade
 ├── 05-pop-up-markets/           In-person markets (add a file per event)
 │   └── planning.md
 ├── 06-label-printer/            Label printer setup and templates
-│   └── label-printer.md
+│   ├── label-printer.md
+│   ├── labels/                  Printed label PDFs saved here
+│   └── make_labels.py
 ├── 07-videos/                   All videos, one folder per video
 │   └── 01 video
 ├── 08-to-be-listed/             Product photos waiting to be priced/listed
