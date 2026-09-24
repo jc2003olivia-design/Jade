@@ -106,12 +106,12 @@ def badge(canvas, s, cx, cy, r):
     canvas.alpha_composite(small, (cx - small.width // 2, y + big.height + 18))
 
 
-def build(name, s):
+def build(name, s, out=None):
     c = Image.new("RGBA", (W, H), s["bg"])
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40
     y = sy0 + 40
-    y = paste_center(c, text_img("KURATED BY KENNY", SANS_B, 34, s["accent"], spacing=10), y) + 40
+    y = paste_center(c, text_img("KURATED BY KENNY", SANS_B, 34, s.get("logo", s["accent"]), spacing=10), y) + 40
     y = paste_center(c, text_img(s["top"], s["head_font"], 64, s["ink"], s["head_scale"], spacing=18), y) + 22
     y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 180, s["ink"], s["head_scale"]), y) + 50
     photo_box = (sx0 + 40, y, sx1 - 40, sy1 - 190)
@@ -121,7 +121,7 @@ def build(name, s):
     ly = sy1 - 150
     d.line((sx0 + 160, ly, sx1 - 160, ly), fill=s["accent"], width=4)
     paste_center(c, fit_text(s["brands"], s["brand_font"], inner, 52, s["ink"], spacing=3), ly + 36)
-    out = HERE / f"{name}.png"
+    out = out or HERE / f"{name}.png"
     c.convert("RGB").save(out, optimize=True)
     return c
 
