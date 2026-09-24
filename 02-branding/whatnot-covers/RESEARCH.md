@@ -1,6 +1,6 @@
 # Live-Show Branding Research (Whatnot, women's resale)
 
-Covers: Premium Activewear and Modern Contemporary. Researched Sept 2026.
+Covers: Premium Activewear and Premium Contemporary. Researched Sept 2026.
 
 ## How covers get seen
 - **Phone size is small.** In the feed a cover shows about 150–200px wide, so anything you can't read at that size is just decoration. Only 3 things need to read small: **$1 STARTS**, the **category**, and **your face**.
@@ -19,10 +19,10 @@ Covers: Premium Activewear and Modern Contemporary. Researched Sept 2026.
 - **Promote the day before** on IG/TikTok, using the cover plus 2–3 preview pieces.
 - **The first minutes matter.** Whatnot pushes shows that pass viewer milestones (10/25/50/100).
 
-## How the Kurated by Kenny covers apply this
+## How the KennyShop covers apply this
 - A real photo of you fills the cover, with 6 brand logos on the left (no more).
-- **$1 STARTS** is the biggest thing, top-right, in hot pink. **10 SEC SUDDEN DEATH** is solid hot pink under it.
-- The **category** is the second-biggest text. The shop name and live time are small.
+- **$1 STARTS** is the biggest thing, top-right, in hot pink. **10 SEC SD** (sudden death) is solid hot pink under it.
+- The **category** is the second-biggest text. KENNYSHOP and the live time are small.
 - Brand kit: hot pink `#ff2d6f`, white, black, Fredoka font.
 
 ## Sources

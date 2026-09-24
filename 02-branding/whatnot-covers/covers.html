@@ -13,14 +13,14 @@ body{background:#222}
 .logos{position:absolute;inset:0;pointer-events:none}
 .logos .tile{position:absolute}
 .tile{background:#fff;border-radius:22px;height:104px;width:260px;display:flex;align-items:center;justify-content:center;padding:14px 20px;box-shadow:0 6px 18px rgba(0,0,0,.18);overflow:hidden}
-.tile img{max-width:100%;max-height:100%;object-fit:contain}
+.tile img{width:100%;height:100%;object-fit:contain}
 .tile .ph{color:#111;text-align:center;line-height:1}
 /* placeholder wordmark styles (used only until real logos arrive) */
 .serif{font:500 34px "Cormorant Garamond";letter-spacing:1px}
 .caps{font:600 21px Inter;letter-spacing:3px}
 .bold{font:900 40px Archivo;letter-spacing:-1px}
 .tile.round{width:190px;height:190px;border-radius:50%}
-.tile.dark{background:#111}.tile.dark .ph{color:#fff}
+.tile.dark{background:#000}.tile.dark .ph{color:#fff}
 
 /* headline pills (top-right, over open sky/background) */
 .head{position:absolute;right:36px;top:56px;display:flex;flex-direction:column;align-items:flex-end;gap:18px}
@@ -34,25 +34,25 @@ body{background:#222}
 </style></head>
 <body>
 
-<!-- MODERN CONTEMPORARY -->
-<div class="cover" id="contemporary" style="--p:url(PHOTO_1);--zoom:118%;--pos:52% 62%">
+<!-- PREMIUM CONTEMPORARY -->
+<div class="cover" id="contemporary" style="--p:url(PHOTO_1);--pos:50% 46%">
   <div class="photo"></div>
   <div class="logos">
-    <div class="tile" style="left:40px;top:64px;width:290px;transform:rotate(-4deg)"><img src="logos/anthropologie.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>ANTHROPOLOGIE</span>'"></div>
-    <div class="tile round" style="left:80px;top:236px;transform:rotate(5deg)"><img src="logos/free-people.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Free People</span>'"></div>
+    <div class="tile" style="left:40px;top:64px;width:290px;transform:rotate(-4deg)"><img style="padding:0 4px" src="logos/anthropologie.png" onerror="this.outerHTML='<span class=&quot;ph caps&quot;>ANTHROPOLOGIE</span>'"></div>
+    <div class="tile" style="left:70px;top:246px;width:280px;height:112px;transform:rotate(5deg)"><img src="logos/free-people.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Free People</span>'"></div>
     <div class="tile" style="left:800px;top:330px;width:240px;transform:rotate(6deg)"><img src="logos/revolve.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>REVOLVE</span>'"></div>
     <div class="tile dark" style="left:30px;top:480px;width:250px;transform:rotate(-2deg)"><img src="logos/aritzia.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>ARITZIA</span>'"></div>
     <div class="tile" style="left:820px;top:560px;width:220px;transform:rotate(-5deg)"><img src="logos/skims.png" onerror="this.outerHTML='<span class=&quot;ph bold&quot;>SKIMS</span>'"></div>
-    <div class="tile" style="left:56px;top:700px;width:270px;transform:rotate(4deg)"><img src="logos/polo.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Polo Ralph Lauren</span>'"></div>
+    <div class="tile round" style="left:70px;top:660px;width:210px;height:210px;padding:34px;transform:rotate(4deg)"><img src="logos/polo.png" onerror="this.outerHTML='<span class=&quot;ph serif&quot;>Polo Ralph Lauren</span>'"></div>
   </div>
   <div class="head">
     <div class="pill price">$1 STARTS</div>
-    <div class="pill pink">10 SEC SUDDEN DEATH</div>
+    <div class="pill pink">10 SEC SD</div>
   </div>
   <div class="pills">
-    <div class="pill cat">MODERN CONTEMPORARY</div>
-    <div class="pill small">KURATEDBYKENNY</div>
-    <div class="pill small">LIVE [DAY] AT [TIME] EST</div>
+    <div class="pill cat">PREMIUM CONTEMPORARY</div>
+    <div class="pill small">KENNYSHOP</div>
+    <div class="pill small">LIVE FRIDAY 7 PM EST</div>
   </div>
 </div>
 
@@ -69,11 +69,11 @@ body{background:#222}
   </div>
   <div class="head">
     <div class="pill price">$1 STARTS</div>
-    <div class="pill pink">10 SEC SUDDEN DEATH</div>
+    <div class="pill pink">10 SEC SD</div>
   </div>
   <div class="pills">
     <div class="pill cat">PREMIUM ACTIVEWEAR</div>
-    <div class="pill small">KURATEDBYKENNY</div>
+    <div class="pill small">KENNYSHOP</div>
     <div class="pill small">LIVE [DAY] AT [TIME] EST</div>
   </div>
 </div>

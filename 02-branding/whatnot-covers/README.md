@@ -1,6 +1,6 @@
 # Whatnot Cover Photos
 
-Show thumbnails for Kurated by Kenny. Every cover shows **$1 STARTS**.
+Show thumbnails for KennyShop. Every cover shows **$1 STARTS**.
 
 ## Research: what gets people to click
 - **The thumbnail matters more than anything else.** Sellers report 2–3x more clicks just from changing the thumbnail.
@@ -13,16 +13,16 @@ Show thumbnails for Kurated by Kenny. Every cover shows **$1 STARTS**.
 ## Current style: "sticker story" (based on Jade's own past covers)
 A full-bleed, real photo, with brand logos as white sticker tiles scattered around the photo at slight tilts (6 max, never over the face or outfit) and rounded "pill" text stickers. One font (Fredoka) and one pill style, so the covers look like a set.
 
-- **Top-right:** **$1 STARTS** (biggest, pink) and **10 SEC SUDDEN DEATH**, placed over open background so they never cover the outfit.
-- **Bottom-right:** category, KURATEDBYKENNY, and LIVE day/time.
+- **Top-right:** **$1 STARTS** (biggest, pink) and **10 SEC SD** (sudden death), placed over open background so they never cover the outfit.
+- **Bottom-right:** category, KENNYSHOP, and LIVE day/time.
 - **6 logos per cover, max.** More than that turns to noise at feed size.
 
 | Cover | Photo | Logos (`logos/<name>.png`) |
 |---|---|---|
-| `out/contemporary.png` | `photos/contemporary-denim-dress.jpg` | anthropologie, free-people, revolve, aritzia, skims, polo |
+| `out/contemporary.png` (Premium Contemporary, live Fri 7 PM EST) | `photos/contemporary-orange-mirror.jpg` | anthropologie, free-people, aritzia, skims, polo (Ralph Lauren) ✓ · revolve still needed |
 | `out/activewear.png` | *needed: an activewear photo* | alo, lululemon, fp-movement, nike, white-fox, patagonia |
 
-Any logo file that isn't in `logos/` yet shows as a typed placeholder tile. The LIVE pill still needs the real day and time.
+Any logo file that isn't in `logos/` yet shows as a typed placeholder tile. The activewear LIVE pill still needs its day and time.
 
 ## Shot list (take these on your phone, vertical)
 No filters and no beauty mode. Stand near a big window with daylight hitting your face, or shoot outside in shade/golden hour. Leave open space (sky, wall) on the upper right: that is where $1 STARTS goes.
