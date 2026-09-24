@@ -16,6 +16,9 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Branding and covers
 
+- "Shows" means Jade's Whatnot live shows. Show titles live in
+  `02-branding/titles.md`; keep them matched to the cover's brands and emoji.
+
 ## Customer support
 
 ## Videos
