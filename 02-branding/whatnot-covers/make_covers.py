@@ -2,17 +2,17 @@
 
 Run:  python3 make_covers.py
 Makes a PNG per show plus a preview sheet showing both at phone-feed size
-with the safe zone marked. The grey figure is a placeholder: swap in a
-waist-up photo of you wearing the hero piece (in Canva, or edit PHOTO below).
+with the safe zone marked. With no photo, a grey figure stands in (the
+template). Put a photo in photos/ and set "photo" + "crop" on a show to get
+the finished cover in final/ (photos/ and final/ are kept out of git).
 """
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageEnhance, ImageFont
 
 HERE = Path(__file__).parent
 W, H = 1080, 1920
 # Keep everything important inside this box: Whatnot crops the edges.
 SAFE = (86, 192, 994, 1728)
-PHOTO = None  # e.g. HERE / "me-activewear.jpg"
 
 F = "/usr/share/fonts/truetype/"
 SERIF_B = F + "liberation/LiberationSerif-Bold.ttf"
@@ -21,16 +21,19 @@ SANS = F + "liberation/LiberationSans-Regular.ttf"
 
 SHOWS = {
     "premium-contemporary": dict(
-        bg="#1F2E4A", ink="#FFFFFF", accent="#F6D776", badge_ink="#1F2E4A",
-        photo_bg="#1A273F", figure="#62718A",
-        head_font=SERIF_B, head_scale=1.0, top="PREMIUM", main="CONTEMPORARY",
-        brands="ARITZIA · FREE PEOPLE · REFORMATION", brand_font=F + "liberation/LiberationSans-Bold.ttf",
+        # fall: chocolate + cream + pumpkin
+        bg="#3B2418", ink="#FFF3E0", accent="#E07A2E", badge_ink="#3B2418",
+        photo_bg="#321F15", figure="#6E5446",
+        head_font=SERIF_B, head_scale=1.0, top="PREMIUM FALL", main="CONTEMPORARY",
+        brands="FREE PEOPLE · POLO RALPH LAUREN · DENIM",
+        photo=HERE / "photos" / "contemporary-fall.jpg", crop=(215, 440, 865, 1270), warm=0.22, brand_font=F + "liberation/LiberationSans-Bold.ttf",
     ),
     "premium-activewear": dict(
         bg="#1F3FD1", ink="#FFFFFF", accent="#D4FF3A", badge_ink="#1F3FD1",
         photo_bg="#1A35B1", figure="#6278DF",
         head_font=SANS_B, head_scale=0.78, top="PREMIUM", main="ACTIVEWEAR",
-        brands="LULULEMON · ALO · VUORI", brand_font=SANS_B,
+        brands="FREE PEOPLE MOVEMENT · LULULEMON · NIKE", brand_font=SANS_B,
+        photo=HERE / "photos" / "activewear.jpg", crop=(110, 560, 1010, 1610),
     ),
 }
 
@@ -71,13 +74,30 @@ def paste_center(canvas, im, y):
 def draw_photo(canvas, s, box):
     x0, y0, x1, y1 = box
     d = ImageDraw.Draw(canvas)
-    if PHOTO and Path(PHOTO).exists():
-        ph = Image.open(PHOTO).convert("RGBA")
+    photo = s.get("photo")
+    if photo and Path(photo).exists():
+        ph = Image.open(photo).convert("RGBA")
         bw, bh = x1 - x0, y1 - y0
+        if s.get("crop"):
+            # grow the crop box to the photo slot's shape, centered on it
+            cx0, cy0, cx1, cy1 = s["crop"]
+            cw, chh = cx1 - cx0, cy1 - cy0
+            if cw / chh > bw / bh:
+                chh = cw * bh / bw
+            else:
+                cw = chh * bw / bh
+            mx, my = (cx0 + cx1) / 2, (cy0 + cy1) / 2
+            ph = ph.crop((int(mx - cw / 2), int(my - chh / 2),
+                          int(mx + cw / 2), int(my + chh / 2)))
         r = max(bw / ph.width, bh / ph.height)
         ph = ph.resize((int(ph.width * r), int(ph.height * r)), Image.LANCZOS)
         ph = ph.crop(((ph.width - bw) // 2, (ph.height - bh) // 2,
                       (ph.width - bw) // 2 + bw, (ph.height - bh) // 2 + bh))
+        if s.get("warm"):
+            # fall grade: a little less green/blue, amber wash
+            ph = ImageEnhance.Color(ph).enhance(0.85)
+            amber = Image.new("RGBA", ph.size, (214, 120, 50, 255))
+            ph = Image.blend(ph, amber, s["warm"])
         mask = Image.new("L", ph.size, 0)
         ImageDraw.Draw(mask).rounded_rectangle((0, 0, bw, bh), 36, fill=255)
         canvas.paste(ph, (x0, y0), mask)
@@ -121,12 +141,15 @@ def build(name, s, out=None):
     ly = sy1 - 150
     d.line((sx0 + 160, ly, sx1 - 160, ly), fill=s["accent"], width=4)
     paste_center(c, fit_text(s["brands"], s["brand_font"], inner, 52, s["ink"], spacing=3), ly + 36)
-    out = out or HERE / f"{name}.png"
+    if out is None:
+        final = s.get("photo") and Path(s["photo"]).exists()
+        out = HERE / "final" / f"{name}.png" if final else HERE / f"{name}.png"
+        out.parent.mkdir(exist_ok=True)
     c.convert("RGB").save(out, optimize=True)
     return c
 
 
-def preview(covers):
+def preview(covers, out="preview-feed-size.png"):
     """Both covers at feed-card size (270x480) with the safe zone dashed."""
     tw, th, pad = 270, 480, 40
     sheet = Image.new("RGB", (pad * 3 + tw * 2, th + pad * 2 + 50), "#FFFFFF")
@@ -144,10 +167,14 @@ def preview(covers):
                 q = (x + a[0] + (b[0] - a[0]) * (j + 1) / n, pad + a[1] + (b[1] - a[1]) * (j + 1) / n)
                 d.line((p, q), fill="#FF3D8B", width=2)
         d.text((x, pad + th + 12), name, fill="#111111", font=ImageFont.truetype(SANS, 18))
-    sheet.save(HERE / "preview-feed-size.png", optimize=True)
+    sheet.save(HERE / out, optimize=True)
 
 
 if __name__ == "__main__":
-    covers = {n: build(n, s) for n, s in SHOWS.items()}
-    preview(covers)
+    templates = {n: build(n, dict(s, photo=None)) for n, s in SHOWS.items()}
+    preview(templates)
+    finals = {n: build(n, s) for n, s in SHOWS.items() if s.get("photo") and Path(s["photo"]).exists()}
+    if finals:
+        preview(finals, "final/preview-feed-size.png")
+    covers = dict(templates, **finals)
     print("done:", ", ".join(covers))

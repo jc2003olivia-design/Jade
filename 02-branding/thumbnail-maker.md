@@ -33,22 +33,24 @@ Top to bottom, all inside the safe zone:
 4. `$1 STARTS`: a round badge by your shoulder
 5. A thin accent line, then 2–3 brand names in caps
 
-### Premium Contemporary: "quiet luxury"
-- Background: navy, soft window light. Shoot against a plain light wall and put the navy behind you in Canva.
-- Colors: navy `#1F2E4A` · white `#FFFFFF` (headline, brands) · butter yellow `#F6D776` (logo + $1 badge, with navy text)
+### Premium Contemporary: fall
+- Background: chocolate brown, with a warm amber tone on the photo so it reads as fall
+- Colors: chocolate `#3B2418` · cream `#FFF3E0` (headline, brands) · pumpkin `#E07A2E` (logo + $1 badge, with chocolate text)
 - Fonts: elegant serif headline (Canva: Playfair Display or Bodoni), clean bold sans for brands
-- Text: `PREMIUM CONTEMPORARY` · `$1 STARTS` · `ARITZIA · FREE PEOPLE · REFORMATION`
+- Text: `PREMIUM FALL CONTEMPORARY` · `$1 STARTS` · `FREE PEOPLE · POLO RALPH LAUREN · DENIM`
 - Outfit: one elevated piece, like a knit set, slip dress, or blazer + tailored trousers
 
 ### Premium Activewear: bold and high-energy
 - Background: cobalt blue, bright even light
 - Colors: cobalt `#1F3FD1` · white `#FFFFFF` (headline, brands) · neon lime `#D4FF3A` (logo + $1 badge, with cobalt text)
 - Fonts: heavy condensed sans (Canva: Anton, Bebas Neue, or League Gothic)
-- Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · `LULULEMON · ALO · VUORI` (add `NWT` if new with tags)
+- Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · `FREE PEOPLE MOVEMENT · LULULEMON · NIKE` (add `NWT` if new with tags)
 - Outfit: a matching set (Align, Define, Alo) in a color that pops against cobalt (white, black, pink, lime). Avoid blue sets.
 
 ## Templates
-- Main cover photo: `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
+- Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
+- Finished covers with your photos: `whatnot-covers/final/`. These and the photos in
+  `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
 - Other color options considered: `whatnot-covers/options-contemporary.png`, `whatnot-covers/options-activewear.png`
 - Bundle / lot photo:
@@ -70,8 +72,8 @@ Top to bottom, all inside the safe zone:
 
 ## Tools used
 - Canva (free): rebuild the layout from the mockups with the fonts above
-- `whatnot-covers/make_covers.py`: regenerates the mockups. Set `PHOTO` to a photo
-  file to drop your own picture in.
+- `whatnot-covers/make_covers.py`: regenerates the covers. Put a photo in `photos/` and set its
+  `photo` + `crop` on the show in `SHOWS`.
 
 ## Sources
 - [Atlas: Whatnot Thumbnail Design Guide](https://www.atlasmktg.us/blog/whatnot-thumbnail-design-guide)
