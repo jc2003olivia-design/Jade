@@ -77,5 +77,10 @@ Claude reads this before every task and adds to it as it goes (see
 - To delete Drive files, try the Drive connector's `trash_file` first. If
   it's missing, use Chrome: the "⋮" menu on the file row, then "Move to
   trash". A raw Delete keypress gets blocked.
+- Nifty can't crosslist to Vinted (Sept 2026). Vinted needs a second tool
+  (Vendoo, List Perfectly, Crosslist) or listing by hand. See
+  `04-online-selling/vinted.md`.
+- Vinted freezes or bans accounts that look automated. Never auto-post or
+  auto-relist there, and don't drive the Vinted site with Claude in Chrome.
 - Video files are ignored by git (`.gitignore`), so they never get pushed.
   Keep them in Drive or on the computer.
