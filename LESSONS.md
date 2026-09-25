@@ -42,11 +42,24 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Branding and covers
 
+## Whatnot shows
+
+- Show playbook (scripts, item counts, timers, giveaway rules) is
+  `04-online-selling/whatnot.md`. Tag each claim [Whatnot]/[Study]/[Math]/[Test];
+  Jade wants only proven facts, so label anything that isn't.
+- Whatnot requires condition said out loud and "NO PURCHASE NECESSARY" every
+  time a giveaway is promoted. No follow-my-socials or spend-to-enter rules.
+
 ## Customer support
 
 ## Videos
 
 ## Tools and gotchas
+
+- help.whatnot.com pages return 403 to WebFetch. Use the Zendesk API instead:
+  `curl https://help.whatnot.com/api/v2/help_center/en-us/articles/<id>.json`
+  (search: `.../api/v2/help_center/articles/search.json?query=...`). Whatnot's
+  blog (blog.teamwhatnot.com) fetches fine with curl.
 
 - Nifty connector can't edit shipping, category, brand/size/color or photos.
   Only title, description, condition, SKU, cost, quantity and price. List
