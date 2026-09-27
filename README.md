@@ -28,7 +28,7 @@ Jade
 ├── 07-videos/                   All videos, one folder per video
 │   └── 01 video
 ├── 08-to-be-listed/             Reports + comps for items being listed (photos are in Nifty)
-│                                (one numbered folder per item)
+│                                (one <SKU> folder per item)
 ├── CLAUDE.md                    Rules Claude follows in this workspace
 ├── LESSONS.md                   What Claude has learned; grows as it works
 ├── .gitignore                   Tells git to skip video files

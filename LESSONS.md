@@ -32,6 +32,11 @@ Claude reads this before every task and adds to it as it goes (see
 - Measurement cards have a "check description" box. If it's ticked, flaws
   must be written in the description.
 
+- Nifty's AI fills the Depop brand field on its own and can get it wrong
+  (it tagged an "a blissful state of mind" tee as Coin 1804). Check it against
+  the neck label.
+- Nifty drafts may have no measurements photo. Flag it in the report; never
+  guess measurements.
 - Always check brand, category and NWT-vs-used against the photos, not old
   notes. Earlier passes called underwear a "nightgown" and a one-piece
   romper a "2-piece set".
