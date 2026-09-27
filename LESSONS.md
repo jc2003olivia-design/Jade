@@ -10,8 +10,9 @@ Claude reads this before every task and adds to it as it goes (see
   saves `comps.md` per item, or a Google Doc in the Drive folder "Sold comps" if
   it can't push to GitHub). Cloud sessions can't read the marketplaces.
 
-- Listing workflow lives in `.claude/skills/listing-workflow/`; photos go in
-  `08-to-be-listed/<number>/`, last photo = measurements.
+- Listing workflow lives in `.claude/skills/listing-workflow/`. Photos come
+  from Nifty (`get_item_images`), not Drive or the repo; batch = Nifty drafts
+  with no SKU. Last photo = measurements.
 - Price only from web facts (sold/asking comps online), never from Jade's own
   sales history. Skip Mercari. Don't list shipping fields in reports.
 - Price to sell within ~30 days, off sold comps, allowing for her offers.
@@ -66,8 +67,8 @@ Claude reads this before every task and adds to it as it goes (see
 - On Jade's Mac, `git push` from the terminal has no GitHub login. Commit
   locally, then have Jade click "Push origin" in GitHub Desktop (the Jade
   folder is added there). Never ask her to paste tokens.
-- Items in 08-to-be-listed may not be in Nifty yet. Price them anyway and
-  do the Nifty steps once Jade adds them.
+- Nifty `get_item_images` returns at most 4 photos per call; check
+  `totalPictures` and page with `offset` to see the rest.
 - Nifty's AI can misread handwritten measurement cards (it read sleeve 21"
   as 27"). Always compare the card to the description.
 - The Nifty connector can't read the automated-offer settings. Read the

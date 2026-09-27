@@ -27,7 +27,7 @@ Jade
 │   └── make_labels.py
 ├── 07-videos/                   All videos, one folder per video
 │   └── 01 video
-├── 08-to-be-listed/             Product photos waiting to be priced/listed
+├── 08-to-be-listed/             Reports + comps for items being listed (photos are in Nifty)
 │                                (one numbered folder per item)
 ├── CLAUDE.md                    Rules Claude follows in this workspace
 ├── LESSONS.md                   What Claude has learned; grows as it works

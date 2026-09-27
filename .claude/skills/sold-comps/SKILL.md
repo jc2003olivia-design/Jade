@@ -22,11 +22,15 @@ Read `LESSONS.md` first.
   No buyer or seller usernames.
 
 ## 1. Pick the items
-Every numbered folder in `08-to-be-listed/` that has photos but no
-`comps.md` yet. If Jade names specific folders, do only those.
+Items and photos come from **Nifty**. Take every Nifty draft with no SKU
+(`search_inventory`, filterType `drafted`, `MISSING_SKU` warning) that has
+no comps file yet (step 4). If Jade names specific items, do only those.
+See the photos with `get_item_images` (page with `offset` if there are
+more than 4). If the Nifty connector isn't available, ask Jade which items
+to do.
 
 ## 2. Build the search
-Look at the item's photos (or its report, if one exists) and write:
+Look at the item's photos and Nifty title, and write:
 - **Main search:** brand + item type + key detail, e.g.
   `nutmeg tennessee crewneck`, `mainstream swimsuit one piece`.
 - **Wide search:** style without the brand (for obscure brands), e.g.
@@ -54,10 +58,13 @@ For eBay, use the green "Sold" price. Crossed-out prices are the old list
 price. A "Best offer accepted" sale may have gone for less than the price
 shown, so mark it.
 
-## 4. Save `08-to-be-listed/<n>/comps.md`
+## 4. Save `08-to-be-listed/comps/<brand>-<item>.md`
+e.g. `comps/salem-sailor-collar-top.md`. Put the Nifty title on the second
+line so the listing-workflow can match it.
 
 ```markdown
 # Sold comps — <item> (pulled <YYYY-MM-DD>)
+Nifty: <Nifty title>
 Searches: "<main>", "<wide>"
 
 | Platform | Title | Size | Condition | Sold price | Sold date | Link |
@@ -75,14 +82,14 @@ using Jade's private pricing rules.
 
 ## 5. Save and hand off
 - **If this folder is a git clone of the Jade repo** (`git remote -v` shows
-  `jc2003olivia-design/Jade`): commit the `comps.md` files to `main`, then
+  `jc2003olivia-design/Jade`): commit the comps files to `main`, then
   try `git push`. On Jade's Mac the terminal has no GitHub login, so if the
   push asks for a username, cancel it and have Jade click **Push origin**
   in GitHub Desktop. Never ask her for a token.
 - **If it isn't a clone, or the push fails:** save each item's comps to
   Google Drive instead, as a Google Doc in the folder **"Sold comps"**
-  (create the folder if it's missing) named `comps <folder #> - <item>`,
-  e.g. `comps 2 - Nutmeg Tennessee crewneck`. Use the Drive connector's
+  (create the folder if it's missing) named `comps - <item>`,
+  e.g. `comps - Salem sailor collar top`. Use the Drive connector's
   `create_file` with `contentMimeType: "text/plain"`. Then tell Jade the
   comps are in Drive.
 - Tell Jade in one line per item: number of comps, median, range.
