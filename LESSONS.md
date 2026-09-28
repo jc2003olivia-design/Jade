@@ -75,6 +75,9 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Tools and gotchas
 
+- Jade's photo cloud is iCloud. Claude has no iCloud access, so for photo
+  cleanup point her to Photos → Albums → Utilities → Duplicates → Merge, then
+  empty Recently Deleted.
 - Every session starts from `main`, so a change to a skill or LESSONS.md is
   lost to later sessions until its branch is merged. Tell Jade to merge the PR
   when a workflow change is done. (The Sep 27 Nifty-drafts workflow sat
