@@ -30,6 +30,8 @@ Claude reads this before every task and adds to it as it goes (see
   lists, using the current Nifty titles (`06-label-printer/make_labels.py`).
 - Storage boxes are Nifty labels "BOX A"–"BOX H". Jade says which box a batch
   goes in; add that label to each item with `add_labels_action`.
+- Nifty label "Washing" = listed but out being washed, not in a box yet. When
+  Jade says it's back, swap it for the box label she names.
 - After the labels are sent, clear that batch: delete its `08-to-be-listed/<SKU>/`
   folders and `comps/` files.
 
