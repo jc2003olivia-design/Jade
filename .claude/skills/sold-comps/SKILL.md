@@ -22,8 +22,11 @@ Read `LESSONS.md` first.
   No buyer or seller usernames.
 
 ## 1. Pick the items
-Every numbered folder in `08-to-be-listed/` that has photos but no
-`comps.md` yet. If Jade names specific folders, do only those.
+The new pieces in Nifty that don't have a `comps.md` yet (look at their
+photos with Nifty's `get_item_images`, never Google Drive), plus any
+`08-to-be-listed/` folder with photos but no `comps.md`. If Jade names
+specific items, do only those. Save each as
+`08-to-be-listed/<SKU or number>/comps.md`.
 
 ## 2. Build the search
 Look at the item's photos (or its report, if one exists) and write:
@@ -79,12 +82,9 @@ using Jade's private pricing rules.
   try `git push`. On Jade's Mac the terminal has no GitHub login, so if the
   push asks for a username, cancel it and have Jade click **Push origin**
   in GitHub Desktop. Never ask her for a token.
-- **If it isn't a clone, or the push fails:** save each item's comps to
-  Google Drive instead, as a Google Doc in the folder **"Sold comps"**
-  (create the folder if it's missing) named `comps <folder #> - <item>`,
-  e.g. `comps 2 - Nutmeg Tennessee crewneck`. Use the Drive connector's
-  `create_file` with `contentMimeType: "text/plain"`. Then tell Jade the
-  comps are in Drive.
+- **If it isn't a clone:** give Jade each item's comps table in the chat so
+  she can paste it into the listing-workflow session. Don't use Google
+  Drive (Jade's rule).
 - Tell Jade in one line per item: number of comps, median, range.
 - Then she says **"start listing workflow"** (in the cloud or here), and it
   prices from these comps.

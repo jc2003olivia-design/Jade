@@ -1,6 +1,9 @@
 # To Be Listed
 
-Drop product photos here, one folder per clothing piece, named by number:
+**Photos now come straight from Nifty.** Just add the pieces in Nifty and
+Claude reads their photos there. This folder holds Claude's `report.md` and
+`comps.md` per item (`08-to-be-listed/<SKU>/`). You only need to drop photos
+here for a piece that isn't in Nifty yet:
 
 ```
 08-to-be-listed/
