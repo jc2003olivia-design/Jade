@@ -1,6 +1,6 @@
 ---
 name: listing-workflow
-description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow", "price the to be listed items", or adds photos to 08-to-be-listed/. Researches sold comps, sets the Depop price in Nifty, checks titles and measurements, and reports per item.
+description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow", "price the to be listed items", or adds photos to 08-to-be-listed/. Researches sold comps, sets the Depop price in Nifty, checks titles and measurements, and reports per item. Also use when Jade says "make labels" after listing: sends a PDF of 4x4 SKU labels, then clears the batch folders for new photos.
 ---
 
 # Listing workflow
@@ -104,7 +104,39 @@ Write `08-to-be-listed/<number>/report.md` and send Jade a short message:
 - Title notes and measurement notes. (Don't list shipping fields; Jade
   handles those.)
 
-At the end, give a one-line-per-item summary and commit the reports.
+At the end, give a one-line-per-item summary and commit the reports. Tell
+Jade to say "make labels" once she has listed the items.
+
+## SKU labels (only when Jade asks, after she lists)
+Don't make labels at the end of the workflow. Jade lists the items first
+so the titles are final, then says "make labels". Make one PDF of 4×4"
+thermal labels for the batch and send it to her.
+- For each item, re-read Nifty now and take `sku` and the current `title`.
+  Skip items with no SKU or not in Nifty yet, and say so.
+- Write them to a JSON list in the scratchpad
+  (`[{"sku": ..., "title": ...}]`) and run
+  `python3 06-label-printer/make_labels.py <json> -o 06-label-printer/labels/sku-labels-<YYYY-MM-DD>.pdf`
+  (`pip install reportlab` if it's missing).
+- Look at one page (render it to PNG) to check nothing is cut off, then
+  send the PDF with `SendUserFile`, and commit it.
+- Then clear the batch (next section) right away. Don't wait to be asked.
+
+## Clear the batch (right after the labels are sent)
+Empty the folders so Jade can drop in the next batch's photos. Git keeps
+the history, so nothing is lost.
+- In `08-to-be-listed/`, for every item that got a label, delete everything
+  in its folder: photos, `comps*`, `report.md`, and any other files. Keep
+  the numbered folder and its `.gitkeep`. If the folder name has a SKU
+  (`1 - 0924-01`), rename it back to just the number.
+- Leave any folder whose item was skipped for labels (no SKU / not in
+  Nifty yet) as it is, and tell Jade which ones are still there.
+- Delete this batch's Google Docs in the Drive folder "Sold comps"
+  (`comps <folder #> - ...`) with the Drive connector's `trash_file`. If
+  that isn't available, trash them in Chrome (see `LESSONS.md`), or list
+  them for Jade to delete.
+- Keep the label PDF in `06-label-printer/labels/`. Don't touch Nifty.
+- Commit and push ("Clear listed batch <YYYY-MM-DD>"), then tell Jade the
+  folders are empty and ready for new photos.
 
 ## Pricing settings (private — kept in Google Drive, not in this repo)
 Jade's Nifty price rules and automated offers are screenshots in her Google

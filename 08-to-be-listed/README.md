@@ -23,5 +23,7 @@ folder as `comps.md`.
 
 Then tell Claude **"start listing workflow"**. For each numbered folder,
 Claude writes a `report.md` next to the photos with the comps, price,
-title notes and measurement check. Once an item is listed, the photos can
-be deleted from here (git keeps the history).
+title notes and measurement check. After you list the items and say
+**"make labels"**, Claude sends the labels and then empties these folders
+(photos, comps, reports) so they're ready for the next batch. Git keeps the
+history.
