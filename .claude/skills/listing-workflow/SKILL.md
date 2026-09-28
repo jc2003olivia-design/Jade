@@ -1,22 +1,31 @@
 ---
 name: listing-workflow
-description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow", "price the to be listed items", or adds photos to 08-to-be-listed/. Researches sold comps, sets the Depop price in Nifty, checks titles and measurements, and reports per item. Also use when Jade says "make labels" after listing: sends a PDF of 4x4 SKU labels, then clears the batch folders for new photos.
+description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow" or "price the to be listed items". Takes the new Nifty drafts, reads their photos from Nifty, researches sold comps, sets the Depop price in Nifty, checks titles and measurements, and reports per item. Also use when Jade says "make labels" after listing: sends a PDF of 4x4 SKU labels, then clears the batch's report folders.
 ---
 
 # Listing workflow
 
-Items live in `08-to-be-listed/<number>/`, one folder per clothing piece.
-The last photo in each folder is the measurements photo. Work through
-every numbered folder in order and finish each item (steps 1–6) before
-starting the next. Read `LESSONS.md` first.
+Items and photos come from **Nifty**, not the repo. **Never open Google
+Drive** (Jade's rule), not for photos, comps or pricing rules. The
+batch is every Nifty draft with no SKU yet: `search_inventory` with
+filterType `drafted`, keep the ones with the `MISSING_SKU` warning, and work
+oldest first (`createdAt`). Drafts that already have a SKU were done in an
+earlier batch; skip them unless Jade names them. If Jade names items, do
+only those. Finish each item (steps 1–6) before starting the next. Read
+`LESSONS.md` first.
+
+Each item gets a working folder `08-to-be-listed/<SKU>/` (made in step 3)
+for its `report.md`. Photos are not saved to the repo.
 
 ## 1. Look at the photos
-- Open every photo with the Read tool. Resize big ones first with Pillow
-  (longest side ~1600px, into the scratchpad) so they fit.
+- Load the photos with Nifty `get_item_images` (`maxImages` 4). If
+  `totalPictures` is more than you got, call again with `offset` 4, 8...
+  until you've seen them all.
 - Get from the photos: brand, item type, size, color, material, condition
   (NWT / like new / used + flaws), style number if on the tag.
-- Read the measurements off the last photo exactly. If a value is unclear,
-  say so. Never guess.
+- The measurements photo is usually the last one. Read the measurements off
+  it exactly. If a value is unclear, say so. Never guess. If there's no
+  measurements photo, say so in the report.
 
 ## 2. Research pricing comps
 Goal: **priced to sell within ~30 days**, based on what actually *sold*.
@@ -24,11 +33,10 @@ Marketplace sites block automated reading, so don't scrape them or try to
 get around their bot protection.
 
 **Best source: sold comps from the `sold-comps` skill** (Claude in Chrome
-on Jade's computer). Look in two places: `comps.md` in the item folder, and
-the Google Drive folder **"Sold comps"** (Docs named `comps <folder #> - ...`;
-find them with `search_files`, read them with `read_file_content`). If
-it's there, price from it first; with 3+ close sold matches, confidence is
-**High**. If there's no `comps.md` and the item may be worth $40+ (or you'd
+on Jade's computer), saved in `08-to-be-listed/comps/` (files name the
+brand and item, with the Nifty title inside), or pasted by Jade in chat.
+If it's there, price from it first; with 3+ close sold matches, confidence is
+**High**. If there are no comps and the item may be worth $40+ (or you'd
 rate it Low), tell Jade to run "pull sold comps" on her computer.
 
 **Otherwise: WebSearch across every platform.** For each item, run one
@@ -46,8 +54,9 @@ can see: platform, title, size, price, and whether it's **sold** or
 
 **Extra sources when available** (web facts only. Don't use Jade's own
 Nifty sales history for pricing):
-- **Sold screenshots** Jade drops in the item folder (files named `comps*`),
-  e.g. Terapeak or the "sold" filter on Depop or Poshmark.
+- **Sold screenshots** Jade adds to the Nifty item or drops in
+  `08-to-be-listed/` (files named `comps*`), e.g. Terapeak or the "sold"
+  filter on Poshmark.
 - **SerpApi eBay sold data**, only if `SERPAPI_KEY` is set:
   `https://serpapi.com/search.json?engine=ebay&_nkw=<query>&show_only=Sold`.
 
@@ -64,18 +73,16 @@ Nifty sales history for pricing):
   - **Medium:** 1–2 sold comps, or good matches that are only asking prices
   - **Low:** no close matches. Tell Jade to pull Terapeak before listing.
 
-## 3. Update Nifty — Depop price only
-- Find the item in Nifty (`search_inventory`, filterType `all`): by SKU if
-  the folder name has one, else by brand/type/color, then confirm by
-  comparing the listing photo (`pictureUrl`) with the folder photos.
-  If there's no match or more than one, stop on that item and ask Jade.
+## 3. Update Nifty — SKU and Depop price
+- You already have the item from the batch list, so no matching is needed.
 - **SKU:** set `sku` to `MMDD-NN`: the date it's processed plus a 2-digit
-  item number for that day, where NN is the folder number (folder `2` on
-  Sep 24 → `0924-02`). Before using it, search Nifty SKUs for that `MMDD`
-  so you don't reuse a number. If the day already has items, continue from
-  the highest one.
-- Depop is the source marketplace. Set only `price` (the Depop price) with
-  `edit_item`, then `apply_item_edits_action`. Nifty's price rules set
+  item number for that day (items 1, 2, 3... in batch order; Sep 24 →
+  `0924-01`, `0924-02`). First search Nifty SKUs for that `MMDD`
+  (`searchType` `sku`, filterType `all`). If the day already has items,
+  continue from the highest one.
+- Make the item's folder `08-to-be-listed/<SKU>/` for its report.
+- Depop is the source marketplace. Set `sku` and `price` (the Depop price)
+  with `edit_item`, then `apply_item_edits_action`. Nifty's price rules set
   eBay and Poshmark from it. Never set those by hand.
 - If the item is live (LISTED), applying republishes it; that's expected.
 - Shipping: the connector can't edit it, and Jade handles it in the app.
@@ -89,12 +96,12 @@ Nifty sales history for pricing):
   keywords. **Do not edit the title.**
 
 ## 5. Measurements check — note only
-- If the last photo has measurements, check that every one is typed in the
+- If there's a measurements photo, check that every one is typed in the
   Nifty description, with the same numbers. Note what's missing or wrong.
   Don't edit the description unless Jade asks.
 
 ## 6. Report for the item
-Write `08-to-be-listed/<number>/report.md` and send Jade a short message:
+Write `08-to-be-listed/<SKU>/report.md` and send Jade a short message:
 - Item + Nifty SKU, Depop price set (and the eBay/Poshmark prices Nifty
   derived).
 - Pricing explanation: comps found (platform, price, sold date, link),
@@ -111,6 +118,9 @@ Jade to say "make labels" once she has listed the items.
 Don't make labels at the end of the workflow. Jade lists the items first
 so the titles are final, then says "make labels". Make one PDF of 4×4"
 thermal labels for the batch and send it to her.
+- The batch is the newly listed pieces in Nifty (`search_inventory`,
+  filterType `all`, sort `created_at` desc), even if they never went
+  through this workflow. Confirm the count if Jade gave one.
 - For each item, re-read Nifty now and take `sku` and the current `title`.
   Skip items with no SKU or not in Nifty yet, and say so.
 - Write them to a JSON list in the scratchpad
@@ -122,33 +132,24 @@ thermal labels for the batch and send it to her.
 - Then clear the batch (next section) right away. Don't wait to be asked.
 
 ## Clear the batch (right after the labels are sent)
-Empty the folders so Jade can drop in the next batch's photos. Git keeps
-the history, so nothing is lost.
-- In `08-to-be-listed/`, for every item that got a label, delete everything
-  in its folder: photos, `comps*`, `report.md`, and any other files. Keep
-  the numbered folder and its `.gitkeep`. If the folder name has a SKU
-  (`1 - 0924-01`), rename it back to just the number.
-- Leave any folder whose item was skipped for labels (no SKU / not in
-  Nifty yet) as it is, and tell Jade which ones are still there.
-- Delete this batch's Google Docs in the Drive folder "Sold comps"
-  (`comps <folder #> - ...`) with the Drive connector's `trash_file`. If
-  that isn't available, trash them in Chrome (see `LESSONS.md`), or list
-  them for Jade to delete.
+Remove this batch's working files so the next batch starts clean. Git
+keeps the history, so nothing is lost.
+- In `08-to-be-listed/`, for every item that got a label, delete its
+  `<SKU>/` folder and its file in `comps/`. Leftover numbered folders
+  from the old photo setup can be emptied the same way; keep their
+  `.gitkeep`.
+- Leave any folder whose item was skipped for labels (no SKU yet) as it is, and tell Jade which ones are still there.
 - Keep the label PDF in `06-label-printer/labels/`. Don't touch Nifty.
 - Commit and push ("Clear listed batch <YYYY-MM-DD>"), then tell Jade the
-  folders are empty and ready for new photos.
+  batch is cleared and ready for the next Nifty drafts.
 
-## Pricing settings (private — kept in Google Drive, not in this repo)
-Jade's Nifty price rules and automated offers are screenshots in her Google
-Drive folder **"Pricing rules"**. Before pricing a batch:
-1. `search_files` for the folder (`title contains 'Pricing rules'`), list its
-   files (`parentId = '<id>'`), and `read_file_content` each screenshot.
-   That tool reads the text in PNG files.
-2. From them, get the Depop→Poshmark/eBay markups and the offer steps
-   (% off, days listed, price band) for each platform.
-3. Use them in the scratchpad only. **Never write these numbers into the
-   repo** (it's public). Reports should show the math for each item, not
-   the full rule tables.
+## Pricing settings (private, never in this repo)
+Don't read them from Google Drive. The Poshmark and eBay prices Nifty
+derives are on each item's listings (`get_inventory_item`). The Nifty
+connector can't read the automated-offer steps, so ask Jade for them once
+per session if you need them. Use them in the scratchpad only. **Never write
+the rule numbers into the repo** (it's public). Reports should show the math
+for each item, not the full rule tables.
 
 **$20 profit rule:** every piece should clear $20 profit after that
 platform's fees, COGS (from Nifty; assume $1 if blank) and the offer it's

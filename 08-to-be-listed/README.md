@@ -1,29 +1,17 @@
 # To Be Listed
 
-Drop product photos here, one folder per clothing piece, named by number:
+Photos now live in **Nifty**, not here. Add each piece to Nifty as a draft
+with its photos (last photo = measurements photo, ruler or tape on the
+item). Leave the SKU blank; Claude sets it.
 
-```
-08-to-be-listed/
-├── 1/          IMG_0001.jpg, IMG_0002.jpg, ... (last photo = measurements)
-├── 2/
-└── 3/
-```
-
-- **One folder per item**, named with just a number (`1`, `2`, `3`...).
-- **Last photo is always the measurements photo** (ruler / tape on the item).
-- Add the Nifty SKU to the folder name if you have it, e.g. `1 - 0924-01`.
-  That makes matching to Nifty exact. Otherwise Claude matches by photos.
-- JPG or PNG works best. iPhone HEIC photos are OK but slower.
-- This repo is public, so only put product photos here: no faces, addresses
-  or order info.
+Then tell Claude **"start listing workflow"**. It takes every Nifty draft
+with no SKU, looks at the photos in Nifty, sets the SKU and the Depop price,
+and writes a report for each item here as `<SKU>/report.md` (comps, price,
+title notes, measurement check).
 
 Optional but best: on your computer (Claude desktop app with Claude in
-Chrome), say **"pull sold comps"**. It saves real sold prices to each
-folder as `comps.md`.
+Chrome), say **"pull sold comps"** first. It saves real sold prices for
+each draft so the pricing is based on actual sales.
 
-Then tell Claude **"start listing workflow"**. For each numbered folder,
-Claude writes a `report.md` next to the photos with the comps, price,
-title notes and measurement check. After you list the items and say
-**"make labels"**, Claude sends the labels and then empties these folders
-(photos, comps, reports) so they're ready for the next batch. Git keeps the
-history.
+After you list the items and say **"make labels"**, Claude sends the labels
+and then deletes the batch's report folders here. Git keeps the history.
