@@ -32,6 +32,10 @@ Claude reads this before every task and adds to it as it goes (see
   goes in; add that label to each item with `add_labels_action`.
 - After the labels are sent, clear that batch: delete its `08-to-be-listed/<SKU>/`
   folders and `comps/` files.
+- Whatnot: run Premium Activewear and Premium Contemporary as two separate
+  shows (~50 pieces each), not one combined show.
+- Whatnot shows run under one generic listing with $1 starts (Jade calls it
+  "random pull"). Delist from Depop/Poshmark before going live.
 
 ## Listings and product research
 
