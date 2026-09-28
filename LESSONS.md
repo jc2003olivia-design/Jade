@@ -6,29 +6,53 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Jade's preferences
 
+- **Never go into Google Drive.** Get item photos straight from Nifty
+  (`get_item_images`). This applies to pricing rules and comps too.
 - Sold comps come from Claude in Chrome on Jade's computer (`sold-comps` skill,
-  saves `comps.md` per item, or a Google Doc in the Drive folder "Sold comps" if
-  it can't push to GitHub). Cloud sessions can't read the marketplaces.
+  saves `08-to-be-listed/comps/<brand>-<item>.md`). Cloud sessions can't read
+  the marketplaces.
 
-- Listing workflow lives in `.claude/skills/listing-workflow/`; photos go in
-  `08-to-be-listed/<number>/`, last photo = measurements.
+- Listing workflow lives in `.claude/skills/listing-workflow/`. Photos come
+  from Nifty (`get_item_images`), not Drive or the repo; batch = Nifty drafts
+  with no SKU. Last photo = measurements.
+- "Make labels" means the newly listed pieces in Nifty, even if they never
+  had folders or reports here.
 - Price only from web facts (sold/asking comps online), never from Jade's own
   sales history. Skip Mercari. Don't list shipping fields in reports.
 - Price to sell within ~30 days, off sold comps, allowing for her offers.
 - Every piece should clear $20 profit after fees + typical offer; flag any
   that don't.
-- Keep pricing rules, offer settings and fees private. They live in the Drive
-  folder "Pricing rules", never in this public repo.
+- Keep pricing rules, offer settings and fees private, never in this public
+  repo. Ask Jade for the offer steps if needed (Drive is off-limits).
 - In Nifty set only the Depop price; titles and descriptions get notes, not edits.
+- SKU labels: 4×4" thermal PDF, bold SKU on top, title under it, no date
+  (the SKU has it). Make them only when Jade says "make labels" after she
+  lists, using the current Nifty titles (`06-label-printer/make_labels.py`).
+- Storage boxes are Nifty labels "BOX A"–"BOX H". Jade says which box a batch
+  goes in; add that label to each item with `add_labels_action`.
+- After the labels are sent, clear that batch: delete its `08-to-be-listed/<SKU>/`
+  folders and `comps/` files.
+- Whatnot: run Premium Activewear and Premium Contemporary as two separate
+  shows (~50 pieces each), not one combined show.
+- Whatnot shows run under one generic listing with $1 starts (Jade calls it
+  "random pull"). Delist from Depop/Poshmark before going live.
 
 ## Listings and product research
 
 - Measurement cards have a "check description" box. If it's ticked, flaws
   must be written in the description.
 
+- Nifty's AI fills the Depop brand field on its own and can get it wrong
+  (it tagged an "a blissful state of mind" tee as Coin 1804). Check it against
+  the neck label.
+- Nifty drafts may have no measurements photo. Flag it in the report; never
+  guess measurements.
 - Always check brand, category and NWT-vs-used against the photos, not old
   notes. Earlier passes called underwear a "nightgown" and a one-piece
   romper a "2-piece set".
+- Sizing swimsuits from flat measurements: double pit-to-pit and waist for
+  the relaxed circumference; stretch fabric fits bodies ~2–4" bigger. 16"
+  pit-to-pit + 11–13" waist + 22" neckline-to-crotch = Small (US 6–8).
 
 ## Pricing
 
@@ -42,6 +66,11 @@ Claude reads this before every task and adds to it as it goes (see
 ## Videos
 
 ## Tools and gotchas
+
+- Every session starts from `main`, so a change to a skill or LESSONS.md is
+  lost to later sessions until its branch is merged. Tell Jade to merge the PR
+  when a workflow change is done. (The Sep 27 Nifty-drafts workflow sat
+  unmerged and new sessions fell back to the old folder-photos workflow.)
 
 - Nifty connector can't edit shipping, category, brand/size/color or photos.
   Only title, description, condition, SKU, cost, quantity and price. List
@@ -61,17 +90,15 @@ Claude reads this before every task and adds to it as it goes (see
 - On Jade's Mac, `git push` from the terminal has no GitHub login. Commit
   locally, then have Jade click "Push origin" in GitHub Desktop (the Jade
   folder is added there). Never ask her to paste tokens.
-- Items in 08-to-be-listed may not be in Nifty yet. Price them anyway and
-  do the Nifty steps once Jade adds them.
+- Nifty `get_item_images` returns at most 4 photos per call; check
+  `totalPictures` and page with `offset` to see the rest.
 - Nifty's AI can misread handwritten measurement cards (it read sleeve 21"
   as 27"). Always compare the card to the description.
-- The Nifty connector can't read the automated-offer settings. Read the
-  Drive "Pricing rules" screenshots with `read_file_content` (it reads the
-  text in PNG files).
+- The Nifty connector can't read the automated-offer settings. Ask Jade.
+- Items may already be live with a SKU and price. Keep the existing SKU, and
+  if the price is already right, don't edit or apply (applying republishes).
+- Check each marketplace listing's own Brand attribute, not just the item's.
+  Depop got "Unique Vintage" for a Mainstream swimsuit.
 
-- Two Google Drive connectors are installed. The small-business plugin one
-  fails to sign in; use the other Drive connector for search and read.
-- The Google Drive connector can't delete files. Use Chrome: the "⋮" menu
-  on the file row, then "Move to trash". A raw Delete keypress gets blocked.
 - Video files are ignored by git (`.gitignore`), so they never get pushed.
-  Keep them in Drive or on the computer.
+  Keep them on the computer.
