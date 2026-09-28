@@ -7,8 +7,8 @@ Claude reads this before every task and adds to it as it goes (see
 ## Jade's preferences
 
 - Sold comps come from Claude in Chrome on Jade's computer (`sold-comps` skill,
-  saves `comps.md` per item, or a Google Doc in the Drive folder "Sold comps" if
-  it can't push to GitHub). Cloud sessions can't read the marketplaces.
+  saves `08-to-be-listed/comps/<brand>-<item>.md`, or a Google Doc in the Drive
+  folder "Sold comps" if it can't push to GitHub). Cloud sessions can't read the marketplaces.
 
 - Listing workflow lives in `.claude/skills/listing-workflow/`. Photos come
   from Nifty (`get_item_images`), not Drive or the repo; batch = Nifty drafts
@@ -26,8 +26,8 @@ Claude reads this before every task and adds to it as it goes (see
   lists, using the current Nifty titles (`06-label-printer/make_labels.py`).
 - Storage boxes are Nifty labels "BOX A"–"BOX H". Jade says which box a batch
   goes in; add that label to each item with `add_labels_action`.
-- After the labels are sent, clear that batch: empty the `08-to-be-listed/`
-  folders (keep the numbered folders) and trash its "Sold comps" Drive docs.
+- After the labels are sent, clear that batch: delete its `08-to-be-listed/<SKU>/`
+  folders and `comps/` files, and trash its "Sold comps" Drive docs.
 
 ## Listings and product research
 
@@ -42,6 +42,9 @@ Claude reads this before every task and adds to it as it goes (see
 - Always check brand, category and NWT-vs-used against the photos, not old
   notes. Earlier passes called underwear a "nightgown" and a one-piece
   romper a "2-piece set".
+- Sizing swimsuits from flat measurements: double pit-to-pit and waist for
+  the relaxed circumference; stretch fabric fits bodies ~2–4" bigger. 16"
+  pit-to-pit + 11–13" waist + 22" neckline-to-crotch = Small (US 6–8).
 
 ## Pricing
 
@@ -55,6 +58,11 @@ Claude reads this before every task and adds to it as it goes (see
 ## Videos
 
 ## Tools and gotchas
+
+- Every session starts from `main`, so a change to a skill or LESSONS.md is
+  lost to later sessions until its branch is merged. Tell Jade to merge the PR
+  when a workflow change is done. (The Sep 27 Nifty-drafts workflow sat
+  unmerged and new sessions fell back to the old folder-photos workflow.)
 
 - Nifty connector can't edit shipping, category, brand/size/color or photos.
   Only title, description, condition, SKU, cost, quantity and price. List
