@@ -32,10 +32,6 @@ Claude reads this before every task and adds to it as it goes (see
   goes in; add that label to each item with `add_labels_action`.
 - After the labels are sent, clear that batch: delete its `08-to-be-listed/<SKU>/`
   folders and `comps/` files.
-- Whatnot: run Premium Activewear and Premium Contemporary as two separate
-  shows (~50 pieces each), not one combined show.
-- Whatnot shows run under one generic listing with $1 starts (Jade calls it
-  "random pull"). Delist from Depop/Poshmark before going live.
 
 ## Listings and product research
 
@@ -61,6 +57,18 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Branding and covers
 
+## Whatnot shows
+
+- Whatnot: run Premium Activewear and Premium Contemporary as two separate
+  shows (~50 pieces each), not one combined show.
+- Whatnot shows run under one generic listing with $1 starts (Jade calls it
+  "random pull"). Delist from Depop/Poshmark before going live.
+- Show playbook (scripts, item counts, timers, giveaway rules) is
+  `04-online-selling/whatnot.md`. Tag each claim [Whatnot]/[Study]/[Math]/[Test];
+  Jade wants only proven facts, so label anything that isn't.
+- Whatnot requires condition said out loud and "NO PURCHASE NECESSARY" every
+  time a giveaway is promoted. No follow-my-socials or spend-to-enter rules.
+
 ## Customer support
 
 ## Videos
@@ -71,6 +79,10 @@ Claude reads this before every task and adds to it as it goes (see
   lost to later sessions until its branch is merged. Tell Jade to merge the PR
   when a workflow change is done. (The Sep 27 Nifty-drafts workflow sat
   unmerged and new sessions fell back to the old folder-photos workflow.)
+- help.whatnot.com pages return 403 to WebFetch. Use the Zendesk API instead:
+  `curl https://help.whatnot.com/api/v2/help_center/en-us/articles/<id>.json`
+  (search: `.../api/v2/help_center/articles/search.json?query=...`). Whatnot's
+  blog (blog.teamwhatnot.com) fetches fine with curl.
 
 - Nifty connector can't edit shipping, category, brand/size/color or photos.
   Only title, description, condition, SKU, cost, quantity and price. List

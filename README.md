@@ -18,7 +18,8 @@ Jade
 ├── 04-online-selling/           One file per marketplace
 │   ├── depop.md
 │   ├── ebay.md
-│   └── poshmark.md
+│   ├── poshmark.md
+│   └── whatnot.md           How to run the Whatnot shows (with sources)
 ├── 05-pop-up-markets/           In-person markets (add a file per event)
 │   └── planning.md
 ├── 06-label-printer/            Label printer setup and templates
