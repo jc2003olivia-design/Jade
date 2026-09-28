@@ -27,6 +27,8 @@ Claude reads this before every task and adds to it as it goes (see
   folders (keep the numbered folders) and trash its "Sold comps" Drive docs.
 - Whatnot: run Premium Activewear and Premium Contemporary as two separate
   shows (~50 pieces each), not one combined show.
+- Whatnot shows run under one generic listing with $1 starts (Jade calls it
+  "random pull"). Delist from Depop/Poshmark before going live.
 
 ## Listings and product research
 
