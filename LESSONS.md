@@ -68,6 +68,10 @@ Claude reads this before every task and adds to it as it goes (see
   folder is added there). Never ask her to paste tokens.
 - Items in 08-to-be-listed may not be in Nifty yet. Price them anyway and
   do the Nifty steps once Jade adds them.
+- Items may already be live with a SKU and price. Keep the existing SKU, and
+  if the price is already right, don't edit or apply (applying republishes).
+- Check each marketplace listing's own Brand attribute, not just the item's.
+  Depop got "Unique Vintage" for a Mainstream swimsuit.
 - Nifty's AI can misread handwritten measurement cards (it read sleeve 21"
   as 27"). Always compare the card to the description.
 - The Nifty connector can't read the automated-offer settings. Read the
