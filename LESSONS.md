@@ -25,6 +25,8 @@ Claude reads this before every task and adds to it as it goes (see
   lists, using the current Nifty titles (`06-label-printer/make_labels.py`).
 - After the labels are sent, clear that batch: empty the `08-to-be-listed/`
   folders (keep the numbered folders) and trash its "Sold comps" Drive docs.
+- Whatnot: run Premium Activewear and Premium Contemporary as two separate
+  shows (~50 pieces each), not one combined show.
 
 ## Listings and product research
 
