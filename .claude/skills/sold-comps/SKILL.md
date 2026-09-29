@@ -45,18 +45,28 @@ you can. If a link doesn't land on sold results, use the site's own
 | Platform | Sold search |
 |---|---|
 | eBay | `https://www.ebay.com/sch/i.html?_nkw=QUERY&LH_Sold=1&LH_Complete=1&_sop=13` |
-| Poshmark | `https://poshmark.com/search?query=QUERY&availability=sold_out&sort_by=added_desc` (sold date isn't shown; see LESSONS for reading the listing date from the link) |
+| Poshmark | Optional here: the listing-workflow pulls Poshmark sold data itself from the cloud (`posh_sold.py`). Only do it if Jade asks: `https://poshmark.com/search?query=QUERY&availability=sold_out&sort_by=added_desc` |
 | Depop | No sold filter in search (checked 2026-09-24). Skip, and write "no Depop data" in the notes. |
 | Terapeak (optional, if Jade is logged in to eBay) | `https://www.ebay.com/sh/research?marketplace=EBAY-US&keywords=QUERY&dayRange=90&tabName=SOLD` |
 
-On each results page, read (screenshot and zoom if needed) up to **10 of
-the closest matches** from the **last 90 days**. Skip lots, bundles, and
+Spend most of the time on **eBay sold and Terapeak**, since the cloud
+can't reach them. On each results page, read (screenshot and zoom if
+needed) up to **10 of the closest matches** from the **last 90 days**. Skip lots, bundles, and
 anything clearly a different item. If the main search gets fewer than 3
 matches on a platform, try the wide search there too.
 
 For eBay, use the green "Sold" price. Crossed-out prices are the old list
 price. A "Best offer accepted" sale may have gone for less than the price
 shown, so mark it.
+
+Grade each comp: **exact** (same brand and style), **close** (same brand
+and type, similar features, size, condition) or **loose** (anything
+else). Terapeak also shows sell-through and average days to sell for the
+search; note them.
+
+While you're on the pages, note facts about the piece: its style name,
+original retail (from NWT listings or tags in photos), and the words
+sellers of the fastest sales used in their titles.
 
 ## 4. Save `08-to-be-listed/comps/<brand>-<item>.md`
 e.g. `comps/salem-sailor-collar-top.md`. Put the Nifty title on the second
@@ -67,11 +77,13 @@ line so the listing-workflow can match it.
 Nifty: <Nifty title>
 Searches: "<main>", "<wide>"
 
-| Platform | Title | Size | Condition | Sold price | Sold date | Link |
-|---|---|---|---|---|---|---|
-| eBay | ... | XL | used, flaws | $34.99 | 2026-09-10 | https://... |
+| Platform | Title | Size | Condition | Match | Sold price | Sold date | Link |
+|---|---|---|---|---|---|---|---|
+| eBay | ... | XL | used, flaws | close | $34.99 | 2026-09-10 | https://... |
 
-**Summary:** <n> sold comps · median $<x> · range $<low>–$<high>
+**Summary:** <n> sold comps (<e> exact, <c> close) · median of exact+close $<x> · range $<low>–$<high>
+**Terapeak:** sell-through <x>% · avg days to sell <d> (if pulled)
+**Piece facts:** style name, original retail, buyer search words
 **Closest match:** <one line on the best comp and why>
 **Notes:** anything useful, e.g. "clean ones sell $50+, flawed ones ~$35",
 "no Depop sales", "Best offer accepted on 2 of 4 eBay sales"
