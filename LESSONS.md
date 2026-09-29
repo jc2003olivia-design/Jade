@@ -54,6 +54,13 @@ Claude reads this before every task and adds to it as it goes (see
 
 - Nifty: Depop is the source price, and Nifty's rules set the Poshmark and
   eBay prices from it.
+- Asking prices run high. 0927-04 (Jude Connally sleeveless top, S) was set
+  at $28 Depop / $33 Posh from asking prices; close Poshmark sales were
+  $15–23. Always run `posh_sold.py` and anchor on sold, not asking.
+- Poshmark comps are Poshmark prices. Convert to a Depop price through
+  Nifty's markup, not 1:1 (markup stays in the scratchpad).
+- Grade comps exact / close / loose and price from exact + close only.
+  NWT and used, or prints and solids, of the same brand can sell 2× apart.
 
 ## Branding and covers
 
@@ -88,13 +95,18 @@ Claude reads this before every task and adds to it as it goes (see
   Only title, description, condition, SKU, cost, quantity and price. List
   blank shipping fields for Jade to fill in the Nifty app.
 - SKU format is `MMDD-NN` (date + that day's item number, e.g. `0924-02`). Set it in Nifty for every item.
-- Marketplace sites (eBay, Depop, Mercari, Grailed) block automated requests
-  from cloud sessions with bot protection. Don't try to get around it. Use
-  WebSearch snippets (labelled asking prices) or sold data Jade provides.
+- Marketplace sites (eBay, Etsy, Mercari, Grailed, The RealReal,
+  WorthPoint) return 403 to cloud sessions (bot protection). Don't try to
+  get around it. Use WebSearch snippets (labelled asking prices) or sold data Jade provides.
   Claude in Chrome on Jade's computer gets through fine (`sold-comps` skill).
-- Poshmark sold search: add `&sort_by=added_desc`, or relevance shows sales
-  from years ago. Sold dates aren't shown; a listing ID's first 8 hex digits
-  are the date it was listed (Unix time), and it sold after that.
+- Poshmark sold search works from the cloud (checked 2026-09-29) with an
+  honest user agent: `.claude/skills/listing-workflow/posh_sold.py`. Its
+  robots.txt disallows `/search` for crawlers, so keep it to a few
+  searches per item and never fetch listing pages in bulk.
+- Poshmark search data: `inventory.status_changed_at` is the sold date,
+  `first_user_price_amount` the first ask, `price_amount` the last listed
+  price (offers hidden, so the real sale may be lower). Use
+  `&sort_by=added_desc`, or relevance shows sales from years ago.
 - Depop search has no Sold filter (only "On sale", which means discounted), so
   sold comps can't come from Depop.
 - WebSearch for "sold" marketplace listings mostly returns active asking

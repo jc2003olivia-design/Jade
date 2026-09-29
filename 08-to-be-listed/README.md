@@ -6,12 +6,14 @@ item). Leave the SKU blank; Claude sets it.
 
 Then tell Claude **"start listing workflow"**. It takes every Nifty draft
 with no SKU, looks at the photos in Nifty, sets the SKU and the Depop price,
-and writes a report for each item here as `<SKU>/report.md` (comps, price,
-title notes, measurement check).
+and writes a report for each item here as `<SKU>/report.md`: what the piece
+is (brand, line, retail, era, fabric, demand), Poshmark sold comps, the
+price range and confidence, title notes and a measurement check.
 
-Optional but best: on your computer (Claude desktop app with Claude in
-Chrome), say **"pull sold comps"** first. It saves real sold prices for
-each draft so the pricing is based on actual sales.
+Optional but best for pieces worth $40+: on your computer (Claude desktop
+app with Claude in Chrome), say **"pull sold comps"** first. It adds eBay
+and Terapeak sold prices, which the cloud can't see. Poshmark sold prices
+are pulled automatically.
 
 After you list the items and say **"make labels"**, Claude sends the labels
 and then deletes the batch's report folders here. Git keeps the history.
