@@ -41,6 +41,8 @@ Claude reads this before every task and adds to it as it goes (see
 - Nifty's AI fills the Depop brand field on its own and can get it wrong
   (it tagged an "a blissful state of mind" tee as Coin 1804). Check it against
   the neck label.
+- A mustard/brown corduroy piece with long rounded "ear flaps" and a MERIT label is
+  the MERIT Beauty Signature Bag (top-knot pouch), not a hat. Poshmark sells it $7–26.
 - Nifty's AI tacks "Rare" onto titles of modern mall pieces (Wet Seal, Hard Rock,
   Plenty). Flag it in title notes; the rule is vintage-with-no-decade only.
 - Nifty drafts may have no measurements photo. Flag it in the report; never
