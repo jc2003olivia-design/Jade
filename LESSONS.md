@@ -41,6 +41,8 @@ Claude reads this before every task and adds to it as it goes (see
 - Nifty's AI fills the Depop brand field on its own and can get it wrong
   (it tagged an "a blissful state of mind" tee as Coin 1804). Check it against
   the neck label.
+- Nifty's AI tacks "Rare" onto titles of modern mall pieces (Wet Seal, Hard Rock,
+  Plenty). Flag it in title notes; the rule is vintage-with-no-decade only.
 - Nifty drafts may have no measurements photo. Flag it in the report; never
   guess measurements.
 - Always check brand, category and NWT-vs-used against the photos, not old
@@ -59,6 +61,10 @@ Claude reads this before every task and adds to it as it goes (see
   $15–23. Always run `posh_sold.py` and anchor on sold, not asking.
 - Poshmark comps are Poshmark prices. Convert to a Depop price through
   Nifty's markup, not 1:1 (markup stays in the scratchpad).
+- To see the Poshmark/eBay prices Nifty will derive, stage the Depop price with
+  `edit_item`; the pending-edits reply lists every listing's price. Adjust before applying.
+- Nike tennis dresses: look for a Maria Sharapova logo/signature. Hers sell
+  $40–150 used vs ~$25 for regular Nike tennis dresses on Poshmark.
 - Grade comps exact / close / loose and price from exact + close only.
   NWT and used, or prints and solids, of the same brand can sell 2× apart.
 
@@ -107,6 +113,9 @@ Claude reads this before every task and adds to it as it goes (see
   `first_user_price_amount` the first ask, `price_amount` the last listed
   price (offers hidden, so the real sale may be lower). Use
   `&sort_by=added_desc`, or relevance shows sales from years ago.
+- If a `posh_sold.py` query matches nothing, Poshmark returns unrelated site-wide
+  sales (tumblers, jewelry, "sold in 90 days: 96"). Check the titles; if they
+  don't match, drop words and search again.
 - Depop search has no Sold filter (only "On sale", which means discounted), so
   sold comps can't come from Depop.
 - WebSearch for "sold" marketplace listings mostly returns active asking
