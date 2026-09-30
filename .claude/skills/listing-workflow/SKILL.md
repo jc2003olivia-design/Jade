@@ -1,6 +1,6 @@
 ---
 name: listing-workflow
-description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow" or "price the to be listed items". Takes the new Nifty drafts, reads their photos from Nifty, researches the piece (brand, retail, era, fabric, demand) and sold comps (Poshmark sold data from the cloud), sets the Depop price in Nifty, checks titles and measurements, and reports per item. Also use when Jade says "make labels" after listing: sends a PDF of 4x4 SKU labels, then clears the batch's report folders.
+description: Jade's listing workflow for Kurated by Kenny. Use when Jade says "start listing workflow" or "price the to be listed items". Takes the new Nifty drafts, reads their photos from Nifty, researches the piece (brand, retail, era, fabric, demand), tries niche titles, pulls sold comps (Poshmark from the cloud, eBay via SerpApi when set), gives quick-sale / market / premium prices and sets the Depop price in Nifty, suggests a title in Jade's format, checks measurements, and reports per item. Also use when Jade says "make labels" after listing: sends a PDF of 4x4 SKU labels, then clears the batch's report folders.
 ---
 
 # Listing workflow
@@ -51,10 +51,28 @@ reference pages) for:
   size, color, season. Check the sold comps for it.
 
 This goes in the report's "About the piece" section (step 7) and sets the
-search words for step 3.
+search words for step 2b and step 3.
+
+## 2b. Niche titles (before pricing)
+Buyers who search niche words pay more than buyers who search "top". Find
+the niche this piece fits before pulling comps, so the comps and the title
+aim at the buyers who pay the most.
+- Write **3–4 niche title variants** in Jade's title format (step 5), each
+  leaning on a different angle: era ("80s", "Y2K", "2010s"), style/line/
+  print name ("Very Berry Paisley", "Catarina", "Doudoune Legere"),
+  aesthetic ("coquette", "whimsigoth", "indie sleaze", "gorpcore"), and
+  standout detail ("exposed button fly", "ribbon fringe", "made in USA").
+  Only use words the photos and tags back up.
+- Turn each variant into a short search (brand or style words + the niche
+  words, no filler words) and run it through `posh_sold.py` and WebSearch
+  in step 3.
+- In the report, say which niche searches found higher sold prices or
+  faster sales, and pick the **suggested title** from the one that did.
+  That niche also sets the *premium* price (step 3).
 
 ## 3. Research pricing comps
-Goal: **priced to sell within ~30 days**, based on what actually *sold*.
+Goal: price from what actually *sold*, and give Jade three prices: quick
+sale, market value and premium (see "Picking the price").
 Don't scrape sites that block cloud sessions (eBay, Etsy, Mercari,
 Grailed, The RealReal, WorthPoint) or try to get around their bot
 protection.
@@ -90,15 +108,23 @@ shops and retail. One search per platform, in parallel:
 
 These are mostly **asking** prices. Mark them as asking.
 
-**d. Extras when available** (web facts only. Don't use Jade's own Nifty
+**d. eBay sold data from SerpApi (run it whenever `SERPAPI_KEY` is set).**
+This is the only way to get eBay *sold* prices from the cloud. Check with
+`[ -n "$SERPAPI_KEY" ]` at the start of the batch. If it's set, run the main
+search and the best niche search for every item:
+`curl -s "https://serpapi.com/search.json?engine=ebay&_nkw=<query>&show_only=Sold&api_key=$SERPAPI_KEY"`
+and read `organic_results` (title, price, condition, link). Never print or
+write the key. If it isn't set, say "no eBay sold data (SERPAPI_KEY not
+set)" in the report.
+
+**e. Extras when available** (web facts only. Don't use Jade's own Nifty
 sales history for pricing):
 - Sold screenshots Jade adds to the Nifty item or drops in
   `08-to-be-listed/` (files named `comps*`), e.g. Terapeak.
-- SerpApi eBay sold data, only if `SERPAPI_KEY` is set:
-  `https://serpapi.com/search.json?engine=ebay&_nkw=<query>&show_only=Sold`.
 
 If there are fewer than 3 close sold matches and the item may be worth
-$40+, tell Jade to run "pull sold comps" on her computer for eBay.
+$40+, or it's vintage/Y2K/trend and there's no eBay sold data, tell Jade
+to run "pull sold comps" on her computer.
 
 **Grade every comp** against the item before using it:
 - **Exact:** same brand and same style (name/number or clearly the same
@@ -111,27 +137,38 @@ $40+, tell Jade to run "pull sold comps" on her computer for eBay.
 **Picking the price:**
 - Build the comps table: source, title, size, condition, match, price,
   sold date, days to sell, sold or asking, link.
-- **Anchor on the median sold price of exact and close matches from the
-  last 90 days.** Weight sales that sold within 30 days of listing, since
-  that's the goal. Ignore loose comps unless there's nothing else.
+- Use exact and close sold comps from the last 90 days. Ignore loose comps
+  unless there's nothing else.
 - Only asking prices? Use about 70–80% of their median, and never above
   the close sold comps if there are any.
-- **Adjust** for condition (flaws, stains or no tags → lower half; NWT →
-  upper end or NWT comps only), size (XS and 2X+ often sell differently;
-  check the size-filtered search), and season (sweatshirts up in fall,
-  swim down).
-- **Check demand:** sold in 90 days vs listed now. If far more are listed
-  than sold, or most sales needed price drops, price at the lower end of
-  the close comps so it sells in 30 days.
-- **Poshmark comps to a Depop price:** find the Depop price whose
-  Nifty-derived Poshmark price lands on the Poshmark sold anchor. Read the
-  Depop→Poshmark markup from a recent item's listings (`get_inventory_item`)
-  and work it out in the scratchpad (never write the markup in the repo).
-  If eBay or Depop comps disagree with Poshmark, say so and explain which
-  one you followed.
-- Give a **price range**: *quick sale* (sells in ~1–2 weeks),
-  *target* (what you set), *stretch* (only if it sits and gets likes).
-- Check the $20-profit rule (see "Pricing settings").
+- **Adjust** for condition (flaws, stains or no tags → lower; NWT → NWT
+  comps only), size (XS and 2X+ often sell differently; check the
+  size-filtered search), and season (sweatshirts up in fall, swim down).
+- **Three prices, all as Depop prices:**
+  - *Quick sale* (~1–2 weeks): the low end of the close comps, the ones
+    that sold within 30 days. If supply is far bigger than sales or most
+    sales needed price drops, *recommend* quick sale in the report, but
+    still set market value unless Jade chose otherwise.
+  - *Market value* (~30–60 days): the median to upper-middle of the exact
+    and close sold comps across all 90 days.
+  - *Premium* (waits for the niche buyer): the top of the close comps,
+    or what the best niche search (step 2b) sold for.
+- **Which one to set:** set **market value** unless Jade says "quick sale"
+  or "premium" for the batch or an item. Her automatic offers bring the
+  price down over time, so don't set below market value by default.
+- **Where the Depop price comes from:**
+  - *Vintage, Y2K, band/graphic tees, trend and aesthetic pieces:*
+    Depop buyers pay more for these than Poshmark buyers. Anchor on **eBay
+    sold** (SerpApi or Chrome comps) and check against Depop asking prices
+    (WebSearch `site:depop.com`, graded as asking). Only fall back to
+    Poshmark if there's no eBay sold data, and say so.
+  - *Mall, workwear, designer kids, basics:* anchor on Poshmark sold and
+    convert: find the Depop price whose Nifty-derived Poshmark price lands
+    on the Poshmark anchor. Read the Depop→Poshmark markup from a recent
+    item's listings (`get_inventory_item`) and work it out in the
+    scratchpad (never write the markup in the repo).
+  - If platforms disagree, say so and explain which one you followed.
+- Check the $20-profit rule at the price you set (see "Pricing settings").
 - Give a **confidence rating** in the report:
   - **High:** 3+ exact or close sold comps in the last 90 days that agree
     (spread within about ±30% of the median)
@@ -155,12 +192,27 @@ $40+, tell Jade to run "pull sold comps" on her computer for eBay.
 - Shipping: the connector can't edit it, and Jade handles it in the app.
   Don't mention it in reports.
 
-## 5. Title check — note only, do not change
-- Compare the Nifty title with what the photos show and with the title
-  format in Nifty's seller instructions (`get_edit_item_instructions`):
-  `[Brand] [Item Type] [Style name/number] [Color] [Size] [Aesthetic]`,
-  ~65 chars. Note wrong brand, type, color, size, typos, or missing
-  keywords. **Do not edit the title.**
+## 5. Title — suggest in Jade's format, do not change
+Jade's title format (set 2026-09-30 from the titles she listed that day).
+It replaces the ~65-char format in Nifty's seller instructions:
+
+`[Decade if known] [Brand] [Item type + style/line/print name] [Color] [Details/fabric] [Aesthetic] [Size]`
+
+- Use most of eBay's 80 characters (aim for ~70–80). Pack in the words
+  buyers search; don't flag a title for being over 65.
+- Lead with the decade when the tags back it up ("80s", "2010s", "Y2K").
+  Skip it for current-season pieces.
+- Style, line or print names go right after the item type ("Hipster
+  Crossbody Bag Very Berry Paisley", "Bombshell Push Up Teddy").
+- Size goes last, as on the tag ("M", "Small", "24", "4T").
+- Her examples:
+  - `80s St Anna Pink Sheer Lace Bodysuit V Neck High Cut Lingerie Teddy Medium`
+  - `Altar'd State Lace Trim Tie Front Top Pastel Yellow Ribbed Coquette Blouse M`
+  - `Abercrombie & Fitch Distressed Denim Shorts Low Rise Exposed Button Fly 24`
+
+Check the Nifty title against the photos (wrong brand, type, print, color,
+size, typos) and write a **suggested title** in this format from the best
+niche in step 2b. **Do not edit the title in Nifty** unless Jade asks.
 
 ## 6. Measurements check — note only
 - If there's a measurements photo, check that every one is typed in the
@@ -174,9 +226,11 @@ cut a section only if it truly has nothing):
 ```markdown
 # <SKU> — <brand> <item>, <size>
 
-**Depop price set: $X** (Nifty derived Poshmark $Y, eBay $Z). <Draft/Live>.
+**Depop price set: $X — <tier>** (Nifty derived Poshmark $Y, eBay $Z). <Draft/Live>.
 **Confidence: High/Medium/Low.** <n> exact/close sold comps, median $<m> on <platform>.
-**Range:** quick sale $<a> · target $<b> · stretch $<c> (Depop prices)
+**Prices (Depop):** quick sale $<a> · market value $<b> · premium $<c>
+**Suggested title:** <title in Jade's format>
+**eBay sold data:** yes (SerpApi / Chrome) · no (SERPAPI_KEY not set)
 
 ## About the piece
 - **What it is:** brand + line, style name/number, era, made in, fabric.
@@ -188,9 +242,14 @@ cut a section only if it truly has nothing):
   prints sell faster than solids".
 - **Buyer search words:** 3–6 terms from sold titles.
 
+## Niche titles tried
+| Niche title | Search used | Sold found | Median sold | Notes |
+|---|---|---|---|---|
+
 ## Pricing
-<how the price was picked: the anchor comps, adjustments, Poshmark→Depop
-conversion, any platform disagreement, how it plays with offers>
+<how each of the three prices was picked: the anchor comps, which platform
+anchored the Depop price and why, adjustments, any platform disagreement,
+how it plays with offers>
 
 | Platform | Title | Size | Cond. | Match | Price | Sold date | Days to sell | Sold/asking | Link |
 |---|---|---|---|---|---|---|---|---|---|
@@ -200,11 +259,13 @@ conversion, any platform disagreement, how it plays with offers>
 ## Profit after a typical ~30-day offer
 <table per platform + FLAG if any platform won't clear $20>
 
-## Title notes (not changed)
+## Title (not changed)
+<suggested title again, plus anything wrong in the current Nifty title>
 ## Measurements
 ```
 
-Then send Jade a short message per item: SKU, Depop price and confidence,
+Then send Jade a short message per item: SKU, Depop price set and its
+tier, the three prices, the suggested title, confidence,
 two or three lines from "About the piece" (what it is, retail, demand),
 the anchor comps with links, and any FLAG. Title and measurement notes in
 one line each. (Don't list shipping fields; Jade handles those.)

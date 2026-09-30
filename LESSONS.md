@@ -19,12 +19,18 @@ Claude reads this before every task and adds to it as it goes (see
   had folders or reports here.
 - Price only from web facts (sold/asking comps online), never from Jade's own
   sales history. Skip Mercari. Don't list shipping fields in reports.
-- Price to sell within ~30 days, off sold comps, allowing for her offers.
+- Price off sold comps, allowing for her offers. Jade felt the 0930 batch
+  (priced for a 30-day sale, low end when supply was high) came out too low.
+  Give quick sale / market value / premium and set **market value** unless
+  she says otherwise.
 - Every piece should clear $20 profit after fees + typical offer; flag any
   that don't.
 - Keep pricing rules, offer settings and fees private, never in this public
   repo. Ask Jade for the offer steps if needed (Drive is off-limits).
 - In Nifty set only the Depop price; titles and descriptions get notes, not edits.
+- Title format (from her 0930 listings): `[Decade] [Brand] [Type + style/print
+  name] [Color] [Details] [Aesthetic] [Size]`, ~70–80 chars. This replaces the
+  ~65-char format in Nifty's seller instructions. Don't flag length under 80.
 - SKU labels: 4×4" thermal PDF, bold SKU on top, title under it, no date
   (the SKU has it). Make them only when Jade says "make labels" after she
   lists, using the current Nifty titles (`06-label-printer/make_labels.py`).
@@ -65,6 +71,11 @@ Claude reads this before every task and adds to it as it goes (see
 - Poshmark comps are Poshmark prices. Convert to a Depop price through
   Nifty's markup, not 1:1 (markup stays in the scratchpad).
 - Grade comps exact / close / loose and price from exact + close only.
+- Poshmark sells mall brands cheapest. For vintage, Y2K and trend pieces,
+  anchor the Depop price on eBay sold (SerpApi or Chrome comps), not a
+  Poshmark conversion.
+- Search niche words (era, print/style name, aesthetic) as well as the plain
+  brand + item; niche-titled sales often go higher.
   NWT and used, or prints and solids, of the same brand can sell 2× apart.
 
 ## Branding and covers

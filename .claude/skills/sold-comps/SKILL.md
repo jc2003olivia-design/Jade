@@ -35,6 +35,10 @@ Look at the item's photos and Nifty title, and write:
   `nutmeg tennessee crewneck`, `mainstream swimsuit one piece`.
 - **Wide search:** style without the brand (for obscure brands), e.g.
   `90s tennessee seal sweatshirt`, `vintage black textured swimsuit`.
+- **Niche search:** the item's niche words from the listing-workflow's
+  niche titles (era, style/print name, aesthetic), e.g.
+  `vera bradley very berry paisley hipster`, `y2k crinkle fringe top`.
+  Niche sales often go higher, so note which search each comp came from.
 Leave the size out of the search. Note it when reading the results instead.
 
 ## 3. Search each platform's SOLD listings
