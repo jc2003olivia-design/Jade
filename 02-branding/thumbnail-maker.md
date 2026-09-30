@@ -85,7 +85,7 @@ To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_c
 - A talk show, not a sale, so the badge says `SELLER CHAT` instead of `$1 STARTS`.
 - Colors: cranberry `#5E1B2A` · cream `#FBEBD9` (headline) · mustard `#E8B04B` (runners, Kenny Shop, badge)
 - Fonts: Playfair Display Bold for "NOVEMBER", Montserrat ExtraBold for everything else
-- Text: `WELCOME` · `NOVEMBER` · badge `SELLER CHAT` · runners: `RESELLER TIPS` · `SOURCING` · `Q&A`
+- Text: `WELCOME` · `NOVEMBER` · badge `SELLER CHAT` · runners: `GIVEAWAYS` · `ANNOUNCEMENTS` · `CHATTING`
 - Finished cover: `final/november-seller-chat-photo.png` (car selfie, badge bottom-right)
 
 ## Templates

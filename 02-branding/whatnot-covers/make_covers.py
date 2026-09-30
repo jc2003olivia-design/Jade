@@ -101,7 +101,7 @@ SHOWS["november-seller-chat"] = dict(
     photo_bg="#511724", figure="#8A4A57",
     head_font=SERIF_B, head_scale=1.0, top="WELCOME", top_font=SANS_B, top_size=56,
     top_gap=36, main="NOVEMBER", badge_big="SELLER", badge_small="CHAT", badge_font=SANS_B,
-    brands=["RESELLER TIPS", "SOURCING", "Q&A"], brand_font=SANS_B,
+    brands=["GIVEAWAYS", "ANNOUNCEMENTS", "CHATTING"], brand_font=SANS_B,
     photo_hint="waist-up · cozy fall outfit · smiling at the camera",
 )
 SHOWS["november-seller-chat-photo"] = dict(
