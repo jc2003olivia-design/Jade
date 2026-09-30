@@ -35,6 +35,15 @@ ACTIVEWEAR = {
     "6 Black + Neon Lime": ("#111111", "#FFFFFF", "#C6FF3D", "#111111"),
 }
 
+KIDS_VINTAGE = {
+    "1 Denim + Cherry": ("#35507A", "#FFF1D6", "#E0493A", "#FFF1D6"),
+    "2 Bubblegum + Grape": ("#F6A3C4", "#4B1F5E", "#6A2C91", "#FFE9F2"),
+    "3 70s Green + Orange": ("#2F6B4F", "#FFEFD2", "#F2913D", "#2F3B2A"),
+    "4 Lilac + Sunshine": ("#B79CE0", "#2E1A47", "#FFD23F", "#2E1A47"),
+    "5 Chocolate + Pink": ("#4A2C22", "#FFE6D8", "#F59AB8", "#4A2C22"),
+    "6 Cherry + Cream": ("#C8372D", "#FFF3DC", "#FFF3DC", "#C8372D"),
+}
+
 
 def sheet(show, options, out):
     base = SHOWS[show]
@@ -47,6 +56,7 @@ def sheet(show, options, out):
     for i, (label, (bg, ink, badge, badge_ink, *logo)) in enumerate(options.items()):
         dark = sum(int(bg[j:j + 2], 16) for j in (1, 3, 5)) < 384
         s = dict(base, bg=bg, ink=ink, accent=badge, badge_ink=badge_ink, logo=(logo or [badge])[0],
+                 footer_ink=ink,
                  photo_bg=shade(bg, 0.85 if dark else 0.9),
                  figure=shade(bg, 1.3) if dark else shade(bg, 0.75))
         cover = build(show, s, out=HERE / "_tmp.png")
@@ -62,4 +72,5 @@ def sheet(show, options, out):
 if __name__ == "__main__":
     sheet("premium-contemporary", CONTEMPORARY, "options-contemporary.png")
     sheet("premium-activewear", ACTIVEWEAR, "options-activewear.png")
+    sheet("kids-vintage", KIDS_VINTAGE, "options-kids-vintage.png")
     print("done")

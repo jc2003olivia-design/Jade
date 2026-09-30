@@ -53,20 +53,22 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · runners: Free People Movement · Lululemon · Nike logos
 - Outfit: a matching set (Align, Define, Alo) in a color that pops against bright blue (orange, black, white, lime). Avoid blue sets.
 
-### Kids Vintage: 90s mustard + cherry
-- Colors: mustard `#F2B33D` · dark brown `#3A2216` (headline) · cherry red `#C8372D` (runners, Kenny Shop, $1 badge) · cream `#FFF3DC` (runner and badge text)
-- Fonts: Shrikhand for "VINTAGE" (retro 70s/90s script), Titan One for "KIDS", the $1 and the runners
+### Kids Vintage: 70s green + orange
+- Colors: forest green `#2F6B4F` · cream `#FFEFD2` (headline, sizes) · orange `#F2913D` (runners, Kenny Shop, $1 badge) · dark green `#2F3B2A` (runner and badge text)
+- Fonts: Shrikhand for "KIDS VINTAGE" (retro script, one line), Titan One for the $1, sizes and runners
 - Text: `KIDS VINTAGE` · `$1 STARTS` · runners: OshKosh B'gosh · Disney · Gymboree · Levi's (Claude's picks; swap in real brands)
 - Photo: a little one wearing a vintage hero piece (patchwork overalls, a character tee)
+- Other colors tried (mustard + cherry was the first version): `whatnot-covers/options-kids-vintage.png`
 
 ### Kids Modern: soft mint + tangerine
 - Colors: mint `#9ED8C6` · navy `#1E3A5F` (headline, Kenny Shop, runner and badge text) · tangerine `#FF8A5B` (runners, $1 badge)
 - Fonts: Fredoka Bold (rounded) for everything big
 - Text: `KIDS MODERN` · `$1 STARTS` · runners: Hanna Andersson · Mini Boden · Zara
-- Photo: a little one wearing a current-season piece. The $1 badge sits on the left here so it
-  stays off her face (`badge_left`).
+- Photo: a little one wearing a current-season piece. The $1 badge sits bottom-left here so it
+  stays off her face (`badge="bottom-left"`).
 
-Each kids show has two covers, one per size run, with the sizes in big type under the photo:
+Both kids covers put the headline on one line (`one_line`) so the photo slot is taller and the
+whole outfit fits. Each kids show has two covers, one per size run, with the sizes in big type under the photo:
 `SIZES NB–24M` (baby) and `SIZES 2T–XL` (kids). They're in `final/` as
 `kids-vintage-baby`, `kids-vintage-kids`, `kids-modern-baby`, `kids-modern-kids`.
 To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_covers.py`.

@@ -51,12 +51,12 @@ SHOWS["premium-contemporary-2"] = dict(
 # Kids shows: two covers each, baby sizes and kids sizes.
 KID_HINT = "your little one wearing the hero piece · smiling"
 SHOWS["kids-vintage"] = dict(
-    # 90s mustard + cherry red, retro type
-    bg="#F2B33D", ink="#3A2216", accent="#C8372D", badge_ink="#FFF3DC",
-    photo_bg="#E3A22C", figure="#F8D27E",
+    # 70s green + orange, retro type
+    bg="#2F6B4F", ink="#FFEFD2", accent="#F2913D", badge_ink="#2F3B2A",
+    photo_bg="#285C44", figure="#4F8A6D",
     head_font=RETRO, head_scale=1.0, top_font=CHUNKY, top_size=96, badge_font=CHUNKY,
     top="KIDS", main="VINTAGE", brand_font=CHUNKY, photo_hint=KID_HINT,
-    footer_font=CHUNKY, footer_size=58, footer_ink="#3A2216",
+    footer_font=CHUNKY, footer_size=58, footer_ink="#FFEFD2", one_line=True,
     brands=["OSHKOSH B'GOSH", "DISNEY", "GYMBOREE", "LEVI'S"],
 )
 SHOWS["kids-modern"] = dict(
@@ -67,12 +67,12 @@ SHOWS["kids-modern"] = dict(
     top="KIDS", main="MODERN", brand_font=ROUND_B, photo_hint=KID_HINT,
     footer_font=ROUND_B, footer_size=58, footer_ink="#1E3A5F",
     brands=["HANNA ANDERSSON", "MINI BODEN", "ZARA"],
-    badge_left=True,  # her face sits right of center in this photo
+    one_line=True, badge="bottom-left",  # keeps the $1 off her face
 )
 KID_SIZES = {"baby": "SIZES NB–24M", "kids": "SIZES 2T–XL"}
 KID_PHOTOS = {  # photo, crop
-    "kids-vintage": (HERE / "photos" / "kids-vintage.png", (0, 40, 1320, 1276)),
-    "kids-modern": (HERE / "photos" / "kids-modern.png", (0, 100, 1320, 1336)),
+    "kids-vintage": (HERE / "photos" / "kids-vintage.png", (190, 30, 1100, 1300)),
+    "kids-modern": (HERE / "photos" / "kids-modern.png", (100, 280, 1320, 1590)),
 }
 for show, (photo, crop) in KID_PHOTOS.items():
     for size, line in KID_SIZES.items():
@@ -260,9 +260,14 @@ def build(name, s, out=None):
     inner = sx1 - sx0 - 40
     y = sy0 + BAND + 34
     y = paste_center(c, text_img("KENNY SHOP", SANS_B, 38, s.get("logo", s["accent"]), spacing=10), y) + 34
-    top = text_img(s["top"], s.get("top_font", s["head_font"]), s.get("top_size", 60), s["ink"], s["head_scale"], spacing=18)
-    y = paste_center(c, top, y) + 20
-    y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
+    if s.get("one_line"):
+        # "KIDS VINTAGE" on one line leaves a taller photo for full-outfit shots
+        head = fit_text(f'{s["top"]} {s["main"]}', s["head_font"], inner, 150, s["ink"], s["head_scale"])
+        y = paste_center(c, head, y) + 40
+    else:
+        top = text_img(s["top"], s.get("top_font", s["head_font"]), s.get("top_size", 60), s["ink"], s["head_scale"], spacing=18)
+        y = paste_center(c, top, y) + 20
+        y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
     footer = None
     if s.get("footer"):
         footer = text_img(s["footer"], s.get("footer_font", SANS_B), s.get("footer_size", 40),
@@ -270,8 +275,11 @@ def build(name, s, out=None):
     footer_h = footer.height + 52 if footer else 0
     photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)
     draw_photo(c, s, photo_box)
-    bx = photo_box[0] + 175 if s.get("badge_left") else photo_box[2] - 175
-    badge(c, s, bx, photo_box[1] + 185, 145)
+    # badge="top-right" (default), "top-left" or "bottom-left": wherever it misses faces
+    spot = s.get("badge", "top-right")
+    bx = photo_box[0] + 175 if spot.endswith("left") else photo_box[2] - 175
+    by = photo_box[3] - 185 if spot.startswith("bottom") else photo_box[1] + 185
+    badge(c, s, bx, by, 145)
     if footer:
         fy = photo_box[3] + (sy1 - BAND - photo_box[3] - footer.height) // 2
         c.alpha_composite(footer, ((W - footer.width) // 2, fy))

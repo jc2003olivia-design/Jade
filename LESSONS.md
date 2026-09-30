@@ -71,6 +71,8 @@ Claude reads this before every task and adds to it as it goes (see
   repo is public). Kids Modern brands: Hanna Andersson, Mini Boden, Zara. Kids
   Vintage brands (OshKosh, Disney, Gymboree, Levi's) are Claude's picks.
 - Phone screenshots of photos: crop out the Photos app bars before using them.
+- Crop cover photos tight on the child with the full outfit showing, and move
+  the $1 badge (`badge=` in `SHOWS`) so it never covers her face.
 
 ## Whatnot shows
 
