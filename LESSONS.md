@@ -119,9 +119,10 @@ Claude reads this before every task and adds to it as it goes (see
   honest user agent: `.claude/skills/listing-workflow/posh_sold.py`. Its
   robots.txt disallows `/search` for crawlers, so keep it to a few
   searches per item and never fetch listing pages in bulk.
-- `posh_sold.py` returns random unrelated sales when the query has filler
-  words ("and", "for", "all", "tee"). Check the first rows are on topic; keep
-  queries to brand + item and use `--size`.
+- `posh_sold.py` returns random unrelated sales when any query word doesn't
+  match cleanly: filler words ("and", "for", "all", "tee") and even real ones
+  ("metallica justice"). Check the first rows are on topic; if not, drop to
+  brand + one word ("metallica band tee") or brand + `--size`.
 - Poshmark search data: `inventory.status_changed_at` is the sold date,
   `first_user_price_amount` the first ask, `price_amount` the last listed
   price (offers hidden, so the real sale may be lower). Use
