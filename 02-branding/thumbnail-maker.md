@@ -84,7 +84,8 @@ To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_c
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`,
   `whatnot-covers/kids-vintage.png`, `whatnot-covers/kids-modern.png`, `whatnot-covers/october-clear-out.png`
-- Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
+- Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). Also `premium-contemporary-3.png` (denim dress, no fall line, badge top-left) and
+  `premium-activewear-3.png` (mirror selfie). These and the photos in
   `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
 - Other color options considered: `whatnot-covers/options-contemporary.png`, `whatnot-covers/options-activewear.png`

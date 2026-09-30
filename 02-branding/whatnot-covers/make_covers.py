@@ -47,6 +47,15 @@ SHOWS["premium-contemporary-2"] = dict(
     brands=["FREE PEOPLE", "ANTHROPOLOGIE", "ARITZIA"],
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
 )
+# Third covers for each: new photos, same looks. Denim dress, so no fall line.
+SHOWS["premium-contemporary-3"] = dict(
+    SHOWS["premium-contemporary"], footer=None, template=False, badge="top-left",
+    photo=HERE / "photos" / "contemporary-3.jpg", crop=(333, 721, 1286, 1752),
+)
+SHOWS["premium-activewear-3"] = dict(
+    SHOWS["premium-activewear"], template=False,
+    photo=HERE / "photos" / "activewear-3.jpg", crop=(273, 720, 1860, 2373),
+)
 
 # Kids shows: two covers each, baby sizes and kids sizes.
 KID_HINT = "your little one wearing the hero piece · smiling"
