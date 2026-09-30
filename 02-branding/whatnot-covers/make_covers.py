@@ -20,6 +20,9 @@ SERIF_B = str(FONTS / "PlayfairDisplay-Bold.ttf")
 DISPLAY = str(FONTS / "Anton-Regular.ttf")
 SANS_B = str(FONTS / "Montserrat-ExtraBold.ttf")
 SANS = str(FONTS / "Montserrat-Medium.ttf")
+RETRO = str(FONTS / "Shrikhand-Regular.ttf")
+CHUNKY = str(FONTS / "TitanOne-Regular.ttf")
+ROUND_B = str(FONTS / "Fredoka-Bold.ttf")
 
 SHOWS = {
     "premium-contemporary": dict(
@@ -43,6 +46,25 @@ SHOWS["premium-contemporary-2"] = dict(
     SHOWS["premium-contemporary"], footer=None, template=False,
     brands=["FREE PEOPLE", "ANTHROPOLOGIE", "ARITZIA"],
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
+)
+
+# Kids shows: no one wears these, so the photo is a flat lay of the hero pieces.
+FLAT_LAY = "flat lay or hanger shot · 2–3 hero pieces"
+SHOWS["kids-vintage"] = dict(
+    # 90s mustard + cherry red, retro type
+    bg="#F2B33D", ink="#3A2216", accent="#C8372D", badge_ink="#FFF3DC",
+    photo_bg="#E3A22C", figure="#F8D27E",
+    head_font=RETRO, head_scale=1.0, top_font=CHUNKY, figure_shape="tee", top_size=96, badge_font=CHUNKY,
+    top="KIDS", main="VINTAGE", brand_font=CHUNKY, photo_hint=FLAT_LAY,
+    brands=["OSHKOSH B'GOSH", "DISNEY", "GYMBOREE", "LEVI'S"],
+)
+SHOWS["kids-modern"] = dict(
+    # soft mint + navy + tangerine, rounded type
+    bg="#9ED8C6", ink="#1E3A5F", accent="#FF8A5B", badge_ink="#1E3A5F", logo="#1E3A5F",
+    photo_bg="#8CCBB8", figure="#C4EADF",
+    head_font=ROUND_B, head_scale=1.0, figure_shape="tee", top_size=96, badge_font=ROUND_B,
+    top="KIDS", main="MODERN", brand_font=ROUND_B, photo_hint=FLAT_LAY,
+    brands=["JANIE AND JACK", "MINI BODEN", "HANNA ANDERSSON", "PATAGONIA"],
 )
 
 
@@ -198,13 +220,22 @@ def draw_photo(canvas, s, box):
         return
     d.rounded_rectangle(box, 36, fill=s["photo_bg"])
     cx = (x0 + x1) // 2
-    # waist-up figure placeholder
-    d.ellipse((cx - 110, y0 + 150, cx + 110, y0 + 400), fill=s["figure"])
-    d.rounded_rectangle((cx - 250, y0 + 420, cx + 250, y1 + 60), 180, fill=s["figure"])
-    d.rectangle((x0, y1 - 1, x1, y1 + 80), fill=s["bg"])  # clip figure bottom
+    if s.get("figure_shape") == "tee":
+        # little t-shirt placeholder for flat-lay shows
+        t = y0 + 260
+        d.polygon([(cx - 90, t), (cx - 250, t + 70), (cx - 310, t + 250), (cx - 200, t + 290),
+                   (cx - 190, t + 560), (cx + 190, t + 560), (cx + 200, t + 290),
+                   (cx + 310, t + 250), (cx + 250, t + 70), (cx + 90, t)], fill=s["figure"])
+        d.ellipse((cx - 90, t - 55, cx + 90, t + 70), fill=s["photo_bg"])
+    else:
+        # waist-up figure placeholder
+        d.ellipse((cx - 110, y0 + 150, cx + 110, y0 + 400), fill=s["figure"])
+        d.rounded_rectangle((cx - 250, y0 + 420, cx + 250, y1 + 60), 180, fill=s["figure"])
+        d.rectangle((x0, y1 - 1, x1, y1 + 80), fill=s["bg"])  # clip figure bottom
     label = text_img("YOUR PHOTO HERE", SANS_B, 40, s["ink"], spacing=4)
     canvas.alpha_composite(label, (cx - label.width // 2, y1 - 150))
-    sub = text_img("waist-up · wearing the hero piece · eye contact", SANS, 26, s["ink"])
+    hint = s.get("photo_hint", "waist-up · wearing the hero piece · eye contact")
+    sub = text_img(hint, SANS, 26, s["ink"])
     canvas.alpha_composite(sub, (cx - sub.width // 2, y1 - 90))
 
 
@@ -224,11 +255,10 @@ def build(name, s, out=None):
     c = Image.new("RGBA", (W, H), s["bg"])
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40
-    runner(c, s, sy0)
-    runner(c, s, sy1 - BAND, start=1)
     y = sy0 + BAND + 34
     y = paste_center(c, text_img("KENNY SHOP", SANS_B, 38, s.get("logo", s["accent"]), spacing=10), y) + 34
-    y = paste_center(c, text_img(s["top"], s["head_font"], 60, s["ink"], s["head_scale"], spacing=18), y) + 20
+    top = text_img(s["top"], s.get("top_font", s["head_font"]), s.get("top_size", 60), s["ink"], s["head_scale"], spacing=18)
+    y = paste_center(c, top, y) + 20
     y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
     footer = None
     if s.get("footer"):
@@ -240,6 +270,9 @@ def build(name, s, out=None):
     if footer:
         fy = photo_box[3] + (sy1 - BAND - photo_box[3] - footer.height) // 2
         c.alpha_composite(footer, ((W - footer.width) // 2, fy))
+    # runners last so the placeholder figure's clip can't paint over them
+    runner(c, s, sy0)
+    runner(c, s, sy1 - BAND, start=1)
     if out is None:
         final = s.get("photo") and Path(s["photo"]).exists()
         out = HERE / "final" / f"{name}.png" if final else HERE / f"{name}.png"
@@ -249,9 +282,9 @@ def build(name, s, out=None):
 
 
 def preview(covers, out="preview-feed-size.png"):
-    """Both covers at feed-card size (270x480) with the safe zone dashed."""
+    """All covers at feed-card size (270x480) with the safe zone dashed."""
     tw, th, pad = 270, 480, 40
-    sheet = Image.new("RGB", (pad * 3 + tw * 2, th + pad * 2 + 50), "#FFFFFF")
+    sheet = Image.new("RGB", (pad * (len(covers) + 1) + tw * len(covers), th + pad * 2 + 50), "#FFFFFF")
     d = ImageDraw.Draw(sheet)
     k = tw / W
     for i, (name, c) in enumerate(covers.items()):

@@ -1,7 +1,7 @@
 # Thumbnail Maker
 
-Whatnot show covers for the two $1-start series: **Premium Contemporary** and
-**Premium Activewear**. Mockups are in `whatnot-covers/`.
+Whatnot show covers for the $1-start series: **Premium Contemporary**,
+**Premium Activewear**, **Kids Vintage** and **Kids Modern**. Mockups are in `whatnot-covers/`.
 
 ## Specs
 - Size: **1080 × 1920** (tall, 9:16).
@@ -53,8 +53,25 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · runners: Free People Movement · Lululemon · Nike logos
 - Outfit: a matching set (Align, Define, Alo) in a color that pops against bright blue (orange, black, white, lime). Avoid blue sets.
 
+### Kids Vintage: 90s mustard + cherry
+- Colors: mustard `#F2B33D` · dark brown `#3A2216` (headline) · cherry red `#C8372D` (runners, Kenny Shop, $1 badge) · cream `#FFF3DC` (runner and badge text)
+- Fonts: Shrikhand for "VINTAGE" (retro 70s/90s script), Titan One for "KIDS", the $1 and the runners
+- Text: `KIDS VINTAGE` · `$1 STARTS` · runners: OshKosh B'gosh · Disney · Gymboree · Levi's
+- Photo: flat lay or hanger shot of 2–3 hero pieces (overalls, a character tee, a bright windbreaker) on a plain surface that isn't white
+
+### Kids Modern: soft mint + tangerine
+- Colors: mint `#9ED8C6` · navy `#1E3A5F` (headline, Kenny Shop, runner and badge text) · tangerine `#FF8A5B` (runners, $1 badge)
+- Fonts: Fredoka Bold (rounded) for everything big
+- Text: `KIDS MODERN` · `$1 STARTS` · runners: Janie and Jack · Mini Boden · Hanna Andersson · Patagonia
+- Photo: flat lay of 2–3 current-season pieces that pop against mint (coral, yellow, navy, stripes)
+
+Kids covers show the clothes, not a person, so the placeholder is a tee. The runner brands are
+starting guesses; swap them for the night's real brands in `SHOWS` in `make_covers.py`.
+No kids' faces on covers.
+
 ## Templates
-- Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
+- Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`,
+  `whatnot-covers/kids-vintage.png`, `whatnot-covers/kids-modern.png`
 - Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
   `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
@@ -91,7 +108,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - [ ] Track viewers per show. Test one change at a time (photo, color, brand line).
 
 ## Tools used
-- Fonts: Playfair Display, Anton and Montserrat (free Google fonts, in `whatnot-covers/fonts/`).
+- Fonts: Playfair Display, Anton, Montserrat, Shrikhand, Titan One and Fredoka (free Google fonts, in `whatnot-covers/fonts/`).
   The same fonts are in Canva if you rebuild a cover there.
 - Canva (free): rebuild the layout from the mockups with the fonts above
 - `whatnot-covers/make_covers.py`: regenerates the covers. Put a photo in `photos/` and set its

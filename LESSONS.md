@@ -64,6 +64,11 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Branding and covers
 
+- Whatnot covers are built by `02-branding/whatnot-covers/make_covers.py`
+  (one entry per show in `SHOWS`); style notes live in `02-branding/thumbnail-maker.md`.
+- Kids covers use flat-lay photos, never a child's face. Their runner brands
+  were Claude's guesses; ask Jade which brands to show.
+
 ## Whatnot shows
 
 - Whatnot: run Premium Activewear and Premium Contemporary as two separate
