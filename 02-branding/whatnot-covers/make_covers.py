@@ -57,7 +57,7 @@ SHOWS["kids-vintage"] = dict(
     head_font=RETRO, head_scale=1.0, top_font=CHUNKY, top_size=96, badge_font=CHUNKY,
     top="KIDS", main="VINTAGE", brand_font=CHUNKY, photo_hint=KID_HINT,
     footer_font=CHUNKY, footer_size=58, footer_ink="#FFEFD2", one_line=True,
-    brands=["OSHKOSH B'GOSH", "DISNEY", "GYMBOREE", "LEVI'S"],
+    brands=["OVERALLS", "DENIM", "DESIGNER"],
 )
 SHOWS["kids-modern"] = dict(
     # soft mint + navy + tangerine, rounded type
@@ -69,7 +69,8 @@ SHOWS["kids-modern"] = dict(
     brands=["HANNA ANDERSSON", "MINI BODEN", "ZARA"],
     one_line=True, badge="bottom-left",  # keeps the $1 off her face
 )
-KID_SIZES = {"baby": "SIZES NB–24M", "kids": "SIZES 2T–XL"}
+# baby = newborn to 24 months; kids = toddler 2T through big-kid 16 (XL)
+KID_SIZES = {"baby": "BABY · NB–24M", "kids": "TODDLER & KIDS · 2T–16"}
 KID_PHOTOS = {  # photo, crop
     "kids-vintage": (HERE / "photos" / "kids-vintage.png", (190, 30, 1100, 1300)),
     "kids-modern": (HERE / "photos" / "kids-modern.png", (100, 280, 1320, 1590)),
@@ -270,7 +271,7 @@ def build(name, s, out=None):
         y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
     footer = None
     if s.get("footer"):
-        footer = text_img(s["footer"], s.get("footer_font", SANS_B), s.get("footer_size", 40),
+        footer = fit_text(s["footer"], s.get("footer_font", SANS_B), inner, s.get("footer_size", 40),
                           s.get("footer_ink", s["accent"]), spacing=12)
     footer_h = footer.height + 52 if footer else 0
     photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)

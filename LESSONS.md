@@ -66,10 +66,10 @@ Claude reads this before every task and adds to it as it goes (see
 
 - Whatnot covers are built by `02-branding/whatnot-covers/make_covers.py`
   (one entry per show in `SHOWS`); style notes live in `02-branding/thumbnail-maker.md`.
-- Kids shows get two covers each: `SIZES NB–24M` and `SIZES 2T–XL`. Jade
-  sends photos of a child wearing the pieces; keep them in `photos/` (git-ignored,
-  repo is public). Kids Modern brands: Hanna Andersson, Mini Boden, Zara. Kids
-  Vintage brands (OshKosh, Disney, Gymboree, Levi's) are Claude's picks.
+- Kids shows get two covers each: `BABY · NB–24M` and `TODDLER & KIDS · 2T–16`.
+  Jade sends photos of a child wearing the pieces; keep them in `photos/`
+  (git-ignored, repo is public). Kids Modern runners: Hanna Andersson, Mini
+  Boden, Zara. Kids Vintage runners: Overalls, Denim, Designer.
 - Phone screenshots of photos: crop out the Photos app bars before using them.
 - Crop cover photos tight on the child with the full outfit showing, and move
   the $1 badge (`badge=` in `SHOWS`) so it never covers her face.

@@ -56,7 +56,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 ### Kids Vintage: 70s green + orange
 - Colors: forest green `#2F6B4F` · cream `#FFEFD2` (headline, sizes) · orange `#F2913D` (runners, Kenny Shop, $1 badge) · dark green `#2F3B2A` (runner and badge text)
 - Fonts: Shrikhand for "KIDS VINTAGE" (retro script, one line), Titan One for the $1, sizes and runners
-- Text: `KIDS VINTAGE` · `$1 STARTS` · runners: OshKosh B'gosh · Disney · Gymboree · Levi's (Claude's picks; swap in real brands)
+- Text: `KIDS VINTAGE` · `$1 STARTS` · runners: `OVERALLS` · `DENIM` · `DESIGNER` (categories, not brands)
 - Photo: a little one wearing a vintage hero piece (patchwork overalls, a character tee)
 - Other colors tried (mustard + cherry was the first version): `whatnot-covers/options-kids-vintage.png`
 
@@ -69,7 +69,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 
 Both kids covers put the headline on one line (`one_line`) so the photo slot is taller and the
 whole outfit fits. Each kids show has two covers, one per size run, with the sizes in big type under the photo:
-`SIZES NB–24M` (baby) and `SIZES 2T–XL` (kids). They're in `final/` as
+`BABY · NB–24M` and `TODDLER & KIDS · 2T–16` (16 = kids' XL). They're in `final/` as
 `kids-vintage-baby`, `kids-vintage-kids`, `kids-modern-baby`, `kids-modern-kids`.
 To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_covers.py`.
 
