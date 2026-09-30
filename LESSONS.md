@@ -41,6 +41,11 @@ Claude reads this before every task and adds to it as it goes (see
 - Nifty's AI fills the Depop brand field on its own and can get it wrong
   (it tagged an "a blissful state of mind" tee as Coin 1804). Check it against
   the neck label.
+- Nifty's AI descriptions can leave source names stuck mid-sentence ("colorway
+  StockX", "vents Amazon", "care strip Poshmark"). Flag them in the report.
+- Nifty's AI can name the wrong print. Check Vera Bradley pattern names
+  against the colors: Very Berry Paisley = magenta/purple/brown/lime;
+  Plum Crazy = purple with turquoise/orange/green.
 - Nifty drafts may have no measurements photo. Flag it in the report; never
   guess measurements.
 - Always check brand, category and NWT-vs-used against the photos, not old
@@ -103,6 +108,9 @@ Claude reads this before every task and adds to it as it goes (see
   honest user agent: `.claude/skills/listing-workflow/posh_sold.py`. Its
   robots.txt disallows `/search` for crawlers, so keep it to a few
   searches per item and never fetch listing pages in bulk.
+- `posh_sold.py` returns random unrelated sales when the query has filler
+  words ("and", "for", "all", "tee"). Check the first rows are on topic; keep
+  queries to brand + item and use `--size`.
 - Poshmark search data: `inventory.status_changed_at` is the sold date,
   `first_user_price_amount` the first ask, `price_amount` the last listed
   price (offers hidden, so the real sale may be lower). Use
