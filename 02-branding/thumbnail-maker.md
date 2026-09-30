@@ -81,6 +81,13 @@ To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_c
 - Photo: you holding or wearing the best steal of the night. Finished cover:
   `final/october-clear-out-photo.png` (badge bottom-left so it stays off both faces).
 
+### Welcome November Seller Chat
+- A talk show, not a sale, so the badge says `LIVE CHAT` instead of `$1 STARTS`.
+- Colors: cranberry `#5E1B2A` · cream `#FBEBD9` (headline) · mustard `#E8B04B` (runners, Kenny Shop, badge)
+- Fonts: Playfair Display Bold for "SELLER CHAT", Montserrat ExtraBold for everything else
+- Text: `WELCOME NOVEMBER` · `SELLER CHAT` · runners: `RESELLER TIPS` · `SOURCING` · `Q&A`
+- Finished cover: `final/november-seller-chat-photo.png` (denim jacket photo, badge bottom-right)
+
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`,
   `whatnot-covers/kids-vintage.png`, `whatnot-covers/kids-modern.png`, `whatnot-covers/october-clear-out.png`

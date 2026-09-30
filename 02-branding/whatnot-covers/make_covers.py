@@ -94,6 +94,21 @@ SHOWS["october-clear-out-photo"] = dict(
     photo=HERE / "photos" / "october-clear-out-2.jpg", crop=(560, 400, 1993, 1733),
 )
 
+# Welcome November seller chat: a talk show, not a sale, so the badge says LIVE CHAT.
+SHOWS["november-seller-chat"] = dict(
+    # cranberry + cream + mustard, fall
+    bg="#5E1B2A", ink="#FBEBD9", accent="#E8B04B", badge_ink="#5E1B2A",
+    photo_bg="#511724", figure="#8A4A57",
+    head_font=SERIF_B, head_scale=1.0, top="WELCOME NOVEMBER", top_font=SANS_B, top_size=50,
+    top_gap=36, main="SELLER CHAT", badge_big="LIVE", badge_small="CHAT", badge_font=SANS_B,
+    brands=["RESELLER TIPS", "SOURCING", "Q&A"], brand_font=SANS_B,
+    photo_hint="waist-up · cozy fall outfit · smiling at the camera",
+)
+SHOWS["november-seller-chat-photo"] = dict(
+    SHOWS["november-seller-chat"], template=False, badge="bottom-right",  # off her face
+    photo=HERE / "photos" / "october-clear-out.png", crop=(0, 330, 1320, 1558),
+)
+
 # baby = newborn to 24 months; kids = toddler 2T through big-kid 16 (XL)
 KID_SIZES = {"baby": "BABY · NB–24M", "kids": "TODDLER & KIDS · 2T–16"}
 KID_PHOTOS = {  # photo, crop
@@ -292,7 +307,7 @@ def build(name, s, out=None):
         y = paste_center(c, head, y) + 40
     else:
         top = text_img(s["top"], s.get("top_font", s["head_font"]), s.get("top_size", 60), s["ink"], s["head_scale"], spacing=18)
-        y = paste_center(c, top, y) + 20
+        y = paste_center(c, top, y) + s.get("top_gap", 20)
         y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
     footer = None
     if s.get("footer"):
