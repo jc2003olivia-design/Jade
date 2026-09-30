@@ -71,6 +71,8 @@ Claude reads this before every task and adds to it as it goes (see
   (git-ignored, repo is public). Kids Modern runners: Hanna Andersson, Mini
   Boden, Zara. Kids Vintage runners: Overalls, Denim, Designer.
 - Phone screenshots of photos: crop out the Photos app bars before using them.
+- Whatnot show titles and descriptions live in `02-branding/titles.md`;
+  titles repeat the cover's show name.
 - Crop cover photos tight on the child with the full outfit showing, and move
   the $1 badge (`badge=` in `SHOWS`) so it never covers her face.
 
