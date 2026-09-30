@@ -78,7 +78,8 @@ To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_c
 - Colors: clearance red `#E3262E` · white `#FFFFFF` (headline, footer) · yellow `#FFD83D` (runners, Kenny Shop, badge) · near-black `#1A1A1A` (runner logos and badge text)
 - Fonts: Anton for the headline and "70%", Montserrat ExtraBold for everything else
 - Text: `OCTOBER CLEAR OUT` · badge `70% OFF` · `ALL SIZES · KIDS · WOMEN'S · MEN'S` · runners: Nike logo · Ralph Lauren logo · `VINTAGE`
-- Photo: you holding or wearing the best steal of the night
+- Photo: you holding or wearing the best steal of the night. Finished cover:
+  `final/october-clear-out-photo.png` (badge bottom-right so it stays off your face).
 
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`,

@@ -78,7 +78,11 @@ SHOWS["october-clear-out"] = dict(
     top_size=70, badge_big="70%", badge_small="OFF", brand_font=SANS_B,
     brands=["NIKE", "RALPH LAUREN", "VINTAGE"],
     footer="ALL SIZES · KIDS · WOMEN'S · MEN'S", footer_font=SANS_B, footer_size=44, footer_ink="#FFFFFF",
-    photo_hint="you holding or wearing the best steal of the night",
+    footer_spacing=3, photo_hint="you holding or wearing the best steal of the night",
+)
+SHOWS["october-clear-out-photo"] = dict(
+    SHOWS["october-clear-out"], template=False, badge="bottom-right",  # badge off her face
+    photo=HERE / "photos" / "october-clear-out.png", crop=(0, 330, 1320, 1558),
 )
 
 # baby = newborn to 24 months; kids = toddler 2T through big-kid 16 (XL)
@@ -284,12 +288,12 @@ def build(name, s, out=None):
     footer = None
     if s.get("footer"):
         footer = fit_text(s["footer"], s.get("footer_font", SANS_B), inner, s.get("footer_size", 40),
-                          s.get("footer_ink", s["accent"]), spacing=12)
+                          s.get("footer_ink", s["accent"]), spacing=s.get("footer_spacing", 12))
     footer_h = footer.height + 52 if footer else 0
     photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)
     draw_photo(c, s, photo_box)
     # badge="top-right" (default), "top-left" or "bottom-left": wherever it misses faces
-    spot = s.get("badge", "top-right")
+    spot = s.get("badge", "top-right")  # or "bottom-right"
     bx = photo_box[0] + 175 if spot.endswith("left") else photo_box[2] - 175
     by = photo_box[3] - 185 if spot.startswith("bottom") else photo_box[1] + 185
     badge(c, s, bx, by, 145)
