@@ -48,25 +48,36 @@ SHOWS["premium-contemporary-2"] = dict(
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
 )
 
-# Kids shows: no one wears these, so the photo is a flat lay of the hero pieces.
-FLAT_LAY = "flat lay or hanger shot · 2–3 hero pieces"
+# Kids shows: two covers each, baby sizes and kids sizes.
+KID_HINT = "your little one wearing the hero piece · smiling"
 SHOWS["kids-vintage"] = dict(
     # 90s mustard + cherry red, retro type
     bg="#F2B33D", ink="#3A2216", accent="#C8372D", badge_ink="#FFF3DC",
     photo_bg="#E3A22C", figure="#F8D27E",
-    head_font=RETRO, head_scale=1.0, top_font=CHUNKY, figure_shape="tee", top_size=96, badge_font=CHUNKY,
-    top="KIDS", main="VINTAGE", brand_font=CHUNKY, photo_hint=FLAT_LAY,
+    head_font=RETRO, head_scale=1.0, top_font=CHUNKY, top_size=96, badge_font=CHUNKY,
+    top="KIDS", main="VINTAGE", brand_font=CHUNKY, photo_hint=KID_HINT,
+    footer_font=CHUNKY, footer_size=58, footer_ink="#3A2216",
     brands=["OSHKOSH B'GOSH", "DISNEY", "GYMBOREE", "LEVI'S"],
 )
 SHOWS["kids-modern"] = dict(
     # soft mint + navy + tangerine, rounded type
     bg="#9ED8C6", ink="#1E3A5F", accent="#FF8A5B", badge_ink="#1E3A5F", logo="#1E3A5F",
     photo_bg="#8CCBB8", figure="#C4EADF",
-    head_font=ROUND_B, head_scale=1.0, figure_shape="tee", top_size=96, badge_font=ROUND_B,
-    top="KIDS", main="MODERN", brand_font=ROUND_B, photo_hint=FLAT_LAY,
-    brands=["JANIE AND JACK", "MINI BODEN", "HANNA ANDERSSON", "PATAGONIA"],
+    head_font=ROUND_B, head_scale=1.0, top_size=96, badge_font=ROUND_B,
+    top="KIDS", main="MODERN", brand_font=ROUND_B, photo_hint=KID_HINT,
+    footer_font=ROUND_B, footer_size=58, footer_ink="#1E3A5F",
+    brands=["HANNA ANDERSSON", "MINI BODEN", "ZARA"],
+    badge_left=True,  # her face sits right of center in this photo
 )
-
+KID_SIZES = {"baby": "SIZES NB–24M", "kids": "SIZES 2T–XL"}
+KID_PHOTOS = {  # photo, crop
+    "kids-vintage": (HERE / "photos" / "kids-vintage.png", (0, 40, 1320, 1276)),
+    "kids-modern": (HERE / "photos" / "kids-modern.png", (0, 100, 1320, 1336)),
+}
+for show, (photo, crop) in KID_PHOTOS.items():
+    for size, line in KID_SIZES.items():
+        SHOWS[f"{show}-{size}"] = dict(SHOWS[show], footer=line, template=False,
+                                       photo=photo, crop=crop)
 
 def text_img(text, font_path, size, fill, x_scale=1.0, spacing=0):
     """Render text to its own transparent image; x_scale < 1 condenses it."""
@@ -220,18 +231,10 @@ def draw_photo(canvas, s, box):
         return
     d.rounded_rectangle(box, 36, fill=s["photo_bg"])
     cx = (x0 + x1) // 2
-    if s.get("figure_shape") == "tee":
-        # little t-shirt placeholder for flat-lay shows
-        t = y0 + 260
-        d.polygon([(cx - 90, t), (cx - 250, t + 70), (cx - 310, t + 250), (cx - 200, t + 290),
-                   (cx - 190, t + 560), (cx + 190, t + 560), (cx + 200, t + 290),
-                   (cx + 310, t + 250), (cx + 250, t + 70), (cx + 90, t)], fill=s["figure"])
-        d.ellipse((cx - 90, t - 55, cx + 90, t + 70), fill=s["photo_bg"])
-    else:
-        # waist-up figure placeholder
-        d.ellipse((cx - 110, y0 + 150, cx + 110, y0 + 400), fill=s["figure"])
-        d.rounded_rectangle((cx - 250, y0 + 420, cx + 250, y1 + 60), 180, fill=s["figure"])
-        d.rectangle((x0, y1 - 1, x1, y1 + 80), fill=s["bg"])  # clip figure bottom
+    # waist-up figure placeholder
+    d.ellipse((cx - 110, y0 + 150, cx + 110, y0 + 400), fill=s["figure"])
+    d.rounded_rectangle((cx - 250, y0 + 420, cx + 250, y1 + 60), 180, fill=s["figure"])
+    d.rectangle((x0, y1 - 1, x1, y1 + 80), fill=s["bg"])  # clip figure bottom
     label = text_img("YOUR PHOTO HERE", SANS_B, 40, s["ink"], spacing=4)
     canvas.alpha_composite(label, (cx - label.width // 2, y1 - 150))
     hint = s.get("photo_hint", "waist-up · wearing the hero piece · eye contact")
@@ -262,11 +265,13 @@ def build(name, s, out=None):
     y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
     footer = None
     if s.get("footer"):
-        footer = text_img(s["footer"], SANS_B, 40, s["accent"], spacing=12)
+        footer = text_img(s["footer"], s.get("footer_font", SANS_B), s.get("footer_size", 40),
+                          s.get("footer_ink", s["accent"]), spacing=12)
     footer_h = footer.height + 52 if footer else 0
     photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)
     draw_photo(c, s, photo_box)
-    badge(c, s, photo_box[2] - 175, photo_box[1] + 185, 145)
+    bx = photo_box[0] + 175 if s.get("badge_left") else photo_box[2] - 175
+    badge(c, s, bx, photo_box[1] + 185, 145)
     if footer:
         fy = photo_box[3] + (sy1 - BAND - photo_box[3] - footer.height) // 2
         c.alpha_composite(footer, ((W - footer.width) // 2, fy))

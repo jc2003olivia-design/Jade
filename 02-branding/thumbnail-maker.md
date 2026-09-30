@@ -56,18 +56,20 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 ### Kids Vintage: 90s mustard + cherry
 - Colors: mustard `#F2B33D` · dark brown `#3A2216` (headline) · cherry red `#C8372D` (runners, Kenny Shop, $1 badge) · cream `#FFF3DC` (runner and badge text)
 - Fonts: Shrikhand for "VINTAGE" (retro 70s/90s script), Titan One for "KIDS", the $1 and the runners
-- Text: `KIDS VINTAGE` · `$1 STARTS` · runners: OshKosh B'gosh · Disney · Gymboree · Levi's
-- Photo: flat lay or hanger shot of 2–3 hero pieces (overalls, a character tee, a bright windbreaker) on a plain surface that isn't white
+- Text: `KIDS VINTAGE` · `$1 STARTS` · runners: OshKosh B'gosh · Disney · Gymboree · Levi's (Claude's picks; swap in real brands)
+- Photo: a little one wearing a vintage hero piece (patchwork overalls, a character tee)
 
 ### Kids Modern: soft mint + tangerine
 - Colors: mint `#9ED8C6` · navy `#1E3A5F` (headline, Kenny Shop, runner and badge text) · tangerine `#FF8A5B` (runners, $1 badge)
 - Fonts: Fredoka Bold (rounded) for everything big
-- Text: `KIDS MODERN` · `$1 STARTS` · runners: Janie and Jack · Mini Boden · Hanna Andersson · Patagonia
-- Photo: flat lay of 2–3 current-season pieces that pop against mint (coral, yellow, navy, stripes)
+- Text: `KIDS MODERN` · `$1 STARTS` · runners: Hanna Andersson · Mini Boden · Zara
+- Photo: a little one wearing a current-season piece. The $1 badge sits on the left here so it
+  stays off her face (`badge_left`).
 
-Kids covers show the clothes, not a person, so the placeholder is a tee. The runner brands are
-starting guesses; swap them for the night's real brands in `SHOWS` in `make_covers.py`.
-No kids' faces on covers.
+Each kids show has two covers, one per size run, with the sizes in big type under the photo:
+`SIZES NB–24M` (baby) and `SIZES 2T–XL` (kids). They're in `final/` as
+`kids-vintage-baby`, `kids-vintage-kids`, `kids-modern-baby`, `kids-modern-kids`.
+To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_covers.py`.
 
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`,
