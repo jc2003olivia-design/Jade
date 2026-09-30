@@ -79,7 +79,7 @@ To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_c
 - Fonts: Anton for the headline and "70%", Montserrat ExtraBold for everything else
 - Text: `OCTOBER CLEAR OUT` · badge `70% OFF` · `ALL SIZES · KIDS · WOMEN'S · MEN'S` · runners: Nike logo · Ralph Lauren logo · `VINTAGE`
 - Photo: you holding or wearing the best steal of the night. Finished cover:
-  `final/october-clear-out-photo.png` (badge bottom-right so it stays off your face).
+  `final/october-clear-out-photo.png` (badge bottom-left so it stays off both faces).
 
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`,

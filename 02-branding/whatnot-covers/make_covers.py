@@ -81,8 +81,8 @@ SHOWS["october-clear-out"] = dict(
     footer_spacing=3, photo_hint="you holding or wearing the best steal of the night",
 )
 SHOWS["october-clear-out-photo"] = dict(
-    SHOWS["october-clear-out"], template=False, badge="bottom-right",  # badge off her face
-    photo=HERE / "photos" / "october-clear-out.png", crop=(0, 330, 1320, 1558),
+    SHOWS["october-clear-out"], template=False, badge="bottom-left",  # badge off both faces
+    photo=HERE / "photos" / "october-clear-out-2.jpg", crop=(560, 400, 1993, 1733),
 )
 
 # baby = newborn to 24 months; kids = toddler 2T through big-kid 16 (XL)
