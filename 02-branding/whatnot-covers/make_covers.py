@@ -69,6 +69,18 @@ SHOWS["kids-modern"] = dict(
     brands=["HANNA ANDERSSON", "MINI BODEN", "ZARA"],
     one_line=True, badge="bottom-left",  # keeps the $1 off her face
 )
+# Clearance show: eBay listings and randoms at 70% off.
+SHOWS["absolute-steals"] = dict(
+    # clearance red + yellow, loud condensed type
+    bg="#E3262E", ink="#FFFFFF", accent="#FFD83D", badge_ink="#1A1A1A", logo="#FFD83D",
+    photo_bg="#C81E26", figure="#F0646A",
+    head_font=DISPLAY, head_scale=1.0, badge_font=DISPLAY, top="ABSOLUTE", main="STEALS",
+    top_size=70, badge_big="70%", badge_small="OFF", brand_font=SANS_B,
+    brands=["70% OFF", "EBAY FINDS", "RANDOMS"],
+    footer="EBAY LISTINGS + RANDOMS", footer_font=SANS_B, footer_size=44, footer_ink="#FFFFFF",
+    photo_hint="you holding or wearing the best steal of the night",
+)
+
 # baby = newborn to 24 months; kids = toddler 2T through big-kid 16 (XL)
 KID_SIZES = {"baby": "BABY · NB–24M", "kids": "TODDLER & KIDS · 2T–16"}
 KID_PHOTOS = {  # photo, crop
@@ -247,8 +259,8 @@ def badge(canvas, s, cx, cy, r):
     d = ImageDraw.Draw(canvas)
     d.ellipse((cx - r - 8, cy - r - 8, cx + r + 8, cy + r + 8), fill=s["bg"])
     d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=s["accent"])
-    big = text_img("$1", s.get("badge_font", SANS_B), 150, s["badge_ink"])
-    small = text_img("STARTS", SANS_B, 44, s["badge_ink"], spacing=6)
+    big = fit_text(s.get("badge_big", "$1"), s.get("badge_font", SANS_B), int(r * 1.6), 150, s["badge_ink"])
+    small = text_img(s.get("badge_small", "STARTS"), SANS_B, 44, s["badge_ink"], spacing=6)
     total = big.height + 18 + small.height
     y = cy - total // 2
     canvas.alpha_composite(big, (cx - big.width // 2, y))

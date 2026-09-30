@@ -73,9 +73,16 @@ whole outfit fits. Each kids show has two covers, one per size run, with the siz
 `kids-vintage-baby`, `kids-vintage-kids`, `kids-modern-baby`, `kids-modern-kids`.
 To use a different photo, put it in `photos/` and change `KID_PHOTOS` in `make_covers.py`.
 
+### Absolute Steals: 70% off clearance
+- For running eBay listings and randoms at 70% off.
+- Colors: clearance red `#E3262E` · white `#FFFFFF` (headline, footer) · yellow `#FFD83D` (runners, Kenny Shop, badge) · near-black `#1A1A1A` (runner and badge text)
+- Fonts: Anton for the headline and "70%", Montserrat ExtraBold for everything else
+- Text: `ABSOLUTE STEALS` · badge `70% OFF` · `EBAY LISTINGS + RANDOMS` · runners: `70% OFF` · `EBAY FINDS` · `RANDOMS`
+- Photo: you holding or wearing the best steal of the night
+
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`,
-  `whatnot-covers/kids-vintage.png`, `whatnot-covers/kids-modern.png`
+  `whatnot-covers/kids-vintage.png`, `whatnot-covers/kids-modern.png`, `whatnot-covers/absolute-steals.png`
 - Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
   `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
