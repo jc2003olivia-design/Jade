@@ -69,15 +69,15 @@ SHOWS["kids-modern"] = dict(
     brands=["HANNA ANDERSSON", "MINI BODEN", "ZARA"],
     one_line=True, badge="bottom-left",  # keeps the $1 off her face
 )
-# Clearance show: eBay listings and randoms at 70% off.
-SHOWS["absolute-steals"] = dict(
+# October Clear Out: eBay listings and randoms at 70% off, all sizes.
+SHOWS["october-clear-out"] = dict(
     # clearance red + yellow, loud condensed type
     bg="#E3262E", ink="#FFFFFF", accent="#FFD83D", badge_ink="#1A1A1A", logo="#FFD83D",
     photo_bg="#C81E26", figure="#F0646A",
-    head_font=DISPLAY, head_scale=1.0, badge_font=DISPLAY, top="ABSOLUTE", main="STEALS",
+    head_font=DISPLAY, head_scale=1.0, badge_font=DISPLAY, top="OCTOBER", main="CLEAR OUT",
     top_size=70, badge_big="70%", badge_small="OFF", brand_font=SANS_B,
-    brands=["70% OFF", "EBAY FINDS", "RANDOMS"],
-    footer="EBAY LISTINGS + RANDOMS", footer_font=SANS_B, footer_size=44, footer_ink="#FFFFFF",
+    brands=["NIKE", "RALPH LAUREN", "VINTAGE"],
+    footer="ALL SIZES · KIDS · WOMEN'S · MEN'S", footer_font=SANS_B, footer_size=44, footer_ink="#FFFFFF",
     photo_hint="you holding or wearing the best steal of the night",
 )
 
