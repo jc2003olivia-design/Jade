@@ -18,6 +18,8 @@ the cover so repeat buyers match them, and put the words buyers search for (bran
 
 | Show / cover | Title |
 |---|---|
+| Premium Activewear (`premium-activewear-3`) | `$1 PREMIUM ACTIVEWEAR · Lululemon, Free People Movement, Nike` |
+| Premium Contemporary (`premium-contemporary-3`) | `$1 PREMIUM CONTEMPORARY · Free People, Polo Ralph Lauren & Premium Denim` |
 | Kids Vintage, baby (`kids-vintage-baby`) | `$1 KIDS VINTAGE · BABY NB–24M · Overalls, Denim, Designer` |
 | Kids Vintage, kids (`kids-vintage-kids`) | `$1 KIDS VINTAGE · 2T–16 · Overalls, Denim, Designer` |
 | Kids Modern, baby (`kids-modern-baby`) | `$1 KIDS MODERN · BABY NB–24M · Hanna Andersson, Mini Boden, Zara` |
@@ -25,12 +27,14 @@ the cover so repeat buyers match them, and put the words buyers search for (bran
 | October Clear Out (`october-clear-out`) | `70% OFF OCTOBER CLEAR OUT · Nike, Ralph Lauren & Vintage · All Sizes` |
 
 Descriptions (list item types in plain words; swap in what's actually in the show):
+- **Premium Activewear:** Women's activewear, all $1 starts. Lululemon, Free People Movement and Nike: leggings, flares, sports bras, tanks, sets and jackets.
+- **Premium Contemporary:** Women's contemporary, all $1 starts. Free People, Polo Ralph Lauren and premium denim: dresses, tops, sweaters, jeans and skirts.
 - **Kids Vintage, baby:** Vintage baby clothes, all $1 starts. Overalls, shortalls, denim jackets and jeans, and designer pieces. Sizes newborn to 24 months.
 - **Kids Vintage, kids:** Vintage kids' clothes, all $1 starts. Overalls, denim jackets and jeans, and designer pieces. Toddler and kids' sizes 2T–16.
 - **Kids Modern, baby:** Hanna Andersson, Mini Boden and Zara baby clothes, all $1 starts. Rompers, sets, dresses, sweaters and pajamas. Sizes newborn to 24 months.
 - **Kids Modern, kids:** Hanna Andersson, Mini Boden and Zara kids' clothes, all $1 starts. Dresses, sets, sweaters, jeans and pajamas. Toddler and kids' sizes 2T–16.
 - **October Clear Out:** My eBay listings and random one-offs at 70% off my listed prices. Nike, Ralph Lauren and vintage in all sizes: kids', women's and men's. Tops, sweatshirts, jeans, jackets and more.
 
-Brand tag: Nike on October Clear Out. Hanna Andersson on both Kids Modern shows. Kids Vintage has no single main brand,
+Brand tag: Lululemon on Premium Activewear, Free People on Premium Contemporary, Nike on October Clear Out. Hanna Andersson on both Kids Modern shows. Kids Vintage has no single main brand,
 so tag the biggest brand in that night's show. Category: the kids/baby clothing
 subcategory, not general fashion. **[Whatnot]**
