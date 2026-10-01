@@ -68,8 +68,12 @@ Claude reads this before every task and adds to it as it goes (see
 
 - Whatnot: run Premium Activewear and Premium Contemporary as two separate
   shows (~50 pieces each), not one combined show.
-- Whatnot shows run under one generic listing with $1 starts (Jade calls it
-  "random pull"). Delist from Depop/Poshmark before going live.
+- Whatnot shows run under one generic listing (Jade calls it "random pull").
+  Premium shows start at $1. Delist from Depop/Poshmark before going live.
+- Third show: **The Elevated Edit**, $5 starts, Anthropologie / Quince /
+  Free People, black-and-gold cover. Run it like Premium Contemporary.
+- Sudden death on Whatnot = no time added for late bids; the auction ends
+  at 0. Whatnot publishes no data on whether it raises or lowers prices.
 - Show playbook (scripts, item counts, timers, giveaway rules) is
   `04-online-selling/whatnot.md`. Tag each claim [Whatnot]/[Study]/[Math]/[Test];
   Jade wants only proven facts, so label anything that isn't.
