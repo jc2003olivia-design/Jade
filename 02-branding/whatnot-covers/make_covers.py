@@ -1,7 +1,7 @@
-"""Build the two Whatnot show cover mockups (1080x1920).
+"""Build the Whatnot show cover mockups (1080x1920).
 
 Run:  python3 make_covers.py
-Makes a PNG per show plus a preview sheet showing both at phone-feed size
+Makes a PNG per show plus a preview sheet showing them all at phone-feed size
 with the safe zone marked. With no photo, a grey figure stands in (the
 template). Put a photo in photos/ and set "photo" + "crop" on a show to get
 the finished cover in final/ (photos/ and final/ are kept out of git).
@@ -36,6 +36,13 @@ SHOWS = {
         head_font=DISPLAY, head_scale=1.0, badge_font=DISPLAY, top="PREMIUM", main="ACTIVEWEAR",
         brands=["FREE PEOPLE MOVEMENT", "LULULEMON", "NIKE"], brand_font=SANS_B,
         photo=HERE / "photos" / "activewear-2.webp", crop=(200, 0, 1110, 1052),
+    ),
+    "for-the-girls": dict(
+        # hot pink + baby pink
+        bg="#FF4FA3", ink="#FFFFFF", accent="#FFD1E6", badge_ink="#E0287D", logo="#FFD1E6",
+        photo_bg="#F03D93", figure="#FF8CC2",
+        head_font=SERIF_B, head_scale=1.0, top="FOR THE", main="GIRLS",
+        brands=["BRANDY MELVILLE", "AERIE", "GARAGE", "PRINCESS POLLY"], brand_font=SANS_B,
     ),
 }
 # Second Premium Contemporary cover: same look, new photo and brands, no fall line.
@@ -167,7 +174,6 @@ def paste_center(canvas, im, y):
 
 def draw_photo(canvas, s, box):
     x0, y0, x1, y1 = box
-    d = ImageDraw.Draw(canvas)
     photo = s.get("photo")
     if photo and Path(photo).exists():
         ph = Image.open(photo).convert("RGBA")
@@ -196,12 +202,16 @@ def draw_photo(canvas, s, box):
         ImageDraw.Draw(mask).rounded_rectangle((0, 0, bw, bh), 36, fill=255)
         canvas.paste(ph, (x0, y0), mask)
         return
-    d.rounded_rectangle(box, 36, fill=s["photo_bg"])
+    # waist-up figure placeholder, drawn in its own layer so the slot clips it
+    bw, bh = x1 - x0, y1 - y0
+    slot = Image.new("RGBA", (bw, bh), s["photo_bg"])
+    sd = ImageDraw.Draw(slot)
+    sd.ellipse((bw // 2 - 110, 150, bw // 2 + 110, 400), fill=s["figure"])
+    sd.rounded_rectangle((bw // 2 - 250, 420, bw // 2 + 250, bh + 60), 180, fill=s["figure"])
+    mask = Image.new("L", (bw, bh), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, bw, bh), 36, fill=255)
+    canvas.paste(slot, (x0, y0), mask)
     cx = (x0 + x1) // 2
-    # waist-up figure placeholder
-    d.ellipse((cx - 110, y0 + 150, cx + 110, y0 + 400), fill=s["figure"])
-    d.rounded_rectangle((cx - 250, y0 + 420, cx + 250, y1 + 60), 180, fill=s["figure"])
-    d.rectangle((x0, y1 - 1, x1, y1 + 80), fill=s["bg"])  # clip figure bottom
     label = text_img("YOUR PHOTO HERE", SANS_B, 40, s["ink"], spacing=4)
     canvas.alpha_composite(label, (cx - label.width // 2, y1 - 150))
     sub = text_img("waist-up · wearing the hero piece · eye contact", SANS, 26, s["ink"])
@@ -249,9 +259,9 @@ def build(name, s, out=None):
 
 
 def preview(covers, out="preview-feed-size.png"):
-    """Both covers at feed-card size (270x480) with the safe zone dashed."""
+    """All covers at feed-card size (270x480) with the safe zone dashed."""
     tw, th, pad = 270, 480, 40
-    sheet = Image.new("RGB", (pad * 3 + tw * 2, th + pad * 2 + 50), "#FFFFFF")
+    sheet = Image.new("RGB", (pad * (len(covers) + 1) + tw * len(covers), th + pad * 2 + 50), "#FFFFFF")
     d = ImageDraw.Draw(sheet)
     k = tw / W
     for i, (name, c) in enumerate(covers.items()):

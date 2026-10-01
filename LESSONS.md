@@ -64,6 +64,13 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Branding and covers
 
+- Whatnot covers are built in `02-branding/whatnot-covers/make_covers.py`
+  (one entry per show in `SHOWS`), with color choices in `color_options.py`.
+  "For the Girls" = pink, Brandy Melville · Aerie · Garage · Princess Polly.
+- Brand logos come from Jade; until a file is in `logos/`, the brand shows as
+  bold text. Wikimedia Commons rate-limits (429) cloud sessions, so don't
+  rely on it for logos.
+
 ## Whatnot shows
 
 - Whatnot: run Premium Activewear and Premium Contemporary as two separate

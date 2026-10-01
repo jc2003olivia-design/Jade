@@ -14,6 +14,7 @@ Jade
 │   ├── titles.md
 │   └── whatnot-covers/          Whatnot show cover mockups
 │       ├── color_options.py
+│       ├── for-the-girls.png
 │       ├── fonts/
 │       │   ├── Anton-Regular.ttf
 │       │   ├── Montserrat-ExtraBold.ttf
@@ -36,6 +37,7 @@ Jade
 │       ├── make_covers.py
 │       ├── options-activewear.png
 │       ├── options-contemporary.png
+│       ├── options-for-the-girls.png
 │       ├── premium-activewear.png
 │       ├── premium-contemporary.png
 │       └── preview-feed-size.png

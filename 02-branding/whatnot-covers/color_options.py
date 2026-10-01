@@ -1,6 +1,7 @@
 """Side-by-side color options for each show, at phone-feed size.
 
-Run:  python3 color_options.py   ->  options-contemporary.png, options-activewear.png
+Run:  python3 color_options.py   ->  options-contemporary.png, options-activewear.png,
+                                     options-for-the-girls.png
 To use one: copy its colors into SHOWS in make_covers.py.
 """
 from PIL import Image, ImageDraw, ImageFont
@@ -35,6 +36,15 @@ ACTIVEWEAR = {
     "6 Black + Neon Lime": ("#111111", "#FFFFFF", "#C6FF3D", "#111111"),
 }
 
+FOR_THE_GIRLS = {
+    "1 Hot Pink + Baby Pink": ("#FF4FA3", "#FFFFFF", "#FFD1E6", "#E0287D"),
+    "2 Baby Pink + Hot Pink": ("#FFC9DE", "#C2185B", "#FF3D8B", "#FFFFFF", "#E0287D"),
+    "3 Barbie Pink + White": ("#E0218A", "#FFFFFF", "#FFFFFF", "#E0218A"),
+    "4 Bubblegum + Cherry Red": ("#FF8FC0", "#FFFFFF", "#E0112B", "#FFFFFF", "#FFFFFF"),
+    "5 Blush + Lavender": ("#F9C6D3", "#5B2A86", "#B9A6F2", "#2E1A47", "#5B2A86"),
+    "6 Pink + Black": ("#FF6FB0", "#111111", "#111111", "#FF6FB0"),
+}
+
 
 def sheet(show, options, out):
     base = SHOWS[show]
@@ -62,4 +72,5 @@ def sheet(show, options, out):
 if __name__ == "__main__":
     sheet("premium-contemporary", CONTEMPORARY, "options-contemporary.png")
     sheet("premium-activewear", ACTIVEWEAR, "options-activewear.png")
+    sheet("for-the-girls", FOR_THE_GIRLS, "options-for-the-girls.png")
     print("done")

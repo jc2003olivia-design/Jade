@@ -1,7 +1,7 @@
 # Thumbnail Maker
 
-Whatnot show covers for the two $1-start series: **Premium Contemporary** and
-**Premium Activewear**. Mockups are in `whatnot-covers/`.
+Whatnot show covers for the $1-start series: **Premium Contemporary**,
+**Premium Activewear** and **For the Girls**. Mockups are in `whatnot-covers/`.
 
 ## Specs
 - Size: **1080 × 1920** (tall, 9:16).
@@ -25,12 +25,12 @@ Whatnot show covers for the two $1-start series: **Premium Contemporary** and
 
 ## Style
 
-### Shared layout (both shows)
+### Shared layout (all shows)
 Top to bottom, all inside the safe zone:
 1. **Logo runner**: an edge-to-edge band in the accent color with the show's brand logos
    repeating, separated by dots (like a ticker). It runs off both sides on purpose.
 2. `KENNY SHOP`: small, spaced-out letters in the accent color
-3. `PREMIUM` + show name: the big headline
+3. `PREMIUM` + show name: the big headline (`FOR THE` + `GIRLS` on For the Girls)
 4. Your photo: wearing the hero piece, smiling at the camera, filling most of the frame
 5. `$1 STARTS`: a round badge by your shoulder
 6. (Contemporary) `FALL THEMED` in the accent color
@@ -53,12 +53,20 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · runners: Free People Movement · Lululemon · Nike logos
 - Outfit: a matching set (Align, Define, Alo) in a color that pops against bright blue (orange, black, white, lime). Avoid blue sets.
 
+### For the Girls: pink
+- Background: hot pink
+- Colors: hot pink `#FF4FA3` · white `#FFFFFF` (headline) · baby pink `#FFD1E6` (runners, Kenny Shop, $1 badge) · deep pink `#E0287D` (runner text, badge text)
+- Fonts: Playfair Display Bold headline, Montserrat ExtraBold for Kenny Shop, badge and brand text
+- Text: `FOR THE GIRLS` · `$1 STARTS` · runners: `BRANDY MELVILLE` · `AERIE` · `GARAGE` · `PRINCESS POLLY` (text until logo files are added)
+- Outfit: a cute going-out or everyday look (baby tee + low-rise jeans, a Princess Polly mini dress, an Aerie set). White, black, denim or red pop on pink; avoid an all-pink outfit.
+- Other pinks to pick from: `whatnot-covers/options-for-the-girls.png`
+
 ## Templates
-- Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
+- Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`, `whatnot-covers/for-the-girls.png`
 - Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
   `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
-- Other color options considered: `whatnot-covers/options-contemporary.png`, `whatnot-covers/options-activewear.png`
+- Other color options considered: `whatnot-covers/options-contemporary.png`, `whatnot-covers/options-activewear.png`, `whatnot-covers/options-for-the-girls.png`
 - Bundle / lot photo:
 - Sale / promo photo:
 
@@ -74,7 +82,8 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
   - Free People Movement: the file sent was cut off after "MOVEME", so the "NT" was redrawn to match.
   - Anthropologie: the file sent was too small (16 px tall) to enlarge cleanly, so the wordmark is
     redrawn in Playfair Display with the same spaced capitals.
-- Still need: Aritzia (shows as bold text until then).
+- Still need: Aritzia, Brandy Melville, Aerie, Garage, Princess Polly (show as bold text until then).
+  Save them as `brandy-melville.png`, `aerie.png`, `garage.png`, `princess-polly.png`.
 
 ## Photo shoot checklist
 - [ ] Phone at chest height, vertical, back camera, wipe the lens
