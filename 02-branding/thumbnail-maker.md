@@ -59,6 +59,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - Fonts: Playfair Display Bold headline, Montserrat ExtraBold for Kenny Shop, badge and brand text
 - Text: `FOR THE GIRLS` · `$1 STARTS` · runners: `BRANDY MELVILLE` · `AERIE` · `GARAGE` · `PRINCESS POLLY` (text until logo files are added)
 - Outfit: a cute going-out or everyday look (baby tee + low-rise jeans, a Princess Polly mini dress, an Aerie set). White, black, denim or red pop on pink; avoid an all-pink outfit.
+- The $1 badge sits at the bottom corner on this cover (`badge_low`), because the photo is two faces across the top.
 - Other pinks to pick from: `whatnot-covers/options-for-the-girls.png`
 
 ## Templates

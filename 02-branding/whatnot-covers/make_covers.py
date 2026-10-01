@@ -43,6 +43,8 @@ SHOWS = {
         photo_bg="#F03D93", figure="#FF8CC2",
         head_font=SERIF_B, head_scale=1.0, top="FOR THE", main="GIRLS",
         brands=["BRANDY MELVILLE", "AERIE", "GARAGE", "PRINCESS POLLY"], brand_font=SANS_B,
+        # two faces fill the top of this photo, so the badge goes low
+        photo=HERE / "photos" / "for-the-girls.jpg", crop=(430, 0, 2230, 1932), badge_low=True,
     ),
 }
 # Second Premium Contemporary cover: same look, new photo and brands, no fall line.
@@ -246,7 +248,8 @@ def build(name, s, out=None):
     footer_h = footer.height + 52 if footer else 0
     photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)
     draw_photo(c, s, photo_box)
-    badge(c, s, photo_box[2] - 175, photo_box[1] + 185, 145)
+    by = photo_box[3] - 185 if s.get("badge_low") else photo_box[1] + 185
+    badge(c, s, photo_box[2] - 175, by, 145)
     if footer:
         fy = photo_box[3] + (sy1 - BAND - photo_box[3] - footer.height) // 2
         c.alpha_composite(footer, ((W - footer.width) // 2, fy))
