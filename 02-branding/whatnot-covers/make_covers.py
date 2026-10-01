@@ -73,6 +73,8 @@ SHOWS["the-mini-edit-baby-toddler"] = dict(
 # bottle blurred out), recolored to it: black + blush, from the black pants and pink blanket.
 SHOWS["the-big-kid-edit"] = dict(
     SHOWS["the-mini-edit-baby-toddler"], main="Big Kid", sub="SIZES 6–14",
+    # top band shows Nike · Zara · Hanna Andersson, bottom band Abercrombie · Nike · Zara
+    brands=["NIKE", "ZARA", "HANNA ANDERSSON", "ABERCROMBIE"], runner2_start=3,
     bg="#151314", bg_edge="#0A090A", band="#151314", shade=(22, 18, 20), accent="#F5BFCD",
     gold=("#E39AAE", "#F8CDD8", "#FFF1F5", "#ECAABC"), badge_ink="#151314",
     photo_bg="#151314", figure="#3A3034", shade_from=780, shade_max=235, shade_reach=560,
@@ -481,7 +483,7 @@ def build_luxe_full(s):
     shade(c, 0, 560, 200, 0, tint)
     shade(c, s.get("shade_from", 1080), H, 0, s.get("shade_max", 235), tint, s.get("shade_reach"))
     luxe_runner(c, s, sy0)
-    luxe_runner(c, s, sy1 - BAND, start=1)
+    luxe_runner(c, s, sy1 - BAND, start=s.get("runner2_start", 1))
     k, pad = glow(text_img("KENNY SHOP", SANS_B, 32, s["accent"], spacing=14), 8, 220)
     c.alpha_composite(k, ((W - k.width) // 2, sy0 + BAND + 30 - pad))
     # title block sits on the lower third, just above the bottom band

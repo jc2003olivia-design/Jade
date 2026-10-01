@@ -85,7 +85,9 @@ fills the whole cover and everything sits on top of it.
     `#F5BFCD` lines and sheen (from the black pants and pink blanket). Photo
     `photos/kids-big-kids-blur.jpg`: background blurred (the bags in hand and the ground kept sharp)
     and the name printed on the water bottle painted out in plain coral.
-  - Runners: Hanna Andersson · Zara Kids · Designer (serif text, no logos yet). Covers:
+  - Runners: The Mini Edit has Hanna Andersson · Zara Kids · Designer; The Big Kid Edit has
+    Nike (logo) · Zara · Hanna Andersson on top and Abercrombie · Nike · Zara on the bottom, so all
+    four show (`runner2_start`). Text brands are spaced serif capitals until logo files are added. Covers:
     `whatnot-covers/final/the-mini-edit-baby-toddler.png`, `whatnot-covers/final/the-big-kid-edit.png`.
 - The Elevated Edit with your photo: save it as `whatnot-covers/photos/elevated-edit.jpg` and run
   `python3 make_covers.py`; the finished cover lands in `whatnot-covers/final/the-elevated-edit.png`.

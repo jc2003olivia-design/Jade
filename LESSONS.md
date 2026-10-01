@@ -71,6 +71,8 @@ Claude reads this before every task and adds to it as it goes (see
   gold, $5 starts badge.
 - Jade wants covers bright and full-frame ("cover photo format"): her photo edge to edge,
   brightened, text over it. A photo in a frame on a dark background read too dark.
+- Check every brand shows at least once in the runner bands; long names push the last one
+  off the edge. Reorder or set `runner2_start`.
 - Pick cover colors that match the photo's tones. Cool pool blue clashed with a warm photo
   (auburn hair, red top); cherry + blush was more appealing. Show options side by side.
 
@@ -86,7 +88,8 @@ Claude reads this before every task and adds to it as it goes (see
 - Jade also runs a kids show (Hanna Andersson, Zara Kids, designer kids). The brand is
   spelled "Hanna Andersson" (one h, two s's); use that exact spelling in titles and tags.
   It runs as two shows, $3 starts: "The Mini Edit" is Baby & Toddler (0–5T) only; Big Kids
-  (6–14) is "The Big Kid Edit" (suggested; confirm with Jade),
+  (6–14) is "The Big Kid Edit" (suggested; confirm with Jade), brands Zara, Hanna
+  Andersson, Abercrombie, Nike,
   covers in the Elevated Edit luxe style, each recolored to its own photo.
 - Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge);
   for new shows, offer it recolored to match the photo.
