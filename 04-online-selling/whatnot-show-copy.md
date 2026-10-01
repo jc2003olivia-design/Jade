@@ -1,7 +1,7 @@
 # Whatnot show copy
 
-Paste-ready descriptions for each show, plus one Show Notes block that works for every
-show. Covers are in `02-branding/whatnot-covers/`. Tone: quiet luxury, like a boutique,
+Paste-ready descriptions for each show, plus Show Notes for the women's shows and for the
+kids shows. Covers are in `02-branding/whatnot-covers/`. Tone: quiet luxury, like a boutique,
 with ✦ instead of emojis. Keep the brand names and item types in: buyers find shows by
 those words. Swap the item types for what's actually in each show.
 
@@ -77,7 +77,36 @@ Every piece is hand washed, inspected and presented on camera with its brand, si
 Follow to be first in line for the next edit.
 ```
 
-## Show Notes (same for every show)
+## Show Notes: for the girls (The Elevated Edit, The Active Edit)
+
+```
+WELCOME TO KENNY SHOP ✦ CURATED BY KENNY
+
+✦ The details
+Every piece is hand washed before the show.
+Brand, size and condition, including any flaws, are shown on camera.
+Women's sizes XS–XL.
+Orders are dispatched the next day, with everything you win bundled into one box.
+
+✦ Random pulls
+Random pulls are a surprise by design, so no requests unless I invite them.
+
+✦ Share the love
+Promoting the show is always welcome. Bring your girls.
+Follow along on Instagram: @kuratedbykenny
+
+✦ The collection
+For her (women's XS–XL)
+The Elevated Edit · Anthropologie, Quince, Free People · from $5
+The Active Edit · Lululemon, Free People Movement, Nike · from $1
+
+Shopping for the little ones too? (from $3)
+The Mini Edit · baby & toddler 0–5T
+The Big Kid Edit · sizes 6–14
+The Heirloom Edit · vintage baby & kids
+```
+
+## Show Notes: kids shows (The Mini, Big Kid and Heirloom Edits)
 
 ```
 WELCOME TO KENNY SHOP ✦ CURATED BY KENNY
@@ -95,14 +124,14 @@ Promoting the show is always welcome.
 Follow along on Instagram: @kuratedbykenny
 
 ✦ The collection
-For her (women's XS–XL)
-The Elevated Edit · Anthropologie, Quince, Free People · from $5
-The Active Edit · Lululemon, Free People Movement, Nike · from $1
-
 For the little ones (from $3)
 The Mini Edit · baby & toddler 0–5T
 The Big Kid Edit · sizes 6–14
 The Heirloom Edit · vintage baby & kids
+
+Something for you, too (women's XS–XL)
+The Elevated Edit · Anthropologie, Quince, Free People · from $5
+The Active Edit · Lululemon, Free People Movement, Nike · from $1
 ```
 
 If a show has a giveaway, paste the Giveaway Official Rules from
