@@ -46,6 +46,13 @@ SHOWS["premium-contemporary-2"] = dict(
     brands=["FREE PEOPLE", "ANTHROPOLOGIE", "ARITZIA"],
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
 )
+# Premium Activewear, full-frame: the photo fills the top and melts into the blue,
+# title and $1 badge below (bright version of the cover-photo format).
+SHOWS["premium-activewear-2"] = dict(
+    SHOWS["premium-activewear"], layout="full", template=False,
+    photo=HERE / "photos" / "activewear-friends.jpg", photo_y=150, badge_at=(250, 1090),
+    lift=dict(brightness=1.1, contrast=1.08, color=1.12, sharpness=1.15),
+)
 # The Elevated Edit: the luxe look (champagne gold on a full-bleed, brightened photo).
 SHOWS["the-elevated-edit"] = dict(
     style="luxe", layout="full", bg="#1E1712", bg_edge="#080706", ink="#FFFFFF", band="#0B0908",
@@ -428,11 +435,7 @@ def full_photo(s):
     x = min(max(int(ph.width * fx - W / 2), 0), ph.width - W)
     y = min(max(int(ph.height * fy - H * 0.35), 0), ph.height - H)
     ph = ph.crop((x, y, x + W, y + H))
-    lift = s.get("lift", {})
-    for name, fn in (("brightness", ImageEnhance.Brightness), ("contrast", ImageEnhance.Contrast),
-                     ("color", ImageEnhance.Color), ("sharpness", ImageEnhance.Sharpness)):
-        if name in lift:
-            ph = fn(ph).enhance(lift[name])
+    ph = lifted(ph, s)
     if s.get("warm"):
         ph = Image.blend(ph, Image.new("RGB", ph.size, (230, 160, 90)), s["warm"])
     return ph.convert("RGBA")
@@ -471,10 +474,54 @@ def build_luxe_full(s):
     return c
 
 
+def lifted(ph, s):
+    """Brightness / contrast / color / sharpness boost from the show's "lift"."""
+    lift = s.get("lift", {})
+    for name, fn in (("brightness", ImageEnhance.Brightness), ("contrast", ImageEnhance.Contrast),
+                     ("color", ImageEnhance.Color), ("sharpness", ImageEnhance.Sharpness)):
+        if name in lift:
+            ph = fn(ph).enhance(lift[name])
+    return ph
+
+
+def build_bright_full(s):
+    """Full-width photo across the top, fading into the show color; title and badge over the fade."""
+    c = Image.new("RGBA", (W, H), s["bg"])
+    sx0, sy0, sx1, sy1 = SAFE
+    ph = lifted(Image.open(s["photo"]).convert("RGB"), s).convert("RGBA")
+    ph = ph.resize((W, int(ph.height * W / ph.width)), Image.LANCZOS)
+    py = s.get("photo_y", 150)
+    c.alpha_composite(ph, (0, py))
+    rgb = Image.new("RGB", (1, 1), s["bg"]).getpixel((0, 0))
+    fade_end = py + ph.height
+    # melt the photo's edges into the show color: short at the top (under the runner),
+    # longer at the bottom so the title sits on clean color
+    c.paste(s["bg"], (0, 0, W, py))
+    shade(c, py, sy0 + BAND, 255, 0, rgb)
+    shade(c, fade_end - 470, fade_end - 150, 0, 255, rgb)
+    c.paste(s["bg"], (0, fade_end - 150, W, H))
+    runner(c, s, sy0)
+    runner(c, s, sy1 - BAND, start=1)
+    k, pad = glow(text_img("KENNY SHOP", SANS_B, 36, s.get("logo", s["accent"]), spacing=12), 8, 200)
+    c.alpha_composite(k, ((W - k.width) // 2, sy0 + BAND + 28 - pad))
+    top = text_img(s["top"], s["head_font"], 66, s["ink"], s["head_scale"], spacing=20)
+    main = fit_text(s["main"], s["head_font"], sx1 - sx0 - 20, 200, s["ink"], s["head_scale"])
+    y = sy1 - BAND - 40 - main.height - 14 - top.height
+    for im, gap in ((top, 14), (main, 0)):
+        g, pad = glow(im, 14, 120)
+        c.alpha_composite(g, ((W - g.width) // 2, y - pad))
+        y += im.height + gap
+    bx, by = s.get("badge_at", (sx0 + 150, 1000))
+    badge(c, s, bx, by, 140)
+    return c
+
+
 def build(name, s, out=None):
     if s.get("style") == "luxe":
         made = build_luxe_full(s) if s.get("layout") == "full" else build_luxe(s)
         return save(name, s, made, out)
+    if s.get("layout") == "full" and s.get("photo") and Path(s["photo"]).exists():
+        return save(name, s, build_bright_full(s), out)
     c = Image.new("RGBA", (W, H), s["bg"])
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40

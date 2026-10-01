@@ -71,6 +71,10 @@ fills the whole cover and everything sits on top of it.
 
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`, `whatnot-covers/the-elevated-edit.png`
+- Premium Activewear, full-frame (`premium-activewear-2` in `make_covers.py`): the photo runs the full
+  width across the top and fades into the poolside blue; `PREMIUM ACTIVEWEAR` and the $1 badge sit
+  over the fade. Photo: `whatnot-covers/photos/activewear-friends.jpg`; cover:
+  `whatnot-covers/final/premium-activewear-2.png`.
 - The Elevated Edit with your photo: save it as `whatnot-covers/photos/elevated-edit.jpg` and run
   `python3 make_covers.py`; the finished cover lands in `whatnot-covers/final/the-elevated-edit.png`.
 - Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
