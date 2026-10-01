@@ -61,6 +61,20 @@ SHOWS["the-active-edit"] = dict(
     photo=HERE / "photos" / "activewear-friends.jpg", photo_y=150, badge_at=(215, 1000), badge_r=118,
     lift=dict(brightness=1.1, contrast=1.08, color=1.12, sharpness=1.15),
 )
+# The Heirloom Edit (vintage baby & kids, $3 starts): luxe look recolored to the photo
+# (black + tan, so the red cowboy boots pop and the tan matches their embroidery).
+# Photo cropped to the knees down (photos/heirloom-boots-crop.jpg) so the boots are the hero.
+SHOWS["the-heirloom-edit"] = dict(
+    style="luxe", layout="full", template=False,
+    bg="#171311", bg_edge="#171311", band="#171311", shade=(23, 19, 17), ink="#FFFFFF",
+    accent="#DDB98A", gold=("#B98E5C", "#E3C397", "#F8E8D0", "#C9A070"), badge_ink="#171311",
+    photo_bg="#171311", figure="#3A322C", top="THE", main="Heirloom", last="EDIT", start="$3",
+    sub="VINTAGE BABY & KIDS", main_size=300, shade_from=960, shade_max=255, shade_reach=600,
+    brands=["OSHKOSH", "GYMBOREE", "HANNA ANDERSSON"], runner2_start=2,  # placeholders: confirm
+    brand_font=SERIF, brand_spacing=10,
+    photo=HERE / "photos" / "heirloom-boots-crop.jpg", photo_y=200, badge_at=(900, 480), badge_r=112,
+    lift=dict(brightness=1.08, contrast=1.08, color=1.1, sharpness=1.15),
+)
 # The Mini Edit (kids), two shows split by size, $3 starts: the Elevated Edit look
 # recolored to the photo (navy from the sweater, butter gold), full-frame photo with
 # the background blurred beforehand (photos/kids-mini-edit-blur.jpg), $3 coin over the
@@ -392,8 +406,9 @@ def luxe_badge(c, s, cx, cy, r):
     c.alpha_composite(gold_fill(disc, s), (cx - r, cy - r))
     ring = r - 12
     d.ellipse((cx - ring, cy - ring, cx + ring, cy + ring), outline=s["badge_ink"], width=2)
-    big = text_img(s["start"], SERIF_B, 124, s["badge_ink"])
-    small = text_img("STARTS", SANS_B, 27, s["badge_ink"], spacing=7)
+    k = min(1.0, r / 130)  # smaller coins get smaller text so STARTS clears the ring
+    big = text_img(s["start"], SERIF_B, int(124 * k), s["badge_ink"])
+    small = text_img("STARTS", SANS_B, int(27 * k), s["badge_ink"], spacing=max(4, int(7 * k)))
     total = big.height + 16 + small.height
     y = cy - total // 2 - 4
     c.alpha_composite(big, (cx - big.width // 2, y))

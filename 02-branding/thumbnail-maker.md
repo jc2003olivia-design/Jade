@@ -77,6 +77,13 @@ fills the whole cover and everything sits on top of it.
   title keeps the search words. The photo is wider than the cover, so it fits the width across the
   top (`photo_y`) and fades into wine. Brands as words: Nike · Lululemon · Free People Movement.
   Photo `photos/activewear-friends.jpg`; cover `whatnot-covers/final/the-active-edit.png`.
+- **The Heirloom Edit** (`the-heirloom-edit`, vintage baby & kids, one show, $3 starts): luxe look
+  recolored to the photo: black `#171311` bands and fades, tan `#DDB98A` lines and sheen on
+  "Heirloom" and the $3 coin, so the red cowboy boots pop and the tan matches their embroidery.
+  `VINTAGE BABY & KIDS` under the title. Photo cropped from the knees down
+  (`photos/heirloom-boots-crop.jpg`) so the boots are the hero. Brands are placeholders until Jade
+  confirms: OshKosh · Gymboree · Hanna Andersson. Cover `whatnot-covers/final/the-heirloom-edit.png`.
+  Split off **The Throwback Edit** (vintage 6–14) once there are 40–50 pieces for each.
 - Kids shows, split by size, $3 starts, same luxe look as The Elevated Edit, each recolored to its
   own photo, with the size range in the accent color under the title:
   - **The Mini Edit** (`the-mini-edit-baby-toddler`, BABY & TODDLER · SIZES 0–5T): navy `#14224A`
