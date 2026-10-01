@@ -247,7 +247,8 @@ def frame(canvas, s, box):
 
 def badge(canvas, s, cx, cy, r):
     d = ImageDraw.Draw(canvas)
-    d.ellipse((cx - r - 10, cy - r - 10, cx + r + 10, cy + r + 10), fill=s.get("pop", s["bg"]))
+    ring = 10 if s.get("pop") else 8
+    d.ellipse((cx - r - ring, cy - r - ring, cx + r + ring, cy + r + ring), fill=s.get("pop", s["bg"]))
     d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=s["accent"])
     big = text_img("$1", s.get("badge_font", SANS_B), 150, s["badge_ink"])
     small = text_img("STARTS", SANS_B, 44, s["badge_ink"], spacing=6)
