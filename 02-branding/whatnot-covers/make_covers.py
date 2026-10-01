@@ -46,13 +46,19 @@ SHOWS["premium-contemporary-2"] = dict(
     brands=["FREE PEOPLE", "ANTHROPOLOGIE", "ARITZIA"],
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
 )
-# Premium Activewear, full-frame: the photo fills the top and melts into the blue,
-# title and $1 badge below (bright version of the cover-photo format).
-SHOWS["premium-activewear-2"] = dict(
-    SHOWS["premium-activewear"], layout="full", template=False,
-    # cherry + blush: warmer than pool blue, picks up the red top and lip color
-    bg="#B0122F", ink="#FFFFFF", accent="#FFC9D3", badge_ink="#B0122F", logo="#FFFFFF",
-    photo=HERE / "photos" / "activewear-friends.jpg", photo_y=150, badge_at=(250, 1090),
+# The Active Edit (Premium Activewear, $1 starts): the Elevated Edit look recolored to the
+# photo (wine + rose gold, from the auburn hair, lips and red top). The photo is wider than
+# the cover, so it fits the width across the top and fades into wine under the title.
+SHOWS["the-active-edit"] = dict(
+    style="luxe", layout="full", template=False,
+    bg="#3E0B18", bg_edge="#3E0B18", band="#3E0B18", shade=(62, 11, 24), ink="#FFFFFF",
+    accent="#EDBFA8", gold=("#C98A70", "#F2CDB8", "#FFF1E8", "#D9A089"), badge_ink="#3E0B18",
+    photo_bg="#3E0B18", figure="#6A2A3A", top="THE", main="Active", last="EDIT", start="$1",
+    sub="PREMIUM ACTIVEWEAR", main_size=300, shade_from=930, shade_max=255, shade_reach=640,
+    # brands as words; top band Nike · Lululemon · Free People Movement, bottom starts on FPM
+    brands=["NIKE", "LULULEMON", "FREE PEOPLE MOVEMENT"], runner2_start=2,
+    text_brands=["NIKE", "LULULEMON", "FREE PEOPLE MOVEMENT"], brand_font=SERIF, brand_spacing=10,
+    photo=HERE / "photos" / "activewear-friends.jpg", photo_y=150, badge_at=(215, 1000), badge_r=118,
     lift=dict(brightness=1.1, contrast=1.08, color=1.12, sharpness=1.15),
 )
 # The Mini Edit (kids), two shows split by size, $3 starts: the Elevated Edit look
@@ -463,6 +469,16 @@ def full_photo(s):
         c.alpha_composite(label, ((W - label.width) // 2, 1000))
         return c
     ph = Image.open(photo).convert("RGB")
+    if s.get("photo_y") is not None:
+        # wider photo: fit the width, place it at photo_y on the fade color and ease the top
+        # edge in (the bottom edge is hidden by the title fade)
+        ph = lifted(ph.resize((W, int(ph.height * W / ph.width)), Image.LANCZOS), s).convert("RGBA")
+        tint = s.get("shade", (10, 8, 6))
+        c = Image.new("RGBA", (W, H), tint + (255,))
+        c.alpha_composite(ph, (0, s["photo_y"]))
+        shade(c, s["photo_y"], s["photo_y"] + 160, 255, 0, tint)
+        c.paste(tint + (255,), (0, s["photo_y"] + ph.height, W, H))
+        return c
     r = max(W / ph.width, H / ph.height) * s.get("zoom", 1.0)
     ph = ph.resize((int(ph.width * r), int(ph.height * r)), Image.LANCZOS)
     fx, fy = s.get("focus", (0.5, 0.5))
@@ -508,7 +524,7 @@ def build_luxe_full(s):
             diamond(d, ex1 + 40 + rule + 10, ey, 7, s["accent"])
         y += im.height + gap
     bx, by = s.get("badge_at", (sx0 + 150, 720))
-    luxe_badge(c, s, bx, by, 138)
+    luxe_badge(c, s, bx, by, s.get("badge_r", 138))
     return c
 
 

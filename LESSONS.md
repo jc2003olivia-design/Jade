@@ -91,8 +91,11 @@ Claude reads this before every task and adds to it as it goes (see
   (6–14) is "The Big Kid Edit" (suggested; confirm with Jade), brands Zara, Hanna
   Andersson, Abercrombie, Nike (Nike as the word, not the swoosh),
   covers in the Elevated Edit luxe style, each recolored to its own photo.
-- Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge);
-  for new shows, offer it recolored to match the photo.
+- Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge)
+  for all her shows, recolored to each photo. Show names follow "The ___ Edit": The Elevated
+  Edit, The Active Edit (Premium Activewear), The Mini Edit, The Big Kid Edit.
+- In the band, brands are spelled out as words (not the swoosh or other logo marks) on the
+  newer covers.
 - Whatnot requires condition said out loud and "NO PURCHASE NECESSARY" every
   time a giveaway is promoted. No follow-my-socials or spend-to-enter rules.
 

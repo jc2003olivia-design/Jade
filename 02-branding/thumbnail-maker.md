@@ -71,11 +71,12 @@ fills the whole cover and everything sits on top of it.
 
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`, `whatnot-covers/the-elevated-edit.png`
-- Premium Activewear, full-frame (`premium-activewear-2` in `make_covers.py`): the photo runs the full
-  width across the top and fades into cherry red `#B0122F`; blush `#FFC9D3` bands and $1 badge with
-  cherry logos, white `PREMIUM ACTIVEWEAR` over the fade. Cherry + blush replaced pool blue + pink
-  because the blue clashed with warm skin, auburn hair and a red top. Photo: `whatnot-covers/photos/activewear-friends.jpg`; cover:
-  `whatnot-covers/final/premium-activewear-2.png`.
+- **The Active Edit** (`the-active-edit`, Premium Activewear, $1 starts): same luxe look as The Elevated
+  Edit, recolored to the photo: wine `#3E0B18` bands and fades, rose gold `#EDBFA8` lines and sheen
+  on "Active" and the $1 coin (from the auburn hair, lips and red top). `PREMIUM ACTIVEWEAR` under the
+  title keeps the search words. The photo is wider than the cover, so it fits the width across the
+  top (`photo_y`) and fades into wine. Brands as words: Nike · Lululemon · Free People Movement.
+  Photo `photos/activewear-friends.jpg`; cover `whatnot-covers/final/the-active-edit.png`.
 - Kids shows, split by size, $3 starts, same luxe look as The Elevated Edit, each recolored to its
   own photo, with the size range in the accent color under the title:
   - **The Mini Edit** (`the-mini-edit-baby-toddler`, BABY & TODDLER · SIZES 0–5T): navy `#14224A`
