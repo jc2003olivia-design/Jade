@@ -35,6 +35,20 @@ Every piece is hand washed, inspected and presented on camera with its brand, si
 Follow to be first in line for the next edit.
 ```
 
+### For the Girls · $1 starts
+
+```
+FOR THE GIRLS ✦ Opening bids from $1
+
+The pieces every girl wants in her closet, curated: Brandy Melville, Aerie, Garage and Princess Polly.
+
+Baby tees, mini skirts, going-out tops, corset tops, mini dresses, low-rise and baggy jeans, cozy sweatpants, hoodies and flare leggings. Women's XS–XL.
+
+Every piece is hand washed, inspected and presented on camera with its brand, size and condition. Dispatched the next day, beautifully bundled into one box.
+
+Follow to be first in line for the next drop.
+```
+
 ### The Mini Edit · $3 starts · baby & toddler 0–5T
 
 ```
@@ -77,7 +91,7 @@ Every piece is hand washed, inspected and presented on camera with its brand, si
 Follow to be first in line for the next edit.
 ```
 
-## Show Notes: for the girls (The Elevated Edit, The Active Edit)
+## Show Notes: women's shows (The Elevated Edit, The Active Edit, For the Girls)
 
 ```
 WELCOME TO KENNY SHOP ✦ CURATED BY KENNY
@@ -99,6 +113,7 @@ Follow along on Instagram: @kuratedbykenny
 For her (women's XS–XL)
 The Elevated Edit · Anthropologie, Quince, Free People · from $5
 The Active Edit · Lululemon, Free People Movement, Nike · from $1
+For the Girls · Brandy Melville, Aerie, Garage, Princess Polly · from $1
 
 Shopping for the little ones too? (from $3)
 The Mini Edit · baby & toddler 0–5T
@@ -132,6 +147,7 @@ The Heirloom Edit · vintage baby & kids
 Something for you, too (women's XS–XL)
 The Elevated Edit · Anthropologie, Quince, Free People · from $5
 The Active Edit · Lululemon, Free People Movement, Nike · from $1
+For the Girls · Brandy Melville, Aerie, Garage, Princess Polly · from $1
 ```
 
 If a show has a giveaway, paste the Giveaway Official Rules from
