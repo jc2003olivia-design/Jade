@@ -138,6 +138,9 @@ Claude reads this before every task and adds to it as it goes (see
 
 - Photos Jade attaches in chat don't always reach cloud sessions. Check
   `/mnt/user-data/uploads/`; if it's empty, ask her to re-send (or use Nifty).
+- Busy photo backgrounds: cut the person out with MediaPipe's selfie_multiclass_256x256.tflite
+  (storage.googleapis.com) run through `pip install ai-edge-litert` (the mediapipe package
+  needs libEGL, which the cloud lacks), then blur only the background.
 - `make_covers.py` needs `pip install cairosvg` in a fresh session (the Nike logo is SVG).
 
 - Video files are ignored by git (`.gitignore`), so they never get pushed.

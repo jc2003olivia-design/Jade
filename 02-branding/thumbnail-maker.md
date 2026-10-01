@@ -76,6 +76,10 @@ fills the whole cover and everything sits on top of it.
   cherry logos, white `PREMIUM ACTIVEWEAR` over the fade. Cherry + blush replaced pool blue + pink
   because the blue clashed with warm skin, auburn hair and a red top. Photo: `whatnot-covers/photos/activewear-friends.jpg`; cover:
   `whatnot-covers/final/premium-activewear-2.png`.
+- The Mini Edit (kids show, `the-mini-edit`): full-frame photo with the background blurred first
+  (`photos/kids-mini-edit-blur.jpg`), butter yellow `#F8D66D` with blue `#2E5BC9` bands and $1 badge,
+  navy-blue `THE MINI EDIT` title in Anton. Runners: Hanna Andersson · Zara Kids · Designer (text, no
+  logos yet). Cover: `whatnot-covers/final/the-mini-edit.png`.
 - The Elevated Edit with your photo: save it as `whatnot-covers/photos/elevated-edit.jpg` and run
   `python3 make_covers.py`; the finished cover lands in `whatnot-covers/final/the-elevated-edit.png`.
 - Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in

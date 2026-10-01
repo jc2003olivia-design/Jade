@@ -55,6 +55,17 @@ SHOWS["premium-activewear-2"] = dict(
     photo=HERE / "photos" / "activewear-friends.jpg", photo_y=150, badge_at=(250, 1090),
     lift=dict(brightness=1.1, contrast=1.08, color=1.12, sharpness=1.15),
 )
+# The Mini Edit (kids): full-frame photo, background blurred beforehand
+# (photos/kids-mini-edit-blur.jpg), $1 badge over the blurred table on the right.
+SHOWS["the-mini-edit"] = dict(
+    layout="full", template=False,
+    # butter + blue: cheerful, picks up the blue sweater
+    bg="#F8D66D", ink="#1E3F9A", accent="#2E5BC9", badge_ink="#FFFFFF", logo="#FFFFFF",
+    head_font=DISPLAY, head_scale=1.0, badge_font=DISPLAY, top="THE", main="MINI EDIT",
+    brands=["HANNA ANDERSSON", "ZARA KIDS", "DESIGNER"], brand_font=SANS_B, brand_text=0.58,
+    photo=HERE / "photos" / "kids-mini-edit-blur.jpg", photo_y=150, badge_at=(860, 800),
+    lift=dict(brightness=1.08, contrast=1.06, color=1.1, sharpness=1.1),
+)
 # The Elevated Edit: the luxe look (champagne gold on a full-bleed, brightened photo).
 SHOWS["the-elevated-edit"] = dict(
     style="luxe", layout="full", bg="#1E1712", bg_edge="#080706", ink="#FFFFFF", band="#0B0908",
@@ -129,7 +140,8 @@ def brand_img(brand, height, s, fill=None):
     if f:
         return logo_img(f, int(height * LOGO_SCALE.get(f.stem, 1.0)), fill)
     # no logo file: bold wordmark sized to sit level with the logos
-    return text_img(brand, s["brand_font"], int(height * 0.5), fill, spacing=s.get("brand_spacing", 4))
+    return text_img(brand, s["brand_font"], int(height * s.get("brand_text", 0.5)), fill,
+                    spacing=s.get("brand_spacing", 4))
 
 
 BAND = 140  # runner height
