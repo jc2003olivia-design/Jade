@@ -56,7 +56,7 @@ start higher. Your private pricing rules decide which.
 1. **Schedule the show about a week ahead.** **[Whatnot, Go Live Guide]**
    - Pick the **most specific category** (for example the activewear or swimwear subcategory, not just "Women's Fashion"). Shows only appear in the category you pick. **[Whatnot]**
    - Add **one primary brand tag**: Lululemon for Activewear, Free People for Contemporary. Whatnot tags the other brands from your listings automatically. Shows with a brand tag have higher average sales per show. The tag must match what you're actually selling. **[Whatnot]**
-   - **Title:** the hook plus brand names buyers search for, e.g. `$1 PREMIUM ACTIVEWEAR · Lululemon, Free People Movement, Nike`. The title shows in the notifications followers get when you go live. **[Whatnot]**
+   - **Title:** the hook plus brand names buyers search for, e.g. `$1 PREMIUM ACTIVEWEAR · Lululemon, Free People Movement, Nike` or `$1 FOR THE GIRLS · Brandy Melville, Aerie, Garage, Princess Polly`. The title shows in the notifications followers get when you go live. **[Whatnot]**
    - **Description:** list the brands and item types in plain words (leggings, sports bras, flare jeans, knit sweaters). Buyers find shows by those search words. **[Whatnot]**
    - **Thumbnail:** your cover from `02-branding/whatnot-covers/`, with a real photo of you in real inventory, not AI images. **[Whatnot]**
    - **Preview video (optional):** 20–30 seconds, vertical 9:16, showing the best pieces. **[Whatnot]**
