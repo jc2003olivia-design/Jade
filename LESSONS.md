@@ -85,6 +85,9 @@ Claude reads this before every task and adds to it as it goes (see
   Jade wants only proven facts, so label anything that isn't.
 - Jade also runs a kids show (Hanna Andersson, Zara Kids, designer kids). The brand is
   spelled "Hanna Andersson" (one h, two s's); use that exact spelling in titles and tags.
+  Its cover is The Mini Edit in the Elevated Edit luxe style, recolored to the photo.
+- Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge);
+  for new shows, offer it recolored to match the photo.
 - Whatnot requires condition said out loud and "NO PURCHASE NECESSARY" every
   time a giveaway is promoted. No follow-my-socials or spend-to-enter rules.
 

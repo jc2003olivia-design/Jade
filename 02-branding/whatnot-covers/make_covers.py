@@ -55,16 +55,18 @@ SHOWS["premium-activewear-2"] = dict(
     photo=HERE / "photos" / "activewear-friends.jpg", photo_y=150, badge_at=(250, 1090),
     lift=dict(brightness=1.1, contrast=1.08, color=1.12, sharpness=1.15),
 )
-# The Mini Edit (kids): full-frame photo, background blurred beforehand
-# (photos/kids-mini-edit-blur.jpg), $1 badge over the blurred table on the right.
+# The Mini Edit (kids): the Elevated Edit look recolored to the photo (navy from the
+# sweater, butter gold), full-frame photo with the background blurred beforehand
+# (photos/kids-mini-edit-blur.jpg), $1 coin over the blurred table on the right.
 SHOWS["the-mini-edit"] = dict(
-    layout="full", template=False,
-    # butter + blue: cheerful, picks up the blue sweater
-    bg="#F8D66D", ink="#1E3F9A", accent="#2E5BC9", badge_ink="#FFFFFF", logo="#FFFFFF",
-    head_font=DISPLAY, head_scale=1.0, badge_font=DISPLAY, top="THE", main="MINI EDIT",
-    brands=["HANNA ANDERSSON", "ZARA KIDS", "DESIGNER"], brand_font=SANS_B, brand_text=0.58,
-    photo=HERE / "photos" / "kids-mini-edit-blur.jpg", photo_y=150, badge_at=(860, 800),
-    lift=dict(brightness=1.08, contrast=1.06, color=1.1, sharpness=1.1),
+    style="luxe", layout="full", template=False,
+    bg="#1B2D5C", bg_edge="#0E1838", band="#14224A", shade=(16, 28, 64), ink="#FFFFFF",
+    accent="#F7D774", gold=("#E5B94A", "#F9DE86", "#FFF1C2", "#EBC45C"), badge_ink="#14224A",
+    photo_bg="#1B2D5C", figure="#2E4A8A", top="THE", main="Mini", last="EDIT", start="$1",
+    main_size=330, shade_from=1000, shade_max=250,
+    brands=["HANNA ANDERSSON", "ZARA KIDS", "DESIGNER"], brand_font=SERIF, brand_spacing=10,
+    photo=HERE / "photos" / "kids-mini-edit-blur.jpg", badge_at=(860, 800),
+    lift=dict(brightness=1.1, contrast=1.06, color=1.1, sharpness=1.1),
 )
 # The Elevated Edit: the luxe look (champagne gold on a full-bleed, brightened photo).
 SHOWS["the-elevated-edit"] = dict(
@@ -459,15 +461,16 @@ def build_luxe_full(s):
     """Magazine-cover layout: photo edge to edge, brand bands and title over it."""
     c = full_photo(s)
     sx0, sy0, sx1, sy1 = SAFE
-    shade(c, 0, 560, 200, 0)
-    shade(c, 1080, H, 0, 235)
+    tint = s.get("shade", (10, 8, 6))
+    shade(c, 0, 560, 200, 0, tint)
+    shade(c, s.get("shade_from", 1080), H, 0, s.get("shade_max", 235), tint)
     luxe_runner(c, s, sy0)
     luxe_runner(c, s, sy1 - BAND, start=1)
     k, pad = glow(text_img("KENNY SHOP", SANS_B, 32, s["accent"], spacing=14), 8, 220)
     c.alpha_composite(k, ((W - k.width) // 2, sy0 + BAND + 30 - pad))
     # title block sits on the lower third, just above the bottom band
     the = text_img(s["top"], SERIF, 50, s["ink"], spacing=24)
-    main = gold_fill(fit_text(s["main"], SERIF_I, sx1 - sx0 - 40, 230, "#FFFFFF"), s)
+    main = gold_fill(fit_text(s["main"], SERIF_I, sx1 - sx0 - 40, s.get("main_size", 230), "#FFFFFF"), s)
     edit = text_img(s["last"], SERIF, 72, s["ink"], spacing=32)
     total = the.height + 8 + main.height + 18 + edit.height
     y = sy1 - BAND - 46 - total
