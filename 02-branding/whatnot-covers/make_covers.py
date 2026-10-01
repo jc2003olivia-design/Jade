@@ -46,13 +46,14 @@ SHOWS["premium-contemporary-2"] = dict(
     brands=["FREE PEOPLE", "ANTHROPOLOGIE", "ARITZIA"],
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
 )
-# The Elevated Edit: the luxe look (espresso + champagne gold, arched photo).
+# The Elevated Edit: the luxe look (champagne gold on a full-bleed, brightened photo).
 SHOWS["the-elevated-edit"] = dict(
-    style="luxe", bg="#1E1712", bg_edge="#080706", ink="#F4EDE2", band="#0B0908",
-    accent="#D8BB82", gold=("#9C7A45", "#E9D3A0", "#F8EBC8", "#B8915A"), badge_ink="#15110E",
+    style="luxe", layout="full", bg="#1E1712", bg_edge="#080706", ink="#FFFFFF", band="#0B0908",
+    accent="#EBCB8B", gold=("#C29A5B", "#F6E2AE", "#FFF6DC", "#D9B271"), badge_ink="#1A140F",
     photo_bg="#211A15", figure="#3A3029", top="THE", main="Elevated", last="EDIT",
     brands=["ANTHROPOLOGIE", "QUINCE", "FREE PEOPLE"], brand_font=SERIF, brand_spacing=10,
-    start="$5", photo=HERE / "photos" / "elevated-edit.jpg", crop=(0, 430, 1450, 1910), warm=0.04,
+    start="$5", photo=HERE / "photos" / "elevated-edit.jpg", crop=None, warm=0.03, focus=(0.47, 0.30),
+    lift=dict(brightness=1.18, contrast=1.1, color=1.15, sharpness=1.2),
 )
 
 
@@ -386,9 +387,94 @@ def build_luxe(s):
     return c
 
 
+def shade(c, y0, y1, a0, a1, color=(10, 8, 6)):
+    """Dark see-through band fading from alpha a0 at y0 to a1 at y1, for text to read on a photo."""
+    h = y1 - y0
+    grad = Image.linear_gradient("L").resize((1, 256)).resize((W, h))
+    grad = grad.point(lambda v: int(a0 + (a1 - a0) * v / 255))
+    band = Image.new("RGBA", (W, h), color + (0,))
+    band.putalpha(grad)
+    c.alpha_composite(band, (0, y0))
+
+
+def glow(im, radius=10, alpha=170):
+    """Soft dark halo behind text so it holds up on a busy photo."""
+    from PIL import ImageFilter
+    pad = radius * 3
+    out = Image.new("RGBA", (im.width + 2 * pad, im.height + 2 * pad), (0, 0, 0, 0))
+    a = Image.new("L", out.size, 0)
+    a.paste(im.getchannel("A"), (pad, pad))
+    a = a.filter(ImageFilter.GaussianBlur(radius)).point(lambda v: min(255, v * alpha // 100))
+    out.putalpha(a)
+    out.alpha_composite(im, (pad, pad))
+    return out, pad
+
+
+def full_photo(s):
+    """The show photo filling the whole cover, brightened so it pops."""
+    photo = s.get("photo")
+    if not (photo and Path(photo).exists()):
+        c = luxe_bg(s)
+        d = ImageDraw.Draw(c)
+        d.ellipse((W // 2 - 150, 520, W // 2 + 150, 880), fill=s["figure"])
+        d.rounded_rectangle((W // 2 - 330, 910, W // 2 + 330, H + 300), 240, fill=s["figure"])
+        label = text_img("YOUR PHOTO HERE · FULL FRAME", SANS_B, 34, s["accent"], spacing=5)
+        c.alpha_composite(label, ((W - label.width) // 2, 1000))
+        return c
+    ph = Image.open(photo).convert("RGB")
+    r = max(W / ph.width, H / ph.height) * s.get("zoom", 1.0)
+    ph = ph.resize((int(ph.width * r), int(ph.height * r)), Image.LANCZOS)
+    fx, fy = s.get("focus", (0.5, 0.5))
+    x = min(max(int(ph.width * fx - W / 2), 0), ph.width - W)
+    y = min(max(int(ph.height * fy - H * 0.35), 0), ph.height - H)
+    ph = ph.crop((x, y, x + W, y + H))
+    lift = s.get("lift", {})
+    for name, fn in (("brightness", ImageEnhance.Brightness), ("contrast", ImageEnhance.Contrast),
+                     ("color", ImageEnhance.Color), ("sharpness", ImageEnhance.Sharpness)):
+        if name in lift:
+            ph = fn(ph).enhance(lift[name])
+    if s.get("warm"):
+        ph = Image.blend(ph, Image.new("RGB", ph.size, (230, 160, 90)), s["warm"])
+    return ph.convert("RGBA")
+
+
+def build_luxe_full(s):
+    """Magazine-cover layout: photo edge to edge, brand bands and title over it."""
+    c = full_photo(s)
+    sx0, sy0, sx1, sy1 = SAFE
+    shade(c, 0, 560, 200, 0)
+    shade(c, 1080, H, 0, 235)
+    luxe_runner(c, s, sy0)
+    luxe_runner(c, s, sy1 - BAND, start=1)
+    k, pad = glow(text_img("KENNY SHOP", SANS_B, 32, s["accent"], spacing=14), 8, 220)
+    c.alpha_composite(k, ((W - k.width) // 2, sy0 + BAND + 30 - pad))
+    # title block sits on the lower third, just above the bottom band
+    the = text_img(s["top"], SERIF, 50, s["ink"], spacing=24)
+    main = gold_fill(fit_text(s["main"], SERIF_I, sx1 - sx0 - 40, 230, "#FFFFFF"), s)
+    edit = text_img(s["last"], SERIF, 72, s["ink"], spacing=32)
+    total = the.height + 8 + main.height + 18 + edit.height
+    y = sy1 - BAND - 46 - total
+    for im, gap in ((the, 8), (main, 18), (edit, 0)):
+        g, pad = glow(im, 12, 160)
+        c.alpha_composite(g, ((W - g.width) // 2, y - pad))
+        if im is edit:
+            d = ImageDraw.Draw(c)
+            ey = y + edit.height // 2
+            ex0, ex1, rule = (W - edit.width) // 2, (W + edit.width) // 2, 120
+            d.line((ex0 - 40 - rule, ey, ex0 - 40, ey), fill=s["accent"], width=3)
+            d.line((ex1 + 40, ey, ex1 + 40 + rule, ey), fill=s["accent"], width=3)
+            diamond(d, ex0 - 40 - rule - 10, ey, 7, s["accent"])
+            diamond(d, ex1 + 40 + rule + 10, ey, 7, s["accent"])
+        y += im.height + gap
+    bx, by = s.get("badge_at", (sx0 + 150, 720))
+    luxe_badge(c, s, bx, by, 138)
+    return c
+
+
 def build(name, s, out=None):
     if s.get("style") == "luxe":
-        return save(name, s, build_luxe(s), out)
+        made = build_luxe_full(s) if s.get("layout") == "full" else build_luxe(s)
+        return save(name, s, made, out)
     c = Image.new("RGBA", (W, H), s["bg"])
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40

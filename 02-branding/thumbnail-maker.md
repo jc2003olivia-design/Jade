@@ -54,19 +54,20 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - Outfit: a matching set (Align, Define, Alo) in a color that pops against bright blue (orange, black, white, lime). Avoid blue sets.
 
 ### The Elevated Edit: luxe, $5 starts
-Built to look high-end, so a $5 start reads as a steal. Same order as the shared layout,
-restyled:
-- Background: deep espresso-black with a soft spotlight in the middle
-- Colors: espresso `#1E1712` · champagne gold `#D8BB82` (with a gold sheen on "Elevated" and
-  the badge) · ivory `#F4EDE2` ("THE" and "EDIT")
+Built to look high-end, so a $5 start reads as a steal. Magazine-cover layout: the photo
+fills the whole cover and everything sits on top of it.
+- Photo: full frame, brightened (brighter, more contrast and color, a touch warm) so it pops
+- Light dark fades at the top and bottom so the text reads over the photo
+- Colors: bright champagne gold `#EBCB8B` (with a gold sheen on "Elevated" and the badge) ·
+  white ("THE" and "EDIT")
 - Runners: near-black bands edged with fine double gold lines, gold logos, small gold diamonds
   between them
-- Headline: `THE` (small spaced capitals) · `Elevated` (big gold Playfair Display italic) ·
-  `EDIT` (spaced capitals between gold rules)
-- Photo: an arched window with a thin gold frame around it
-- Badge: gold coin, `$5 STARTS` in dark ink with a fine inner ring
+- `KENNY SHOP` small in gold under the top band
+- Headline on the lower third: `THE` (small spaced capitals) · `Elevated` (big gold Playfair
+  Display italic) · `EDIT` (spaced capitals between gold rules)
+- Badge: gold coin, `$5 STARTS` in dark ink, by the shoulder away from the face (`badge_at`)
 - Brands: Anthropologie logo · Quince (spaced serif capitals until a logo file is added) · Free People logo
-- Outfit: cream, camel, black or soft neutrals look richest on the dark background
+- Photo tips: face in the top half (the title covers the lower third), outfit in frame
 
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`, `whatnot-covers/the-elevated-edit.png`

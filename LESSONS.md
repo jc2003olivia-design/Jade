@@ -67,8 +67,10 @@ Claude reads this before every task and adds to it as it goes (see
 - Covers are built by `02-branding/whatnot-covers/make_covers.py` (one entry per show in
   `SHOWS`). Jade's photos and finished covers stay out of git (public repo); send the
   finished cover to her directly.
-- The Elevated Edit (Anthropologie, Quince, Free People) uses the luxe style: espresso +
-  champagne gold, arched photo, $5 starts badge.
+- The Elevated Edit (Anthropologie, Quince, Free People) uses the luxe style: champagne
+  gold, $5 starts badge.
+- Jade wants covers bright and full-frame ("cover photo format"): her photo edge to edge,
+  brightened, text over it. A photo in a frame on a dark background read too dark.
 
 ## Whatnot shows
 
