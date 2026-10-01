@@ -89,7 +89,7 @@ Claude reads this before every task and adds to it as it goes (see
   spelled "Hanna Andersson" (one h, two s's); use that exact spelling in titles and tags.
   It runs as two shows, $3 starts: "The Mini Edit" is Baby & Toddler (0–5T) only; Big Kids
   (6–14) is "The Big Kid Edit" (suggested; confirm with Jade), brands Zara, Hanna
-  Andersson, Abercrombie, Nike,
+  Andersson, Abercrombie, Nike (Nike as the word, not the swoosh),
   covers in the Elevated Edit luxe style, each recolored to its own photo.
 - Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge);
   for new shows, offer it recolored to match the photo.

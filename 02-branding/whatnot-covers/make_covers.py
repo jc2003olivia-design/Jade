@@ -74,7 +74,7 @@ SHOWS["the-mini-edit-baby-toddler"] = dict(
 SHOWS["the-big-kid-edit"] = dict(
     SHOWS["the-mini-edit-baby-toddler"], main="Big Kid", sub="SIZES 6–14",
     # top band shows Nike · Zara · Hanna Andersson, bottom band Abercrombie · Nike · Zara
-    brands=["NIKE", "ZARA", "HANNA ANDERSSON", "ABERCROMBIE"], runner2_start=3,
+    brands=["NIKE", "ZARA", "HANNA ANDERSSON", "ABERCROMBIE"], runner2_start=3, text_brands=["NIKE"],  # Nike as the word, not the swoosh
     bg="#151314", bg_edge="#0A090A", band="#151314", shade=(22, 18, 20), accent="#F5BFCD",
     gold=("#E39AAE", "#F8CDD8", "#FFF1F5", "#ECAABC"), badge_ink="#151314",
     photo_bg="#151314", figure="#3A3034", shade_from=780, shade_max=235, shade_reach=560,
@@ -150,7 +150,7 @@ LOGO_SCALE = {"free-people-movement": 1.2, "lululemon": 1.15, "nike": 0.75,
 
 def brand_img(brand, height, s, fill=None):
     fill = fill or s["ink"]
-    f = logo_file(brand)
+    f = None if brand in s.get("text_brands", ()) else logo_file(brand)
     if f:
         return logo_img(f, int(height * LOGO_SCALE.get(f.stem, 1.0)), fill)
     # no logo file: bold wordmark sized to sit level with the logos
