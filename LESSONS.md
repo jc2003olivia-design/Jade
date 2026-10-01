@@ -71,6 +71,8 @@ Claude reads this before every task and adds to it as it goes (see
   gold, $5 starts badge.
 - Jade wants covers bright and full-frame ("cover photo format"): her photo edge to edge,
   brightened, text over it. A photo in a frame on a dark background read too dark.
+- Pick cover colors that match the photo's tones. Cool pool blue clashed with a warm photo
+  (auburn hair, red top); cherry + blush was more appealing. Show options side by side.
 
 ## Whatnot shows
 

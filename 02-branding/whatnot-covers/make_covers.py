@@ -50,6 +50,8 @@ SHOWS["premium-contemporary-2"] = dict(
 # title and $1 badge below (bright version of the cover-photo format).
 SHOWS["premium-activewear-2"] = dict(
     SHOWS["premium-activewear"], layout="full", template=False,
+    # cherry + blush: warmer than pool blue, picks up the red top and lip color
+    bg="#B0122F", ink="#FFFFFF", accent="#FFC9D3", badge_ink="#B0122F", logo="#FFFFFF",
     photo=HERE / "photos" / "activewear-friends.jpg", photo_y=150, badge_at=(250, 1090),
     lift=dict(brightness=1.1, contrast=1.08, color=1.12, sharpness=1.15),
 )
@@ -507,8 +509,10 @@ def build_bright_full(s):
     top = text_img(s["top"], s["head_font"], 66, s["ink"], s["head_scale"], spacing=20)
     main = fit_text(s["main"], s["head_font"], sx1 - sx0 - 20, 200, s["ink"], s["head_scale"])
     y = sy1 - BAND - 40 - main.height - 14 - top.height
+    light_ink = sum(Image.new("RGB", (1, 1), s["ink"]).getpixel((0, 0))) > 384
     for im, gap in ((top, 14), (main, 0)):
-        g, pad = glow(im, 14, 120)
+        # dark halo only helps light text; dark text sits on the clean color
+        g, pad = glow(im, 14, 120) if light_ink else (im, 0)
         c.alpha_composite(g, ((W - g.width) // 2, y - pad))
         y += im.height + gap
     bx, by = s.get("badge_at", (sx0 + 150, 1000))

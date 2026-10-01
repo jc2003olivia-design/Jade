@@ -72,8 +72,9 @@ fills the whole cover and everything sits on top of it.
 ## Templates
 - Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`, `whatnot-covers/the-elevated-edit.png`
 - Premium Activewear, full-frame (`premium-activewear-2` in `make_covers.py`): the photo runs the full
-  width across the top and fades into the poolside blue; `PREMIUM ACTIVEWEAR` and the $1 badge sit
-  over the fade. Photo: `whatnot-covers/photos/activewear-friends.jpg`; cover:
+  width across the top and fades into cherry red `#B0122F`; blush `#FFC9D3` bands and $1 badge with
+  cherry logos, white `PREMIUM ACTIVEWEAR` over the fade. Cherry + blush replaced pool blue + pink
+  because the blue clashed with warm skin, auburn hair and a red top. Photo: `whatnot-covers/photos/activewear-friends.jpg`; cover:
   `whatnot-covers/final/premium-activewear-2.png`.
 - The Elevated Edit with your photo: save it as `whatnot-covers/photos/elevated-edit.jpg` and run
   `python3 make_covers.py`; the finished cover lands in `whatnot-covers/final/the-elevated-edit.png`.
