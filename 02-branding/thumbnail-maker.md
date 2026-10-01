@@ -1,7 +1,7 @@
 # Thumbnail Maker
 
-Whatnot show covers for the two $1-start series: **Premium Contemporary** and
-**Premium Activewear**. Mockups are in `whatnot-covers/`.
+Whatnot show covers for the two $1-start series, **Premium Contemporary** and
+**Premium Activewear**, plus **The Elevated Edit** ($5 starts). Mockups are in `whatnot-covers/`.
 
 ## Specs
 - Size: **1080 × 1920** (tall, 9:16).
@@ -53,8 +53,25 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - Text: `PREMIUM ACTIVEWEAR` · `$1 STARTS` · runners: Free People Movement · Lululemon · Nike logos
 - Outfit: a matching set (Align, Define, Alo) in a color that pops against bright blue (orange, black, white, lime). Avoid blue sets.
 
+### The Elevated Edit: luxe, $5 starts
+Built to look high-end, so a $5 start reads as a steal. Same order as the shared layout,
+restyled:
+- Background: deep espresso-black with a soft spotlight in the middle
+- Colors: espresso `#1E1712` · champagne gold `#D8BB82` (with a gold sheen on "Elevated" and
+  the badge) · ivory `#F4EDE2` ("THE" and "EDIT")
+- Runners: near-black bands edged with fine double gold lines, gold logos, small gold diamonds
+  between them
+- Headline: `THE` (small spaced capitals) · `Elevated` (big gold Playfair Display italic) ·
+  `EDIT` (spaced capitals between gold rules)
+- Photo: an arched window with a thin gold frame around it
+- Badge: gold coin, `$5 STARTS` in dark ink with a fine inner ring
+- Brands: Anthropologie logo · Quince (spaced serif capitals until a logo file is added) · Free People logo
+- Outfit: cream, camel, black or soft neutrals look richest on the dark background
+
 ## Templates
-- Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`
+- Main cover photo (blank templates): `whatnot-covers/premium-contemporary.png`, `whatnot-covers/premium-activewear.png`, `whatnot-covers/the-elevated-edit.png`
+- The Elevated Edit with your photo: save it as `whatnot-covers/photos/elevated-edit.jpg` and run
+  `python3 make_covers.py`; the finished cover lands in `whatnot-covers/final/the-elevated-edit.png`.
 - Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in
   `whatnot-covers/photos/` stay on this computer only and are kept out of git, because the repo is public.
 - Feed-size check: `whatnot-covers/preview-feed-size.png`
@@ -74,7 +91,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
   - Free People Movement: the file sent was cut off after "MOVEME", so the "NT" was redrawn to match.
   - Anthropologie: the file sent was too small (16 px tall) to enlarge cleanly, so the wordmark is
     redrawn in Playfair Display with the same spaced capitals.
-- Still need: Aritzia (shows as bold text until then).
+- Still need: Aritzia (shows as bold text until then), Quince (shows as spaced serif capitals until then).
 
 ## Photo shoot checklist
 - [ ] Phone at chest height, vertical, back camera, wipe the lens
@@ -82,7 +99,7 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 - [ ] Waist-up, leave headroom for the headline above you
 - [ ] Look into the lens and smile. Take 10+ shots and pick the best.
 - [ ] Hero piece steamed, tags tucked (or showing, if it's NWT)
-- [ ] Leave space by one shoulder for the $1 badge
+- [ ] Leave space by one shoulder for the $1 / $5 badge
 
 ## Before every show
 - [ ] Swap in tonight's top 2–3 brands

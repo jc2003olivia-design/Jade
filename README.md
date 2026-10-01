@@ -22,6 +22,7 @@ Jade
 │       │   ├── OFL-Montserrat.txt
 │       │   ├── OFL-PlayfairDisplay.txt
 │       │   ├── PlayfairDisplay-Bold.ttf
+│       │   ├── PlayfairDisplay-Italic.ttf
 │       │   └── PlayfairDisplay-Regular.ttf
 │       ├── logos/
 │       │   ├── anthropologie.png
@@ -38,7 +39,8 @@ Jade
 │       ├── options-contemporary.png
 │       ├── premium-activewear.png
 │       ├── premium-contemporary.png
-│       └── preview-feed-size.png
+│       ├── preview-feed-size.png
+│       └── the-elevated-edit.png
 ├── 03-customer-support/         Messages, returns, problem orders
 │   └── customer-support.md
 ├── 04-online-selling/           One file per marketplace

@@ -64,12 +64,18 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Branding and covers
 
+- Covers are built by `02-branding/whatnot-covers/make_covers.py` (one entry per show in
+  `SHOWS`). Jade's photos and finished covers stay out of git (public repo); send the
+  finished cover to her directly.
+- The Elevated Edit (Anthropologie, Quince, Free People) uses the luxe style: espresso +
+  champagne gold, arched photo, $5 starts badge.
+
 ## Whatnot shows
 
 - Whatnot: run Premium Activewear and Premium Contemporary as two separate
   shows (~50 pieces each), not one combined show.
 - Whatnot shows run under one generic listing with $1 starts (Jade calls it
-  "random pull"). Delist from Depop/Poshmark before going live.
+  "random pull"). The Elevated Edit show is the exception: $5 starts. Delist from Depop/Poshmark before going live.
 - Show playbook (scripts, item counts, timers, giveaway rules) is
   `04-online-selling/whatnot.md`. Tag each claim [Whatnot]/[Study]/[Math]/[Test];
   Jade wants only proven facts, so label anything that isn't.
@@ -123,6 +129,10 @@ Claude reads this before every task and adds to it as it goes (see
   if the price is already right, don't edit or apply (applying republishes).
 - Check each marketplace listing's own Brand attribute, not just the item's.
   Depop got "Unique Vintage" for a Mainstream swimsuit.
+
+- Photos Jade attaches in chat don't always reach cloud sessions. Check
+  `/mnt/user-data/uploads/`; if it's empty, ask her to re-send (or use Nifty).
+- `make_covers.py` needs `pip install cairosvg` in a fresh session (the Nike logo is SVG).
 
 - Video files are ignored by git (`.gitignore`), so they never get pushed.
   Keep them on the computer.

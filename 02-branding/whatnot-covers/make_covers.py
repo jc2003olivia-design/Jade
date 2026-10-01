@@ -1,7 +1,7 @@
-"""Build the two Whatnot show cover mockups (1080x1920).
+"""Build the Whatnot show cover mockups (1080x1920).
 
 Run:  python3 make_covers.py
-Makes a PNG per show plus a preview sheet showing both at phone-feed size
+Makes a PNG per show plus a preview sheet showing them at phone-feed size
 with the safe zone marked. With no photo, a grey figure stands in (the
 template). Put a photo in photos/ and set "photo" + "crop" on a show to get
 the finished cover in final/ (photos/ and final/ are kept out of git).
@@ -20,6 +20,8 @@ SERIF_B = str(FONTS / "PlayfairDisplay-Bold.ttf")
 DISPLAY = str(FONTS / "Anton-Regular.ttf")
 SANS_B = str(FONTS / "Montserrat-ExtraBold.ttf")
 SANS = str(FONTS / "Montserrat-Medium.ttf")
+SERIF = str(FONTS / "PlayfairDisplay-Regular.ttf")
+SERIF_I = str(FONTS / "PlayfairDisplay-Italic.ttf")  # variable: pick a weight with variation=
 
 SHOWS = {
     "premium-contemporary": dict(
@@ -44,11 +46,21 @@ SHOWS["premium-contemporary-2"] = dict(
     brands=["FREE PEOPLE", "ANTHROPOLOGIE", "ARITZIA"],
     photo=HERE / "photos" / "contemporary-2.webp", crop=(160, 0, 939, 900),
 )
+# The Elevated Edit: the luxe look (espresso + champagne gold, arched photo).
+SHOWS["the-elevated-edit"] = dict(
+    style="luxe", bg="#1E1712", bg_edge="#080706", ink="#F4EDE2", band="#0B0908",
+    accent="#D8BB82", gold=("#9C7A45", "#E9D3A0", "#F8EBC8", "#B8915A"), badge_ink="#15110E",
+    photo_bg="#211A15", figure="#3A3029", top="THE", main="Elevated", last="EDIT",
+    brands=["ANTHROPOLOGIE", "QUINCE", "FREE PEOPLE"], brand_font=SERIF, brand_spacing=10,
+    start="$5", photo=HERE / "photos" / "elevated-edit.jpg", crop=None,
+)
 
 
-def text_img(text, font_path, size, fill, x_scale=1.0, spacing=0):
+def text_img(text, font_path, size, fill, x_scale=1.0, spacing=0, variation=None):
     """Render text to its own transparent image; x_scale < 1 condenses it."""
     font = ImageFont.truetype(font_path, size)
+    if variation:
+        font.set_variation_by_name(variation)
     widths = [font.getlength(c) for c in text]
     w = int(sum(widths) + spacing * (len(text) - 1)) + 4
     asc, desc = font.getmetrics()
@@ -107,7 +119,7 @@ def brand_img(brand, height, s, fill=None):
     if f:
         return logo_img(f, int(height * LOGO_SCALE.get(f.stem, 1.0)), fill)
     # no logo file: bold wordmark sized to sit level with the logos
-    return text_img(brand, s["brand_font"], int(height * 0.5), fill, spacing=4)
+    return text_img(brand, s["brand_font"], int(height * 0.5), fill, spacing=s.get("brand_spacing", 4))
 
 
 BAND = 140  # runner height
@@ -165,33 +177,39 @@ def paste_center(canvas, im, y):
     return y + im.height
 
 
+def fit_photo(s, bw, bh):
+    """The show's photo cropped (around "crop" if set) to fill a bw x bh slot."""
+    ph = Image.open(s["photo"]).convert("RGBA")
+    if s.get("crop"):
+        # grow the crop box to the photo slot's shape, centered on it
+        cx0, cy0, cx1, cy1 = s["crop"]
+        cw, chh = cx1 - cx0, cy1 - cy0
+        if cw / chh > bw / bh:
+            chh = cw * bh / bw
+        else:
+            cw = chh * bw / bh
+        mx, my = (cx0 + cx1) / 2, (cy0 + cy1) / 2
+        ph = ph.crop((int(mx - cw / 2), int(my - chh / 2),
+                      int(mx + cw / 2), int(my + chh / 2)))
+    r = max(bw / ph.width, bh / ph.height)
+    ph = ph.resize((int(ph.width * r), int(ph.height * r)), Image.LANCZOS)
+    ph = ph.crop(((ph.width - bw) // 2, (ph.height - bh) // 2,
+                  (ph.width - bw) // 2 + bw, (ph.height - bh) // 2 + bh))
+    if s.get("warm"):
+        # fall grade: a little less green/blue, amber wash
+        ph = ImageEnhance.Color(ph).enhance(0.85)
+        amber = Image.new("RGBA", ph.size, (214, 120, 50, 255))
+        ph = Image.blend(ph, amber, s["warm"])
+    return ph
+
+
 def draw_photo(canvas, s, box):
     x0, y0, x1, y1 = box
     d = ImageDraw.Draw(canvas)
     photo = s.get("photo")
     if photo and Path(photo).exists():
-        ph = Image.open(photo).convert("RGBA")
         bw, bh = x1 - x0, y1 - y0
-        if s.get("crop"):
-            # grow the crop box to the photo slot's shape, centered on it
-            cx0, cy0, cx1, cy1 = s["crop"]
-            cw, chh = cx1 - cx0, cy1 - cy0
-            if cw / chh > bw / bh:
-                chh = cw * bh / bw
-            else:
-                cw = chh * bw / bh
-            mx, my = (cx0 + cx1) / 2, (cy0 + cy1) / 2
-            ph = ph.crop((int(mx - cw / 2), int(my - chh / 2),
-                          int(mx + cw / 2), int(my + chh / 2)))
-        r = max(bw / ph.width, bh / ph.height)
-        ph = ph.resize((int(ph.width * r), int(ph.height * r)), Image.LANCZOS)
-        ph = ph.crop(((ph.width - bw) // 2, (ph.height - bh) // 2,
-                      (ph.width - bw) // 2 + bw, (ph.height - bh) // 2 + bh))
-        if s.get("warm"):
-            # fall grade: a little less green/blue, amber wash
-            ph = ImageEnhance.Color(ph).enhance(0.85)
-            amber = Image.new("RGBA", ph.size, (214, 120, 50, 255))
-            ph = Image.blend(ph, amber, s["warm"])
+        ph = fit_photo(s, bw, bh)
         mask = Image.new("L", ph.size, 0)
         ImageDraw.Draw(mask).rounded_rectangle((0, 0, bw, bh), 36, fill=255)
         canvas.paste(ph, (x0, y0), mask)
@@ -220,7 +238,157 @@ def badge(canvas, s, cx, cy, r):
     canvas.alpha_composite(small, (cx - small.width // 2, y + big.height + 18))
 
 
+# --- luxe style (The Elevated Edit) ---------------------------------------
+
+def gold_fill(im, s):
+    """Swap a text/logo image's flat color for a diagonal champagne-gold sheen."""
+    import numpy as np
+    stops = np.array([Image.new("RGB", (1, 1), c).getpixel((0, 0)) for c in s["gold"]], float)
+    w, h = im.size
+    yy, xx = np.mgrid[0:h, 0:w]
+    pos = (xx / max(w - 1, 1) * 0.65 + yy / max(h - 1, 1) * 0.35) * (len(stops) - 1)
+    k = np.clip(pos.astype(int), 0, len(stops) - 2)
+    u = (pos - k)[..., None]
+    rgb = stops[k] * (1 - u) + stops[k + 1] * u
+    sheen = Image.fromarray(rgb.astype("uint8"), "RGB").convert("RGBA")
+    sheen.putalpha(im.getchannel("A"))
+    return sheen
+
+
+def luxe_bg(s):
+    """Espresso background, a touch lighter in the middle (soft spotlight)."""
+    c = Image.new("RGBA", (W, H), s["bg_edge"])
+    glow = Image.radial_gradient("L").resize((int(W * 1.6), int(H * 1.15)))
+    glow = glow.point(lambda v: 255 - v)  # radial_gradient is dark in the center
+    mid = Image.new("RGBA", glow.size, s["bg"])
+    mid.putalpha(glow)
+    c.alpha_composite(mid, ((W - glow.width) // 2, (H - glow.height) // 2))
+    return c
+
+
+def diamond(d, cx, cy, r, fill):
+    d.polygon(((cx, cy - r), (cx + r, cy), (cx, cy + r), (cx - r, cy)), fill=fill)
+
+
+def luxe_runner(c, s, y, start=0):
+    """Dark band with double gold hairlines and gold logos, separated by diamonds."""
+    d = ImageDraw.Draw(c)
+    gold = s["accent"]
+    d.rectangle((0, y, W, y + BAND), fill=s["band"])
+    for ly in (y, y + 7, y + BAND - 8, y + BAND - 1):
+        d.line((0, ly, W, ly), fill=gold, width=1 if ly in (y + 7, y + BAND - 8) else 2)
+    room = BAND - 44
+    items = []
+    for br in s["brands"]:
+        i = brand_img(br, 84, s, gold)
+        if i.height > room:
+            i = i.resize((int(i.width * room / i.height), room), Image.LANCZOS)
+        f = logo_file(br)
+        items.append((gold_fill(i, s), RUNNER_NUDGE.get(f.stem if f else "", 0)))
+    items = items[start:] + items[:start]
+    gap, dot = 46, 7
+    x = 30
+    cy = y + BAND // 2
+    while x < W:
+        for i, nudge in items:
+            iy = y + (BAND - i.height) // 2 + nudge
+            iy = max(y + 12, min(iy, y + BAND - i.height - 12))
+            if x + i.width > 0 and x < W:
+                c.alpha_composite(i, (x, iy))
+            x += i.width + gap
+            diamond(d, x + dot, cy, dot, gold)
+            x += 2 * dot + gap
+
+
+def arch_mask(w, h):
+    """Arched-window shape: half-circle top, straight sides and bottom."""
+    m = Image.new("L", (w, h), 0)
+    d = ImageDraw.Draw(m)
+    d.ellipse((0, 0, w - 1, w - 1), fill=255)
+    d.rectangle((0, w // 2, w - 1, h - 1), fill=255)
+    return m
+
+
+def arch_outline(c, box, fill, width):
+    x0, y0, x1, y1 = box
+    w = x1 - x0
+    d = ImageDraw.Draw(c)
+    d.arc((x0, y0, x1, y0 + w), 180, 360, fill=fill, width=width)
+    d.line((x0 + width // 2, y0 + w // 2, x0 + width // 2, y1), fill=fill, width=width)
+    d.line((x1 - (width + 1) // 2, y0 + w // 2, x1 - (width + 1) // 2, y1), fill=fill, width=width)
+    d.line((x0, y1 - width // 2, x1, y1 - width // 2), fill=fill, width=width)
+
+
+def luxe_photo(c, s, box):
+    x0, y0, x1, y1 = box
+    bw, bh = x1 - x0, y1 - y0
+    slot = Image.new("RGBA", (bw, bh), s["photo_bg"])
+    photo = s.get("photo")
+    if photo and Path(photo).exists():
+        slot = fit_photo(s, bw, bh)
+    else:
+        d = ImageDraw.Draw(slot)
+        cx = bw // 2
+        d.ellipse((cx - 105, 250, cx + 105, 490), fill=s["figure"])
+        d.rounded_rectangle((cx - 240, 510, cx + 240, bh + 200), 180, fill=s["figure"])
+        label = text_img("YOUR PHOTO HERE", SANS_B, 38, s["accent"], spacing=6)
+        slot.alpha_composite(label, (cx - label.width // 2, bh - 150))
+        sub = text_img("waist-up · wearing the hero piece · eye contact", SANS, 25, s["ink"])
+        slot.alpha_composite(sub, (cx - sub.width // 2, bh - 92))
+    c.paste(slot, (x0, y0), arch_mask(bw, bh))
+    # fine gold frame floating just outside the photo
+    g = 16
+    arch_outline(c, (x0 - g, y0 - g, x1 + g, y1 + g), s["accent"], 2)
+
+
+def luxe_badge(c, s, cx, cy, r):
+    d = ImageDraw.Draw(c)
+    d.ellipse((cx - r - 12, cy - r - 12, cx + r + 12, cy + r + 12), fill=s["bg"])
+    d.ellipse((cx - r - 7, cy - r - 7, cx + r + 7, cy + r + 7), outline=s["accent"], width=2)
+    disc = Image.new("RGBA", (2 * r, 2 * r), (0, 0, 0, 0))
+    ImageDraw.Draw(disc).ellipse((0, 0, 2 * r - 1, 2 * r - 1), fill="#FFFFFF")
+    c.alpha_composite(gold_fill(disc, s), (cx - r, cy - r))
+    ring = r - 12
+    d.ellipse((cx - ring, cy - ring, cx + ring, cy + ring), outline=s["badge_ink"], width=2)
+    big = text_img(s["start"], SERIF_B, 124, s["badge_ink"])
+    small = text_img("STARTS", SANS_B, 27, s["badge_ink"], spacing=7)
+    total = big.height + 16 + small.height
+    y = cy - total // 2 - 4
+    c.alpha_composite(big, (cx - big.width // 2, y))
+    c.alpha_composite(small, (cx - small.width // 2, y + big.height + 16))
+
+
+def build_luxe(s):
+    c = luxe_bg(s)
+    sx0, sy0, sx1, sy1 = SAFE
+    luxe_runner(c, s, sy0)
+    luxe_runner(c, s, sy1 - BAND, start=1)
+    y = sy0 + BAND + 34
+    y = paste_center(c, text_img("KENNY SHOP", SANS_B, 30, s["accent"], spacing=14), y) + 34
+    # THE / Elevated / — EDIT —
+    the = text_img(s["top"], SERIF, 44, s["ink"], spacing=22)
+    main = gold_fill(fit_text(s["main"], SERIF_I, sx1 - sx0 - 60, 210, "#FFFFFF"), s)
+    edit = text_img(s["last"], SERIF, 64, s["ink"], spacing=30)
+    y = paste_center(c, the, y) + 6
+    y = paste_center(c, main, y) + 16
+    d = ImageDraw.Draw(c)
+    ey = y + edit.height // 2
+    rule = 120
+    ex0, ex1 = (W - edit.width) // 2, (W + edit.width) // 2
+    d.line((ex0 - 40 - rule, ey, ex0 - 40, ey), fill=s["accent"], width=2)
+    d.line((ex1 + 40, ey, ex1 + 40 + rule, ey), fill=s["accent"], width=2)
+    diamond(d, ex0 - 40 - rule - 10, ey, 6, s["accent"])
+    diamond(d, ex1 + 40 + rule + 10, ey, 6, s["accent"])
+    y = paste_center(c, edit, y) + 56
+    photo_box = (sx0 + 70, y, sx1 - 70, sy1 - BAND - 52)
+    luxe_photo(c, s, photo_box)
+    luxe_badge(c, s, photo_box[2] - 70, photo_box[1] + 330, 128)
+    return c
+
+
 def build(name, s, out=None):
+    if s.get("style") == "luxe":
+        return save(name, s, build_luxe(s), out)
     c = Image.new("RGBA", (W, H), s["bg"])
     sx0, sy0, sx1, sy1 = SAFE
     inner = sx1 - sx0 - 40
@@ -240,6 +408,10 @@ def build(name, s, out=None):
     if footer:
         fy = photo_box[3] + (sy1 - BAND - photo_box[3] - footer.height) // 2
         c.alpha_composite(footer, ((W - footer.width) // 2, fy))
+    return save(name, s, c, out)
+
+
+def save(name, s, c, out=None):
     if out is None:
         final = s.get("photo") and Path(s["photo"]).exists()
         out = HERE / "final" / f"{name}.png" if final else HERE / f"{name}.png"
@@ -249,9 +421,10 @@ def build(name, s, out=None):
 
 
 def preview(covers, out="preview-feed-size.png"):
-    """Both covers at feed-card size (270x480) with the safe zone dashed."""
+    """Every cover at feed-card size (270x480) with the safe zone dashed."""
     tw, th, pad = 270, 480, 40
-    sheet = Image.new("RGB", (pad * 3 + tw * 2, th + pad * 2 + 50), "#FFFFFF")
+    n = len(covers)
+    sheet = Image.new("RGB", (pad * (n + 1) + tw * n, th + pad * 2 + 50), "#FFFFFF")
     d = ImageDraw.Draw(sheet)
     k = tw / W
     for i, (name, c) in enumerate(covers.items()):
