@@ -39,12 +39,16 @@ SHOWS = {
     ),
     "for-the-girls": dict(
         # hot pink + baby pink
-        bg="#FF4FA3", ink="#FFFFFF", accent="#FFD1E6", badge_ink="#E0287D", logo="#FFD1E6",
+        bg="#FF4FA3", ink="#FFFFFF", accent="#FFD1E6", badge_ink="#B8125E", logo="#FFD1E6",
         photo_bg="#F03D93", figure="#FF8CC2",
         head_font=SERIF_B, head_scale=1.0, top="FOR THE", main="GIRLS",
         brands=["BRANDY MELVILLE", "AERIE", "GARAGE", "PRINCESS POLLY"], brand_font=SANS_B,
         # two faces fill the top of this photo, so the badge goes low
         photo=HERE / "photos" / "for-the-girls.jpg", crop=(430, 0, 2230, 1932), badge_low=True,
+        # deep pink photo frame + headline shadow, sparkles around the title and photo
+        pop="#B8125E", sparkles=[(225, 525, 46, "#FFFFFF"), (858, 470, 30, "#FFD1E6"),
+                                 (200, 625, 20, "#FFD1E6"), (122, 662, 50, "#FFFFFF"),
+                                 (186, 735, 18, "#FFFFFF"), (132, 1540, 38, "#FFD1E6")],
     ),
 }
 # Second Premium Contemporary cover: same look, new photo and brands, no fall line.
@@ -220,9 +224,30 @@ def draw_photo(canvas, s, box):
     canvas.alpha_composite(sub, (cx - sub.width // 2, y1 - 90))
 
 
+def sparkle(canvas, cx, cy, r, fill):
+    """Four-point star, drawn 4x big and shrunk so the edges are smooth."""
+    k = 4
+    im = Image.new("RGBA", (2 * r * k, 2 * r * k), (0, 0, 0, 0))
+    c, w = r * k, r * k * 0.24
+    pts = [(c, 0), (c + w, c - w), (2 * c, c), (c + w, c + w),
+           (c, 2 * c), (c - w, c + w), (0, c), (c - w, c - w)]
+    ImageDraw.Draw(im).polygon(pts, fill=fill)
+    im = im.resize((2 * r, 2 * r), Image.LANCZOS)
+    canvas.alpha_composite(im, (cx - r, cy - r))
+
+
+def frame(canvas, s, box):
+    """Deep pink border plus an offset block behind it, like a sticker."""
+    x0, y0, x1, y1 = box
+    d = ImageDraw.Draw(canvas)
+    b, off = 16, 18
+    d.rounded_rectangle((x0 - b + off, y0 - b + off, x1 + b + off, y1 + b + off), 48, fill=s["pop"])
+    d.rounded_rectangle((x0 - b, y0 - b, x1 + b, y1 + b), 48, fill=s["pop"])
+
+
 def badge(canvas, s, cx, cy, r):
     d = ImageDraw.Draw(canvas)
-    d.ellipse((cx - r - 8, cy - r - 8, cx + r + 8, cy + r + 8), fill=s["bg"])
+    d.ellipse((cx - r - 10, cy - r - 10, cx + r + 10, cy + r + 10), fill=s.get("pop", s["bg"]))
     d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=s["accent"])
     big = text_img("$1", s.get("badge_font", SANS_B), 150, s["badge_ink"])
     small = text_img("STARTS", SANS_B, 44, s["badge_ink"], spacing=6)
@@ -241,13 +266,24 @@ def build(name, s, out=None):
     y = sy0 + BAND + 34
     y = paste_center(c, text_img("KENNY SHOP", SANS_B, 38, s.get("logo", s["accent"]), spacing=10), y) + 34
     y = paste_center(c, text_img(s["top"], s["head_font"], 60, s["ink"], s["head_scale"], spacing=18), y) + 20
-    y = paste_center(c, fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"]), y) + 40
+    main = fit_text(s["main"], s["head_font"], inner, 170, s["ink"], s["head_scale"])
+    if s.get("pop"):
+        shadow = fit_text(s["main"], s["head_font"], inner, 170, s["pop"], s["head_scale"])
+        c.alpha_composite(shadow, ((W - main.width) // 2 + 8, y + 8))
+    y = paste_center(c, main, y) + 40
     footer = None
     if s.get("footer"):
         footer = text_img(s["footer"], SANS_B, 40, s["accent"], spacing=12)
     footer_h = footer.height + 52 if footer else 0
     photo_box = (sx0 + 40, y, sx1 - 40, sy1 - BAND - 36 - footer_h)
+    if s.get("pop"):
+        # make room for the frame's offset block: up from the runner, centered
+        x0, y0, x1, y1 = photo_box
+        photo_box = (x0 - 9, y0, x1 - 9, y1 - 22)
+        frame(c, s, photo_box)
     draw_photo(c, s, photo_box)
+    for sp in s.get("sparkles", []):
+        sparkle(c, *sp)
     by = photo_box[3] - 185 if s.get("badge_low") else photo_box[1] + 185
     badge(c, s, photo_box[2] - 175, by, 145)
     if footer:

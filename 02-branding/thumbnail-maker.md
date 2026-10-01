@@ -55,7 +55,8 @@ slightly low in the strip (`RUNNER_NUDGE` in `make_covers.py`).
 
 ### For the Girls: pink
 - Background: hot pink
-- Colors: hot pink `#FF4FA3` · white `#FFFFFF` (headline) · baby pink `#FFD1E6` (runners, Kenny Shop, $1 badge) · deep pink `#E0287D` (runner text, badge text)
+- Colors: hot pink `#FF4FA3` · white `#FFFFFF` (headline) · baby pink `#FFD1E6` (runners, Kenny Shop, $1 badge) · deep pink `#B8125E` (photo frame, headline shadow, badge ring, runner and badge text)
+- Pop: deep pink frame around the photo with an offset block behind it (sticker look), a deep pink drop shadow on "GIRLS", and white / baby pink sparkles around the title and photo corners (`pop` + `sparkles` in `make_covers.py`)
 - Fonts: Playfair Display Bold headline, Montserrat ExtraBold for Kenny Shop, badge and brand text
 - Text: `FOR THE GIRLS` · `$1 STARTS` · runners: `BRANDY MELVILLE` · `AERIE` · `GARAGE` · `PRINCESS POLLY` (text until logo files are added)
 - Outfit: a cute going-out or everyday look (baby tee + low-rise jeans, a Princess Polly mini dress, an Aerie set). White, black, denim or red pop on pink; avoid an all-pink outfit.
