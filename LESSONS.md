@@ -101,7 +101,7 @@ Claude reads this before every task and adds to it as it goes (see
   Edit, The Active Edit (Premium Activewear), The Mini Edit, The Big Kid Edit, The Heirloom
   Edit (vintage baby & kids, $3; split off The Throwback Edit for 6–14 once big enough).
   Also "For the Girls" ($1 starts; Brandy Melville, Aerie, Garage, Princess Polly; pink cover
-  Jade made herself, not in the Edit style).
+  that is not in the Edit style or in make_covers.py).
 - Covers built around a product on a kid (boots, shoes): crop to the product so it's the
   hero and the kid's body stays out of frame.
 - In the band, brands are spelled out as words (not the swoosh or other logo marks) on the
