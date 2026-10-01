@@ -52,7 +52,7 @@ SHOWS["the-elevated-edit"] = dict(
     accent="#D8BB82", gold=("#9C7A45", "#E9D3A0", "#F8EBC8", "#B8915A"), badge_ink="#15110E",
     photo_bg="#211A15", figure="#3A3029", top="THE", main="Elevated", last="EDIT",
     brands=["ANTHROPOLOGIE", "QUINCE", "FREE PEOPLE"], brand_font=SERIF, brand_spacing=10,
-    start="$5", photo=HERE / "photos" / "elevated-edit.jpg", crop=None,
+    start="$5", photo=HERE / "photos" / "elevated-edit.jpg", crop=(0, 430, 1450, 1910), warm=0.04,
 )
 
 
