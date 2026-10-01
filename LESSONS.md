@@ -85,7 +85,8 @@ Claude reads this before every task and adds to it as it goes (see
   Jade wants only proven facts, so label anything that isn't.
 - Jade also runs a kids show (Hanna Andersson, Zara Kids, designer kids). The brand is
   spelled "Hanna Andersson" (one h, two s's); use that exact spelling in titles and tags.
-  It runs as two shows, "The Mini Edit": Baby & Toddler (0–5T) and Big Kids (6–14), $3 starts,
+  It runs as two shows, $3 starts: "The Mini Edit" is Baby & Toddler (0–5T) only; Big Kids
+  (6–14) gets its own name (not "Mini"),
   covers in the Elevated Edit luxe style, each recolored to its own photo.
 - Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge);
   for new shows, offer it recolored to match the photo.
