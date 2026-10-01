@@ -76,15 +76,17 @@ fills the whole cover and everything sits on top of it.
   cherry logos, white `PREMIUM ACTIVEWEAR` over the fade. Cherry + blush replaced pool blue + pink
   because the blue clashed with warm skin, auburn hair and a red top. Photo: `whatnot-covers/photos/activewear-friends.jpg`; cover:
   `whatnot-covers/final/premium-activewear-2.png`.
-- The Mini Edit (kids, two shows split by size, $3 starts), same luxe look as The Elevated Edit,
-  each recolored to its own photo, with the size range in the accent color under the title:
-  - `the-mini-edit-baby-toddler` (BABY & TODDLER · SIZES 0–5T): navy `#14224A` bands and fades (from
-    the blue sweater), butter gold `#F7D774` lines and sheen. Photo `photos/kids-mini-edit-blur.jpg`.
-  - `the-mini-edit-big-kids` (BIG KIDS · SIZES 6–14): black `#151314` bands and fades, blush
+- Kids shows, split by size, $3 starts, same luxe look as The Elevated Edit, each recolored to its
+  own photo, with the size range in the accent color under the title:
+  - **The Mini Edit** (`the-mini-edit-baby-toddler`, BABY & TODDLER · SIZES 0–5T): navy `#14224A`
+    bands and fades (from the blue sweater), butter gold `#F7D774` lines and sheen. Photo
+    `photos/kids-mini-edit-blur.jpg`.
+  - **The Big Kid Edit** (`the-big-kid-edit`, SIZES 6–14): black `#151314` bands and fades, blush
     `#F5BFCD` lines and sheen (from the black pants and pink blanket). Photo
-    `photos/kids-big-kids-blur.jpg`, with the name on the water bottle blurred out.
-  - Both photos had the background blurred first. Runners: Hanna Andersson · Zara Kids · Designer
-    (serif text, no logos yet). Covers: `whatnot-covers/final/the-mini-edit-*.png`.
+    `photos/kids-big-kids-blur.jpg`: background blurred (the bags in hand and the ground kept sharp)
+    and the name printed on the water bottle painted out in plain coral.
+  - Runners: Hanna Andersson · Zara Kids · Designer (serif text, no logos yet). Covers:
+    `whatnot-covers/final/the-mini-edit-baby-toddler.png`, `whatnot-covers/final/the-big-kid-edit.png`.
 - The Elevated Edit with your photo: save it as `whatnot-covers/photos/elevated-edit.jpg` and run
   `python3 make_covers.py`; the finished cover lands in `whatnot-covers/final/the-elevated-edit.png`.
 - Finished covers with your photos: `whatnot-covers/final/` (includes `premium-contemporary-2.png`, a second Contemporary cover with no fall line and Free People · Anthropologie · Aritzia in the runners; Anthropologie and Aritzia show as text until their logo files are added). These and the photos in

@@ -69,10 +69,10 @@ SHOWS["the-mini-edit-baby-toddler"] = dict(
     photo=HERE / "photos" / "kids-mini-edit-blur.jpg", badge_at=(860, 800),
     lift=dict(brightness=1.1, contrast=1.06, color=1.1, sharpness=1.1),
 )
-# Big Kids: its own photo (kids-big-kids-blur.jpg: background blurred, name on the water
+# The Big Kid Edit (sizes 6–14; "Mini" is only for the baby & toddler show): its own photo (kids-big-kids-blur.jpg: background blurred, name on the water
 # bottle blurred out), recolored to it: black + blush, from the black pants and pink blanket.
-SHOWS["the-mini-edit-big-kids"] = dict(
-    SHOWS["the-mini-edit-baby-toddler"], sub="BIG KIDS · SIZES 6–14",
+SHOWS["the-big-kid-edit"] = dict(
+    SHOWS["the-mini-edit-baby-toddler"], main="Big Kid", sub="SIZES 6–14",
     bg="#151314", bg_edge="#0A090A", band="#151314", shade=(22, 18, 20), accent="#F5BFCD",
     gold=("#E39AAE", "#F8CDD8", "#FFF1F5", "#ECAABC"), badge_ink="#151314",
     photo_bg="#151314", figure="#3A3034", shade_from=780, shade_max=235, shade_reach=560,

@@ -86,7 +86,7 @@ Claude reads this before every task and adds to it as it goes (see
 - Jade also runs a kids show (Hanna Andersson, Zara Kids, designer kids). The brand is
   spelled "Hanna Andersson" (one h, two s's); use that exact spelling in titles and tags.
   It runs as two shows, $3 starts: "The Mini Edit" is Baby & Toddler (0–5T) only; Big Kids
-  (6–14) gets its own name (not "Mini"),
+  (6–14) is "The Big Kid Edit" (suggested; confirm with Jade),
   covers in the Elevated Edit luxe style, each recolored to its own photo.
 - Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge);
   for new shows, offer it recolored to match the photo.
@@ -143,8 +143,11 @@ Claude reads this before every task and adds to it as it goes (see
 
 - Photos Jade attaches in chat don't always reach cloud sessions. Check
   `/mnt/user-data/uploads/`; if it's empty, ask her to re-send (or use Nifty).
-- Kids' photos on public covers: blur any name or other identifying text (names on water
-  bottles, backpacks, school shirts) and tell Jade.
+- Kids' photos on public covers: hide any name or other identifying text (water bottles,
+  backpacks, school shirts) and tell Jade. Paint it out in the object's own color; a blur
+  smudge looks messy.
+- When blurring a photo's background, check everything the kids hold (bags, cups) stays
+  sharp. The cutout model misses held items; keep the lower frame sharp or add them by hand.
 - Busy photo backgrounds: cut the person out with MediaPipe's selfie_multiclass_256x256.tflite
   (storage.googleapis.com) run through `pip install ai-edge-litert` (the mediapipe package
   needs libEGL, which the cloud lacks), then blur only the background.
