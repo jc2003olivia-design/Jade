@@ -82,6 +82,9 @@ Claude reads this before every task and adds to it as it goes (see
   shows (~50 pieces each), not one combined show.
 - Whatnot shows run under one generic listing with $1 starts (Jade calls it
   "random pull"). Exceptions: The Elevated Edit is $5 starts; the kids shows are $3. Delist from Depop/Poshmark before going live.
+- Jade's show policies: every piece hand washed before the show, ships the next day,
+  random pulls take no requests unless she asks, promoting is welcome, Instagram
+  @kuratedbykenny. Women's shows are XS–XL. Paste-ready copy: `04-online-selling/whatnot-show-copy.md`.
 - Show playbook (scripts, item counts, timers, giveaway rules) is
   `04-online-selling/whatnot.md`. Tag each claim [Whatnot]/[Study]/[Math]/[Test];
   Jade wants only proven facts, so label anything that isn't.

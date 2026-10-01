@@ -47,7 +47,8 @@ Jade
 │   ├── depop.md
 │   ├── ebay.md
 │   ├── poshmark.md
-│   └── whatnot.md           How to run the Whatnot shows (with sources)
+│   ├── whatnot.md           How to run the Whatnot shows (with sources)
+│   └── whatnot-show-copy.md Show descriptions + Show Notes, ready to paste
 ├── 05-pop-up-markets/           In-person markets (add a file per event)
 │   └── planning.md
 ├── 06-label-printer/            Label printer setup and templates

@@ -272,6 +272,9 @@ issues ("runs big") don't count as misrepresentation. The tag size does.
 
 ## Show Notes template (paste into Show Notes)
 
+The current paste-ready Show Notes and per-show descriptions are in
+`whatnot-show-copy.md`. The giveaway rules below go under them when a show has a giveaway.
+
 Whatnot requires Official Rules for every giveaway. This is adapted from
 Whatnot's own example. Whatnot says the example isn't guaranteed to be
 legally complete, so check it before your first giveaway. Fill in the
@@ -282,7 +285,7 @@ don't write personal details here).
 KENNY SHOP · Premium [Activewear] · $1 starts
 Every piece: brand, tag size, condition and flaws shown on camera.
 Shipping: everything you win tonight bundles into one box.
-Ships within 2 business days.
+Ships the next day.
 
 GIVEAWAY OFFICIAL RULES
 NO PURCHASE NECESSARY. Void where prohibited and outside the U.S.
