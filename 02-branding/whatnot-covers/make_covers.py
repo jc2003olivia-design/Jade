@@ -69,7 +69,15 @@ SHOWS["the-mini-edit-baby-toddler"] = dict(
     photo=HERE / "photos" / "kids-mini-edit-blur.jpg", badge_at=(860, 800),
     lift=dict(brightness=1.1, contrast=1.06, color=1.1, sharpness=1.1),
 )
-SHOWS["the-mini-edit-big-kids"] = dict(SHOWS["the-mini-edit-baby-toddler"], sub="BIG KIDS · SIZES 6–14")
+# Big Kids: its own photo (kids-big-kids-blur.jpg: background blurred, name on the water
+# bottle blurred out), recolored to it: black + blush, from the black pants and pink blanket.
+SHOWS["the-mini-edit-big-kids"] = dict(
+    SHOWS["the-mini-edit-baby-toddler"], sub="BIG KIDS · SIZES 6–14",
+    bg="#151314", bg_edge="#0A090A", band="#151314", shade=(22, 18, 20), accent="#F5BFCD",
+    gold=("#E39AAE", "#F8CDD8", "#FFF1F5", "#ECAABC"), badge_ink="#151314",
+    photo_bg="#151314", figure="#3A3034", shade_from=780, shade_max=235, shade_reach=560,
+    photo=HERE / "photos" / "kids-big-kids-blur.jpg", badge_at=(210, 620),
+)
 # The Elevated Edit: the luxe look (champagne gold on a full-bleed, brightened photo).
 SHOWS["the-elevated-edit"] = dict(
     style="luxe", layout="full", bg="#1E1712", bg_edge="#080706", ink="#FFFFFF", band="#0B0908",
@@ -412,11 +420,17 @@ def build_luxe(s):
     return c
 
 
-def shade(c, y0, y1, a0, a1, color=(10, 8, 6)):
-    """Dark see-through band fading from alpha a0 at y0 to a1 at y1, for text to read on a photo."""
+def shade(c, y0, y1, a0, a1, color=(10, 8, 6), reach=None):
+    """Dark see-through band fading from alpha a0 at y0 to a1 at y1, for text to read on a photo.
+    With reach, it eases in (no visible edge) and hits a1 after `reach` px, then holds."""
     h = y1 - y0
     grad = Image.linear_gradient("L").resize((1, 256)).resize((W, h))
-    grad = grad.point(lambda v: int(a0 + (a1 - a0) * v / 255))
+    if reach:
+        k = h / reach
+        ease = lambda u: (lambda x: x * x * (3 - 2 * x))(min(1.0, u * k))
+        grad = grad.point(lambda v: int(a0 + (a1 - a0) * ease(v / 255)))
+    else:
+        grad = grad.point(lambda v: int(a0 + (a1 - a0) * v / 255))
     band = Image.new("RGBA", (W, h), color + (0,))
     band.putalpha(grad)
     c.alpha_composite(band, (0, y0))
@@ -465,7 +479,7 @@ def build_luxe_full(s):
     sx0, sy0, sx1, sy1 = SAFE
     tint = s.get("shade", (10, 8, 6))
     shade(c, 0, 560, 200, 0, tint)
-    shade(c, s.get("shade_from", 1080), H, 0, s.get("shade_max", 235), tint)
+    shade(c, s.get("shade_from", 1080), H, 0, s.get("shade_max", 235), tint, s.get("shade_reach"))
     luxe_runner(c, s, sy0)
     luxe_runner(c, s, sy1 - BAND, start=1)
     k, pad = glow(text_img("KENNY SHOP", SANS_B, 32, s["accent"], spacing=14), 8, 220)

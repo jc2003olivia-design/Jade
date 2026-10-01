@@ -86,7 +86,7 @@ Claude reads this before every task and adds to it as it goes (see
 - Jade also runs a kids show (Hanna Andersson, Zara Kids, designer kids). The brand is
   spelled "Hanna Andersson" (one h, two s's); use that exact spelling in titles and tags.
   It runs as two shows, "The Mini Edit": Baby & Toddler (0–5T) and Big Kids (6–14), $3 starts,
-  covers in the Elevated Edit luxe style recolored to the photo (navy + butter).
+  covers in the Elevated Edit luxe style, each recolored to its own photo.
 - Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge);
   for new shows, offer it recolored to match the photo.
 - Whatnot requires condition said out loud and "NO PURCHASE NECESSARY" every
@@ -142,6 +142,8 @@ Claude reads this before every task and adds to it as it goes (see
 
 - Photos Jade attaches in chat don't always reach cloud sessions. Check
   `/mnt/user-data/uploads/`; if it's empty, ask her to re-send (or use Nifty).
+- Kids' photos on public covers: blur any name or other identifying text (names on water
+  bottles, backpacks, school shirts) and tell Jade.
 - Busy photo backgrounds: cut the person out with MediaPipe's selfie_multiclass_256x256.tflite
   (storage.googleapis.com) run through `pip install ai-edge-litert` (the mediapipe package
   needs libEGL, which the cloud lacks), then blur only the background.
