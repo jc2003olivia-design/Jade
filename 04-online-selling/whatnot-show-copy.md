@@ -1,93 +1,108 @@
 # Whatnot show copy
 
 Paste-ready descriptions for each show, plus one Show Notes block that works for every
-show. Covers are in `02-branding/whatnot-covers/`. Swap the item types for what's
-actually in each show: buyers find shows by those words.
+show. Covers are in `02-branding/whatnot-covers/`. Tone: quiet luxury, like a boutique,
+with ✦ instead of emojis. Keep the brand names and item types in: buyers find shows by
+those words. Swap the item types for what's actually in each show.
 
 ## Descriptions
 
 ### The Elevated Edit · $5 starts
 
 ```
-The Elevated Edit ✨ Luxe pieces, $5 starts.
+THE ELEVATED EDIT ✦ Opening bids from $5
 
-Anthropologie, Quince and Free People: the elevated, expensive-looking pieces you'd normally pay full price for, starting at just $5.
+A curated collection of Anthropologie, Quince and Free People: the refined, investment-worthy pieces you'd expect to pay full price for.
 
-Shop: cashmere sweaters, silk tops, lace tops, linen pants, slip dresses, midi dresses, knit cardigans, blazers and denim. Women's sizes XS–XL.
+Cashmere knits, silk blouses, delicate lace, tailored linen, slip and midi dresses, blazers and elevated denim. Women's XS–XL.
 
-Every piece is hand washed before the show and shown on camera with brand, tag size and condition, flaws included. Ships the next day, and everything you win bundles into one box.
+Every piece is hand washed, inspected and presented on camera with its brand, size and condition. Dispatched the next day, beautifully bundled into one box.
 
-Tap follow so you don't miss the next drop!
+Follow to be first in line for the next edit.
 ```
 
 ### The Active Edit · $1 starts
 
 ```
-The Active Edit ✨ Premium activewear, $1 starts.
+THE ACTIVE EDIT ✦ Opening bids from $1
 
-Lululemon, Free People Movement and Nike: leggings, sports bras, matching sets, joggers, pullovers, half-zips, shorts and tanks. Women's sizes XS–XL.
+Premium activewear, curated: Lululemon, Free People Movement and Nike.
 
-Every piece is hand washed before the show and shown on camera with brand, tag size and condition, flaws included. Ships the next day, and everything you win bundles into one box.
+Buttery leggings, sculpting sports bras, matching sets, joggers, half-zips, pullovers and everyday layers. Women's XS–XL.
 
-Tap follow so you don't miss the next drop!
+Every piece is hand washed, inspected and presented on camera with its brand, size and condition. Dispatched the next day, beautifully bundled into one box.
+
+Follow to be first in line for the next edit.
 ```
 
 ### The Mini Edit · $3 starts · baby & toddler 0–5T
 
 ```
-The Mini Edit ✨ Baby & toddler, sizes 0–5T, $3 starts.
+THE MINI EDIT ✦ Baby & toddler 0–5T ✦ Opening bids from $3
 
-Hanna Andersson, Zara Kids and designer pieces for the little ones: pajamas, rompers, dresses, overalls, sweaters, sets, jackets and shoes.
+Thoughtfully chosen pieces for the littlest wardrobes, from Hanna Andersson, Zara Kids and designer labels.
 
-Every piece is hand washed before the show and shown on camera with brand, tag size and condition, flaws included. Ships the next day, and everything you win bundles into one box.
+Soft pajamas, rompers, dresses, overalls, knits, sets, outerwear and shoes.
 
-Tap follow so you don't miss the next drop!
+Every piece is hand washed, inspected and presented on camera with its brand, size and condition. Dispatched the next day, beautifully bundled into one box.
+
+Follow to be first in line for the next edit.
 ```
 
 ### The Big Kid Edit · $3 starts · sizes 6–14
 
 ```
-The Big Kid Edit ✨ Big kids, sizes 6–14, $3 starts.
+THE BIG KID EDIT ✦ Sizes 6–14 ✦ Opening bids from $3
 
-Zara, Hanna Andersson, Abercrombie and Nike: jeans, flare leggings, tees, hoodies, sweatshirts, dresses, jackets, sneakers and school basics.
+Polished, on-trend pieces for big kids, from Zara, Hanna Andersson, Abercrombie and Nike.
 
-Every piece is hand washed before the show and shown on camera with brand, tag size and condition, flaws included. Ships the next day, and everything you win bundles into one box.
+Denim, flare leggings, tees, hoodies and sweatshirts, dresses, outerwear, sneakers and elevated school-day basics.
 
-Tap follow so you don't miss the next drop!
+Every piece is hand washed, inspected and presented on camera with its brand, size and condition. Dispatched the next day, beautifully bundled into one box.
+
+Follow to be first in line for the next edit.
 ```
 
 ### The Heirloom Edit · $3 starts · vintage baby & kids
 
 ```
-The Heirloom Edit ✨ Vintage baby & kids, $3 starts.
+THE HEIRLOOM EDIT ✦ Vintage baby & kids ✦ Opening bids from $3
 
-One-of-a-kind vintage pieces worth passing down: cowboy boots, overalls, smocked dresses, hand knits, character tees and 90s/Y2K classics from OshKosh, Gymboree, Hanna Andersson and more.
+Rare, one-of-a-kind vintage, chosen to be treasured and passed down.
 
-Every piece is hand washed before the show and shown on camera with brand, tag size and condition, flaws included. Ships the next day, and everything you win bundles into one box.
+Leather cowboy boots, smocked dresses, hand knits, overalls, character tees and 90s and Y2K classics from OshKosh, Gymboree, Hanna Andersson and more.
 
-Tap follow so you don't miss the next drop!
+Every piece is hand washed, inspected and presented on camera with its brand, size and condition. Dispatched the next day, beautifully bundled into one box.
+
+Follow to be first in line for the next edit.
 ```
 
 ## Show Notes (same for every show)
 
 ```
-WELCOME TO KENNY SHOP ✨
+WELCOME TO KENNY SHOP ✦ CURATED BY KENNY
 
-🧼 Every piece is hand washed before the show.
-📦 All pieces ship the next day. Everything you win bundles into one box.
-🏷️ Brand, tag size and condition (flaws included) shown on camera for every piece.
-🎲 Random pulls are random: no requests unless I ask for them.
-📣 Promoting is welcome! Share the show with friends.
-📸 Follow me on Instagram: @kuratedbykenny
+✦ The details
+Every piece is hand washed before the show.
+Brand, size and condition, including any flaws, are shown on camera.
+Orders are dispatched the next day, with everything you win bundled into one box.
 
-SHOP MY OTHER SHOWS
-For the girls (women's XS–XL):
-• The Elevated Edit: Anthropologie, Quince, Free People · $5 starts
-• The Active Edit: Lululemon, Free People Movement, Nike · $1 starts
-For the kids ($3 starts):
-• The Mini Edit: baby & toddler 0–5T
-• The Big Kid Edit: sizes 6–14
-• The Heirloom Edit: vintage baby & kids
+✦ Random pulls
+Random pulls are a surprise by design, so no requests unless I invite them.
+
+✦ Share the love
+Promoting the show is always welcome.
+Follow along on Instagram: @kuratedbykenny
+
+✦ The collection
+For her (women's XS–XL)
+The Elevated Edit · Anthropologie, Quince, Free People · from $5
+The Active Edit · Lululemon, Free People Movement, Nike · from $1
+
+For the little ones (from $3)
+The Mini Edit · baby & toddler 0–5T
+The Big Kid Edit · sizes 6–14
+The Heirloom Edit · vintage baby & kids
 ```
 
 If a show has a giveaway, paste the Giveaway Official Rules from
