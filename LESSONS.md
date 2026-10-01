@@ -79,13 +79,14 @@ Claude reads this before every task and adds to it as it goes (see
 - Whatnot: run Premium Activewear and Premium Contemporary as two separate
   shows (~50 pieces each), not one combined show.
 - Whatnot shows run under one generic listing with $1 starts (Jade calls it
-  "random pull"). The Elevated Edit show is the exception: $5 starts. Delist from Depop/Poshmark before going live.
+  "random pull"). Exceptions: The Elevated Edit is $5 starts; the kids shows are $3. Delist from Depop/Poshmark before going live.
 - Show playbook (scripts, item counts, timers, giveaway rules) is
   `04-online-selling/whatnot.md`. Tag each claim [Whatnot]/[Study]/[Math]/[Test];
   Jade wants only proven facts, so label anything that isn't.
 - Jade also runs a kids show (Hanna Andersson, Zara Kids, designer kids). The brand is
   spelled "Hanna Andersson" (one h, two s's); use that exact spelling in titles and tags.
-  Its cover is The Mini Edit in the Elevated Edit luxe style, recolored to the photo.
+  It runs as two shows, "The Mini Edit": Baby & Toddler (0–5T) and Big Kids (6–14), $3 starts,
+  covers in the Elevated Edit luxe style recolored to the photo (navy + butter).
 - Jade likes the Elevated Edit luxe style (gold-sheen serif title, ruled bands, coin badge);
   for new shows, offer it recolored to match the photo.
 - Whatnot requires condition said out loud and "NO PURCHASE NECESSARY" every

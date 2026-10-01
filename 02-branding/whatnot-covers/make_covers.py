@@ -55,19 +55,21 @@ SHOWS["premium-activewear-2"] = dict(
     photo=HERE / "photos" / "activewear-friends.jpg", photo_y=150, badge_at=(250, 1090),
     lift=dict(brightness=1.1, contrast=1.08, color=1.12, sharpness=1.15),
 )
-# The Mini Edit (kids): the Elevated Edit look recolored to the photo (navy from the
-# sweater, butter gold), full-frame photo with the background blurred beforehand
-# (photos/kids-mini-edit-blur.jpg), $1 coin over the blurred table on the right.
-SHOWS["the-mini-edit"] = dict(
+# The Mini Edit (kids), two shows split by size, $3 starts: the Elevated Edit look
+# recolored to the photo (navy from the sweater, butter gold), full-frame photo with
+# the background blurred beforehand (photos/kids-mini-edit-blur.jpg), $3 coin over the
+# blurred table on the right, size range under the title.
+SHOWS["the-mini-edit-baby-toddler"] = dict(
     style="luxe", layout="full", template=False,
     bg="#1B2D5C", bg_edge="#0E1838", band="#14224A", shade=(16, 28, 64), ink="#FFFFFF",
     accent="#F7D774", gold=("#E5B94A", "#F9DE86", "#FFF1C2", "#EBC45C"), badge_ink="#14224A",
-    photo_bg="#1B2D5C", figure="#2E4A8A", top="THE", main="Mini", last="EDIT", start="$1",
-    main_size=330, shade_from=1000, shade_max=250,
+    photo_bg="#1B2D5C", figure="#2E4A8A", top="THE", main="Mini", last="EDIT", start="$3",
+    sub="BABY & TODDLER · SIZES 0–5T", main_size=300, shade_from=950, shade_max=250,
     brands=["HANNA ANDERSSON", "ZARA KIDS", "DESIGNER"], brand_font=SERIF, brand_spacing=10,
     photo=HERE / "photos" / "kids-mini-edit-blur.jpg", badge_at=(860, 800),
     lift=dict(brightness=1.1, contrast=1.06, color=1.1, sharpness=1.1),
 )
+SHOWS["the-mini-edit-big-kids"] = dict(SHOWS["the-mini-edit-baby-toddler"], sub="BIG KIDS · SIZES 6–14")
 # The Elevated Edit: the luxe look (champagne gold on a full-bleed, brightened photo).
 SHOWS["the-elevated-edit"] = dict(
     style="luxe", layout="full", bg="#1E1712", bg_edge="#080706", ink="#FFFFFF", band="#0B0908",
@@ -472,9 +474,12 @@ def build_luxe_full(s):
     the = text_img(s["top"], SERIF, 50, s["ink"], spacing=24)
     main = gold_fill(fit_text(s["main"], SERIF_I, sx1 - sx0 - 40, s.get("main_size", 230), "#FFFFFF"), s)
     edit = text_img(s["last"], SERIF, 72, s["ink"], spacing=32)
-    total = the.height + 8 + main.height + 18 + edit.height
-    y = sy1 - BAND - 46 - total
-    for im, gap in ((the, 8), (main, 18), (edit, 0)):
+    # optional line under the title, e.g. the size range
+    sub = text_img(s["sub"], SANS_B, 38, s["accent"], spacing=10) if s.get("sub") else None
+    lines = [(the, 8), (main, 18), (edit, 24 if sub else 0)] + ([(sub, 0)] if sub else [])
+    total = sum(im.height + gap for im, gap in lines)
+    y = sy1 - BAND - (34 if sub else 46) - total
+    for im, gap in lines:
         g, pad = glow(im, 12, 160)
         c.alpha_composite(g, ((W - g.width) // 2, y - pad))
         if im is edit:
