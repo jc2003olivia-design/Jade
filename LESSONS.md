@@ -83,6 +83,11 @@ Claude reads this before every task and adds to it as it goes (see
 - Nifty's marketplace copies of one item can list different fabrics (the
   Wilfred Free romper says Tencel blend, Lyocell and 100% modal). Read the
   care tag before saying the fabric live.
+- Show script cards: 4x6 PDF, one per piece (retail, secondhand comps, what
+  to say, write-in condition and measurements). Built by
+  `04-online-selling/whatnot-cards/make_cards.py` from a JSON per show.
+- On cards, never say a retail price the brand undercuts now (Quince lists
+  $48 but sells it new for $19.90). Check the brand's current price.
 
 ## Customer support
 
