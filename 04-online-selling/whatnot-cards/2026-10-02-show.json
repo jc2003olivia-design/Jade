@@ -542,5 +542,37 @@
   "resale_src": "Poshmark sold, MK Greenwich crossbodies (33)",
   "say": "Michael Kors crossbody, black saffiano leather with the gold MK logo. [Condition]. [front, back, open the flap, inside, strap, hardware up close] Flap closure, adjustable crossbody strap, gold hardware. Holds your phone, cards and keys. [start] Go!",
   "tip": "Confirm the style name on the inside tag (Greenwich?) and say it. Check corners, edges and the logo plate for scuffs. Lead with condition and the logo; used ones sell far below the retail on the tag."
+ },
+ {
+  "sku": "",
+  "price": "$______",
+  "price_note": "your start / BIN. Comps below",
+  "n": 35,
+  "type": "AUCTION / BIN",
+  "brand": "BCBGeneration",
+  "item": "Black Leather Studded Ankle Boots",
+  "size": "10M / 40",
+  "retail": "~$119–125",
+  "retail_src": "Poshmark sellers' tags on BCBGeneration booties",
+  "resale": "$13–45, usually ~$25",
+  "resale_src": "Poshmark sold, BCBGeneration studded boots (34); black studded 10 sold $15",
+  "say": "BCBGeneration ankle boots, size 10, EU 40. Pre-owned, [condition]. [both boots side by side, studs up close, heel, soles, size stamp] Black [leather / faux leather], gold stud trim around the toe and heel, stacked block heel, [closure]. Fall boot with jeans or a dress. [start] Go!",
+  "tip": "Show the soles: there's wear and a small puncture mark near the ball of the foot in your photo. Check the heel tips and that every stud is there."
+ },
+ {
+  "sku": "",
+  "price": "$______",
+  "price_note": "your start / BIN. Comps below",
+  "n": 36,
+  "type": "AUCTION / BIN",
+  "brand": "Havaianas",
+  "item": "Chevron Woven Slide Sandals, Gold Trim",
+  "size": "US 7/8 W",
+  "retail": "~$42–50",
+  "retail_src": "Poshmark sellers' tags on Havaianas You slides",
+  "resale": "used ~$11–20; NWT ~$20",
+  "resale_src": "Poshmark sold, Havaianas You slides (62)",
+  "say": "Havaianas slides, US women's 7 to 8, EU 39/40. Pre-owned, [condition]. [both shoes, strap up close, footbeds, soles] Black and cream chevron woven strap with gold metallic trim, gold Havaianas logo, cushy rubber sole. Vacation-ready. [start] Go!",
+  "tip": "Low value, and it's October. Use as a giveaway prize or $1 add-on. Show the footbeds: buyers check them for wear and toe marks."
  }
 ]
