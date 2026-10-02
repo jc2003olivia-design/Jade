@@ -73,7 +73,8 @@ def draw_card(c, it):
     c.setFont("Bold", 13)
     c.drawString(M + 6, y - bar + 7, f"#{it['n']}  {it['type']}")
     c.setFont("Medium", 9)
-    c.drawRightString(W - M - 6, y - bar + 8, it.get("sku") or "no SKU yet")
+    if it.get("sku"):
+        c.drawRightString(W - M - 6, y - bar + 8, it["sku"])
     c.setFillGray(0)
     y -= bar + 4
 
