@@ -414,5 +414,37 @@
   "resale_src": "Poshmark sold, Wilfred satin babydoll/peplum camis (8)",
   "say": "Wilfred from Aritzia, satin babydoll cami, tag size small. Pre-owned, [condition]. [front, back, straps, tag] Silky satin, V neckline, thin adjustable straps, peplum babydoll hem. Under a blazer or cardigan, or out at night. [start] Go!",
   "tip": "Say \"Aritzia\". Check the color in good light (navy or black?). Check the satin for snags and water marks."
+ },
+ {
+  "sku": "",
+  "price": "$______",
+  "price_note": "your start / BIN. Comps below",
+  "n": 27,
+  "type": "AUCTION / BIN · HERO",
+  "brand": "Citizens of Humanity",
+  "item": "Annina High Rise Jeans, Light Wash",
+  "size": "26",
+  "retail": "~$238–268",
+  "retail_src": "Poshmark sellers' tags on the Annina",
+  "resale": "$51–100, usually ~$75",
+  "resale_src": "Poshmark sold, CoH Annina (93 in 12 mo)",
+  "say": "Citizens of Humanity, the Annina jean, tag size 26. Pre-owned, [condition]. [front, back, button fly, hems, waistband tag] High rise, wide straight leg, light vintage wash, [fabric from care tag]. These are around $248 new. Waist [x] flat, rise [x], inseam [x]. [start] Go!",
+  "tip": "Your best denim piece. Say \"Annina\", since buyers search the style name. Run it as a hero: 15-second timer, try-on or hold-up, after a repeat block."
+ },
+ {
+  "sku": "",
+  "price": "$______",
+  "price_note": "your start / BIN. Comps below",
+  "n": 28,
+  "type": "AUCTION / BIN",
+  "brand": "Levi's 501 Original",
+  "item": "Button-Fly Jeans, Medium Wash",
+  "size": "W27 L30",
+  "retail": "$70–98",
+  "retail_src": "levi.com list $98; Target-sold 501s $69.99",
+  "resale": "$20–30, usually ~$24",
+  "resale_src": "Poshmark sold, women's 501s size 27 (76)",
+  "say": "Levi's 501 Original, tag size 27 waist, 30 length. Pre-owned, [condition]. [front, back patch, button fly, hems, tag] The classic button-fly straight leg in a medium wash. Waist [x] flat, rise [x], inseam [x]. [start] Go!",
+  "tip": "Made in 2022 (CW 08/22 on the tag), so don't call it vintage. A good $1-start or bundle piece."
  }
 ]

@@ -52,6 +52,10 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Pricing
 
+- Levi's inside tag: "CW MM/YY" is the make date (CW 08/22 = Aug 2022, not
+  vintage) and PC9 12501-xxxx is women's 501. Vintage = Made in USA or an
+  early date. Women's 501s sell ~$20–30 on Poshmark; vintage ones far more.
+
 - Nifty: Depop is the source price, and Nifty's rules set the Poshmark and
   eBay prices from it.
 - Asking prices run high. 0927-04 (Jude Connally sleeveless top, S) was set
