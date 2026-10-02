@@ -215,6 +215,27 @@ promote a giveaway. You must also say what the prize is before it runs.
 Ahead of time (allowed **[Whatnot]**):
 > "Follower giveaway at [8:20] / when we hit [30] viewers."
 
+### Flash sale (Buy It Now at a discount)
+
+How it works **[Whatnot]**: a Flash Sale sells a Buy It Now listing at a
+discount for a set time, only during the live show. Start it from the
+**Buy Now** tab → **…** → **Run as Flash Sale** (or Product Actions → Start
+Flash Sale). When it ends, an existing listing goes back to full price. No
+offers are allowed on flash items. Whatnot recommends **at least 30 seconds**
+so buyers have time to check out. You can't pin anything while an auction is
+running, so run flash sales between auctions.
+
+Steps: pin it → show it and say the condition (about 30 seconds) → start the
+flash sale (it pins itself) → call the countdown.
+
+> "Flash sale! [Brand] [item], tag size [X], pre-owned excellent.
+> *[front, back, tag]* [Measurements.] It's $[full] in my shop. For the next
+> 30 seconds it's **20% off, $[sale]**. Tap the pinned item to buy. 20…
+> 10… Sold! Congrats [@name]!"
+
+If nobody buys: "It's still in the Buy It Now tab at $[full]." Don't add
+another discount on the spot. **[Test]**
+
 ### Closing (last 2–3 minutes)
 > "That's the show! Thank you so much, [@top buyers], [@new buyers]. Every
 > order ships within two business days. Tap **bookmark** on my next show:

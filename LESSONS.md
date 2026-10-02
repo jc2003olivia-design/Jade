@@ -75,6 +75,14 @@ Claude reads this before every task and adds to it as it goes (see
   Jade wants only proven facts, so label anything that isn't.
 - Whatnot requires condition said out loud and "NO PURCHASE NECESSARY" every
   time a giveaway is promoted. No follow-my-socials or spend-to-enter rules.
+- Whatnot flash sales: set the timer to at least 30 s (Whatnot's advice). Buyers
+  can't make offers on them, and the item goes back to full price after.
+  Steps are in `whatnot.md`.
+- Before a show, open each Whatnot listing and check Condition is filled in.
+  On Oct 2, 3 of 6 Buy Now listings showed only size and brand.
+- Nifty's marketplace copies of one item can list different fabrics (the
+  Wilfred Free romper says Tencel blend, Lyocell and 100% modal). Read the
+  care tag before saying the fabric live.
 
 ## Customer support
 
