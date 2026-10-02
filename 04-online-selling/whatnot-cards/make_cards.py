@@ -17,6 +17,10 @@ cards.json is a list like:
       "say": "Free People Fuji thermal, tag size XS ...",
       "tip": "Buyers search 'Fuji'. Say the style name."}]
 
+Script / reminder cards use {"kind": "script", "head": "OPEN", "time": "0:00",
+"title": "...", "say": "paragraph\\nparagraph", "checklist": [...], "tip": "..."}.
+Any card can carry "run" (its place in the show) and "time" (shown top right).
+
 Needs reportlab (pip install reportlab).
 """
 
@@ -70,11 +74,15 @@ def draw_card(c, it):
     c.setFillGray(0)
     c.rect(M, y - bar, INNER, bar, stroke=0, fill=1)
     c.setFillGray(1)
-    c.setFont("Bold", 13)
-    c.drawString(M + 6, y - bar + 7, f"#{it['n']}  {it['type']}")
+    right = it.get("time") or it.get("sku") or ""
+    room = INNER - 16 - stringWidth(right, "Medium", 9)
+    head = f"#{it['n']}  {it['type']}"
+    if it.get("run"):
+        head = f"{it['run']}.  " + head
+    c.setFont("Bold", fit(head, "Bold", 13, room))
+    c.drawString(M + 6, y - bar + 7, head)
     c.setFont("Medium", 9)
-    if it.get("sku"):
-        c.drawRightString(W - M - 6, y - bar + 8, it["sku"])
+    c.drawRightString(W - M - 6, y - bar + 8, right)
     c.setFillGray(0)
     y -= bar + 4
 
@@ -84,6 +92,8 @@ def draw_card(c, it):
     c.setFont("Bold", size)
     c.drawString(M, y, it["brand"])
     line = f"{it['item']} · {it['size']}"
+    if it.get("time") and it.get("sku"):
+        line += f" · {it['sku']}"
     size = fit(line, "Medium", 12)
     y -= size + 3
     c.setFont("Medium", size)
@@ -170,6 +180,90 @@ def draw_card(c, it):
         c.drawString(M, y, ln)
 
 
+def draw_script(c, it):
+    """A reminder / script card: header, title, what to say, a checklist."""
+    y = H - M
+    bar = 0.32 * inch
+    c.setFillGray(0)
+    c.rect(M, y - bar, INNER, bar, stroke=0, fill=1)
+    c.setFillGray(1)
+    right = it.get("time", "")
+    head = (f"{it['run']}.  " if it.get("run") else "") + it["head"]
+    c.setFont("Bold", fit(head, "Bold", 13, INNER - 16 - stringWidth(right, "Medium", 9)))
+    c.drawString(M + 6, y - bar + 7, head)
+    c.setFont("Medium", 9)
+    c.drawRightString(W - M - 6, y - bar + 8, right)
+    c.setFillGray(0)
+    y -= bar + 4
+
+    size = fit(it["title"], "Bold", 22)
+    y -= size
+    c.setFont("Bold", size)
+    c.drawString(M, y, it["title"])
+    y -= 8
+    c.setLineWidth(1)
+    c.line(M, y, W - M, y)
+
+    tip_lines = wrap("TIP: " + it["tip"], "Medium", 7.5) if it.get("tip") else []
+    bottom = M + len(tip_lines) * 9.5 + (8 if tip_lines else 0)
+    paras = [p for p in it.get("say", "").split("\n") if p.strip()]
+    checks = it.get("checklist", [])
+
+    def layout(sz):
+        lead, csz = sz * 1.28, sz * 0.82
+        out, h = [], 0
+        if paras:
+            h += 13
+            for p in paras:
+                ls = wrap(p, "Medium", sz)
+                out.append(("p", ls))
+                h += len(ls) * lead + sz * 0.45
+        if checks:
+            h += 15
+            for ch in checks:
+                ls = wrap(ch, "Medium", csz, INNER - 14)
+                out.append(("c", ls))
+                h += len(ls) * csz * 1.28 + 3
+        return out, h, lead, csz
+
+    for sz in [x / 2 for x in range(28, 13, -1)]:
+        out, h, lead, csz = layout(sz)
+        if h <= y - bottom:
+            break
+    first_c = True
+    if paras:
+        y -= 9
+        label(c, M, y, it.get("say_label", "Say"))
+        y -= 4
+    for kind, ls in out:
+        if kind == "p":
+            c.setFont("Medium", sz)
+            for ln in ls:
+                y -= lead
+                c.drawString(M, y, ln)
+            y -= sz * 0.45
+        else:
+            if first_c:
+                y -= 11
+                label(c, M, y, it.get("check_label", "Do"))
+                y -= 2
+                first_c = False
+            c.setFont("Medium", csz)
+            for i, ln in enumerate(ls):
+                y -= csz * 1.28
+                if i == 0:
+                    c.setLineWidth(0.8)
+                    c.rect(M, y - 1, csz * 0.75, csz * 0.75)
+                c.drawString(M + 14, y, ln)
+            y -= 3
+
+    y = bottom - 4
+    c.setFont("Medium", 7.5)
+    for ln in tip_lines:
+        c.drawString(M, y, ln)
+        y -= 9.5
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("cards", help="JSON file of cards")
@@ -180,7 +274,7 @@ def main():
     c = canvas.Canvas(args.out, pagesize=(W, H))
     c.setTitle("Whatnot show cards")
     for it in cards:
-        draw_card(c, it)
+        (draw_script if it.get("kind") == "script" else draw_card)(c, it)
         c.showPage()
     c.save()
     print(f"{len(cards)} cards -> {args.out}")
