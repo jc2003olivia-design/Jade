@@ -502,14 +502,14 @@
   "n": 32,
   "type": "AUCTION / BIN",
   "brand": "Levi's Superlow",
-  "item": "Low Rise Jeans, Light Wash",
+  "item": "Loose Low Rise Jeans, Light Wash, Distressed",
   "size": "24",
   "retail": "~$75",
   "retail_src": "Poshmark sellers' tags on Levi's Superlow",
   "resale": "$26–38, usually ~$33",
   "resale_src": "Poshmark sold, Levi's Superlow (90); a 24 sold $30",
-  "say": "Levi's Superlow, tag size 24. Pre-owned, [condition]. [front, back patch, hems, tag] Super low rise, loose fit, light wash. Very Y2K. Waist [x] flat, rise [x], inseam [x]. [start] Go!",
-  "tip": "Confirm it's Levi's: the care tag under 'Superlow' reads 'Levi Strauss', but check the back patch. Say the leg shape (loose straight or bootcut)."
+  "say": "Levi's Superlow, tag size 24. Pre-owned, [condition]. [front, back patch, rips up close, frayed hems, tag] Super low rise, loose leg, light wash with built-in rips and frayed hems. Very Y2K. Waist [x] flat, rise [x], inseam [x]. [start] Go!",
+  "tip": "Show the rips and frayed hems up close and say they're the design. Check none has spread past it."
  },
  {
   "sku": "",
@@ -518,13 +518,29 @@
   "n": 33,
   "type": "AUCTION / BIN",
   "brand": "Good American",
-  "item": "White Distressed Jeans",
-  "size": "____",
+  "item": "White Distressed Jeans, 100% Cotton",
+  "size": "2/26",
   "retail": "~$118–169",
   "retail_src": "Poshmark sellers' tags on Good American white jeans",
   "resale": "$25–36, usually ~$30",
   "resale_src": "Poshmark sold, Good American white jeans (57)",
-  "say": "Good American white jeans, tag size [size]. Pre-owned, [condition]. [front, back, distressing, hems, tag] [Leg shape], [rise], white with distressed details. [start] Go!",
-  "tip": "White: check the seat, knees and hems for marks or yellowing and show any you find. Read the size on the waistband tag."
+  "say": "Good American white jeans, tag size 2, or 26. Pre-owned, [condition]. [front, back, distressing, hems, tag] 100% cotton rigid white denim, [leg shape], with distressed details. Waist [x] flat, rise [x], inseam [x]. [start] Go!",
+  "tip": "White: check the seat, knees and waistband for marks or yellowing (the waistband looks a little dingy in your photo) and show any you find."
+ },
+ {
+  "n": 34,
+  "type": "AUCTION / BIN · HERO",
+  "sku": "",
+  "price": "$______",
+  "price_note": "your start / BIN. Comps below",
+  "brand": "Michael Kors",
+  "item": "Greenwich-style Saffiano Crossbody, Black",
+  "size": "one size",
+  "retail": "~$358–498",
+  "retail_src": "Poshmark sellers' tags on MK Greenwich (MK list price)",
+  "resale": "used $29–65; NWT ~$97",
+  "resale_src": "Poshmark sold, MK Greenwich crossbodies (33)",
+  "say": "Michael Kors crossbody, black saffiano leather with the gold MK logo. [Condition]. [front, back, open the flap, inside, strap, hardware up close] Flap closure, adjustable crossbody strap, gold hardware. Holds your phone, cards and keys. [start] Go!",
+  "tip": "Confirm the style name on the inside tag (Greenwich?) and say it. Check corners, edges and the logo plate for scuffs. Lead with condition and the logo; used ones sell far below the retail on the tag."
  }
 ]
