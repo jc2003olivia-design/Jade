@@ -75,6 +75,11 @@ Claude reads this before every task and adds to it as it goes (see
   shows (~50 pieces each), not one combined show.
 - Whatnot shows run under one generic listing with $1 starts (Jade calls it
   "random pull"). Delist from Depop/Poshmark before going live.
+- Generic "random pull" orders (e.g. "THE ELEVATED EDIT - #50") don't say which
+  piece sold. Write the listing # on the piece's card or a post-it as it sells,
+  so cross-listed pieces can be marked sold and delisted the same night.
+- Oct 1 show: $5 starts averaged ~$7.55/piece, $1 starts ~$3.10, and 10 pieces
+  went for $1. Keep $5 starts for this inventory [Test: one show].
 - Show playbook (scripts, item counts, timers, giveaway rules) is
   `04-online-selling/whatnot.md`. Tag each claim [Whatnot]/[Study]/[Math]/[Test];
   Jade wants only proven facts, so label anything that isn't.

@@ -344,6 +344,7 @@ thumbnail), so you know what made the difference.
 
 | Date | Show | Length | Timer | Items run | Sold | Sales | Sales/hr | Peak viewers | Avg watch time | New followers | What I changed |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| Oct 1 | The Elevated Edit (Anthropologie, Quince…) | ? | ? | 55 + 2 giveaways | 54 (1 cancelled) | $265 + $5 tips | ? | ? | ? | ? | $5 starts for #1–22 (avg ~$7.55/piece); switched to $1 starts at #23 (avg ~$3.10/piece). 10 pieces sold at $1. $12 coupon spend. 6 first-time buyers |
 |  |  |  |  |  |  |  |  |  |  |  |  |
 
 ---
