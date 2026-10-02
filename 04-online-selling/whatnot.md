@@ -272,33 +272,49 @@ issues ("runs big") don't count as misrepresentation. The tag size does.
 
 ## Show Notes template (paste into Show Notes)
 
-Whatnot requires Official Rules for every giveaway. This is adapted from
+Whatnot requires Official Rules for every giveaway, including the number of
+prizes and a timeline (entries open/close, winner drawn, prize shipped);
+checked against the Help Center on 2026-10-02. This is adapted from
 Whatnot's own example. Whatnot says the example isn't guaranteed to be
 legally complete, so check it before your first giveaway. Fill in the
 brackets. Put only a business contact in "Sponsor" (this repo is public, so
 don't write personal details here).
 
 ```
-KENNY SHOP · Premium [Activewear] · $1 starts
-Every piece: brand, tag size, condition and flaws shown on camera.
-Shipping: everything you win tonight bundles into one box.
-Ships within 2 business days.
+KENNY SHOP · Premium [Contemporary] · $1 starts
+[Brands tonight, e.g. Free People, Polo Ralph Lauren, premium denim]
+• Every piece: brand, tag size and condition said on camera, flaws shown up close.
+• Drop your size in chat and I'll pull it for you.
+• Can't stay? Grab pieces from the Buy It Now tab in my shop.
+• Everything you win tonight ships together in one box within 2 business days.
 
-GIVEAWAY OFFICIAL RULES
-NO PURCHASE NECESSARY. Void where prohibited and outside the U.S.
-Open to legal residents of the 50 U.S. states and DC who are 18+
-(19+ in AL and NE, 21+ in MS). Giveaway period: during this livestream
-on [DATE]. Enter by tapping "Enter Giveaway" once it is pinned; you must
-be present in the livestream to win. Limit 1 entry per person.
-Prize: [brand, item, size]. Approximate retail value: $[ARV].
-Winner selected at random by Whatnot's giveaway tool. Odds depend on the
-number of entries received. Winner announced during the livestream;
-prize ships within 2 business days.
+FOLLOWER GIVEAWAYS · NO PURCHASE NECESSARY
+[2] follower-only giveaways tonight, around [20] and [45] minutes in.
+
+OFFICIAL RULES
+NO PURCHASE NECESSARY TO ENTER OR WIN. Void where prohibited and outside
+the U.S. Open to legal residents of the 50 U.S. states and DC who are 18+
+(19+ in AL and NE, 21+ in MS) at the time of entry.
+Giveaway period: during this livestream on [DATE]. Each giveaway opens when
+it is pinned and closes when Whatnot draws the winner, about [5] minutes later.
+How to enter: follow Kenny Shop, then tap "Enter Giveaway" while it is
+pinned. You must be present in the livestream when the winner is drawn.
+Limit 1 entry per person per giveaway.
+Prizes ([2] total, one per giveaway):
+1) [brand, item, size]. Approximate retail value: $[ARV]
+2) [brand, item, size]. Approximate retail value: $[ARV]
+Winners are selected at random by Whatnot's giveaway tool. Odds of winning
+depend on the number of entries received. Winners are announced during the
+livestream. Prizes ship within 2 business days of the show at no cost to
+the winner.
 Sponsor: Kenny Shop, [business contact].
 This giveaway is in no way sponsored, endorsed or administered by, or
-associated with, Whatnot Inc. or its affiliates. By entering you release
-Whatnot and its employees, representatives and designees from any and all
-liability related to the giveaway or acceptance of any prize.
+associated with, Whatnot Inc. or its affiliates ("Whatnot"). By entering,
+you agree that Whatnot and its employees, representatives and designees are
+released from and held harmless against any and all liability for injuries,
+losses or damages to persons or property, including personal injury or
+death, resulting from participation in the giveaway or any related
+activity, or acceptance of any prize.
 ```
 
 Buyer Appreciation Giveaways (buyers only) need a free web entry option.

@@ -89,6 +89,9 @@ Claude reads this before every task and adds to it as it goes (see
 - Show playbook (scripts, item counts, timers, giveaway rules) is
   `04-online-selling/whatnot.md`. Tag each claim [Whatnot]/[Study]/[Math]/[Test];
   Jade wants only proven facts, so label anything that isn't.
+- Whatnot giveaway Official Rules must list the number of prizes, each ARV, and a
+  timeline (entries open/close, winner drawn, prize shipped). Template:
+  `04-online-selling/whatnot.md` → Show Notes template.
 - Whatnot requires condition said out loud and "NO PURCHASE NECESSARY" every
   time a giveaway is promoted. No follow-my-socials or spend-to-enter rules.
 
