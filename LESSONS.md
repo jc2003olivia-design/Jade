@@ -52,9 +52,10 @@ Claude reads this before every task and adds to it as it goes (see
 
 ## Pricing
 
-- Levi's inside tag: "CW MM/YY" is the make date (CW 08/22 = Aug 2022, not
-  vintage) and PC9 12501-xxxx is women's 501. Vintage = Made in USA or an
-  early date. Women's 501s sell ~$20–30 on Poshmark; vintage ones far more.
+- Levi's inside tag: the last 2 digits of the "CW" code look like the year
+  (CW 0822 → 2022, CW 3015 → 2015); don't claim a month. PC9 12501-xxxx is
+  women's 501 Original. Vintage = Made in USA or pre-2000s. Women's 501s sell
+  ~$20–30 on Poshmark; vintage ones far more.
 
 - Nifty: Depop is the source price, and Nifty's rules set the Poshmark and
   eBay prices from it.

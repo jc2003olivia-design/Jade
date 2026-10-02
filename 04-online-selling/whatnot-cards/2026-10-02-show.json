@@ -445,6 +445,38 @@
   "resale": "$20–30, usually ~$24",
   "resale_src": "Poshmark sold, women's 501s size 27 (76)",
   "say": "Levi's 501 Original, tag size 27 waist, 30 length. Pre-owned, [condition]. [front, back patch, button fly, hems, tag] The classic button-fly straight leg in a medium wash. Waist [x] flat, rise [x], inseam [x]. [start] Go!",
-  "tip": "Made in 2022 (CW 08/22 on the tag), so don't call it vintage. A good $1-start or bundle piece."
+  "tip": "Tag code CW 0822 points to 2022, so it's modern, not vintage. A good $1-start or bundle piece."
+ },
+ {
+  "sku": "",
+  "price": "$______",
+  "price_note": "your start / BIN. Comps below",
+  "retail": "$70–98",
+  "retail_src": "levi.com list $98; Target-sold 501s $69.99",
+  "n": 29,
+  "type": "AUCTION / BIN",
+  "brand": "Levi's 501 Original",
+  "item": "Ripped Knee Jeans, Light-Medium Wash",
+  "size": "W27 L30",
+  "resale": "$18–31, usually ~$24",
+  "resale_src": "Poshmark sold, distressed women's 501s (37); a 27x30 sold $20–28",
+  "say": "Levi's 501 Original, tag size 27 waist, 30 length. Pre-owned, [condition]. [front, both knee rips up close, back patch, button fly, tag] Button fly, straight leg, light-medium wash with ripped knees built in. Waist [x] flat, rise [x], inseam [x]. [start] Go!",
+  "tip": "The knee rips are part of the design. Say so and show them up close so no one calls it damage. Check that no rip has spread past the design. Modern pair (PC9 12501-0569)."
+ },
+ {
+  "sku": "",
+  "price": "$______",
+  "price_note": "your start / BIN. Comps below",
+  "retail": "$70–98",
+  "retail_src": "levi.com list $98; Target-sold 501s $69.99",
+  "n": 30,
+  "type": "AUCTION / BIN",
+  "brand": "Levi's 501 Original",
+  "item": "Button-Fly Jeans, Light Wash",
+  "size": "W25 L____",
+  "resale": "$18–30, usually ~$23",
+  "resale_src": "Poshmark sold, women's 501s size 25 (39)",
+  "say": "Levi's 501 Original, tag size 25 waist. Pre-owned, [condition]. [front, back patch, button fly, hems, tag] The classic button-fly straight leg in a light wash. Waist [x] flat, rise [x], inseam [x]. [start] Go!",
+  "tip": "Tag code CW 3015 points to 2015: modern, not vintage. The tag shows no length, so measure the inseam and say it."
  }
 ]
