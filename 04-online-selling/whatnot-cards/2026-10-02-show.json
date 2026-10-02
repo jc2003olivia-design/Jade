@@ -180,16 +180,16 @@
   "type": "AUCTION / BIN",
   "sku": "",
   "brand": "Reoria",
-  "item": "Fitted Tank, Rust",
+  "item": "Deep V Bodysuit, Rust",
   "size": "M",
   "price": "$______",
   "price_note": "your start / BIN. Comps below",
-  "retail": "~$20–29",
-  "retail_src": "Poshmark sellers' tags (Amazon brand)",
-  "resale": "$7–14, usually ~$10",
-  "resale_src": "Poshmark sold; rust Reoria crop tanks $7–10",
-  "say": "Reoria fitted tank, tag size medium, rust. Pre-owned, [condition]. [front, back, tag] Smooth, stretchy and fitted. An easy basic under a jacket or with jeans. [start] Go!",
-  "tip": "Low value. Use it as a giveaway prize or a $1 bundle add-on. Check whether it's a tank or a bodysuit."
+  "retail": "~$30–35",
+  "retail_src": "Poshmark sellers' tags on Reoria bodysuits",
+  "resale": "$8–15, usually ~$12",
+  "resale_src": "Poshmark sold; this rust deep-V sold $12 and $15",
+  "say": "Reoria deep V bodysuit, tag size medium, rust. Pre-owned, [condition]. [front, crossover V, back, tag] Plunging crossover V, sleeveless, smooth stretchy fabric that hugs. Tuck-free with jeans or a skirt. [start] Go!",
+  "tip": "Low value. Good giveaway prize or $1 add-on. Confirm it's a bodysuit (snap closure) before saying so."
  },
  {
   "n": 13,
@@ -398,5 +398,21 @@
   "resale_src": "Poshmark sold, Lucy in the Sky rompers/dresses (52)",
   "say": "Lucy in the Sky white mini, tag size [size]. Pre-owned, [condition]. [front, sheer sleeves, smocked waist, back, tag] Deep V, sheer long sleeves, smocked waist, flowy skirt. Bridal shower, rehearsal dinner, or date night. [start] Go!",
   "tip": "Check whether it's a romper or a dress and say it. White: check the underarms and hem for marks."
+ },
+ {
+  "n": 26,
+  "type": "AUCTION / BIN",
+  "sku": "",
+  "price": "$______",
+  "price_note": "your start / BIN. Comps below",
+  "brand": "Wilfred (Aritzia)",
+  "item": "Satin Babydoll Cami",
+  "size": "S",
+  "retail": "~$78–98",
+  "retail_src": "Poshmark sellers' tags on Wilfred satin camis",
+  "resale": "$17–39, usually ~$20",
+  "resale_src": "Poshmark sold, Wilfred satin babydoll/peplum camis (8)",
+  "say": "Wilfred from Aritzia, satin babydoll cami, tag size small. Pre-owned, [condition]. [front, back, straps, tag] Silky satin, V neckline, thin adjustable straps, peplum babydoll hem. Under a blazer or cardigan, or out at night. [start] Go!",
+  "tip": "Say \"Aritzia\". Check the color in good light (navy or black?). Check the satin for snags and water marks."
  }
 ]
